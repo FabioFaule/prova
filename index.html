@@ -1,98 +1,294 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irregular Verbs Game with Ads</title>
+    <title>Irregular Verbs Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            align-items: center;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .sidebar-left, .sidebar-right {
-            flex: 0 0 160px;
-            min-height: 600px;
-            margin: 10px;
-            background-color: #fff;
             text-align: center;
+            background: linear-gradient(135deg, #89fffd, #ef32d9);
+            color: white;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        table th {
+            background-color: #6200ea;
+            color: white;
+        }
+
+        table td {
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #ddd;
+            position: relative;
+            min-width: 150px;
+            max-width: 250px;
+            word-wrap: break-word;
+        }
+
+        table tr:nth-child(even) td {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.1em;
+            width: 85%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        input.correct {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+            border-color: #2e7d32;
+            font-weight: bold;
+        }
+
+        input.wrong {
+            background-color: #ffccbc;
+            color: #d84315;
+            border-color: #d84315;
+        }
+
+        button {
+            background-color: #03dac6;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #00bfa5;
+            transform: translateY(-3px);
+        }
+
+        .hint-btn {
+            background-color: #ff9800;
+            color: white;
+            border-radius: 10px;
+            padding: 5px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .hint-btn:hover {
+            background-color: #fb8c00;
+        }
+
+        /* Score Counter Style */
+        #score-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.2em;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .main-content {
-            flex: 1;
-            max-width: 800px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background: white;
+        /* Success Message */
+        #success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4caf50;
+            color: white;
+            padding: 20px 40px;
             border-radius: 10px;
-            color: #333;
+            font-size: 2em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            animation: fadeOut 2s ease-in-out 2s forwards;
         }
 
-        /* Placeholder style for banners */
-        .ads-placeholder {
-            background-color: #ececec;
-            width: 160px;
-            height: 600px;
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Banner Style */
+        #banner {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 300px;
+            background-color: #ffcc00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+            padding: 10px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 18px;
-            color: #333;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
 
+        #banner p {
+            color: black;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320" crossorigin="anonymous"></script>
 </head>
 <body>
+    <h2>Welcome!</h2>
+    <p>Fill in the gaps and learn irregular verbs</p>
+    <p>Type your answers directly in the table!</p>
+    <div id="game"></div>
+    <button onclick="checkAnswers()">Check Answers</button>
+    <div id="score-counter">Correct: 0</div>
 
-    <div class="container">
-        <!-- Sidebar sinistra con annuncio -->
-        <div class="sidebar-left">
-            <!-- Simulazione di un annuncio AdSense -->
-            <div class="ads-placeholder">
-                AdSense Banner Left
-            </div>
-        </div>
+    <!-- Success Message -->
+    <div id="success-message" style="display: none;">
+        Congratulations! You completed the verb!
+    </div>
 
-        <!-- Contenuto principale -->
-        <div class="main-content">
-            <h1>Welcome to the Irregular Verbs Game!</h1>
-            <p>Complete the game to practice your irregular verbs. Type your answers in the boxes and press "Check Answers"!</p>
-            <button onclick="alert('Checking answers...')">Check Answers</button>
-        </div>
-
-        <!-- Sidebar destra con annuncio -->
-        <div class="sidebar-right">
-            <!-- Simulazione di un annuncio AdSense -->
-            <div class="ads-placeholder">
-                AdSense Banner Right
-            </div>
-        </div>
+    <!-- Banner (ads) -->
+    <div id="banner">
+        <p>Advertisement</p>
     </div>
 
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+        const verbs = [
+            { translation: "essere", base: "be", past: "was/were", participle: "been" },
+            { translation: "avere", base: "have", past: "had", participle: "had" },
+            { translation: "andare", base: "go", past: "went", participle: "gone" },
+            { translation: "vedere", base: "see", past: "saw", participle: "seen" },
+            { translation: "mangiare", base: "eat", past: "ate", participle: "eaten" }
+        ];
+        const fields = ["translation", "base", "past", "participle"];
+        let verb, visibleField, visibleValue, missingFields, hintProgress;
+        let score = 0;
 
+        function startGame() {
+            verb = verbs[Math.floor(Math.random() * verbs.length)];
+            visibleField = fields[Math.floor(Math.random() * fields.length)];
+            visibleValue = verb[visibleField];
+            missingFields = fields.filter(field => field !== visibleField);
+
+            hintProgress = {};
+            missingFields.forEach(field => {
+                hintProgress[field] = 0;
+            });
+
+            printTable();
+        }
+
+        function checkAnswers() {
+            let allCorrect = true;
+
+            missingFields.forEach(field => {
+                const inputElement = document.getElementById(`input-${field}`);
+                const userAnswer = inputElement.value.trim().toLowerCase();
+                const correctAnswer = verb[field].toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    inputElement.classList.add("correct");
+                    inputElement.classList.remove("wrong");
+                    inputElement.disabled = true;
+                } else {
+                    inputElement.classList.add("wrong");
+                    inputElement.classList.remove("correct");
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                score++;
+                document.getElementById("score-counter").innerText = `Correct: ${score}`;
+                const successMessage = document.getElementById("success-message");
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    startGame();
+                }, 4000);
+            }
+        }
+
+        function giveHint(field) {
+            const inputElement = document.getElementById(`input-${field}`);
+            const correctAnswer = verb[field].toLowerCase();
+            const hintLength = ++hintProgress[field];
+
+            if (hintLength <= correctAnswer.length) {
+                inputElement.value = correctAnswer.slice(0, hintLength);
+            }
+        }
+
+        function printTable() {
+            const tableHTML = `
+                <table>
+                    <tr>
+                        <th>Translation</th>
+                        <th>Base Form</th>
+                        <th>Simple Past</th>
+                        <th>Past Participle</th>
+                    </tr>
+                    <tr>
+                        ${fields.map(field => `
+                            <td>
+                                ${visibleField === field ? visibleValue : `
+                                    <input type="text" id="input-${field}" placeholder="____">
+                                    <button class="hint-btn" onclick="giveHint('${field}')">Hint</button>
+                                `}
+                            </td>
+                        `).join('')}
+                    </tr>
+                </table>
+            `;
+
+            document.getElementById("game").innerHTML = tableHTML;
+        }
+
+        startGame();
+    </script>
 </body>
 </html>
