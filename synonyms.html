@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Synonyms Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="irregular-verbs.html">Irregular Verbs</a>
+		<a href="irregular_verbs_verifica.html"> Verfifica Irregular Verbs</a>
+        <a href="synonyms.html">Synonyms Game</a>
+    </nav>
+
+    <h2>Synonyms Game</h2>
+    <p>Guess the synonym of the given word!</p>
+    <div id="synonym-game">
+        <h3 id="word"></h3>
+        <input type="text" id="answer" placeholder="Your answer here...">
+        <button onclick="checkSynonym()">Check Answer</button>
+        <div id="feedback"></div>
+        <div id="score-counter">Correct: 0</div>
+    </div>
+
+    <script>
+        const words = [
+            { word: "happy", synonym: "joyful" },
+            { word: "sad", synonym: "unhappy" },
+            { word: "fast", synonym: "quick" },
+            { word: "smart", synonym: "intelligent" },
+            { word: "big", synonym: "large" }
+        ];
+
+        let currentWord;
+        let score = 0;
+
+        function startSynonymGame() {
+            currentWord = words[Math.floor(Math.random() * words.length)];
+            document.getElementById("word").innerText = currentWord.word;
+            document.getElementById("answer").value = "";
+            document.getElementById("feedback").innerText = "";
+        }
+
+        function checkSynonym() {
+            const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            const correctAnswer = currentWord.synonym.toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                document.getElementById("feedback").innerText = "Correct!";
+                document.getElementById("feedback").style.color = "green";
+                score++;
+                document.getElementById("score-counter").innerText = `Correct: ${score}`;
+                setTimeout(startSynonymGame, 2000);
+            } else {
+                document.getElementById("feedback").innerText = "Try again!";
+                document.getElementById("feedback").style.color = "red";
+            }
+        }
+
+        startSynonymGame();
+    </script>
+</body>
+</html>
