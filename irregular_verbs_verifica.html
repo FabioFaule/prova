@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Irregular Verbs Test</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="irregular-verbs.html">Irregular Verbs</a>
+	<a href="irregular_verbs_verifica.html">Irregular Verbs Test</a>
+        <a href="synonyms.html">Synonyms Game</a>
+    </nav>
+
+    <h2>Irregular Verbs Test</h2>
+    <p>Fill in the gaps with the correct verb forms</p>
+    <div id="game"></div>
+    <button onclick="checkAnswers()">Check Answers</button>
+    <button onclick="giveUp()">Give Up</button>
+    <div id="score">Score: 0/10</div>
+
+    <!-- Success Message -->
+    <div id="success-message" style="display: none;">
+        Congratulations! You completed the verb!
+    </div>
+
+    <script>
+        const verbs = [
+            { Translation: "svegliarsi", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
+            { Translation: "essere", "Base Form": "be", "Simple Past": "was / were", "Past Participle": "been" },
+            { Translation: "sopportare", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
+            { Translation: "battere (colpire o sconfiggere)", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten" },
+            { Translation: "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become" },
+            { Translation: "iniziare", "Base Form": "begin", "Simple Past": "began", "Past Participle": "begun" },
+			{ Translation: "piegare", "Base Form": "bend", "Simple Past": "bent", "Past Participle": "bent" },
+			{ Translation: "scommettere", "Base Form": "bet", "Simple Past": "bet", "Past Participle": "bet" },
+			{ Translation: "fare un’offerta", "Base Form": "bid", "Simple Past": "bid", "Past Participle": "bid" },
+			{ Translation: "legare / bendare", "Base Form": "bind", "Simple Past": "bound", "Past Participle": "bound" },
+			{ Translation: "mordere", "Base Form": "bite", "Simple Past": "bit", "Past Participle": "bitten" },
+			{ Translation: "sanguinare", "Base Form": "bleed", "Simple Past": "bled", "Past Participle": "bled" },
+			{ Translation: "soffiare", "Base Form": "blow", "Simple Past": "blew", "Past Participle": "blown" },
+			{ Translation: "rompere", "Base Form": "break", "Simple Past": "broke", "Past Participle": "broken" },
+			{ Translation: "allevare", "Base Form": "breed", "Simple Past": "bred", "Past Participle": "bred" },
+			{ Translation: "portare", "Base Form": "bring", "Simple Past": "brought", "Past Participle": "brought" },
+			{ Translation: "trasmettere (tv, radio)", "Base Form": "broadcast", "Simple Past": "broadcast", "Past Participle": "broadcast" },
+			{ Translation: "costruire", "Base Form": "build", "Simple Past": "built", "Past Participle": "built" },
+			{ Translation: "bruciare", "Base Form": "burn", "Simple Past": "burned / burnt", "Past Participle": "burned / burnt" },
+			{ Translation: "esplodere", "Base Form": "burst", "Simple Past": "burst", "Past Participle": "burst" },
+			{ Translation: "comprare", "Base Form": "buy", "Simple Past": "bought", "Past Participle": "bought" },
+			{ Translation: "gettare", "Base Form": "cast", "Simple Past": "cast", "Past Participle": "cast" },
+			{ Translation: "prendere", "Base Form": "catch", "Simple Past": "caught", "Past Participle": "caught" },
+			{ Translation: "scegliere", "Base Form": "choose", "Simple Past": "chose", "Past Participle": "chosen" },
+			{ Translation: "attaccarsi", "Base Form": "cling", "Simple Past": "clung", "Past Participle": "clung" },
+			{ Translation: "venire", "Base Form": "come", "Simple Past": "came", "Past Participle": "come" },
+			{ Translation: "costare", "Base Form": "cost", "Simple Past": "cost", "Past Participle": "cost" },
+			{ Translation: "strisciare", "Base Form": "creep", "Simple Past": "crept", "Past Participle": "crept" },
+			{ Translation: "tagliare", "Base Form": "cut", "Simple Past": "cut", "Past Participle": "cut" },
+			{ Translation: "distribuire le carte", "Base Form": "deal", "Simple Past": "dealt", "Past Participle": "dealt" },
+			{ Translation: "scavare", "Base Form": "dig", "Simple Past": "dug", "Past Participle": "dug" },
+			{ Translation: "tuffarsi / immergersi", "Base Form": "dive", "Simple Past": "dived / dove (US)", "Past Participle": "dived" },
+			{ Translation: "fare", "Base Form": "do", "Simple Past": "did", "Past Participle": "done" },
+			{ Translation: "disegnare", "Base Form": "draw", "Simple Past": "drew", "Past Participle": "drawn" },
+			{ Translation: "sognare", "Base Form": "dream", "Simple Past": "dreamed / dreamt", "Past Participle": "dreamed / dreamt" },
+			{ Translation: "bere", "Base Form": "drink", "Simple Past": "drank", "Past Participle": "drunk" },
+			{ Translation: "guidare", "Base Form": "drive", "Simple Past": "drove", "Past Participle": "driven" },
+			{ Translation: "mangiare", "Base Form": "eat", "Simple Past": "ate", "Past Participle": "eaten" },
+			{ Translation: "cadere", "Base Form": "fall", "Simple Past": "fell", "Past Participle": "fallen" },
+			{ Translation: "nutrire", "Base Form": "feed", "Simple Past": "fed", "Past Participle": "fed" },
+			{ Translation: "sentire (tatto)", "Base Form": "feel", "Simple Past": "felt", "Past Participle": "felt" },
+			{ Translation: "combattere", "Base Form": "fight", "Simple Past": "fought", "Past Participle": "fought" },
+			{ Translation: "trovare", "Base Form": "find", "Simple Past": "found", "Past Participle": "found" },
+			{ Translation: "calzare a pennello", "Base Form": "fit", "Simple Past": "fitted / fit (US)", "Past Participle": "fitted / fit (US)" },
+			{ Translation: "fuggire", "Base Form": "flee", "Simple Past": "fled", "Past Participle": "fled" },
+			{ Translation: "lanciare", "Base Form": "fling", "Simple Past": "flung", "Past Participle": "flung" },
+			{ Translation: "volare", "Base Form": "fly", "Simple Past": "flew", "Past Participle": "flown" },
+			{ Translation: "proibire", "Base Form": "forbid", "Simple Past": "forbade", "Past Participle": "forbidden" },
+			{ Translation: "dimenticare", "Base Form": "forget", "Simple Past": "forgot", "Past Participle": "forgotten" },
+			{ Translation: "perdonare", "Base Form": "forgive", "Simple Past": "forgave", "Past Participle": "forgiven" },
+			{ Translation: "abbandonare", "Base Form": "forsake", "Simple Past": "forsook", "Past Participle": "forsaken" },
+			{ Translation: "congelare", "Base Form": "freeze", "Simple Past": "froze", "Past Participle": "frozen" },
+			{ Translation: "prendere", "Base Form": "get", "Simple Past": "got", "Past Participle": "got / gotten (US)" },
+			{ Translation: "dare", "Base Form": "give", "Simple Past": "gave", "Past Participle": "given" },
+			{ Translation: "andare", "Base Form": "go", "Simple Past": "went", "Past Participle": "gone" },
+			{ Translation: "macinare", "Base Form": "grind", "Simple Past": "ground", "Past Participle": "ground" },
+			{ Translation: "crescere", "Base Form": "grow", "Simple Past": "grew", "Past Participle": "grown" },
+			{ Translation: "appendere", "Base Form": "hang", "Simple Past": "hung", "Past Participle": "hung" },
+			{ Translation: "sentire", "Base Form": "hear", "Simple Past": "heard", "Past Participle": "heard" },
+			{ Translation: "nascondere", "Base Form": "hide", "Simple Past": "hid", "Past Participle": "hidden" },
+			{ Translation: "colpire", "Base Form": "hit", "Simple Past": "hit", "Past Participle": "hit" },
+			{ Translation: "stringere", "Base Form": "hold", "Simple Past": "held", "Past Participle": "held" },
+			{ Translation: "far male", "Base Form": "hurt", "Simple Past": "hurt", "Past Participle": "hurt" },
+			{ Translation: "tenere", "Base Form": "keep", "Simple Past": "kept", "Past Participle": "kept" },
+			{ Translation: "inginocchiarsi", "Base Form": "kneel", "Simple Past": "knelt / kneeled (US)", "Past Participle": "knelt / kneeled (US)" },
+			{ Translation: "sapere", "Base Form": "know", "Simple Past": "knew", "Past Participle": "known" },
+			{ Translation: "stendere", "Base Form": "lay", "Simple Past": "laid", "Past Participle": "laid" },
+			{ Translation: "guidare / condurre", "Base Form": "lead", "Simple Past": "led", "Past Participle": "led" },
+			{ Translation: "imparare", "Base Form": "learn", "Simple Past": "learned / learnt", "Past Participle": "learned / learnt" },
+			{ Translation: "lasciare", "Base Form": "leave", "Simple Past": "left", "Past Participle": "left" },
+			{ Translation: "prestare", "Base Form": "lend", "Simple Past": "lent", "Past Participle": "lent" },
+			{ Translation: "permettere", "Base Form": "let", "Simple Past": "let", "Past Participle": "let" },
+			{ Translation: "essere sdraiato", "Base Form": "lie", "Simple Past": "lay", "Past Participle": "lain" },
+			{ Translation: "accendere", "Base Form": "light", "Simple Past": "lit / lighted", "Past Participle": "lit / lighted" },
+			{ Translation: "perdere", "Base Form": "lose", "Simple Past": "lost", "Past Participle": "lost" },
+			{ Translation: "fare", "Base Form": "make", "Simple Past": "made", "Past Participle": "made" },
+			{ Translation: "significare", "Base Form": "mean", "Simple Past": "meant", "Past Participle": "meant" },
+			{ Translation: "incontrare", "Base Form": "meet", "Simple Past": "met", "Past Participle": "met" },
+			{ Translation: "sbagliare a scrivere", "Base Form": "misspell", "Simple Past": "misspelt / misspelled", "Past Participle": "misspelt / misspelled" },
+			{ Translation: "sbagliare", "Base Form": "mistake", "Simple Past": "mistook", "Past Participle": "mistaken" },
+			{ Translation: "dominare", "Base Form": "overcome", "Simple Past": "overcame", "Past Participle": "overcome" },
+			{ Translation: "sorpassare", "Base Form": "overtake", "Simple Past": "overtook", "Past Participle": "overtaken" },
+			{ Translation: "pagare", "Base Form": "pay", "Simple Past": "paid", "Past Participle": "paid" },
+			{ Translation: "dichiararsi (legale)", "Base Form": "plead", "Simple Past": "pleaded / pled (US)", "Past Participle": "pleaded / pled (US)" },
+			{ Translation: "provare", "Base Form": "prove", "Simple Past": "proved", "Past Participle": "proved / proven (US)" },
+			{ Translation: "mettere", "Base Form": "put", "Simple Past": "put", "Past Participle": "put" },
+			{ Translation: "smettere", "Base Form": "quit", "Simple Past": "quit", "Past Participle": "quit" },
+			{ Translation: "leggere", "Base Form": "read", "Simple Past": "read", "Past Participle": "read" },
+			{ Translation: "cavalcare", "Base Form": "ride", "Simple Past": "rode", "Past Participle": "ridden" },
+			{ Translation: "squillare", "Base Form": "ring", "Simple Past": "rang", "Past Participle": "rung" },
+			{ Translation: "salire / aumentare", "Base Form": "rise", "Simple Past": "rose", "Past Participle": "risen" },
+			{ Translation: "correre", "Base Form": "run", "Simple Past": "ran", "Past Participle": "run" },
+			{ Translation: "dire", "Base Form": "say", "Simple Past": "said", "Past Participle": "said" },
+			{ Translation: "vedere", "Base Form": "see", "Simple Past": "saw", "Past Participle": "seen" },
+			{ Translation: "vendere", "Base Form": "sell", "Simple Past": "sold", "Past Participle": "sold" },
+			{ Translation: "mandare", "Base Form": "send", "Simple Past": "sent", "Past Participle": "sent" },
+			{ Translation: "posizionare", "Base Form": "set", "Simple Past": "set", "Past Participle": "set" },
+			{ Translation: "cucire", "Base Form": "sew", "Simple Past": "sewed", "Past Participle": "sewed / sewn" },
+			{ Translation: "agitare", "Base Form": "shake", "Simple Past": "shook", "Past Participle": "shaken" },
+			{ Translation: "brillare", "Base Form": "shine", "Simple Past": "shone", "Past Participle": "shone" },
+			{ Translation: "ferrare (cavallo)", "Base Form": "shoe", "Simple Past": "shod", "Past Participle": "shod" },
+			{ Translation: "sparare", "Base Form": "shoot", "Simple Past": "shot", "Past Participle": "shot" },
+			{ Translation: "mostrare", "Base Form": "show", "Simple Past": "showed", "Past Participle": "shown" },
+			{ Translation: "restringersi", "Base Form": "shrink", "Simple Past": "shrank", "Past Participle": "shrunk" },
+			{ Translation: "chiudere", "Base Form": "shut", "Simple Past": "shut", "Past Participle": "shut" },
+			{ Translation: "cantare", "Base Form": "sing", "Simple Past": "sang", "Past Participle": "sung" },
+			{ Translation: "affondare", "Base Form": "sink", "Simple Past": "sank", "Past Participle": "sunk" },
+			{ Translation: "sedersi", "Base Form": "sit", "Simple Past": "sat", "Past Participle": "sat" },
+			{ Translation: "dormire", "Base Form": "sleep", "Simple Past": "slept", "Past Participle": "slept" },
+			{ Translation: "scorrere / scivolare", "Base Form": "slide", "Simple Past": "slid", "Past Participle": "slid" },
+			{ Translation: "parlare", "Base Form": "speak", "Simple Past": "spoke", "Past Participle": "spoken" },
+			{ Translation: "andare veloce", "Base Form": "speed", "Simple Past": "sped", "Past Participle": "sped" },
+			{ Translation: "spendere", "Base Form": "spend", "Simple Past": "spent", "Past Participle": "spent" },
+			{ Translation: "spostarsi", "Base Form": "spill", "Simple Past": "spilt / spilled", "Past Participle": "spilt / spilled" },
+			{ Translation: "stare in piedi", "Base Form": "stand", "Simple Past": "stood", "Past Participle": "stood" },
+			{ Translation: "rubare", "Base Form": "steal", "Simple Past": "stole", "Past Participle": "stolen" },
+			{ Translation: "costringere", "Base Form": "stick", "Simple Past": "stuck", "Past Participle": "stuck" },
+			{ Translation: "fermare", "Base Form": "stop", "Simple Past": "stopped", "Past Participle": "stopped" },
+			{ Translation: "strisciare", "Base Form": "sting", "Simple Past": "stung", "Past Participle": "stung" },
+			{ Translation: "profumare", "Base Form": "stink", "Simple Past": "stank", "Past Participle": "stunk" },
+			{ Translation: "colpire", "Base Form": "strike", "Simple Past": "struck", "Past Participle": "struck" },
+			{ Translation: "giurare", "Base Form": "swear", "Simple Past": "swore", "Past Participle": "sworn" },
+			{ Translation: "nuotare", "Base Form": "swim", "Simple Past": "swam", "Past Participle": "swum" },
+			{ Translation: "prendersi cura", "Base Form": "take", "Simple Past": "took", "Past Participle": "taken" },
+			{ Translation: "insegnare", "Base Form": "teach", "Simple Past": "taught", "Past Participle": "taught" },
+			{ Translation: "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become" },
+			{ Translation: "pensare", "Base Form": "think", "Simple Past": "thought", "Past Participle": "thought" },
+			{ Translation: "tirare", "Base Form": "throw", "Simple Past": "threw", "Past Participle": "thrown" },
+			{ Translation: "capire", "Base Form": "understand", "Simple Past": "understood", "Past Participle": "understood" },
+			{ Translation: "svegliare", "Base Form": "wake", "Simple Past": "woke", "Past Participle": "woken" },
+			{ Translation: "indossare", "Base Form": "wear", "Simple Past": "wore", "Past Participle": "worn" },
+			{ Translation: "sconfiggere", "Base Form": "win", "Simple Past": "won", "Past Participle": "won" },
+			{ Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
+        ];
+
+        let selectedVerbs = [];
+        let score = 0;
+
+        function getRandomVerbs() {
+            const selectedVerbs = [];
+            while (selectedVerbs.length < 10) {
+                const randomIndex = Math.floor(Math.random() * verbs.length);
+                if (!selectedVerbs.includes(verbs[randomIndex])) {
+                    selectedVerbs.push(verbs[randomIndex]);
+                }
+            }
+            return selectedVerbs;
+        }
+
+        function startGame() {
+            selectedVerbs = getRandomVerbs();
+            let tableHTML = `<table>
+                <tr>
+                    <th>Translation</th>
+                    <th>Base Form</th>
+                    <th>Simple Past</th>
+                    <th>Past Participle</th>
+                </tr>`;
+
+            selectedVerbs.forEach((verb, index) => {
+                const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
+                const visibleField = fields[Math.floor(Math.random() * fields.length)];
+
+                tableHTML += `<tr>
+                    ${fields.map(field => 
+                        visibleField === field 
+                            ? `<td id="${field}-${index}">${verb[field]}</td>`
+                            : `<td><input type="text" id="${field}-${index}" placeholder="____"></td>`
+                    ).join('')}
+                </tr>`;
+            });
+
+            tableHTML += `</table>`;
+            document.getElementById("game").innerHTML = tableHTML;
+        }
+
+        function checkAnswers() {
+            score = 0;
+            selectedVerbs.forEach((verb, index) => {
+                const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
+                let correctCount = 0;
+                fields.forEach(field => {
+                    if (document.getElementById(`${field}-${index}`).tagName !== "TD") {
+                        correctCount += checkInput(index, field, verb[field]);
+                    }
+                });
+
+                if (correctCount === 3) {
+                    score++;
+                }
+            });
+            document.getElementById("score").innerText = `Score: ${score}/10`;
+        }
+
+        function checkInput(index, type, correctValue) {
+            const inputElement = document.getElementById(`${type}-${index}`);
+            const userAnswer = inputElement.value.trim().toLowerCase();
+            const correctAnswer = correctValue.toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                inputElement.classList.add("correct");
+                inputElement.classList.remove("wrong");
+                return 1;
+            } else {
+                inputElement.classList.add("wrong");
+                inputElement.classList.remove("correct");
+                return 0;
+            }
+        }
+
+        function giveUp() {
+            selectedVerbs.forEach((verb, index) => {
+                const fields = ["Base Form", "Simple Past", "Past Participle", "Translation"];
+                fields.forEach(field => {
+                    const inputElement = document.getElementById(`${field}-${index}`);
+                    if (inputElement && inputElement.tagName === "TD") {
+                        return;
+                    }
+                    if (field === "Translation" && !inputElement) {
+                        document.getElementById(`${field}-${index}`).innerText = verb[field];
+                    } else {
+                        inputElement.value = verb[field];
+                        inputElement.classList.add("correct");
+                    }
+                });
+            });
+        }
+
+        startGame();
+    </script>
+</body>
+</html>
