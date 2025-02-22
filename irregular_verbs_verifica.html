@@ -17,14 +17,11 @@
     <h2>Irregular Verbs Test</h2>
     <p>Fill in the gaps with the correct verb forms</p>
     <div id="game"></div>
-    <button onclick="checkAnswers()">Check Answers</button>
-    <button onclick="giveUp()">Give Up</button>
+	<button id="check-answers" onclick="checkAnswers()">Check Answers</button>
+    <button id="give-up" onclick="giveUp()" disabled>Give Up</button>
+	<button id="start-again" onclick="startAgain()" style="display:none;">Start Again</button>																					   
     <div id="score">Score: 0/10</div>
 
-    <!-- Success Message -->
-    <div id="success-message" style="display: none;">
-        Congratulations! You completed the verb!
-    </div>
 
     <script>
         const verbs = [
@@ -195,13 +192,14 @@
                     ${fields.map(field => 
                         visibleField === field 
                             ? `<td id="${field}-${index}">${verb[field]}</td>`
-                            : `<td><input type="text" id="${field}-${index}" placeholder="____"></td>`
+                            : `<td><input type="text" id="${field}-${index}"></td>`
                     ).join('')}
                 </tr>`;
             });
 
             tableHTML += `</table>`;
             document.getElementById("game").innerHTML = tableHTML;
+			document.getElementById("give-up").disabled = false; // Enable the "Give Up" button at the start of the game																								   
         }
 
         function checkAnswers() {
@@ -220,43 +218,78 @@
                 }
             });
             document.getElementById("score").innerText = `Score: ${score}/10`;
+			// Mostra il pulsante solo se il punteggio è 10/10
+			document.getElementById("start-again").style.display = (score === 10) ? "block" : "none";																				
         }
 
         function checkInput(index, type, correctValue) {
-            const inputElement = document.getElementById(`${type}-${index}`);
-            const userAnswer = inputElement.value.trim().toLowerCase();
-            const correctAnswer = correctValue.toLowerCase();
+			const inputElement = document.getElementById(`${type}-${index}`);
+			const userAnswer = inputElement.value.trim().toLowerCase();
+			const correctAnswers = correctValue.toLowerCase().split('/').map(ans => ans.trim());
 
-            if (userAnswer === correctAnswer) {
-                inputElement.classList.add("correct");
-                inputElement.classList.remove("wrong");
-                return 1;
-            } else {
-                inputElement.classList.add("wrong");
-                inputElement.classList.remove("correct");
-                return 0;
-            }
-        }
+		
+			if (correctAnswers.includes(userAnswer)) {
+				inputElement.classList.add("correct");
+				inputElement.classList.remove("wrong");
+				//inputElement.value = correctAnswers.join(' / '); // Mostra tutte le risposte corrette
+				
+				return 1;
+			} else {
+				inputElement.classList.add("wrong");
+				inputElement.classList.remove("correct");
+				return 0;
+			}
+		}
 
+        // Funzione "Give Up" modificata
         function giveUp() {
-            selectedVerbs.forEach((verb, index) => {
-                const fields = ["Base Form", "Simple Past", "Past Participle", "Translation"];
-                fields.forEach(field => {
-                    const inputElement = document.getElementById(`${field}-${index}`);
-                    if (inputElement && inputElement.tagName === "TD") {
-                        return;
-                    }
-                    if (field === "Translation" && !inputElement) {
-                        document.getElementById(`${field}-${index}`).innerText = verb[field];
-                    } else {
-                        inputElement.value = verb[field];
-                        inputElement.classList.add("correct");
-                    }
-                });
-            });
-        }
+			let computedScore = 0;
+			selectedVerbs.forEach((verb, index) => {
+				let correctCount = 0;
+				["Translation", "Base Form", "Simple Past", "Past Participle"].forEach(field => {
+					const element = document.getElementById(`${field}-${index}`);
+					if (element && element.tagName !== "TD") {
+						const userAnswer = element.value.trim().toLowerCase();
+						const correctAnswers = verb[field].toLowerCase().split('/').map(ans => ans.trim());
+						// Se la risposta inserita è corretta
+						if (correctAnswers.includes(userAnswer)) {
+							element.classList.add("correct"); // Testo in verde
+							element.classList.remove("wrong");
+							correctCount++;
+						} else {
+							element.classList.add("wrong"); // Testo in rosso
+							element.classList.remove("correct");
+						}
+						// In ogni caso, mostra la risposta corretta
+						element.value = verb[field];
+						element.classList.add("revealed"); // Sfondo arancione
+					}
+				});
+				// Se in una riga i 3 campi editabili sono corretti, incrementa il punteggio di 1
+				if (correctCount === 3) {
+					computedScore++;
+				}
+			});
+			score = computedScore;
+			document.getElementById("score").innerText = `Score: ${score}/10`;
+			document.getElementById("start-again").style.display = "block";
+			document.getElementById("give-up").disabled = true;
+			document.getElementById("check-answers").disabled = true;												
+		}
 
-        startGame();
-    </script>
+
+		function startAgain() {
+			document.getElementById("start-again").style.display = "none"; // Nasconde "Start Again"																						
+			document.getElementById("give-up").disabled = false; // Re-enable "Give Up" button																				  
+			document.getElementById("check-answers").disabled = false;												 
+			score = 0; // Reset del punteggio
+			document.getElementById("score").innerText = `Score: ${score}/10`; // Aggiorna lo score a zero
+			startGame();
+		}
+
+window.onload = startGame;
+</script>
+			 
 </body>
 </html>
+		
