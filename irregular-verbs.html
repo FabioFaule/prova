@@ -3,14 +3,19 @@
 <head>
     <title>Irregular Verbs Game</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="irregular-verbs.html">Irregular Verbs</a>
-	<a href="irregular_verbs_verifica.html">Irregular Verbs Test</a>
-	<a href="synonyms.html">Synonyms Game</a>
+     <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="irregular-verbs.html">Irregular Verbs</a>
+            <a href="irregular_verbs_verifica.html">Irregular Verbs Test</a>
+            <a href="synonyms.html">Synonyms Game</a>
+        </div>
     </nav>
+
 
     <h2>Irregular Verbs Game</h2>
     <p>Fill in the gaps and learn irregular verbs</p>
@@ -25,6 +30,11 @@
     </div>
 
     <script>
+
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
         const verbs = [
 						{ Translation: "svegliarsi", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
 						{ Translation: "essere", "Base Form": "be", "Simple Past": "was / were", "Past Participle": "been" },
@@ -232,7 +242,7 @@
                         ${fields.map(field => `
                             <td>
                                 ${visibleField === field ? visibleValue : `
-                                    <input type="text" id="input-${field}" placeholder="____">
+                                    <input type="text" id="input-${field}" placeholder=" ">
                                     <button class="hint-btn" onclick="giveHint('${field}')">Hint</button>
                                 `}
                             </td>
