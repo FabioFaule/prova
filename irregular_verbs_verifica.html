@@ -36,6 +36,7 @@
             </select>
             <label for="numberOfVerbs">Numero di verbi:</label>
 			<select id="numberOfVerbs">
+				<option value="2">2</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
                 <option value="20">20</option>
@@ -50,6 +51,7 @@
     <button id="start-again" onclick="startAgain()" style="display:none;">Start Again</button>
     <button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
     <div id="score" class="hidden">Score: 0/10</div>
+	<div id="timer">Time played: 0s</div>	
 
     <script>
         let isFirstTime = true;
@@ -206,6 +208,9 @@
 			{ Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
 		];
 
+		let stopwatchInterval;
+        let elapsedTime = 0;
+
 		window.onload = function() {
 			if (!localStorage.getItem("difficulty")) {
 				isFirstTime = true;
@@ -234,6 +239,7 @@
 			score.classList.add("hidden");
 			document.getElementById("start-again").style.display = "none";
             document.getElementById("settings-again").style.display = "none";
+			document.getElementById("timer").style.display = "none";
 			
 			/*
 			// Nascondi i pulsanti e il punteggio quando le impostazioni sono visibili
@@ -301,6 +307,21 @@
 
 			return filteredVerbs;
 		}
+		// Avvia il cronometro (stopwatch)
+		function startStopwatch() {
+            elapsedTime = 0;
+			document.getElementById("timer").style.display = "block";
+            document.getElementById("timer").innerText = `Time played: ${elapsedTime}s`;
+            stopwatchInterval = setInterval(() => {
+                elapsedTime++;
+                document.getElementById("timer").innerText = `Time played: ${elapsedTime}s`;
+            }, 1000);
+        }
+
+        // Ferma il cronometro
+        function stopStopwatch() {
+            clearInterval(stopwatchInterval);
+        }
 
         function startGame() {
 
@@ -349,6 +370,8 @@
             document.getElementById("check-answers").classList.remove("hidden");
             document.getElementById("give-up").classList.remove("hidden");
             document.getElementById("score").classList.remove("hidden");
+
+			startStopwatch();	
         }
 
         function getRandomVerbs(number) {
@@ -375,6 +398,11 @@
                     score++;
                 }
             });
+			if (score === selectedVerbs.length) {
+				stopStopwatch();
+				document.getElementById("check-answers").style.display = "none";
+				document.getElementById("give-up").style.display = "none";
+			}
 			const maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
 			document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
             document.getElementById("start-again").style.display = (score === maxScore) ? "block" : "none";
@@ -399,6 +427,7 @@
 
         function giveUp() {
             let computedScore = 0;
+			stopStopwatch();
             selectedVerbs.forEach((verb, index) => {
                 let correctCount = 0;
                 ["Translation", "Base Form", "Simple Past", "Past Participle"].forEach(field => {
