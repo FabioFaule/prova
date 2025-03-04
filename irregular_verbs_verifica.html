@@ -25,7 +25,7 @@
             <label for="difficulty">Livello di difficoltà:</label>
             <select id="difficulty">
                 <option value="easy">Facile</option>
-                <option value="medium">Medio</option>
+                <!-- <option value="medium">Medio</option> -->
                 <option value="hard">Difficile</option>
             </select>
             <label for="time">Tempo a disposizione (in minuti):</label>
@@ -282,20 +282,46 @@
             document.getElementById("score").innerText = `Score: 0/${maxScore}`;
         }
 
+		function filterVerbs(level) {
+			let easyVerbs = ["be", "become", "begin", "bite", "blow", "break", "bring", "build", "burn", "buy", "catch", "choose", "come", "cost", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give", "go", "grow", "hear", "hide", "hit", "hold", "hurt", "keep", "know", "learn", "leave", "lend", "let", "lose", "make", "mean", "meet", "pay", "put", "read", "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "shake", "sing", "sit", "sleep", "speak", "spell", "spend", "stand", "swear", "swim", "take", "teach", "tell", "think", "understand", "wake", "wear", "win", "write"];
+			let hardVerbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "fit", "flee", "fling", "forsake", "grind", "hang", "kneel", "lay", "lead", "misspell", "mistake", "overcome", "overtake", "plead", "prove", "quit", "seek", "sew", "shine", "shoe", "shoot", "shrink", "shut", "smell", "slide", "speed", "spill", "spit", "spread", "spring", "steal", "stick", "sting", "stink", "strike", "swing", "tear", "thrust", "tread", "upset", "weave", "weep", "wind", "wring"];
+			
+			hardVerbs = hardVerbs.concat(easyVerbs);
+			// Filtra i verbi in base alla difficoltà
+
+			let filteredVerbs = verbs.filter(verb => {
+				if (level === "easy") {
+					return easyVerbs.includes(verb["Base Form"]);
+				} else if (level === "hard") {
+					return hardVerbs.includes(verb["Base Form"]);
+				} else {
+					return true; // Default to all verbs if no level is specified
+				}
+			});
+
+			return filteredVerbs;
+		}
+
         function startGame() {
 
             // Recupera le impostazioni salvate
-            const difficulty = localStorage.getItem("difficulty") || "medium"; // Imposta un valore predefinito
+            const difficulty = localStorage.getItem("difficulty") || "Easy"; // Imposta un valore predefinito
             const time = parseInt(localStorage.getItem("time")) || 60; // Imposta un valore predefinito
             const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10; // Imposta un valore predefinito
 			
+			// Filtra i verbi in base alla difficoltà
+			const filteredVerbs = filterVerbs(difficulty);
+
+			// Seleziona un numero casuale di verbi filtrati
+			selectedVerbs = getRandomVerbsFromList(filteredVerbs, numberOfVerbs);
+
 
 
             //settings.classList.remove("hidden");
 			// Aggiorna il display del punteggio con il numero di verbi aggiornato
             updateScoreDisplay(numberOfVerbs);
 
-            selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
+            // selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
             let tableHTML = `<table>
                 <tr>
                     <th>Translation</th>
@@ -329,6 +355,10 @@
             const shuffled = verbs.sort(() => 0.5 - Math.random());
             return shuffled.slice(0, number);
         }
+		function getRandomVerbsFromList(verbsList, number) {
+			const shuffled = verbsList.sort(() => 0.5 - Math.random());
+			return shuffled.slice(0, number);
+		}
 
         function checkAnswers() {
             score = 0;
