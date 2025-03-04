@@ -221,24 +221,37 @@
 			const checkAnswers = document.getElementById("check-answers");
 			const giveUp = document.getElementById("give-up");
 			const score = document.getElementById("score");
-			//const settingsBtn = document.getElementById("settings-btn");
+			const game = document.getElementById("game"); // Aggiungi questa riga per ottenere la tabella del gioco
 
-			settings.classList.toggle("hidden");
+			// settings.classList.toggle("hidden");
+			document.getElementById("settings").style.display = "block";
 			
+			
+			settings.classList.remove("hidden");
+			game.innerHTML = "";
+			checkAnswers.classList.add("hidden");
+			giveUp.classList.add("hidden");
+			score.classList.add("hidden");
+			document.getElementById("start-again").style.display = "none";
+            document.getElementById("settings-again").style.display = "none";
+			
+			/*
 			// Nascondi i pulsanti e il punteggio quando le impostazioni sono visibili
 			if (!settings.classList.contains("hidden")) {
+				settings.classList.remove("hidden");
 				checkAnswers.classList.add("hidden");
 				giveUp.classList.add("hidden");
 				score.classList.add("hidden");
+				game.innerHTML = ""; // Nascondi la tabella del gioco
+				
 			} else {
 				checkAnswers.classList.remove("hidden");
 				giveUp.classList.remove("hidden");
 				score.classList.remove("hidden");
-			}
-			
-			settingsBtn.classList.toggle("hidden");
+				// Se vuoi ripristinare la tabella del gioco quando le impostazioni sono nascoste, puoi chiamare startGame() qui
+			} */
 		}
-        function applySettings() {
+		function applySettings() {
             const difficulty = document.getElementById("difficulty").value;
             const time = document.getElementById("time").value;
             const numberOfVerbs = document.getElementById("numberOfVerbs").value;
@@ -246,10 +259,14 @@
             localStorage.setItem("difficulty", difficulty);
             localStorage.setItem("time", time);
             localStorage.setItem("numberOfVerbs", numberOfVerbs);
-
+			
             isFirstTime = false; // Imposta a false dopo la prima apertura
-            document.getElementById("settings").style.display = "none"; // Nascondi le impostazioni
+            document.getElementById("settings").classList.add("hidden");
+			document.getElementById("settings").style.display = "none";
             updateScoreDisplay(numberOfVerbs); // Aggiorna il display del punteggio con il numero di verbi aggiornato
+			document.getElementById("check-answers").style.display = "block";
+            document.getElementById("give-up").style.display = "block";
+
             startGame(); // Avvia il gioco
         }
 
@@ -266,17 +283,16 @@
         }
 
         function startGame() {
-            if (isFirstTime) {
-                document.getElementById("settings").style.display = "block";
-                return; // Non procedere con il gioco finché non sono impostate le opzioni
-            }
 
             // Recupera le impostazioni salvate
             const difficulty = localStorage.getItem("difficulty") || "medium"; // Imposta un valore predefinito
             const time = parseInt(localStorage.getItem("time")) || 60; // Imposta un valore predefinito
             const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10; // Imposta un valore predefinito
+			
 
-            // Aggiorna il display del punteggio con il numero di verbi aggiornato
+
+            //settings.classList.remove("hidden");
+			// Aggiorna il display del punteggio con il numero di verbi aggiornato
             updateScoreDisplay(numberOfVerbs);
 
             selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
@@ -304,7 +320,6 @@
             tableHTML += `</table>`;
             document.getElementById("game").innerHTML = tableHTML;
             document.getElementById("give-up").disabled = false; // Abilita il pulsante "Give Up" all'inizio del gioco
-            //document.getElementById("settings-btn").style.display = "none"; // Nascondi il pulsante delle impostazioni originale
             document.getElementById("check-answers").classList.remove("hidden");
             document.getElementById("give-up").classList.remove("hidden");
             document.getElementById("score").classList.remove("hidden");
@@ -330,10 +345,10 @@
                     score++;
                 }
             });
-            document.getElementById("score").innerText = `Score: ${score}/10`;
-            // Show the button only if the score is 10/10
-            document.getElementById("start-again").style.display = (score === 10) ? "block" : "none";
-            document.getElementById("settings-again").style.display = (score === 10) ? "block" : "none";
+			const maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
+			document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
+            document.getElementById("start-again").style.display = (score === maxScore) ? "block" : "none";
+            document.getElementById("settings-again").style.display = (score === maxScore) ? "block" : "none";
         }
 
         function checkInput(index, type, correctValue) {
@@ -378,21 +393,24 @@
                 }
             });
             score = computedScore;
-            document.getElementById("score").innerText = `Score: ${score}/10`;
+			maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
+            document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
             document.getElementById("start-again").style.display = "block";
             document.getElementById("settings-again").style.display = "block";
-            document.getElementById("give-up").disabled = true;
-            document.getElementById("check-answers").disabled = true;
-			//ocument.getElementById("settings-btn").style.display = "block"; // Rendi visibile il pulsante delle impostazioni
+
+			document.getElementById("give-up").style.display = "none";
+			document.getElementById("check-answers").style.display = "none";
+
         }
 
         function startAgain() {
             document.getElementById("start-again").style.display = "none";
             document.getElementById("settings-again").style.display = "none";
-            document.getElementById("give-up").disabled = false;
-            document.getElementById("check-answers").disabled = false;
+			document.getElementById("give-up").style.display = "block";
+			document.getElementById("check-answers").style.display = "block";
             score = 0;
-            document.getElementById("score").innerText = `Score: ${score}/10`;
+			maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
+            document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
             startGame();
         }
 
