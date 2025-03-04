@@ -131,7 +131,10 @@ button {
     font-size: 1.2em;
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
+    margin: 1px auto;
     margin-top: 20px;
+    display: block; /* Imposta il pulsante come elemento di blocco */
+    text-align: center; 
 }
 
 button:hover {
@@ -284,6 +287,10 @@ button:hover {
     background-color: #fb8c00;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Score Counter */
 #score-counter {
     position: absolute;
@@ -417,3 +424,4 @@ button:hover {
     color: var(--primary-color);
     font-size: 1.4em;
 }
+
