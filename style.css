@@ -1,13 +1,16 @@
 /* Define CSS Variables */
 :root {
-    --primary-color: #6200ea; /* Main color */
-    --secondary-color: #03dac6; /* Secondary color */
-    --background-color: linear-gradient(135deg, #89fffd, #ef32d9); /* Background gradient */
-    --text-color: white; /* Main text color */
-    --input-border-color: #ccc; /* Input border color */
-    --correct-color: #c8e6c9; /* Correct input color */
-    --wrong-color: #ffccbc; /* Wrong input color */
-    --font-family: 'Arial', sans-serif; /* Default font family */
+    --primary-color: #6200ea;
+    --secondary-color: #03dac6;
+    --background-color: linear-gradient(135deg, #89fffd, #ef32d9);
+    --text-color: white;
+    --input-border-color: #ccc;
+    --correct-color: #c8e6c9;
+    --wrong-color: #ffccbc;
+    --font-family: 'Arial', sans-serif;
+    --panel-bg-color: rgba(255, 255, 255, 0.9);
+    --input-bg-color: #f8f9fa;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Body Styles */
@@ -26,6 +29,7 @@ body {
     margin: 0;
 }
 
+
 /* Navigation Bar */
 nav {
     position: fixed;
@@ -35,11 +39,10 @@ nav {
     background: rgba(0, 0, 0, 0.2);
     padding: 10px 0;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow);
     z-index: 1000;
 }
 
-/* Links */
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
@@ -52,6 +55,94 @@ nav {
 .nav-links a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* Settings Panel */
+#settings-container {
+    margin-top: 80px;
+    text-align: center;
+}
+
+#settings-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+#settings-btn:hover {
+    background-color: #4a00c2;
+}
+
+#settings {
+    color: #000;
+    background-color: var(--panel-bg-color);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    width: 80%;
+    max-width: 400px;
+    text-align: left;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid var(--input-border-color);
+    border-radius: 10px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: var(--input-bg-color);
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    margin: 1px auto;
+    margin-top: 20px;
+    display: block; /* Imposta il pulsante come elemento di blocco */
+    text-align: center; 
+}
+
+button:hover {
+    background-color: #00bfa5;
+    transform: translateY(-3px);
+}
+
+
 
 /* Hamburger Menu (Hidden by Default) */
 .menu-icon {
@@ -196,6 +287,10 @@ button:hover {
     background-color: #fb8c00;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Score Counter */
 #score-counter {
     position: absolute;
@@ -290,3 +385,43 @@ button:hover {
         padding: 8px 15px;
     }
 }
+
+/* Game Cards */
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.game-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none; /* Rimuove il sottolineato del link */
+    color: inherit; /* Mantiene il colore del testo */
+    display: block; /* Rende l'intero box cliccabile */
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.game-card h3 {
+    margin: 15px 0;
+    color: var(--primary-color);
+    font-size: 1.4em;
+}
+
