@@ -6,10 +6,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <title>Study Area</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
-     crossorigin="anonymous">
+	crossorigin="anonymous">
     </script>
-    <title>Study Zone</title>
 </head>
 <body>
     <nav>
@@ -17,17 +17,17 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="irregular-verbs.html">Irregular Verbs</a>
-            <a href="irregular_verbs_verifica.html">Irregular Verbs Test</a>
-            <a href="synonyms.html">Synonyms Game</a>
+            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
+            <a href="synonyms.html">Study Area</a>
         </div>
     </nav>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Verbi Irregolari</title>
+    <title></title>
     <script>
         function filterVerbs() {
-            let level = document.querySelector('input[name="level"]:checked').value;
+            let level = document.getElementById("level").value;
             let rows = document.querySelectorAll("table tr");
             
             rows.forEach((row, index) => {
@@ -35,32 +35,47 @@
                 row.style.display = "none";
             });
 
+            let verbs = [];
             if (level === "easy") {
-                let easyVerbs = ["be", "become", "begin", "bite", "blow", "break", "bring", "build", "burn", "buy", "catch", "choose", "come", "cost", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give", "go", "grow", "hear", "hide", "hit", "hold", "hurt", "keep", "know", "learn", "leave", "lend", "let", "lose", "make", "mean", "meet", "pay", "put", "read", "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "shake", "sing", "sit", "sleep", "speak", "spell", "spend", "stand", "swear", "swim", "take", "teach", "tell", "think", "understand", "wake", "wear", "win", "write"];
-                easyVerbs.forEach(id => {
-                    let row = document.getElementById(id);
-                    if (row) row.style.display = "table-row";
-                });
-            } else {
-                let allVerbs = ["awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind", "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst", "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal", "dig", "dive", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive", "forsake", "freeze", "get", "give", "go", "grind", "grow", "hang", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead", "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell", "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride", "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew", "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit", "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread", "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"];
-                allVerbs.forEach(id => {
-                    let row = document.getElementById(id);
-                    if (row) row.style.display = "table-row";
-                });
+                verbs = ["be", "become", "begin", "bite", "blow", "break", "bring", "build", "burn", "buy", "catch", "choose", "come", "cost", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give", "go", "grow", "hear", "hide", "hit", "hold", "hurt", "keep", "know", "learn", "leave", "lend", "let", "lose", "make", "mean", "meet", "pay", "put", "read", "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "shake", "sing", "sit", "sleep", "speak", "spell", "spend", "stand", "swear", "swim", "take", "teach", "tell", "think", "understand", "wake", "wear", "win", "write"];
+            } else if (level === "hard") {
+                verbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "blow", "break", "breed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive", "forsake", "freeze", "grind", "grow", "hang", "hear", "hide", "hit", "hold", "hurt", "kneel", "lay", "lead", "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell", "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride", "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew", "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit", "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread", "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"];
+            } else if (level === "Cat") {
+                verbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "blow", "break", "breed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive", "forsake", "freeze", "grind", "grow", "hang", "hear", "hide", "hit", "hold", "hurt", "kneel", "lay", "lead", "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell", "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride", "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew", "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit", "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread", "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"];
+            } else if (level === "Pet") {
+                verbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "blow", "break", "breed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive", "forsake", "freeze", "grind", "grow", "hang", "hear", "hide", "hit", "hold", "hurt", "kneel", "lay", "lead", "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell", "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride", "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew", "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit", "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread", "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"];
+            } else if (level === "Uni") {
+                verbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "blow", "break", "breed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive", "forsake", "freeze", "grind", "grow", "hang", "hear", "hide", "hit", "hold", "hurt", "kneel", "lay", "lead", "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell", "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride", "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew", "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit", "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread", "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"];
             }
+            verbs.forEach(id => {
+                let row = document.getElementById(id);
+                if (row) row.style.display = "table-row";
+            });
         }
     </script>
 </head>
-<body>
-    <h2>Irregular Verbs</h2>
-    <p><strong>Choose your Level:</strong></p>
-    <label>
-        <input type="radio" name="level" value="easy" onchange="filterVerbs()" checked> Easy
-    </label>
-    <label>
-        <input type="radio" name="level" value="hard" onchange="filterVerbs()"> Hard
-    </label>
-    
+<body onload="filterVerbs()">
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="irregular-verbs.html">Irregular Verbs</a>
+            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
+            <a href="synonyms.html">Study Area</a>
+        </div>
+
+    </nav>
+    <h2>Irregular Verbs List</h2>
+    <p><strong>Choose your Level and start your study session:</strong></p>
+
+    <label for="level">Livello di difficoltà:</label>
+    <select id="level" name="level" onchange="filterVerbs()">
+        <option value="easy">Facile</option>
+        <option value="hard">Difficile</option>
+        <option value="Cat">Cat Exam</option>
+        <option value="Pet">Pet Exam</option>
+        <option value="Uni">University level</option>
+    </select>
     <table>
         <tr>
             <th>Translation</th>
