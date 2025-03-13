@@ -3,10 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Irregular Verbs Test</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
-     crossorigin="anonymous">
-    </script>
+    <title>Test Your Irregular Verbs</title>
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+	crossorigin="anonymous">
+    </script> -->
 </head>
 <body>
     <nav>
@@ -14,8 +14,8 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="irregular-verbs.html">Irregular Verbs</a>
-            <a href="irregular_verbs_verifica.html">Irregular Verbs Test</a>
-            <a href="synonyms.html">Synonyms Game</a>
+            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
+            <a href="synonyms.html">Study Area</a>
         </div>
     </nav>
 	<h2>Irregular Verbs Test</h2>
@@ -33,8 +33,9 @@
             </select>
             <label for="time">Tempo a disposizione (in minuti):</label>
 			<select id="time">
-                <option value="5">5</option>
-                <option value="15">15</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+				<option value="30">30</option>
                 <option value="60">60</option>
             </select>
             <label for="numberOfVerbs">Numero di verbi:</label>
@@ -43,9 +44,11 @@
                 <option value="10">10</option>
                 <option value="15">15</option>
                 <option value="20">20</option>
+				<option value="40">40</option>
             </select>
             <button onclick="applySettings();">Inizia il Test</button>
         </div>
+
     </div>
 
 	<div id="game"></div>
@@ -54,14 +57,17 @@
     <button id="start-again" onclick="startAgain()" style="display:none;">Start Again</button>
     <button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
     <div id="score" class="hidden">Score: 0/10</div>
-	<div id="timer">Time played: 0s</div>	
+	<div id="timer">Time played: 0s</div>
+	<div id="endoftimeMessage" style="display: none;">
+		I am sorry! Your time expired!
+	</div>	
 
     <script>
         let isFirstTime = true;
         let selectedVerbs = [];
         let score = 0;
 
-	const verbs = [
+		const verbs = [
 			{ Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
 			{ Translation: "essere", "Base Form": "be", "Simple Past": "was - were", "Past Participle": "been" },
 			{ Translation: "sopportare / sostenere", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
@@ -209,10 +215,10 @@
 			{ Translation: "avvolgere", "Base Form": "wind", "Simple Past": "wound", "Past Participle": "wound" },
 			{ Translation: "torcere/ strizzare", "Base Form": "wring", "Simple Past": "wrung", "Past Participle": "wrung" },
 			{ Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
-	];
+		];
 
-	let stopwatchInterval;
-  let elapsedTime = 0;
+		let stopwatchInterval;
+        let elapsedTime = 0;
 
 		window.onload = function() {
 			if (!localStorage.getItem("difficulty")) {
@@ -310,14 +316,29 @@
 
 			return filteredVerbs;
 		}
+		let maxTime;
 		// Avvia il cronometro (stopwatch)
 		function startStopwatch() {
             elapsedTime = 0;
+			elapsedTimeinminutes = 0;
+			elapsedTimeinseconds = 0;
 			document.getElementById("timer").style.display = "block";
             document.getElementById("timer").innerText = `Time played: ${elapsedTime}s`;
             stopwatchInterval = setInterval(() => {
                 elapsedTime++;
-                document.getElementById("timer").innerText = `Time played: ${elapsedTime}s`;
+				elapsedTimeinminutes = Math.floor(elapsedTime / 60);
+				elapsedTimeinseconds = elapsedTime % 60;
+                document.getElementById("timer").innerText = `Time played: ${elapsedTimeinminutes} min ${elapsedTimeinseconds} s`;
+
+				if (elapsedTime >= maxTime) { // Controlla se il tempo massimo è stato raggiunto
+            		giveUp(); // Chiama la funzione giveUp()
+
+					const endoftimeMessage = document.getElementById("endoftimeMessage");
+                	endoftimeMessage.style.display = 'block';
+					setTimeout(() => {
+						endoftimeMessage.style.display = 'none';
+					}, 4000);
+        		}
             }, 1000);
         }
 
@@ -333,6 +354,8 @@
             const time = parseInt(localStorage.getItem("time")) || 60; // Imposta un valore predefinito
             const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10; // Imposta un valore predefinito
 			
+			maxTime = time * 60; // Imposta il tempo massimo in secondi
+
 			// Filtra i verbi in base alla difficoltà
 			const filteredVerbs = filterVerbs(difficulty);
 
@@ -344,6 +367,7 @@
             //settings.classList.remove("hidden");
 			// Aggiorna il display del punteggio con il numero di verbi aggiornato
             updateScoreDisplay(numberOfVerbs);
+
 
             // selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
             let tableHTML = `<table>
@@ -448,6 +472,7 @@
                         }
                         element.value = verb[field];
                         element.classList.add("revealed");
+						element.disabled = true;
                     }
                 });
                 if (correctCount === 3) {
