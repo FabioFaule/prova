@@ -1,42 +1,75 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="no-scroll">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Home - Learning Games</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
 	crossorigin="anonymous">
-    </script>
+    </script> -->
+    <style>
+        h3 {
+            margin: 8px 0; /* Modifica questo valore per aumentare o diminuire lo spazio verticale */
+            line-height: 1.5; /* Aggiunge spazio tra le righe di testo all'interno di h3 */
+        }
+        .styled-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body>
+<body class="no-scroll">
 
     <nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="irregular-verbs.html">Irregular Verbs</a>
-            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
-            <a href="synonyms.html">Study Area</a>
+            <a href="index.html" class="nav-item">
+                <img src="images/home.png" alt="Home">
+                <span>Home</span>
+            </a>
+            <a href="study_area.html" class="nav-item">
+                <img src="images/learn.png" alt="Learn">
+                <span>Learn</span>
+            </a>
+            <a href="irregular_verbs.html" class="nav-item">
+                <img src="images/train.png" alt="Train">
+                <span>Train</span>
+            </a>
+            <a href="irregular_verbs_verifica.html" class="nav-item">
+                <img src="images/test.png" alt="Test_png">
+                <span>Test</span>
+            </a>       
         </div>
     </nav>
 
-    <h2 style="margin-top: 80px;">Welcome to Learning Games!</h2>
-    <p>Choose a game to start learning in a fun way.</p>
+    <h1 style="margin-top: 80px;">Benvenuto nel tuo spazio di allenamento sui verbi irregolari!</h2>
 
+    <h3>Migliora la tua conoscenza dei verbi irregolari inglesi in modo interattivo e dinamico:</h3>
+    <h3> Esplora <a href="study_area.html" class="styled-link"><img src="images/learn.png" alt="Learn" style="vertical-align: middle; margin-right: 5px; width: 20px;">Learn</a>: una tabella completa per memorizzare i verbi irregolari</h3>
+    <h3> Allenati con <a href="irregular_verbs.html" class="styled-link"><img src="images/train.png" alt="Train" style="vertical-align: middle; margin-right: 5px; width: 20px;">Train</a>: completa le forme verbali mancanti con qualche aiuto</h3>
+    <h3> Metti alla prova le tue abilità in <a href="irregular_verbs.html" class="styled-link"><img src="images/test.png" alt="Test" style="vertical-align: middle; margin-right: 5px; width: 20px;">Test</a>: sfida te stesso, tempo limitato ma difficoltà a tua scelta.</h3>
+    
+    <div style="margin-bottom: 60px;"></div>
+
+    <h3> Inizia subito e diventa un esperto dei verbi irregolari! 🚀.</h3>    </h3>
+    
     <div class="games-container">
-    <a href="irregular-verbs.html" class="game-card">
-        <img src="images/irregular-verbs.jpeg" alt="Irregular Verbs">
-        <h3>Irregular Verbs</h3>
+
+    <a href="study_area.html" class="game-card">
+        <img src="images/study.jpeg" alt="Synonyms Game">
+        <h3>Learn</h3>
+    </a>
+
+    <a href="irregular_verbs.html" class="game-card">
+        <img src="images/hb.png" alt="Irregular Verbs">
+        <h3>Train</h3>
     </a>
 
     <a href="irregular_verbs_verifica.html" class="game-card">
-        <img src="images/irregular-verbs-test.jpg" alt="Irregular Verbs Test">
-        <h3>Irregular Verbs Test</h3>
-    </a>
-
-    <a href="synonyms.html" class="game-card">
-        <img src="images/synonyms.jpg" alt="Synonyms Game">
-        <h3>Synonyms Game</h3>
+        <img src="images/scritte.jpeg" alt="Irregular Verbs Test">
+        <h3>Test</h3>
     </a>
 </div>
 
