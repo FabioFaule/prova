@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html class="no-scroll">
 <head>
     <title>Irregular Verbs Game</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
 	crossorigin="anonymous">
-    </script>
+    </script> -->
 </head>
-<body>
-     <nav>
+<body class="no-scroll">
+    <nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="irregular-verbs.html">Irregular Verbs</a>
-            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
-            <a href="synonyms.html">Study Area</a>
+            <a href="index.html" class="nav-item">
+                <img src="images/home.png" alt="Home">
+                <span>Home</span>
+            </a>
+            <a href="study_area.html" class="nav-item">
+                <img src="images/learn.png" alt="Learn">
+                <span>Learn</span>
+            </a>
+            <a href="irregular_verbs.html" class="nav-item">
+                <img src="images/train.png" alt="Train">
+                <span>Train</span>
+            </a>
+            <a href="irregular_verbs_verifica.html" class="nav-item">
+                <img src="images/test.png" alt="Test_png">
+                <span>Test</span>
+            </a>       
         </div>
     </nav>
 
@@ -235,22 +247,26 @@
         function printTable() {
             const tableHTML = `
                 <table>
-                    <tr>
-                        <th>Translation</th>
-                        <th>Base Form</th>
-                        <th>Simple Past</th>
-                        <th>Past Participle</th>
-                    </tr>
-                    <tr>
-                        ${fields.map(field => `
-                            <td>
-                                ${visibleField === field ? visibleValue : `
-                                    <input type="text" id="input-${field}" placeholder=" ">
-                                    <button class="hint-btn" onclick="giveHint('${field}')">Hint</button>
-                                `}
-                            </td>
-                        `).join('')}
-                    </tr>
+					<thead>
+						<tr>
+							<th>Translation</th>
+							<th>Base Form</th>
+							<th>Simple Past</th>
+							<th>Past Participle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							${fields.map(field => `
+								<td>
+									${visibleField === field ? visibleValue : `
+										<input type="text" id="input-${field}" placeholder=" ">
+										<button class="hint-btn" onclick="giveHint('${field}')">Hint</button>
+									`}
+								</td>
+							`).join('')}
+						</tr>
+					</tbody>
                 </table>
             `;
 
