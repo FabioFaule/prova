@@ -1,8 +1,12 @@
+/* ============================= */
+/* CSS VARIABLES & GLOBAL SETUP  */
+/* ============================= */
+
 /* Define CSS Variables */
 :root {
-    --primary-color: #6200ea;
+    --primary-color: #bb37cc;
     --secondary-color: #03dac6;
-    --background-color: linear-gradient(135deg, #89fffd, #ef32d9);
+    --background-color: linear-gradient(135deg, #1c3ae3, #36afe7);
     --text-color: white;
     --input-border-color: #ccc;
     --correct-color: #c8e6c9;
@@ -13,7 +17,14 @@
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Body Styles */
+/* Global Reset & Body */
+html, body {
+    margin: 0;
+    padding: 0;
+    /*overflow-y: hidden; /* Remove vertical scrollbar */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 body {
     font-family: var(--font-family);
     text-align: center;
@@ -26,11 +37,23 @@ body {
     align-items: center;
     padding: 20px;
     position: relative;
-    margin: 0;
+    background-attachment: fixed;
 }
 
+body.scrollable {
+    overflow-y: auto;
+}
 
-/* Navigation Bar */
+html.no-scroll,
+body.no-scroll {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+/* ============================= */
+/* NAVIGATION STYLES             */
+/* ============================= */
+
 nav {
     position: fixed;
     top: 0;
@@ -46,8 +69,8 @@ nav {
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1.2em;
-    padding: 5px 10px;
+    font-size: 1.5em;
+    padding: 5px 20px;
     border-radius: 5px;
     transition: background 0.3s, color 0.3s;
 }
@@ -56,7 +79,42 @@ nav {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Settings Panel */
+
+.nav-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px; /* Distanza dal bordo destro dell'elemento; regola se necessario */
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40%; /* Altezza della linea (non a tutta altezza) */
+    width: 1px; /* Spessore della linea */
+    background-color: rgba(255, 255, 255, 0.5); /* Bianco semitrasparente */
+}
+
+/* Stile per le immagini dentro ogni nav-item */
+.nav-item img {
+    width: 20px; /* Regola la dimensione in base alle tue esigenze */
+    height: auto;
+    padding-top: 0px; /* Regola la distanza dall'alto */
+    margin-bottom: 0px;
+    /*margin-top: 0px;*/
+}
+
+/* Hamburger Menu (Hidden by Default) */
+.menu-icon {
+    display: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+/* ============================= */
+/* SETTINGS PANEL                */
+/* ============================= */
+
 #settings-container {
     margin-top: 80px;
     text-align: center;
@@ -92,10 +150,11 @@ nav {
     backdrop-filter: blur(10px);
 }
 
-.hidden {
-    display: none;
-}
+/* ============================= */
+/* FORM & INPUT STYLES           */
+/* ============================= */
 
+/* Labels */
 label {
     font-size: 1.1em;
     font-weight: bold;
@@ -104,6 +163,7 @@ label {
     color: #333;
 }
 
+/* Inputs & Selects */
 input, select {
     width: 100%;
     padding: 12px;
@@ -121,110 +181,7 @@ input:focus, select:focus {
     outline: none;
 }
 
-button {
-    background-color: var(--secondary-color);
-    color: #333;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1.2em;
-    box-shadow: var(--box-shadow);
-    transition: all 0.3s ease;
-    margin: 1px auto;
-    margin-top: 20px;
-    display: block; /* Imposta il pulsante come elemento di blocco */
-    text-align: center; 
-}
-
-button:hover {
-    background-color: #00bfa5;
-    transform: translateY(-3px);
-}
-
-
-
-/* Hamburger Menu (Hidden by Default) */
-.menu-icon {
-    display: none;
-    font-size: 2em;
-    cursor: pointer;
-    color: white;
-    position: absolute;
-    top: 10px;
-    left: 15px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 90%;
-    max-width: 800px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 20px;
-}
-
-table th, table td {
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-table th {
-    background-color: #6200ea;
-    color: white;
-}
-
-table td {
-    background-color: #ffffff;
-    color: #333;
-    border: 1px solid #ddd;
-    position: relative;
-    min-width: 150px;
-    max-width: 250px;
-    word-wrap: break-word;
-    font-weight: bold;
-}
-
-table tr:nth-child(even) td {
-    background-color: #f2f2f2;
-}
-
-
-
-
-
-/* --- Adattabilità per tutti i dispositivi --- */
-body {
-    overflow-x: hidden; /* Evita lo scroll orizzontale indesiderato */
-}
-
-/* --- Tabella Responsive --- */
-#game {
-    width: 100%;
-    overflow-x: auto; /* Abilita lo scroll orizzontale se necessario */
-    display: block;
-    justify-content: center;
-}
-
-table {
-    width: 100%;
-    max-width: 700px;
-    min-width: 600px; /* Evita che la tabella diventi troppo stretta */
-    font-size: 1em;
-    margin: 10px auto;
-}
-
-/* Migliora la leggibilità della tabella */
-table th, table td {
-    padding: 10px;
-    font-size: 1em;
-    text-align: center;
-}
-
-/* Input Styles */
+/* Specific Input Types */
 input[type="text"] {
     padding: 10px;
     font-size: 1.1em;
@@ -235,25 +192,29 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
+/* Input States */
 input.correct {
-    background-color: #c8e6c9;
+    background-color: var(--correct-color);
     color: #2e7d32;
     border-color: #2e7d32;
     font-weight: bold;
 }
 
 input.wrong {
-    background-color: #ffccbc;
+    background-color: var(--wrong-color);
     color: #d84315;
     border-color: #d84315;
 }
 
 input.revealed {
-            background-color: #ffcc80;
+    background-color: #ffcc80;
 }
-/* Arancione per i campi che compaiono */
 
-/* Button Styles */
+/* ============================= */
+/* BUTTON STYLES                 */
+/* ============================= */
+
+/* Default Button */
 button {
     background-color: var(--secondary-color);
     color: #333;
@@ -262,15 +223,18 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-size: 1.2em;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
+    display: block;
+    text-align: center;
 }
 
 button:hover {
     background-color: #00bfa5;
     transform: translateY(-3px);
 }
+
 /* Hint Button */
 .hint-btn {
     background-color: #ff9800;
@@ -287,21 +251,310 @@ button:hover {
     background-color: #fb8c00;
 }
 
+/* ============================= */
+/* TABLE STYLES                */
+/* ============================= */
+
+/* Base Table Style */
+/*
+table {
+    border-collapse: collapse;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1em;
+}
+
+
+/* Table Header & Data */
+/*
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+/* Table Header Specific */
+/*
+table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Table Data Specific */
+/*
+table td {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ddd;
+    position: relative;
+    min-width: 150px;
+    max-width: 250px;
+    word-wrap: break-word;
+}
+
+/* Zebra Striping */
+/*
+table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+*/
+
+/* Irregular Verbs Table Styles */
+#game {
+    width: 100%;
+    max-width: 700px;       /* Limita la larghezza massima a 600px, modifica se necessario */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+#game table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 100%;
+    /*max-width: 500px;*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1.1em;
+    background: white;
+}
+
+#game table tbody {
+    height: auto;           /* Rimuove l'altezza fissa */
+    max-height: 550px;       /* Limita l'altezza massima, se necessario */
+    overflow-y: auto;        /* Aggiunge lo scroll verticale se il contenuto eccede max-height */
+}
+
+
+#game th,
+#game td {
+    padding: 12px;
+    text-align: center;
+    color: #333; /* Cambia il colore del testo */
+    font-family: var(--font-family);
+    font-weight: bold;
+}
+
+#game th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
+}
+
+#game td {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#game tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+
+/* Irregular Verbs Table Styles */
+#study {
+    width: 100%;
+    max-width: 700px;       /* Limita la larghezza massima a 600px, modifica se necessario */
+    text-align: center;
+    display: block;
+    /*justify-content: center; /* Centra orizzontalmente */
+    /*align-items: center; /* Centra verticalmente */
+    flex-direction: column;
+    /*max-height: calc(100vh - 200px); /* Altezza massima del contenitore */
+    /*overflow-y: auto; /* Abilita lo scroll verticale */
+}
+
+
+
+#study table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 100%;
+    /*max-width: 500px;*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 1.1em;
+    background: white;
+    overflow: hidden;
+}
+#study table thead {
+    /*position: sticky;*/
+    top: 0px; /* Regola questo valore in base all'altezza combinata di nav e #level-options */
+    background-color: var(--primary-color);
+    color: white;
+    z-index: 10; /* Un valore più alto per assicurarsi che rimanga sopra il corpo della tabella */
+    position: sticky;
+}
+
+
+#study table tbody {
+    height: auto;           /* Rimuove l'altezza fissa */
+    /*max-height: 550px;       /* Limita l'altezza massima, se necessario */
+    /*overflow-y: auto;        /* Aggiunge lo scroll verticale se il contenuto eccede max-height */
+}
+
+
+#study td {
+    padding: 12px;
+    text-align: center;
+    color: #333; /* Cambia il colore del testo */
+    font-family: var(--font-family);
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#study th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
+}
+
+#study tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+
+#test {
+    width: 100%;
+    max-width: 700px;       /* Limita la larghezza massima a 600px, modifica se necessario */
+    text-align: center;
+    display: block;
+    /*justify-content: center; /* Centra orizzontalmente */
+    /*align-items: center; /* Centra verticalmente */
+    flex-direction: column;
+    /*max-height: calc(100vh - 200px); /* Altezza massima del contenitore */
+    /*overflow-y: auto; /* Abilita lo scroll verticale */
+}
+
+
+
+#test table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 100%;
+    /*max-width: 500px;*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 1.1em;
+    background: white;
+    overflow: hidden;
+}
+#test table thead {
+    /*position: sticky;*/
+    top: 0px; /* Regola questo valore in base all'altezza combinata di nav e #level-options */
+    background-color: var(--primary-color);
+    color: white;
+    z-index: 10; /* Un valore più alto per assicurarsi che rimanga sopra il corpo della tabella */
+    position: sticky;
+}
+
+
+#test table tbody {
+    height: auto;           /* Rimuove l'altezza fissa */
+    /*max-height: 550px;       /* Limita l'altezza massima, se necessario */
+    /*overflow-y: auto;        /* Aggiunge lo scroll verticale se il contenuto eccede max-height */
+}
+
+
+#test td {
+    padding: 12px;
+    text-align: center;
+    color: #333; /* Cambia il colore del testo */
+    font-family: var(--font-family);
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#test th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    text-align: center;
+}
+
+#test tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+/* Sticky Table Header */
+thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-color);
+    color: white;
+    z-index: 10;
+}
+
+/* Table Body */
+tbody {
+    display: table-row-group;
+    overflow-y: auto;
+    height: calc(100vh - 200px);
+    width: 100%;
+}
+
+/* Column Sizing */
+th, td {
+    width: 25%;
+}
+
+/* Hide Scrollbar for Table Container */
+#table-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#table-container::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* ============================= */
+/* UTILITY CLASSES             */
+/* ============================= */
+
 .hidden {
     display: none;
 }
 
+/* ============================= */
+/* COMPONENTS                  */
+/* ============================= */
+
 /* Score Counter */
 #score-counter {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 30px;
     background-color: #6200ea;
     color: white;
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 1.2em;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow);
 }
 
 /* Success Message */
@@ -315,19 +568,70 @@ button:hover {
     padding: 20px 40px;
     border-radius: 10px;
     font-size: 2em;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow);
     z-index: 999;
     animation: fadeOut 2s ease-in-out 2s forwards;
 }
 
-/* --- Stili per smartphone (max 768px) --- */
-@media screen and (max-width: 768px) {
-    /* Mostra il menu hamburger */
+/* Level Selection Panel */
+#level-options {
+    background: var(--panel-bg-color);
+    padding: 4px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    gap: 8px;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 680px;
+    margin: 20px auto;
+    width: 100%;
+    /*position: sticky;*/
+    top: 50px; /* Regola in base all'altezza della nav */
+    z-index: 900;
+    background: var(--panel-bg-color);
+    }
+
+
+#level-options label {
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    margin: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+#level-options input[type="radio"] {
+    accent-color: var(--primary-color);
+    transform: scale(0.9);
+    margin: 0;
+    vertical-align: middle;
+}
+
+/* ============================= */
+/* HEADINGS                    */
+/* ============================= */
+
+h2 {
+    margin-top: 30px;
+}
+
+/* ============================= */
+/* MEDIA QUERIES               */
+/* ============================= */
+
+@media screen and (max-width: 768px), screen and (max-height: 768px)  {
+    /* Navigation adjustments */
     .menu-icon {
         display: block;
     }
 
-    /* Nasconde i link e li mostra solo se il menu è attivo */
     .nav-links {
         display: none;
         flex-direction: column;
@@ -346,47 +650,57 @@ button:hover {
         font-size: 1.2em;
     }
 
-    /* Mostra il menu quando è attivato */
     .nav-links.active {
         display: flex;
     }
-	
 
-    /* Migliora la tabella per schermi piccoli */
+    /* Table adjustments */
     table {
-        min-width: 500px; /* Mantiene la struttura */
+        min-width: 500px;
+        width: 100%;
         font-size: 0.9em;
-    	width: 100%; /* Ensure the table takes full width */
-    	font-size: 0.9em; /* Adjust font size for better readability */
-    	margin: 10px auto; /* Center the table */
+        margin: 10px auto;
     }
-	
-	/* Adjust padding for smaller screens */
+
     table th, table td {
         padding: 8px;
     }
 
-    /* Riduce la dimensione dei pulsanti */
+    /* Button and hint adjustments */
     button, .hint-btn {
         font-size: 0.9em;
         padding: 8px;
     }
-	/* --- Pulsanti e input migliorati per mobile --- */
-	input[type="text"] {
-    	width: 100%;
-    	font-size: 1em;
-    	padding: 8px;
-    	box-sizing: border-box; /* Impedisce che esca fuori dal contenitore */
-	}
 
-    /* Centra il contatore del punteggio */
+    /* Input adjustments */
+    input[type="text"] {
+        width: 100%;
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    /* Score Counter adjustments */
     #score-counter {
         font-size: 1em;
         padding: 8px 15px;
     }
+    
+    /* Allow horizontal scrolling for #game */
+    #game {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+    }
+
+    #game table {
+        width: 100%;
+        min-width: 500px; /* Ensure the table doesn't shrink too much */
+    }
 }
 
-/* Game Cards */
+/* ============================= */
+/* GAME CARDS STYLES           */
+/* ============================= */
+
 .games-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -397,15 +711,15 @@ button:hover {
 }
 
 .game-card {
-    background: white;
+    background: var(--primary-color);;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none; /* Rimuove il sottolineato del link */
-    color: inherit; /* Mantiene il colore del testo */
-    display: block; /* Rende l'intero box cliccabile */
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .game-card:hover {
@@ -421,7 +735,6 @@ button:hover {
 
 .game-card h3 {
     margin: 15px 0;
-    color: var(--primary-color);
+    color: white;
     font-size: 1.4em;
 }
-
