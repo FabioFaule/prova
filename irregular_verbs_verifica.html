@@ -4,21 +4,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Test Your Irregular Verbs</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
 	crossorigin="anonymous">
-    </script>
+    </script> -->
 </head>
 <body>
     <nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="irregular-verbs.html">Irregular Verbs</a>
-            <a href="irregular_verbs_verifica.html">Test Your Irregular Verbs</a>
-            <a href="synonyms.html">Study Area</a>
+            <a href="index.html" class="nav-item">
+                <img src="images/home.png" alt="Home">
+                <span>Home</span>
+            </a>
+            <a href="study_area.html" class="nav-item">
+                <img src="images/learn.png" alt="Learn">
+                <span>Learn</span>
+            </a>
+            <a href="irregular_verbs.html" class="nav-item">
+                <img src="images/train.png" alt="Train">
+                <span>Train</span>
+            </a>
+            <a href="irregular_verbs_verifica.html" class="nav-item">
+                <img src="images/test.png" alt="Test_png">
+                <span>Test</span>
+            </a>       
         </div>
     </nav>
-	<h2>Irregular Verbs Test</h2>
+	<h2 style="margin-top: 50px;">Irregular Verbs Test </h2>
     <p>Fill in the gaps with the correct verb forms</p>
     
     <div id="settings-container">
@@ -27,31 +39,31 @@
             <h3>Impostazioni</h3>
             <label for="difficulty">Livello di difficoltà:</label>
             <select id="difficulty">
-                <option value="easy">Facile</option>
-                <!-- <option value="medium">Medio</option> -->
-                <option value="hard">Difficile</option>
+                <option value="easy">Facile (A2) - Ket Exam</option>
+                <option value="medium">Medio (B1) - Pet Exam</option>
+                <option value="hard">Difficile (B2/C1) - First Exam</option>
             </select>
             <label for="time">Tempo a disposizione (in minuti):</label>
 			<select id="time">
                 <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="15">15</option>
 				<option value="30">30</option>
                 <option value="60">60</option>
             </select>
             <label for="numberOfVerbs">Numero di verbi:</label>
 			<select id="numberOfVerbs">
-				<option value="2">2</option>
+				<option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
                 <option value="20">20</option>
-				<option value="40">40</option>
+				<option value="50">50</option>
             </select>
             <button onclick="applySettings();">Inizia il Test</button>
         </div>
 
     </div>
 
-	<div id="game"></div>
+	<div id="test"></div>
     <button id="check-answers" class="hidden" onclick="checkAnswers()">Check Answers</button>
     <button id="give-up" class="hidden" onclick="giveUp()" disabled>Give Up</button>
     <button id="start-again" onclick="startAgain()" style="display:none;">Start Again</button>
@@ -226,23 +238,26 @@
 			} else {
 				isFirstTime = false;
 			}
+			
 			toggleSettings();
         }
 
 
 		function toggleSettings() {
+			loadSettings();
+
 			const settings = document.getElementById("settings");
 			const checkAnswers = document.getElementById("check-answers");
 			const giveUp = document.getElementById("give-up");
 			const score = document.getElementById("score");
-			const game = document.getElementById("game"); // Aggiungi questa riga per ottenere la tabella del gioco
+			const test = document.getElementById("test"); // Aggiungi questa riga per ottenere la tabella del gioco
 
 			// settings.classList.toggle("hidden");
 			document.getElementById("settings").style.display = "block";
 			
 			
 			settings.classList.remove("hidden");
-			game.innerHTML = "";
+			test.innerHTML = "";
 			checkAnswers.classList.add("hidden");
 			giveUp.classList.add("hidden");
 			score.classList.add("hidden");
@@ -257,13 +272,13 @@
 				checkAnswers.classList.add("hidden");
 				giveUp.classList.add("hidden");
 				score.classList.add("hidden");
-				game.innerHTML = ""; // Nascondi la tabella del gioco
+				test.innerHTML = ""; // Nascondi la tabella del gioco
 				
 			} else {
 				checkAnswers.classList.remove("hidden");
 				giveUp.classList.remove("hidden");
 				score.classList.remove("hidden");
-				// Se vuoi ripristinare la tabella del gioco quando le impostazioni sono nascoste, puoi chiamare startGame() qui
+				// Se vuoi ripristinare la tabella del gioco quando le impostazioni sono nascoste, puoi chiamare starttest() qui
 			} */
 		}
 		function applySettings() {
@@ -290,6 +305,10 @@
             let numberOfVerbs = storedNumber ? parseInt(storedNumber) : 10;
             document.getElementById("numberOfVerbs").value = numberOfVerbs;
             updateScoreDisplay(numberOfVerbs);
+
+			let storedDifficulty = localStorage.getItem("difficulty");
+    		let difficulty = storedDifficulty ? storedDifficulty : "medium";
+    		document.getElementById("difficulty").value = difficulty;
         }
 
         function updateScoreDisplay(numberOfVerbs) {
@@ -298,19 +317,58 @@
         }
 
 		function filterVerbs(level) {
-			let easyVerbs = ["be", "become", "begin", "bite", "blow", "break", "bring", "build", "burn", "buy", "catch", "choose", "come", "cost", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give", "go", "grow", "hear", "hide", "hit", "hold", "hurt", "keep", "know", "learn", "leave", "lend", "let", "lose", "make", "mean", "meet", "pay", "put", "read", "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "shake", "sing", "sit", "sleep", "speak", "spell", "spend", "stand", "swear", "swim", "take", "teach", "tell", "think", "understand", "wake", "wear", "win", "write"];
-			let hardVerbs = ["awake", "bear", "beat", "bend", "bet", "bid", "bind", "bleed", "broadcast", "burst", "cast", "cling", "creep", "deal", "dig", "dive", "fit", "flee", "fling", "forsake", "grind", "hang", "kneel", "lay", "lead", "misspell", "mistake", "overcome", "overtake", "plead", "prove", "quit", "seek", "sew", "shine", "shoe", "shoot", "shrink", "shut", "smell", "slide", "speed", "spill", "spit", "spread", "spring", "steal", "stick", "sting", "stink", "strike", "swing", "tear", "thrust", "tread", "upset", "weave", "weep", "wind", "wring"];
+			let easyVerbs =  [
+                            "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
+                            "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
+                            "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
+                            "keep", "know", "learn", "leave", "let", "lose", "make", "meet", "pay", "put",
+                            "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
+                            "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
+                            "wake", "wear", "win", "write"
+                        	];
 			
-			hardVerbs = hardVerbs.concat(easyVerbs);
+			let mediumVerbs = [
+								"be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
+								"catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
+								"fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
+								"go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
+								"learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
+								"ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
+								"show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
+								"steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
+								"understand", "wake", "wear", "win", "write"
+                        	];
+
+			let hardVerbs = [
+                            "awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind",
+                            "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst",
+                            "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal",
+                            "dig", "dive", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed",
+                            "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive",
+                            "forsake", "freeze", "get", "give", "go", "grind", "grow", "have", "hang", "hear",
+                            "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead", "learn",
+                            "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell",
+                            "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride",
+                            "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew",
+                            "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit",
+                            "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spoil",
+                            "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "sweep",
+                            "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread",
+                            "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
+                        ];
+
+			//hardVerbs = hardVerbs.concat(easyVerbs);
 			// Filtra i verbi in base alla difficoltà
 
 			let filteredVerbs = verbs.filter(verb => {
 				if (level === "easy") {
 					return easyVerbs.includes(verb["Base Form"]);
+				} else if (level === "medium") {
+					return mediumVerbs.includes(verb["Base Form"]);
 				} else if (level === "hard") {
 					return hardVerbs.includes(verb["Base Form"]);
 				} else {
-					return true; // Default to all verbs if no level is specified
+					return hardVerbs.includes(verb["Base Form"]);; // Default to all verbs if no level is specified
 				}
 			});
 
@@ -350,7 +408,7 @@
         function startGame() {
 
             // Recupera le impostazioni salvate
-            const difficulty = localStorage.getItem("difficulty") || "Easy"; // Imposta un valore predefinito
+            const difficulty = localStorage.getItem("difficulty") || "medium"; // Imposta un valore predefinito
             const time = parseInt(localStorage.getItem("time")) || 60; // Imposta un valore predefinito
             const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10; // Imposta un valore predefinito
 			
@@ -370,13 +428,14 @@
 
 
             // selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
-            let tableHTML = `<table>
-                <tr>
-                    <th>Translation</th>
-                    <th>Base Form</th>
-                    <th>Simple Past</th>
-                    <th>Past Participle</th>
-                </tr>`;
+            let tableHTML = `<div class="test">
+				<table class="test">
+					<tr>
+						<th>Translation</th>
+						<th>Base Form</th>
+						<th>Simple Past</th>
+						<th>Past Participle</th>
+					</tr>`;
 
             selectedVerbs.forEach((verb, index) => {
                 const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
@@ -391,8 +450,9 @@
                 </tr>`;
             });
 
-            tableHTML += `</table>`;
-            document.getElementById("game").innerHTML = tableHTML;
+            tableHTML += `</table>
+			</div>`;
+            document.getElementById("test").innerHTML = tableHTML;
             document.getElementById("give-up").disabled = false; // Abilita il pulsante "Give Up" all'inizio del gioco
             document.getElementById("check-answers").classList.remove("hidden");
             document.getElementById("give-up").classList.remove("hidden");
