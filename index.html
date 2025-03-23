@@ -19,6 +19,23 @@
             text-decoration: none;
             font-weight: bold;
         }
+        /* Enable vertical scrolling on mobile devices */
+        @media screen and (max-width: 768px) {
+        html.no-scroll,
+        body.no-scroll {
+            overflow-y: auto;
+        }
+
+        }
+
+        /* Keep scrolling disabled on desktops */
+        @media screen and (min-width: 769px) {
+        html.no-scroll,
+        body.no-scroll {
+            overflow-y: hidden;
+        }
+        }
+        
     </style>
 </head>
 <body class="no-scroll">
@@ -45,16 +62,24 @@
         </div>
     </nav>
 
-    <h1 style="margin-top: 80px;">Benvenuto nel tuo spazio di allenamento sui verbi irregolari!</h2>
+    <h1 style="margin-top: 80px;">🔥 Diventa un Pro dei Verbi Irregolari! 🔥 <br>
+        Gioca, allenati e vinci la sfida dell'inglese!</h1>
 
-    <h3>Migliora la tua conoscenza dei verbi irregolari inglesi in modo interattivo e dinamico:</h3>
-    <h3> Esplora <a href="study_area.html" class="styled-link"><img src="images/learn.png" alt="Learn" style="vertical-align: middle; margin-right: 5px; width: 20px;">Learn</a>: una tabella completa per memorizzare i verbi irregolari</h3>
-    <h3> Allenati con <a href="irregular_verbs.html" class="styled-link"><img src="images/train.png" alt="Train" style="vertical-align: middle; margin-right: 5px; width: 20px;">Train</a>: completa le forme verbali mancanti con qualche aiuto</h3>
-    <h3> Metti alla prova le tue abilità in <a href="irregular_verbs.html" class="styled-link"><img src="images/test.png" alt="Test" style="vertical-align: middle; margin-right: 5px; width: 20px;">Test</a>: sfida te stesso, tempo limitato ma difficoltà a tua scelta.</h3>
+    <h3> <a href="study_area.html" class="styled-link">📚 Learn</a> – Memorizza i verbi con una tabella completa</h3>
+    <h3> <a href="irregular_verbs.html" class="styled-link">🏋️ Train</a> – Completa le forme verbali con aiuti</h3>
+    <h3> <a href="irregular_verbs.html" class="styled-link">🎯 Test</a> – Sfida te stesso con timer e livelli!</h3>
     
     <div style="margin-bottom: 60px;"></div>
 
-    <h3> Inizia subito e diventa un esperto dei verbi irregolari! 🚀 <a href="test_hb.html"> </a></h3>
+
+
+    
+
+
+
+
+
+    <h3> 💡 Sei pronto? 👉 Inizia ora! 🏆🚀 <a href="test_hb.html"> </a></h3>
     
     <div class="games-container">
 
@@ -64,7 +89,7 @@
     </a>
 
     <a href="irregular_verbs.html" class="game-card">
-        <img src="images/bn.jpeg" alt="Irregular Verbs" style="width: 80%;">
+        <img src="images/bn.jpeg" alt="Irregular Verbs" style="width: 100%;">
         <h3>Train</h3>
     </a>
 
