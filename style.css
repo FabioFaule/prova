@@ -426,10 +426,20 @@ table tr:nth-child(even) td {
     text-align: center;
 }
 
+/*#study tr:nth-child(odd) td {
+    background-color: #ffffff; /* Bianco */ /*
+}
 #study tr:nth-child(even) td {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Grigio chiaro 
+} */
+
+#study tr.even {
+    background-color: #f2f2f2; /* Light gray for even rows */
 }
 
+#study tr.odd {
+    background-color: #ffffff; /* White for odd rows */
+}
 
 #test {
     width: 100%;
@@ -705,9 +715,11 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px;
+    /*padding: 20px;*/
     max-width: 1000px;
     margin: auto;
+
+
 }
 
 .game-card {
@@ -720,6 +732,7 @@ h2 {
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 100%;
 }
 
 .game-card:hover {
@@ -737,4 +750,22 @@ h2 {
     margin: 15px 0;
     color: white;
     font-size: 1.4em;
+}
+
+@media screen and (max-width: 768px) {
+    .games-container {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        /*justify-content: center;*/
+        display: grid;
+        /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+        grid-template-columns: 1fr;
+    }
+
+    .game-card {
+        width: 100%; /* Ogni box occupa quasi tutta la larghezza */
+        /*margin-bottom: 20px; /* Aggiunge spazio tra i box */
+        /*flex: 1 1 100%;*/
+    }
 }
