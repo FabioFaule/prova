@@ -366,72 +366,46 @@ table tr:nth-child(even) td {
 
 
 /* Irregular Verbs Table Styles */
+
 #study {
-    width: 100%;
-    max-width: 700px;       /* Limita la larghezza massima a 600px, modifica se necessario */
-    text-align: center;
-    display: block;
-    /*justify-content: center; /* Centra orizzontalmente */
-    /*align-items: center; /* Centra verticalmente */
-    flex-direction: column;
-    /*max-height: calc(100vh - 200px); /* Altezza massima del contenitore */
-    /*overflow-y: auto; /* Abilita lo scroll verticale */
-}
+    overflow-x: auto;  /* Enables horizontal scroll on small devices */
+    width: min(90%, 700px);
+    margin: 2rem auto;
+    padding: 1rem;
+    }
 
-
-
+/* Responsive Table Styles inside Study Area */
 #study table {
-    border-collapse: collapse;
-    margin: 20px auto;
+    min-width: 500px;  /* Adjust based on your content needs */
     width: 100%;
-    /*max-width: 500px;*/
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    font-size: 1.1em;
+    border-collapse: collapse;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
     background: white;
     overflow: hidden;
-}
+    }
+
 #study table thead {
-    /*position: sticky;*/
-    top: 0px; /* Regola questo valore in base all'altezza combinata di nav e #level-options */
     background-color: var(--primary-color);
     color: white;
-    z-index: 10; /* Un valore più alto per assicurarsi che rimanga sopra il corpo della tabella */
     position: sticky;
-}
+    top: 0;
+    z-index: 1;
+    }
 
+  
+#study th,
+#study td {
+    padding: 0.75rem;
+    text-align: center;
+    font-size: clamp(0.8rem, 2vw, 1rem);  /* Responsive text size */
+    }
 
 #study table tbody {
-    height: auto;           /* Rimuove l'altezza fissa */
-    /*max-height: 550px;       /* Limita l'altezza massima, se necessario */
-    /*overflow-y: auto;        /* Aggiunge lo scroll verticale se il contenuto eccede max-height */
-}
-
-
-#study td {
-    padding: 12px;
-    text-align: center;
-    color: #333; /* Cambia il colore del testo */
+    color: #333;
     font-family: var(--font-family);
     font-weight: bold;
-    background-color: #fff;
-    border: 1px solid #ddd;
-}
-
-#study th {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    font-size: 1em;
-    text-align: center;
-}
-
-/*#study tr:nth-child(odd) td {
-    background-color: #ffffff; /* Bianco */ /*
-}
-#study tr:nth-child(even) td {
-    background-color: #f2f2f2; /* Grigio chiaro 
-} */
+    }
 
 #study tr.even {
     background-color: #f2f2f2; /* Light gray for even rows */
@@ -440,6 +414,42 @@ table tr:nth-child(even) td {
 #study tr.odd {
     background-color: #ffffff; /* White for odd rows */
 }
+@media screen and (max-width: 768px) {
+    #study table th,
+    #study table td {
+    padding: 0.5rem;         /* Reduce cell padding */
+    font-size: 0.75rem;       /* Smaller font size for better fit */
+    }
+    #study {
+        overflow-x: auto;  /* Enables horizontal scroll on small devices */
+        width: 100%;
+        margin: 0rem 0rem;
+        padding: 0rem;
+    }
+}
+
+/*
+#study {
+    
+    margin: 2rem auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  /* Responsive Table Styles inside Study Area 
+  #study table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    background: white;
+    overflow: hidden;
+  }*/
+
+
+
 
 #test {
     width: 100%;
@@ -583,53 +593,66 @@ th, td {
     animation: fadeOut 2s ease-in-out 2s forwards;
 }
 
-/* Level Selection Panel */
+/* Updated Level Options Container */
 #level-options {
     background: var(--panel-bg-color);
-    padding: 4px;
-    border-radius: 8px;
+    padding: 0.25rem;             /* Using rem units */
+    border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
     display: flex;
-    gap: 8px;
+    gap: 0.5rem;                  /* Relative gap */
     justify-content: space-evenly;
     align-items: center;
-    max-width: 680px;
-    margin: 20px auto;
+    max-width: 42.5rem;           /* 680px ≈ 42.5rem if 16px base font */
+    margin: 1.25rem auto;         /* Using rem for margins */
     width: 100%;
-    /*position: sticky;*/
-    top: 50px; /* Regola in base all'altezza della nav */
+    top: 2.125rem;               /* Approx. 50px in rem */
     z-index: 900;
-    background: var(--panel-bg-color);
-    }
-
-
+    /* For grid alternative, uncomment the following and comment the flex properties:
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    */
+}
+  
+  /* Updated Labels for Level Options */
 #level-options label {
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.9rem;            /* Responsive using rem */
     font-weight: bold;
     color: #333;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 6px;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
     margin: 0;
     line-height: 1;
     white-space: nowrap;
 }
-
+  
+  /* Responsive Adjustment for Very Small Screens */
+@media screen and (max-width: 480px) {
+    #level-options {
+        flex-direction: column;     /* Stack options vertically */
+        gap: 0.5rem;
+        }   
+}
 #level-options input[type="radio"] {
     accent-color: var(--primary-color);
-    transform: scale(0.9);
-    margin: 0;
+    transform: scale(1.1);  /* Slightly larger for better visibility and tap target */
+    margin: 0 0.25rem;      /* A bit of horizontal spacing if needed */
     vertical-align: middle;
 }
-
+@media screen and (max-width: 480px) {
+    #level-options input[type="radio"] {
+      transform: scale(1.2); /* Even larger on very small screens */
+    }
+  }
 /* ============================= */
 /* HEADINGS                    */
 /* ============================= */
 
 h2 {
-    margin-top: 30px;
+    margin-top: 3%;
 }
 
 /* ============================= */
@@ -754,11 +777,11 @@ h2 {
 
 @media screen and (max-width: 768px) {
     .games-container {
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: wrap;
+        /*flex-direction: column;
+        /*align-items: center;
+        /*flex-wrap: wrap;
         /*justify-content: center;*/
-        display: grid;
+        /*display: grid;*/
         /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
         grid-template-columns: 1fr;
     }
