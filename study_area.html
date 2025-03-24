@@ -2,12 +2,13 @@
 <html lang="it">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Study Area</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
 	crossorigin="anonymous">
-    </script>
+    </script> -->
+    <style>
+    </style>
 </head>
 <body>
     <nav>
@@ -32,16 +33,19 @@
         </div>
     </nav>
     <script>
-        function filterVerbs() {
-            let level = document.querySelector('input[name="level"]:checked').value;
-            let rows = document.querySelectorAll("table tr");
-            
-            rows.forEach((row, index) => {
-                if (index === 0) return; // Skip header row
-                row.style.display = "none";
-            });
+function filterVerbs() {
+    let level = document.querySelector('input[name="level"]:checked').value;
+    let rows = document.querySelectorAll("table tr");
 
-            let verbs = [];
+    rows.forEach((row, index) => {
+        if (index === 0) return; // Skip header row
+        row.style.display = "none"; // Hide all rows initially
+    });
+    
+            // Nasconde tutte le righe
+            // rows.forEach(row => row.style.display = "none");
+            let verbs = []; // Declare the variable once
+
             if (level === "easy") {
                 verbs = [
                             "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
@@ -84,10 +88,31 @@
                             "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
                         ];
                 } 
+    let visibleRows = []; // Array to hold visible rows
+
             verbs.forEach(id => {
                 let row = document.getElementById(id);
-                if (row) row.style.display = "table-row";
+                if (row) {
+                row.style.display = "table-row"; // Show the row
+
+                    visibleRows.push(row);
+                }
             });
+                // Riassegna le classi per alternare i colori
+            // Assign classes for alternating colors
+            visibleRows.forEach((row, index) => {
+                row.classList.remove("even", "odd");
+                if (index % 2 === 0) {
+                    row.classList.add("even");
+                } else {
+                    row.classList.add("odd");
+                }
+            });
+
+
+        }
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
         }
     </script>
 </head>
