@@ -4,14 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Test Your Irregular Verbs</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
-	crossorigin="anonymous">
-    </script>
+
 </head>
 <body>
     <nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <!-- <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> -->
         <div class="nav-links">
             <a href="index.html" class="nav-item">
                 <img src="images/home.png" alt="Home">
@@ -30,9 +27,10 @@
                 <span>Test</span>
             </a>       
         </div>
+		
+
     </nav>
-	<h2 style="margin-top: 50px;">Irregular Verbs Test </h2>
-    <p>Fill in the gaps with the correct verb forms</p>
+
     
     <div id="settings-container">
 		
@@ -64,21 +62,51 @@
 
     </div>
 
-	<div id="test"></div>
-    <button id="check-answers" class="hidden" onclick="checkAnswers()">Check Answers</button>
-    <button id="give-up" class="hidden" onclick="giveUp()" disabled>Give Up</button>
-    <button id="start-again" onclick="startAgain()" style="display:none;">Start Again</button>
-    <button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
-    <div id="score" class="hidden">Score: 0/10</div>
-	<div id="timer">Time played: 0s</div>
-	<div id="endoftimeMessage" style="display: none;">
-		I am sorry! Your time expired!
-	</div>	
+	
+	<div id="fixed-timer" class="hidden flex-row">
+		<span id="timer">0s</span>
+		<button id="toggle-timer" onclick="toggleTimer()" class="hidden">⏸ Pause</button>
+		<div id="score" class="hidden">Score: 0/10</div>
+		<button id="check-answers" class="hidden" onclick="checkAnswers()">✅ Check Answers</button>
+		<button id="give-up" class="hidden" onclick="giveUp()" disabled>😓 Give Up</button>
+		<button id="start-again" onclick="startAgain()" style="display:none;">🔁 Start Again</button>
+		<button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
+	</div>
+	
+	<div class="table-container">
+		<div id="test"></div>
+	</div>
+
+
+	
+	<div id="endoftimeMessage" style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 2em;
+    box-shadow: var(--box-shadow);
+    z-index: 999;
+    animation: fadeOut 2s ease-in-out 2s forwards;
+">
+    I am sorry! Your time expired!
+</div>
+	
 
     <script>
         let isFirstTime = true;
         let selectedVerbs = [];
         let score = 0;
+		let isTimerRunning = true;
+		
+		function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
 
 		const verbs = [
 			{ Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
@@ -254,6 +282,7 @@
 			const test = document.getElementById("test"); // Aggiungi questa riga per ottenere la tabella del gioco
 
 			// settings.classList.toggle("hidden");
+			
 			document.getElementById("settings").style.display = "block";
 			
 			
@@ -265,6 +294,7 @@
 			document.getElementById("start-again").style.display = "none";
             document.getElementById("settings-again").style.display = "none";
 			document.getElementById("timer").style.display = "none";
+			document.getElementById("fixed-timer").classList.add("hidden");
 			
 			/*
 			// Nascondi i pulsanti e il punteggio quando le impostazioni sono visibili
@@ -294,6 +324,7 @@
             isFirstTime = false; // Imposta a false dopo la prima apertura
             document.getElementById("settings").classList.add("hidden");
 			document.getElementById("settings").style.display = "none";
+			document.getElementById("fixed-timer").classList.remove("hidden");
             updateScoreDisplay(numberOfVerbs); // Aggiorna il display del punteggio con il numero di verbi aggiornato
 			document.getElementById("check-answers").style.display = "block";
             document.getElementById("give-up").style.display = "block";
@@ -378,28 +409,47 @@
 		let maxTime;
 		// Avvia il cronometro (stopwatch)
 		function startStopwatch() {
-            elapsedTime = 0;
-			elapsedTimeinminutes = 0;
-			elapsedTimeinseconds = 0;
+			let remainingTime = elapsedTime || maxTime;
 			document.getElementById("timer").style.display = "block";
-            document.getElementById("timer").innerText = `Time played: ${elapsedTime}s`;
-            stopwatchInterval = setInterval(() => {
-                elapsedTime++;
-				elapsedTimeinminutes = Math.floor(elapsedTime / 60);
-				elapsedTimeinseconds = elapsedTime % 60;
-                document.getElementById("timer").innerText = `Time played: ${elapsedTimeinminutes} min ${elapsedTimeinseconds} s`;
+			updateTimerDisplay(remainingTime);
+		
+			stopwatchInterval = setInterval(() => {
+				remainingTime--;
+				elapsedTime = remainingTime;
 
-				if (elapsedTime >= maxTime) { // Controlla se il tempo massimo è stato raggiunto
-            		giveUp(); // Chiama la funzione giveUp()
-
+		
+				updateTimerDisplay(remainingTime);
+		
+				if (remainingTime <= 0) {
+					clearInterval(stopwatchInterval);
+					giveUp();
 					const endoftimeMessage = document.getElementById("endoftimeMessage");
-                	endoftimeMessage.style.display = 'block';
+					endoftimeMessage.style.display = 'block';
 					setTimeout(() => {
 						endoftimeMessage.style.display = 'none';
 					}, 4000);
-        		}
-            }, 1000);
-        }
+				}
+			}, 1000);
+		}
+
+		function updateTimerDisplay(secondsLeft) {
+			const minutes = Math.floor(secondsLeft / 60);
+			const seconds = secondsLeft % 60;
+			document.getElementById("timer").innerText = `${minutes} min ${seconds < 10 ? "0" : ""}${seconds} s`;
+		}
+
+		function toggleTimer() {
+			if (isTimerRunning) {
+				clearInterval(stopwatchInterval);
+				document.getElementById("toggle-timer").innerText = "▶️ Resume";
+			} else {
+				startStopwatch(); // Ricomincia il timer da dove era stato interrotto
+				document.getElementById("toggle-timer").innerText = "⏸ Pause";
+			}
+			isTimerRunning = !isTimerRunning;
+		}
+
+
 
         // Ferma il cronometro
         function stopStopwatch() {

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impostazioni Test - Insegnanti</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Includi jsPDF e jsPDF-AutoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <style>
+    /* Stili base per la pagina */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      background: #eee;
+      padding: 10px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+    }
+    .nav-item {
+      text-decoration: none;
+      color: black;
+    }
+    #settings {
+      margin: 20px;
+    }
+    #settings label {
+      margin-right: 5px;
+    }
+    #settings input, #settings select {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-item"><img src="images/home.png" alt="Home"><span>Home</span></a>
+      <a href="study_area.html" class="nav-item"><img src="images/learn.png" alt="Learn"><span>Learn</span></a>
+      <a href="irregular_verbs.html" class="nav-item"><img src="images/train.png" alt="Train"><span>Train</span></a>
+      <a href="irregular_verbs_verifica.html" class="nav-item"><img src="images/test.png" alt="Test"><span>Test</span></a>
+    </div>
+  </nav>
+
+  <h2>Genera PDF per il test</h2>
+  <!-- Form impostazioni -->
+  <div id="settings">
+    <label for="classInfo">Classe:</label>
+    <input type="text" id="classInfo" required>
+
+    <label for="dateInfo">Data:</label>
+    <input type="date" id="dateInfo" required>
+
+    <label for="teacherName">Nome Insegnante:</label>
+    <input type="text" id="teacherName" required>
+
+    <label for="difficulty">Livello di difficoltà:</label>
+    <select id="difficulty">
+      <option value="easy">Facile (A2)</option>
+      <option value="medium">Medio (B1)</option>
+      <option value="hard">Difficile (B2/C1)</option>
+    </select>
+
+    <label for="numberOfVerbs">Numero di verbi:</label>
+    <select id="numberOfVerbs">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+    <br>
+    <button onclick="generatePDF()">Genera PDF</button>
+  </div>
+
+  <!-- Script integrato -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Array di verbi (esempio)
+    const verbs = [
+      { Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
+      { Translation: "essere", "Base Form": "be", "Simple Past": "was - were", "Past Participle": "been" },
+      { Translation: "sopportare / sostenere", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
+      { Translation: "battere / sconfiggere", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten" },
+      { Translation: "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become" },
+      { Translation: "iniziare / cominciare", "Base Form": "begin", "Simple Past": "began", "Past Participle": "begun" },
+      { Translation: "piegare", "Base Form": "bend", "Simple Past": "bent", "Past Participle": "bent" },
+      { Translation: "scommettere", "Base Form": "bet", "Simple Past": "bet", "Past Participle": "bet" },
+      { Translation: "fare un’offerta", "Base Form": "bid", "Simple Past": "bid", "Past Participle": "bid" },
+      { Translation: "legare / bendare", "Base Form": "bind", "Simple Past": "bound", "Past Participle": "bound" },
+      { Translation: "mordere", "Base Form": "bite", "Simple Past": "bit", "Past Participle": "bitten" },
+      { Translation: "sanguinare", "Base Form": "bleed", "Simple Past": "bled", "Past Participle": "bled" },
+      { Translation: "soffiare", "Base Form": "blow", "Simple Past": "blew", "Past Participle": "blown" },
+      { Translation: "rompere", "Base Form": "break", "Simple Past": "broke", "Past Participle": "broken" },
+      { Translation: "allevare", "Base Form": "breed", "Simple Past": "bred", "Past Participle": "bred" },
+      { Translation: "portare", "Base Form": "bring", "Simple Past": "brought", "Past Participle": "brought" }
+    ];
+
+    // Funzione di filtraggio in base al livello
+    function filterVerbs(level) {
+      const easyVerbs = [
+        "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
+        "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
+        "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
+        "keep", "know", "learn", "leave", "let", "lose", "make", "meet", "pay", "put",
+        "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
+        "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
+        "wake", "wear", "win", "write"
+      ];
+      const mediumVerbs = ["be", "beat", "become", "begin"];
+      const hardVerbs = ["awake", "be", "beat", "begin"];
+
+      return verbs.filter(verb => {
+        if (level === "easy") return easyVerbs.includes(verb["Base Form"]);
+        if (level === "medium") return mediumVerbs.includes(verb["Base Form"]);
+        if (level === "hard") return hardVerbs.includes(verb["Base Form"]);
+        return true;
+      });
+    }
+
+    // Selezione casuale di verbi
+    function getRandomVerbsFromList(verbsList, number) {
+      const shuffled = verbsList.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, number);
+    }
+
+    // Genera PDF utilizzando jsPDF-AutoTable
+    function generatePDF() {
+      // Dati dal form
+      const classInfo = document.getElementById("classInfo").value;
+      const dateInfo = document.getElementById("dateInfo").value;
+      const teacherName = document.getElementById("teacherName").value;
+      const difficulty = document.getElementById("difficulty").value;
+      const numberOfVerbs = parseInt(document.getElementById("numberOfVerbs").value);
+
+      // Filtra e seleziona i verbi
+      const filteredVerbs = filterVerbs(difficulty);
+      const selectedVerbs = getRandomVerbsFromList(filteredVerbs, numberOfVerbs);
+
+      // Campi disponibili
+      const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
+
+      // Per ogni verbo, scegli in modo casuale un indice da visualizzare
+      const data = selectedVerbs.map(verb => {
+        const prefilledIndex = Math.floor(Math.random() * fields.length);
+        let row = {};
+        fields.forEach((field, index) => {
+          row[field] = (index === prefilledIndex) ? verb[field] : "";
+        });
+        return row;
+      });
+
+      // Definiamo le colonne per autoTable
+      const columns = fields.map(field => ({
+        header: field,
+        dataKey: field
+      }));
+
+      // Crea il PDF
+      const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+
+      // Aggiungi header personalizzato
+      pdf.setFontSize(12);
+      pdf.text(`Classe: ${classInfo}`, 10, 10);
+      pdf.text(`Data: ${dateInfo}`, 10, 20);
+      pdf.text(`Insegnante: ${teacherName}`, 10, 30);
+
+      // Aggiungi la tabella utilizzando autoTable
+      pdf.autoTable({
+        startY: 40,
+        columns: columns,
+        body: data,
+        theme: 'grid',
+        styles: {
+          minCellHeight: 20,
+          cellPadding: 3,
+          fontSize: 10,
+          halign: 'center',
+          valign: 'middle'
+        },
+        headStyles: {
+          fillColor: [255, 255, 255],
+          textColor: [0, 0, 0],
+          fontStyle: 'bold',
+          minCellHeight: 20
+        }
+      });
+
+      // Salva il PDF
+      pdf.save('IrregularVerbs_Test.pdf');
+    }
+  </script>
+</body>
+</html>
