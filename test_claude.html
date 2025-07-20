@@ -159,21 +159,7 @@
 			document.getElementById("timer").style.display = "none";
 			document.getElementById("fixed-timer").classList.add("hidden");
 			
-			/*
-			// Nascondi i pulsanti e il punteggio quando le impostazioni sono visibili
-			if (!settings.classList.contains("hidden")) {
-				settings.classList.remove("hidden");
-				checkAnswers.classList.add("hidden");
-				giveUp.classList.add("hidden");
-				score.classList.add("hidden");
-				test.innerHTML = ""; // Nascondi la tabella del gioco
-				
-			} else {
-				checkAnswers.classList.remove("hidden");
-				giveUp.classList.remove("hidden");
-				score.classList.remove("hidden");
-				// Se vuoi ripristinare la tabella del gioco quando le impostazioni sono nascoste, puoi chiamare starttest() qui
-			} */
+			
 		}
 		function applySettings() {
             const difficulty = document.getElementById("difficulty").value;
@@ -220,43 +206,18 @@
 
 		function filterVerbs(level) {
 			let easyVerbs =  [
-                            "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
-                            "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
-                            "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
-                            "keep", "know", "learn", "leave", "let", "lose", "make", "meet", "pay", "put",
-                            "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
-                            "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
-                            "wake", "wear", "win", "write"
+                            "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose"
+
                         	];
 			
 			let mediumVerbs = [
 								"be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
-								"catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
-								"fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
-								"go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
-								"learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
-								"ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
-								"show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
-								"steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
-								"understand", "wake", "wear", "win", "write"
+								"catch", "choose"
                         	];
 
 			let hardVerbs = [
                             "awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind",
-                            "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst",
-                            "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal",
-                            "dig", "dive", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed",
-                            "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive",
-                            "forsake", "freeze", "get", "give", "go", "grind", "grow", "have", "hang", "hear",
-                            "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead", "learn",
-                            "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell",
-                            "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride",
-                            "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew",
-                            "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit",
-                            "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spoil",
-                            "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "sweep",
-                            "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread",
-                            "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
+                            "bite", "bleed"
                         ];
 
 			//hardVerbs = hardVerbs.concat(easyVerbs);
@@ -342,13 +303,8 @@
 			selectedVerbs = getRandomVerbsFromList(filteredVerbs, numberOfVerbs);
 
 
-
-            //settings.classList.remove("hidden");
-			// Aggiorna il display del punteggio con il numero di verbi aggiornato
             updateScoreDisplay(numberOfVerbs);
 
-
-            // selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
             let tableHTML = `<div class="test">
 				<table class="test">
 					<tr>
