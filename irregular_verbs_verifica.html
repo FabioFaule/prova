@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 </head>
 <body>
@@ -61,8 +62,25 @@
         </div>
 
     </div>
+<!--
+	<div class="controls-container">
+		<div class="info-bar">
+			<div id="score" class="hidden">Score: 0/10</div>
+			<div id="timer">Time played: 0s</div>
+		</div>
 
-	
+		<div class="action-buttons">
+			<button id="toggle-timer" onclick="toggleTimer()" class="hidden">⏸ Pause</button>
+			<button id="check-answers" class="hidden" onclick="checkAnswers()">✅ Check Answers</button>
+			<button id="give-up" class="hidden" onclick="giveUp()" disabled>😓 Give Up</button>
+			<button id="start-again" onclick="startAgain()" style="display:none;">🔁 Start Again</button>
+			<button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
+			<button id="endoftimeMessage" class=""message-box" style=""display:none;"> I am sorry! Your time expired!</button>
+	</div>
+
+	<div id="test"></div>
+-->
+
 	<div id="fixed-timer" class="hidden flex-row">
 		<span id="timer">0s</span>
 		<button id="toggle-timer" onclick="toggleTimer()" class="hidden">⏸ Pause</button>
@@ -96,7 +114,7 @@
 ">
     I am sorry! Your time expired!
 </div>
-	
+
 
     <script>
         let isFirstTime = true;
@@ -331,6 +349,13 @@
 
             startGame(); // Avvia il gioco
         }
+		function toggleMenu() {
+
+			const navLinks = document.querySelector('.nav-links');
+
+			navLinks.classList.toggle('active');
+
+		}
 
         function loadSettings() {
             let storedNumber = localStorage.getItem("numberOfVerbs");
@@ -488,29 +513,35 @@
 						<th>Past Participle</th>
 					</tr>`;
 
-            selectedVerbs.forEach((verb, index) => {
-                const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
-                const visibleField = fields[Math.floor(Math.random() * fields.length)];
+			selectedVerbs.forEach((verb, index) => {
+				const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
+				const visibleField = fields[Math.floor(Math.random() * fields.length)];
 
-                tableHTML += `<tr>
-                    ${fields.map(field => 
-                        visibleField === field 
-                            ? `<td id="${field}-${index}">${verb[field]}</td>`
-                            : `<td><input type="text" id="${field}-${index}"></td>`
-                    ).join('')}
-                </tr>`;
-            });
+				tableHTML += `<tr>
+					${fields.map((field, fieldIndex) => {
+						const labels = {
+							"Translation": "Translation",
+							"Base Form": "Base Form",
+							"Simple Past": "Simple Past",
+							"Past Participle": "Past Participle"
+						};
+						return visibleField === field 
+							? `<td data-label= "${labels[field]}" id="${field}-${index}">${verb[field]}</td>`
+							: `<td data-label= "${labels[field]}" ><input type="text" id="${field}-${index}"></td>`
+					}).join('')}
+				</tr>`;
+			}); // <-- Close the forEach here
 
-            tableHTML += `</table>
+			tableHTML += `</table>
 			</div>`;
-            document.getElementById("test").innerHTML = tableHTML;
-            document.getElementById("give-up").disabled = false; // Abilita il pulsante "Give Up" all'inizio del gioco
-            document.getElementById("check-answers").classList.remove("hidden");
-            document.getElementById("give-up").classList.remove("hidden");
-            document.getElementById("score").classList.remove("hidden");
+			document.getElementById("test").innerHTML = tableHTML;
+			document.getElementById("give-up").disabled = false; // Abilita il pulsante "Give Up" all'inizio del gioco
+			document.getElementById("check-answers").classList.remove("hidden");
+			document.getElementById("give-up").classList.remove("hidden");
+			document.getElementById("score").classList.remove("hidden");
 
 			startStopwatch();	
-        }
+		}
 
         function getRandomVerbs(number) {
             const shuffled = verbs.sort(() => 0.5 - Math.random());
