@@ -1,133 +1,688 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Irregular Verbs Trainer</title>
+    <style>
+        /* Reset e variabili CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--background);
+            transition: all 0.2s ease;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            min-width: 60px;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color);
+            background: var(--surface-hover);
+        }
+
+        .nav-item img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Container principale */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* Settings Panel */
+        .settings-panel {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .settings-panel.hidden {
+            display: none;
+        }
+
+        .settings-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 16px;
+            background: var(--surface);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Control Panel */
+        .control-panel {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 16px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 80px;
+            z-index: 50;
+        }
+
+        .control-panel.hidden {
+            display: none;
+        }
+
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 8px 16px;
+            background: rgb(37 99 235 / 0.1);
+            border-radius: var(--radius);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .timer.warning {
+            color: var(--warning-color);
+            background: rgb(245 158 11 / 0.1);
+        }
+
+        .timer.danger {
+            color: var(--error-color);
+            background: rgb(239 68 68 / 0.1);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .score {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            padding: 8px 16px;
+            background: var(--surface-hover);
+            border-radius: var(--radius);
+        }
+
+        .btn-control {
+            padding: 10px 16px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-check {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-check:hover {
+            background: #059669;
+        }
+
+        .btn-pause {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .btn-pause:hover {
+            background: #d97706;
+        }
+
+        .btn-give-up {
+            background: var(--error-color);
+            color: white;
+        }
+
+        .btn-give-up:hover {
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-control:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Test Table */
+        .test-container {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .test-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 16px 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+        }
+
+        .test-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .test-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .test-table tr:nth-child(even) {
+            background: var(--surface-hover);
+        }
+
+        .verb-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 16px;
+            text-align: center;
+            background: var(--surface);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .verb-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+
+        .verb-input.correct {
+            border-color: var(--success-color);
+            background: rgb(16 185 129 / 0.1);
+            color: var(--success-color);
+        }
+
+        .verb-input.wrong {
+            border-color: var(--error-color);
+            background: rgb(239 68 68 / 0.1);
+            color: var(--error-color);
+        }
+
+        .verb-input.revealed {
+            background: rgb(100 116 139 / 0.1);
+            color: var(--text-secondary);
+        }
+
+        .given-word {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: rgb(37 99 235 / 0.05);
+            padding: 10px 12px;
+            border-radius: var(--radius);
+            border: 2px solid rgb(37 99 235 / 0.2);
+        }
+
+        /* Modal per messaggi */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .modal-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .modal.error .modal-title {
+            color: var(--error-color);
+        }
+
+        .modal.success .modal-title {
+            color: var(--success-color);
+        }
+
+        .modal.warning .modal-title {
+            color: var(--warning-color);
+        }
+        /* ...existing code... */
+        .main-actions {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 8px 6px;
+            }
+
+            .settings-panel, .control-panel, .test-container {
+                margin-bottom: 5px;
+                top: 65px;
+                padding: 6px;
+                }
+
+            .control-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .control-row > * {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .timer {
+                order: -1;
+                font-size: 15px;
+                padding: 5px;
+            }
+            .score {
+                font-size: 12px;
+                padding: 5px;
+            }
+            .btn-control {
+                font-size: 14px;
+                padding: 5px;
+            }
+            .btn-give-up, .btn-pause, .btn-check {
+                
+                font-size: 12px;
+                padding: 3px;
+                /* center horizontally */
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            .main-actions {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                gap: 4px;
+            }
+            .main-actions .btn-control {
+                flex: 1 1 0;
+                min-width: 0;
+                padding: 3px;
+                font-size: 12px;
+            }
+            
+
+            .test-table th,
+            .test-table td {
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+
+            .test-table th {
+                font-size: 12px;
+            }
+
+            .verb-input {
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            .nav-item span {
+                font-size: 11px;
+            }
+            
+            .nav-links {
+            
+                padding: 0 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .test-table {
+                font-size: 12px;
+            }
+
+            .test-table th {
+                padding: 12px 2px;
+                font-size: 11px;
+            }
+
+            .test-table td {
+                padding: 8px 2px;
+            }
+
+            .verb-input {
+                padding: 6px 4px;
+                font-size: 14px;
+            }
+
+            .given-word {
+                padding: 6px 4px;
+                font-size: 14px;
+            }
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-out {
+            animation: fadeOut 2s ease-in-out 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
 </head>
 <body>
     <nav>
-        <!-- <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> -->
-        <div class="nav-links">
-            <a href="index.html" class="nav-item">
-                <img src="images/home.png" alt="Home">
-                <span>Home</span>
-            </a>
-            <a href="study_area.html" class="nav-item">
-                <img src="images/learn.png" alt="Learn">
-                <span>Learn</span>
-            </a>
-            <a href="irregular_verbs.html" class="nav-item">
-                <img src="images/train.png" alt="Train">
-                <span>Train</span>
-            </a>
-            <a href="irregular_verbs_verifica.html" class="nav-item">
-                <img src="images/test.png" alt="Test_png">
-                <span>Test</span>
-            </a>       
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">
+                    <img src="images/home.png" alt="Home">
+                    <span>Home</span>
+                </a>
+                <a href="study_area.html" class="nav-item">
+                    <img src="images/learn.png" alt="Learn">
+                    <span>Learn</span>
+                </a>
+                <a href="irregular_verbs.html" class="nav-item">
+                    <img src="images/train.png" alt="Train">
+                    <span>Train</span>
+                </a>
+                <a href="irregular_verbs_verifica.html" class="nav-item">
+                    <img src="images/test.png" alt="Test">
+                    <span>Test</span>
+                </a>
+            </div>
         </div>
-		
-
     </nav>
 
-    
-    <div id="settings-container">
-		
-        <div id="settings" class="hidden">
-            <h3>Impostazioni</h3>
-            <label for="difficulty">Livello di difficoltà:</label>
-            <select id="difficulty">
-                <option value="easy">Facile (A2) - Ket Exam</option>
-                <option value="medium">Medio (B1) - Pet Exam</option>
-                <option value="hard">Difficile (B2/C1) - First Exam</option>
-            </select>
-            <label for="time">Tempo a disposizione (in minuti):</label>
-			<select id="time">
-                <option value="1">1</option>
-                <option value="15">15</option>
-				<option value="30">30</option>
-                <option value="60">60</option>
-            </select>
-            <label for="numberOfVerbs">Numero di verbi:</label>
-			<select id="numberOfVerbs">
-				<option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-				<option value="50">50</option>
-            </select>
-            <button onclick="applySettings();">Inizia il Test</button>
+    <div class="main-container">
+        <!-- Settings Panel -->
+        <div id="settings-panel" class="settings-panel">
+            <h2 class="settings-title">⚙️ Impostazioni Test</h2>
+            
+            <div class="form-group">
+                <label for="difficulty" class="form-label">🎯 Livello di difficoltà</label>
+                <select id="difficulty" class="form-select">
+                    <option value="easy">Facile (A2) - Ket Exam</option>
+                    <option value="medium">Medio (B1) - Pet Exam</option>
+                    <option value="hard">Difficile (B2/C1) - First Exam</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="time" class="form-label">⏰ Tempo a disposizione</label>
+                <select id="time" class="form-select">
+                    <option value="1">1 minuto</option>
+                    <option value="15">15 minuti</option>
+                    <option value="30">30 minuti</option>
+                    <option value="60">60 minuti</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="numberOfVerbs" class="form-label">📝 Numero di verbi</label>
+                <select id="numberOfVerbs" class="form-select">
+                    <option value="5">5 verbi</option>
+                    <option value="10">10 verbi</option>
+                    <option value="15">15 verbi</option>
+                    <option value="20">20 verbi</option>
+                    <option value="50">50 verbi</option>
+                </select>
+            </div>
+
+            <button onclick="applySettings()" class="btn-primary">
+                🚀 Inizia il Test
+            </button>
         </div>
 
+        <!-- Control Panel -->
+        <div id="control-panel" class="control-panel hidden">
+            <div class="control-row">
+                <div id="timer" class="timer">0s</div>
+                <div id="score" class="score">Score: 0/10</div>
+                <div class="main-actions">
+                    <button id="toggle-timer" onclick="toggleTimer()" class="btn-control btn-pause">
+                        ⏸️ Pausa
+                    </button>
+                    <button id="check-answers" onclick="checkAnswers()" class="btn-control btn-check">
+                        ✅ Controlla
+                    </button>
+                    <button id="give-up" onclick="giveUp()" class="btn-control btn-give-up">
+                        😓 Arrendi
+                    </button>
+                </div>
+                <button id="start-again" onclick="startAgain()" class="btn-control btn-secondary hidden">
+                    🔄 Riprova
+                </button>
+                <button id="settings-again" onclick="toggleSettings()" class="btn-control btn-secondary hidden">
+                    ⚙️ Impostazioni
+                </button>
+            </div>
+        </div>
+
+        <!-- Test Table -->
+        <div id="test-container" class="test-container">
+            <div id="test"></div>
+        </div>
     </div>
-<!--
-	<div class="controls-container">
-		<div class="info-bar">
-			<div id="score" class="hidden">Score: 0/10</div>
-			<div id="timer">Time played: 0s</div>
-		</div>
 
-		<div class="action-buttons">
-			<button id="toggle-timer" onclick="toggleTimer()" class="hidden">⏸ Pause</button>
-			<button id="check-answers" class="hidden" onclick="checkAnswers()">✅ Check Answers</button>
-			<button id="give-up" class="hidden" onclick="giveUp()" disabled>😓 Give Up</button>
-			<button id="start-again" onclick="startAgain()" style="display:none;">🔁 Start Again</button>
-			<button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
-			<button id="endoftimeMessage" class=""message-box" style=""display:none;"> I am sorry! Your time expired!</button>
-	</div>
-
-	<div id="test"></div>
--->
-
-	<div id="fixed-timer" class="hidden flex-row">
-		<span id="timer">0s</span>
-		<button id="toggle-timer" onclick="toggleTimer()" class="hidden">⏸ Pause</button>
-		<div id="score" class="hidden">Score: 0/10</div>
-		<button id="check-answers" class="hidden" onclick="checkAnswers()">✅ Check Answers</button>
-		<button id="give-up" class="hidden" onclick="giveUp()" disabled>😓 Give Up</button>
-		<button id="start-again" onclick="startAgain()" style="display:none;">🔁 Start Again</button>
-		<button id="settings-again" onclick="toggleSettings()" style="display:none;">⚙ Settings</button>
-	</div>
-	
-	<div class="table-container">
-		<div id="test"></div>
-	</div>
-
-
-	
-	<div id="endoftimeMessage" style="
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f44336;
-    color: white;
-    padding: 20px 40px;
-    border-radius: 10px;
-    font-size: 2em;
-    box-shadow: var(--box-shadow);
-    z-index: 999;
-    animation: fadeOut 2s ease-in-out 2s forwards;
-">
-    I am sorry! Your time expired!
-</div>
-
+    <!-- Modal per messaggi -->
+    <div id="message-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-text" class="modal-text"></p>
+        </div>
+    </div>
 
     <script>
+        // Add this variable at the top with other global variables
+        let randomColumnIndex = 0;
         let isFirstTime = true;
         let selectedVerbs = [];
         let score = 0;
-		let isTimerRunning = true;
-		
-		function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
+        let isTimerRunning = true;
+        let stopwatchInterval;
+        let elapsedTime = 0;
+        let maxTime;
 
-		const verbs = [
-			{ Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
+        const verbs = [
+            { Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
 			{ Translation: "essere", "Base Form": "be", "Simple Past": "was - were", "Past Participle": "been" },
 			{ Translation: "sopportare / sostenere", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
 			{ Translation: "battere / sconfiggere", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten" },
@@ -274,98 +829,90 @@
 			{ Translation: "avvolgere", "Base Form": "wind", "Simple Past": "wound", "Past Participle": "wound" },
 			{ Translation: "torcere/ strizzare", "Base Form": "wring", "Simple Past": "wrung", "Past Participle": "wrung" },
 			{ Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
-		];
+        ];
 
-		let stopwatchInterval;
-        let elapsedTime = 0;
-
-		window.onload = function() {
-			if (!localStorage.getItem("difficulty")) {
-				isFirstTime = true;
-			} else {
-				isFirstTime = false;
-			}
-			
-			toggleSettings();
+        // Inizializzazione
+        window.onload = function() {
+            loadSettings();
+            if (!localStorage.getItem("difficulty")) {
+                isFirstTime = true;
+            } else {
+                isFirstTime = false;
+            }
+            showSettings();
+        }
+        // Add this helper function after the existing functions
+        function getRandomColumn() {
+            const columns = ['translation', 'base', 'past', 'participle'];
+            return columns[Math.floor(Math.random() * columns.length)];
         }
 
+        function showSettings() {
+            document.getElementById("settings-panel").classList.remove("hidden");
+            document.getElementById("control-panel").classList.add("hidden");
+            document.getElementById("test").innerHTML = "";
+            hideAllControlButtons();
+        }
 
-		function toggleSettings() {
-			loadSettings();
+        function hideSettings() {
+            document.getElementById("settings-panel").classList.add("hidden");
+            document.getElementById("control-panel").classList.remove("hidden");
+        }
 
-			const settings = document.getElementById("settings");
-			const checkAnswers = document.getElementById("check-answers");
-			const giveUp = document.getElementById("give-up");
-			const score = document.getElementById("score");
-			const test = document.getElementById("test"); // Aggiungi questa riga per ottenere la tabella del gioco
+        function hideAllControlButtons() {
+            document.getElementById("check-answers").classList.add("hidden");
+            document.getElementById("give-up").classList.add("hidden");
+            document.getElementById("start-again").classList.add("hidden");
+            document.getElementById("settings-again").classList.add("hidden");
+            document.getElementById("toggle-timer").classList.add("hidden");
+        }
 
-			// settings.classList.toggle("hidden");
-			
-			document.getElementById("settings").style.display = "block";
-			
-			
-			settings.classList.remove("hidden");
-			test.innerHTML = "";
-			checkAnswers.classList.add("hidden");
-			giveUp.classList.add("hidden");
-			score.classList.add("hidden");
-			document.getElementById("start-again").style.display = "none";
-            document.getElementById("settings-again").style.display = "none";
-			document.getElementById("timer").style.display = "none";
-			document.getElementById("fixed-timer").classList.add("hidden");
-			
-			/*
-			// Nascondi i pulsanti e il punteggio quando le impostazioni sono visibili
-			if (!settings.classList.contains("hidden")) {
-				settings.classList.remove("hidden");
-				checkAnswers.classList.add("hidden");
-				giveUp.classList.add("hidden");
-				score.classList.add("hidden");
-				test.innerHTML = ""; // Nascondi la tabella del gioco
-				
-			} else {
-				checkAnswers.classList.remove("hidden");
-				giveUp.classList.remove("hidden");
-				score.classList.remove("hidden");
-				// Se vuoi ripristinare la tabella del gioco quando le impostazioni sono nascoste, puoi chiamare starttest() qui
-			} */
-		}
-		function applySettings() {
+        function showGameButtons() {
+            document.getElementById("check-answers").classList.remove("hidden");
+            document.getElementById("give-up").classList.remove("hidden");
+            document.getElementById("toggle-timer").classList.remove("hidden");
+        }
+
+        function showEndGameButtons() {
+            document.getElementById("start-again").classList.remove("hidden");
+            document.getElementById("settings-again").classList.remove("hidden");
+            hideAllControlButtons();
+        }
+
+        function applySettings() {
             const difficulty = document.getElementById("difficulty").value;
             const time = document.getElementById("time").value;
             const numberOfVerbs = document.getElementById("numberOfVerbs").value;
 
+            // Salva impostazioni
             localStorage.setItem("difficulty", difficulty);
             localStorage.setItem("time", time);
             localStorage.setItem("numberOfVerbs", numberOfVerbs);
-			
-            isFirstTime = false; // Imposta a false dopo la prima apertura
-            document.getElementById("settings").classList.add("hidden");
-			document.getElementById("settings").style.display = "none";
-			document.getElementById("fixed-timer").classList.remove("hidden");
-            updateScoreDisplay(numberOfVerbs); // Aggiorna il display del punteggio con il numero di verbi aggiornato
-			document.getElementById("check-answers").style.display = "block";
-            document.getElementById("give-up").style.display = "block";
 
-            startGame(); // Avvia il gioco
+            hideSettings();
+            updateScoreDisplay(numberOfVerbs);
+            showGameButtons();
+            startGame();
         }
-		function toggleMenu() {
 
-			const navLinks = document.querySelector('.nav-links');
-
-			navLinks.classList.toggle('active');
-
-		}
+        function toggleSettings() {
+            showSettings();
+            loadSettings();
+        }
 
         function loadSettings() {
-            let storedNumber = localStorage.getItem("numberOfVerbs");
-            let numberOfVerbs = storedNumber ? parseInt(storedNumber) : 10;
+            const storedNumber = localStorage.getItem("numberOfVerbs");
+            const numberOfVerbs = storedNumber ? parseInt(storedNumber) : 10;
             document.getElementById("numberOfVerbs").value = numberOfVerbs;
             updateScoreDisplay(numberOfVerbs);
 
-			let storedDifficulty = localStorage.getItem("difficulty");
-    		let difficulty = storedDifficulty ? storedDifficulty : "medium";
-    		document.getElementById("difficulty").value = difficulty;
+            const storedDifficulty = localStorage.getItem("difficulty");
+            const difficulty = storedDifficulty ? storedDifficulty : "medium";
+            document.getElementById("difficulty").value = difficulty;
+
+            const storedTime = localStorage.getItem("time");
+            const time = storedTime ? storedTime : "30";
+            document.getElementById("time").value = time;
         }
 
         function updateScoreDisplay(numberOfVerbs) {
@@ -373,8 +920,8 @@
             document.getElementById("score").innerText = `Score: 0/${maxScore}`;
         }
 
-		function filterVerbs(level) {
-			let easyVerbs =  [
+        function filterVerbs(level) {
+            let easyVerbs = [
                             "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
                             "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
                             "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
@@ -382,9 +929,9 @@
                             "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
                             "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
                             "wake", "wear", "win", "write"
-                        	];
-			
-			let mediumVerbs = [
+            ];
+
+            let mediumVerbs = [
 								"be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
 								"catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
 								"fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
@@ -394,9 +941,9 @@
 								"show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
 								"steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
 								"understand", "wake", "wear", "win", "write"
-                        	];
+            ];
 
-			let hardVerbs = [
+            let hardVerbs = [
                             "awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind",
                             "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst",
                             "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal",
@@ -412,238 +959,370 @@
                             "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "sweep",
                             "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread",
                             "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
-                        ];
+            ];
 
-			//hardVerbs = hardVerbs.concat(easyVerbs);
-			// Filtra i verbi in base alla difficoltà
+            return verbs.filter(verb => {
+                if (level === "easy") {
+                    return easyVerbs.includes(verb["Base Form"]);
+                } else if (level === "medium") {
+                    return mediumVerbs.includes(verb["Base Form"]);
+                } else if (level === "hard") {
+                    return hardVerbs.includes(verb["Base Form"]);
+                }
+                return true;
+            });
+        }
 
-			let filteredVerbs = verbs.filter(verb => {
-				if (level === "easy") {
-					return easyVerbs.includes(verb["Base Form"]);
-				} else if (level === "medium") {
-					return mediumVerbs.includes(verb["Base Form"]);
-				} else if (level === "hard") {
-					return hardVerbs.includes(verb["Base Form"]);
-				} else {
-					return hardVerbs.includes(verb["Base Form"]);; // Default to all verbs if no level is specified
-				}
-			});
+        function startStopwatch() {
+            let remainingTime = elapsedTime || maxTime;
+            updateTimerDisplay(remainingTime);
 
-			return filteredVerbs;
-		}
-		let maxTime;
-		// Avvia il cronometro (stopwatch)
-		function startStopwatch() {
-			let remainingTime = elapsedTime || maxTime;
-			document.getElementById("timer").style.display = "block";
-			updateTimerDisplay(remainingTime);
-		
-			stopwatchInterval = setInterval(() => {
-				remainingTime--;
-				elapsedTime = remainingTime;
+            stopwatchInterval = setInterval(() => {
+                remainingTime--;
+                elapsedTime = remainingTime;
+                updateTimerDisplay(remainingTime);
 
-		
-				updateTimerDisplay(remainingTime);
-		
-				if (remainingTime <= 0) {
-					clearInterval(stopwatchInterval);
-					giveUp();
-					const endoftimeMessage = document.getElementById("endoftimeMessage");
-					endoftimeMessage.style.display = 'block';
-					setTimeout(() => {
-						endoftimeMessage.style.display = 'none';
-					}, 4000);
-				}
-			}, 1000);
-		}
+                // Cambia colore timer in base al tempo rimasto
+                const timerElement = document.getElementById("timer");
+                const percentage = remainingTime / maxTime;
+                
+                if (percentage > 0.5) {
+                    timerElement.className = "timer";
+                } else if (percentage > 0.2) {
+                    timerElement.className = "timer warning";
+                } else {
+                    timerElement.className = "timer danger";
+                }
 
-		function updateTimerDisplay(secondsLeft) {
-			const minutes = Math.floor(secondsLeft / 60);
-			const seconds = secondsLeft % 60;
-			document.getElementById("timer").innerText = `${minutes} min ${seconds < 10 ? "0" : ""}${seconds} s`;
-		}
+                if (remainingTime <= 0) {
+                    clearInterval(stopwatchInterval);
+                    giveUp();
+                    showModal("⏰ Tempo Scaduto!", "Il tempo a disposizione è terminato!", "error");
+                }
+            }, 1000);
+        }
 
-		function toggleTimer() {
-			if (isTimerRunning) {
-				clearInterval(stopwatchInterval);
-				document.getElementById("toggle-timer").innerText = "▶️ Resume";
-			} else {
-				startStopwatch(); // Ricomincia il timer da dove era stato interrotto
-				document.getElementById("toggle-timer").innerText = "⏸ Pause";
-			}
-			isTimerRunning = !isTimerRunning;
-		}
+        function updateTimerDisplay(secondsLeft) {
+            const minutes = Math.floor(secondsLeft / 60);
+            const seconds = secondsLeft % 60;
+            document.getElementById("timer").innerText = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        }
 
+        function toggleTimer() {
+            const button = document.getElementById("toggle-timer");
+            if (isTimerRunning) {
+                clearInterval(stopwatchInterval);
+                button.innerHTML = "▶️ Riprendi";
+                button.className = "btn-control btn-secondary";
+            } else {
+                startStopwatch();
+                button.innerHTML = "⏸️ Pausa";
+                button.className = "btn-control btn-pause";
+            }
+            isTimerRunning = !isTimerRunning;
+        }
 
-
-        // Ferma il cronometro
         function stopStopwatch() {
             clearInterval(stopwatchInterval);
         }
 
+        // Replace the existing startGame() function with this modified version
         function startGame() {
+            const difficulty = localStorage.getItem("difficulty") || "medium";
+            const time = parseInt(localStorage.getItem("time")) || 30;
+            const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
 
-            // Recupera le impostazioni salvate
-            const difficulty = localStorage.getItem("difficulty") || "medium"; // Imposta un valore predefinito
-            const time = parseInt(localStorage.getItem("time")) || 60; // Imposta un valore predefinito
-            const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10; // Imposta un valore predefinito
-			
-			maxTime = time * 60; // Imposta il tempo massimo in secondi
+            maxTime = time * 60;
+            elapsedTime = maxTime;
 
-			// Filtra i verbi in base alla difficoltà
-			const filteredVerbs = filterVerbs(difficulty);
+            const filteredVerbs = filterVerbs(difficulty);
+            selectedVerbs = getRandomVerbsFromList(filteredVerbs, numberOfVerbs);
 
-			// Seleziona un numero casuale di verbi filtrati
-			selectedVerbs = getRandomVerbsFromList(filteredVerbs, numberOfVerbs);
-
-
-
-            //settings.classList.remove("hidden");
-			// Aggiorna il display del punteggio con il numero di verbi aggiornato
             updateScoreDisplay(numberOfVerbs);
 
+            let tableHTML = `
+                <table class="test-table">
+                    <thead>
+                        <tr> 
+                            <th>Translation</th>
+                            <th>Base Form</th>
+                            <th>Simple Past</th>
+                            <th>Past Participle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            selectedVerbs.forEach(verb => {
+                // Get random column to show for this row
+                const shownColumn = getRandomColumn();
+                
+                tableHTML += `<tr>`;
+                
+                // Translation column
+                if (shownColumn === 'translation') {
+                    tableHTML += `<td class="given-word">${verb.Translation}</td>`;
+                } else {
+                    tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb.Translation}" data-form="translation" placeholder="Translation"></td>`;
+                }
+                
+                // Base Form column
+                if (shownColumn === 'base') {
+                    tableHTML += `<td class="given-word">${verb['Base Form']}</td>`;
+                } else {
+                    tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Base Form']}" data-form="base" placeholder="Base Form"></td>`;
+                }
+                
+                // Simple Past column
+                if (shownColumn === 'past') {
+                    tableHTML += `<td class="given-word">${verb['Simple Past']}</td>`;
+                } else {
+                    tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Simple Past']}" data-form="past" placeholder="Simple Past"></td>`;
+                }
+                
+                // Past Participle column
+                if (shownColumn === 'participle') {
+                    tableHTML += `<td class="given-word">${verb['Past Participle']}</td>`;
+                } else {
+                    tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Past Participle']}" data-form="participle" placeholder="Past Participle"></td>`;
+                }
+                
+                tableHTML += `</tr>`;
+            });
+            
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
 
-            // selectedVerbs = getRandomVerbs(numberOfVerbs); // Passa il numero
-            let tableHTML = `<div class="test">
-				<table class="test">
-					<tr>
-						<th>Translation</th>
-						<th>Base Form</th>
-						<th>Simple Past</th>
-						<th>Past Participle</th>
-					</tr>`;
+            document.getElementById("test").innerHTML = tableHTML;
+            startStopwatch();
+            
+            // Focus sul primo input
+            const firstInput = document.querySelector('.verb-input');
+            if (firstInput) {
+                firstInput.focus();
+            }
 
-			selectedVerbs.forEach((verb, index) => {
-				const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
-				const visibleField = fields[Math.floor(Math.random() * fields.length)];
-
-				tableHTML += `<tr>
-					${fields.map((field, fieldIndex) => {
-						const labels = {
-							"Translation": "Translation",
-							"Base Form": "Base Form",
-							"Simple Past": "Simple Past",
-							"Past Participle": "Past Participle"
-						};
-						return visibleField === field 
-							? `<td data-label= "${labels[field]}" id="${field}-${index}">${verb[field]}</td>`
-							: `<td data-label= "${labels[field]}" ><input type="text" id="${field}-${index}"></td>`
-					}).join('')}
-				</tr>`;
-			}); // <-- Close the forEach here
-
-			tableHTML += `</table>
-			</div>`;
-			document.getElementById("test").innerHTML = tableHTML;
-			document.getElementById("give-up").disabled = false; // Abilita il pulsante "Give Up" all'inizio del gioco
-			document.getElementById("check-answers").classList.remove("hidden");
-			document.getElementById("give-up").classList.remove("hidden");
-			document.getElementById("score").classList.remove("hidden");
-
-			startStopwatch();	
-		}
-
-        function getRandomVerbs(number) {
-            const shuffled = verbs.sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, number);
+            // Aggiungi event listeners per navigazione con Tab/Enter
+            addInputEventListeners();
         }
-		function getRandomVerbsFromList(verbsList, number) {
-			const shuffled = verbsList.sort(() => 0.5 - Math.random());
-			return shuffled.slice(0, number);
-		}
-
-        function checkAnswers() {
-            score = 0;
-            selectedVerbs.forEach((verb, index) => {
-                const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
-                let correctCount = 0;
-                fields.forEach(field => {
-                    if (document.getElementById(`${field}-${index}`).tagName !== "TD") {
-                        correctCount += checkInput(index, field, verb[field]);
+        function addInputEventListeners() {
+            const inputs = document.querySelectorAll('.verb-input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === 'Tab') {
+                        e.preventDefault();
+                        const nextIndex = (index + 1) % inputs.length;
+                        inputs[nextIndex].focus();
                     }
                 });
 
-                if (correctCount === 3) {
-                    score++;
-                }
+                // Auto-check mentre si digita
+                input.addEventListener('input', function() {
+                    const userAnswer = this.value.trim().toLowerCase();
+                    const correctAnswer = this.getAttribute('data-verb').toLowerCase();
+                    
+                    // Rimuovi classi precedenti
+                    this.classList.remove('correct', 'wrong');
+                    
+                    if (userAnswer && userAnswer === correctAnswer) {
+                        this.classList.add('correct');
+                    }
+                });
             });
-			if (score === selectedVerbs.length) {
-				stopStopwatch();
-				document.getElementById("check-answers").style.display = "none";
-				document.getElementById("give-up").style.display = "none";
-			}
-			const maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
-			document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
-            document.getElementById("start-again").style.display = (score === maxScore) ? "block" : "none";
-            document.getElementById("settings-again").style.display = (score === maxScore) ? "block" : "none";
         }
 
-        function checkInput(index, type, correctValue) {
-            const inputElement = document.getElementById(`${type}-${index}`);
-            const userAnswer = inputElement.value.trim().toLowerCase();
-            const correctAnswers = correctValue.toLowerCase().split('/').map(ans => ans.trim());
+        function getRandomVerbsFromList(verbsList, numberOfVerbs) {
+            const shuffled = verbsList.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, numberOfVerbs);
+        }
 
-            if (correctAnswers.includes(userAnswer)) {
-                inputElement.classList.add("correct");
-                inputElement.classList.remove("wrong");
-                return 1;
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.verb-input');
+            let correctAnswers = 0;
+            let totalAnswers = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.getAttribute('data-verb').toLowerCase();
+                
+                // Rimuovi classi precedenti
+                input.classList.remove('correct', 'wrong', 'revealed');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.add('correct');
+                    correctAnswers++;
+                } else if (userAnswer !== '') {
+                    input.classList.add('wrong');
+                    // Mostra la risposta corretta
+                    input.value = input.getAttribute('data-verb');
+                    input.classList.add('revealed');
+                } else {
+                    // Campo vuoto, mostra la risposta
+                    input.value = input.getAttribute('data-verb');
+                    input.classList.add('revealed');
+                }
+                
+                // Disabilita l'input
+                input.disabled = true;
+            });
+
+            // Aggiorna il punteggio
+            const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
+            score = Math.round((correctAnswers / totalAnswers) * numberOfVerbs);
+            document.getElementById("score").innerText = `Score: ${correctAnswers}/${numberOfVerbs}`;
+
+            // Ferma il timer
+            stopStopwatch();
+            isTimerRunning = false;
+
+            // Mostra risultato
+            showResultModal(correctAnswers, numberOfVerbs);
+            
+            // Mostra bottoni di fine gioco
+            showEndGameButtons();
+        }
+
+        function showResultModal(correct, total) {
+            const percentage = Math.round((correct / total) * 100);
+            let title, message, type;
+
+            if (percentage >= 90) {
+                title = "🏆 Eccellente!";
+                message = `Hai risposto correttamente a ${correct} su ${total} domande (${percentage}%). Complimenti!`;
+                type = "success";
+            } else if (percentage >= 70) {
+                title = "👍 Molto Bene!";
+                message = `Hai risposto correttamente a ${correct} su ${total} domande (${percentage}%). Buon lavoro!`;
+                type = "success";
+            } else if (percentage >= 50) {
+                title = "📚 Da Migliorare";
+                message = `Hai risposto correttamente a ${correct} su ${total} domande (${percentage}%). Continua a studiare!`;
+                type = "warning";
             } else {
-                inputElement.classList.add("wrong");
-                inputElement.classList.remove("correct");
-                return 0;
+                title = "💪 Non Mollare!";
+                message = `Hai risposto correttamente a ${correct} su ${total} domande (${percentage}%). Riprova, ce la puoi fare!`;
+                type = "error";
             }
+
+            showModal(title, message, type);
         }
 
         function giveUp() {
-            let computedScore = 0;
-			stopStopwatch();
-            selectedVerbs.forEach((verb, index) => {
-                let correctCount = 0;
-                ["Translation", "Base Form", "Simple Past", "Past Participle"].forEach(field => {
-                    const element = document.getElementById(`${field}-${index}`);
-                    if (element && element.tagName !== "TD") {
-                        const userAnswer = element.value.trim().toLowerCase();
-                        const correctAnswers = verb[field].toLowerCase().split('/').map(ans => ans.trim());
-                        if (correctAnswers.includes(userAnswer)) {
-                            element.classList.add("correct");
-                            element.classList.remove("wrong");
-                            correctCount++;
-                        } else {
-                            element.classList.add("wrong");
-                            element.classList.remove("correct");
-                        }
-                        element.value = verb[field];
-                        element.classList.add("revealed");
-						element.disabled = true;
-                    }
-                });
-                if (correctCount === 3) {
-                    computedScore++;
+            const inputs = document.querySelectorAll('.verb-input');
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.value = input.getAttribute('data-verb');
+                    input.classList.add('revealed');
+                }
+                input.disabled = true;
+            });
+
+            stopStopwatch();
+            isTimerRunning = false;
+            showEndGameButtons();
+            
+            // Calcola comunque il punteggio delle risposte corrette
+            let correctAnswers = 0;
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.getAttribute('data-verb').toLowerCase();
+                if (userAnswer === correctAnswer && !input.classList.contains('revealed')) {
+                    correctAnswers++;
+                    input.classList.add('correct');
                 }
             });
-            score = computedScore;
-			maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
-            document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
-            document.getElementById("start-again").style.display = "block";
-            document.getElementById("settings-again").style.display = "block";
 
-			document.getElementById("give-up").style.display = "none";
-			document.getElementById("check-answers").style.display = "none";
-
+            const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
+            document.getElementById("score").innerText = `Score: ${correctAnswers}/${numberOfVerbs}`;
+            
+            showModal("😓 Test Terminato", "Hai visualizzato tutte le risposte. Studia e riprova!", "warning");
         }
 
         function startAgain() {
-            document.getElementById("start-again").style.display = "none";
-            document.getElementById("settings-again").style.display = "none";
-			document.getElementById("give-up").style.display = "block";
-			document.getElementById("check-answers").style.display = "block";
+            // Reset variabili
             score = 0;
-			maxScore = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
-            document.getElementById("score").innerText = `Score: ${score}/${maxScore}`;
+            elapsedTime = 0;
+            isTimerRunning = true;
+            
+            // Reset timer button
+            const timerButton = document.getElementById("toggle-timer");
+            timerButton.innerHTML = "⏸️ Pausa";
+            timerButton.className = "btn-control btn-pause";
+            
+            // Nascondi modal se aperto
+            hideModal();
+            
+            // Riavvia il gioco
             startGame();
+            showGameButtons();
         }
 
+        function showModal(title, message, type = "success") {
+            const modal = document.getElementById("message-modal");
+            const modalTitle = document.getElementById("modal-title");
+            const modalText = document.getElementById("modal-text");
 
+            modalTitle.textContent = title;
+            modalText.textContent = message;
+            
+            modal.className = `modal ${type} fade-in`;
+            modal.classList.remove("hidden");
+
+            // Auto-hide dopo 4 secondi
+            setTimeout(() => {
+                hideModal();
+            }, 4000);
+
+            // Click per chiudere
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            };
+        }
+
+        function hideModal() {
+            const modal = document.getElementById("message-modal");
+            modal.classList.add("fade-out");
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("fade-in", "fade-out");
+                modal.className = "modal hidden";
+            }, 300);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (!document.getElementById("check-answers").classList.contains("hidden")) {
+                        checkAnswers();
+                    }
+                } else if (e.key === ' ') {
+                    e.preventDefault();
+                    if (!document.getElementById("toggle-timer").classList.contains("hidden")) {
+                        toggleTimer();
+                    }
+                }
+            }
+            
+            if (e.key === 'Escape') {
+                hideModal();
+            }
+        });
+
+        // Previeni il refresh accidentale durante il test
+        window.addEventListener('beforeunload', function (e) {
+            if (!document.getElementById("control-panel").classList.contains("hidden") && 
+                !document.getElementById("start-again").classList.contains("hidden") === false) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
     </script>
 </body>
 </html>

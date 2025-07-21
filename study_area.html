@@ -2,158 +2,372 @@
 <html lang="it">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Study Area</title>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
-	crossorigin="anonymous">
-    </script> -->
     <style>
+        /* Reset e variabili CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;   
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--background);
+            transition: all 0.2s ease;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            min-width: 60px;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color);
+            background: var(--surface-hover);
+        }
+
+        .nav-item img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+
+        /* Container principale */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            background-color: var(--surface);
+        }
+
+        /* Study Section */
+
+        .study-header {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .study-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .study-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        /* Level Options */
+        .level-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .level-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--surface);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .level-option:hover {
+            background: var(--surface-hover);
+            border-color: var(--primary-color);
+        }
+
+        .level-option input[type="radio"] {
+            margin-right: 12px;
+            accent-color: var(--primary-color);
+        }
+
+        .level-option.selected {
+            border-color: var(--primary-color);
+            background: rgb(37 99 235 / 0.1);
+        }
+
+        .study-container {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 20px;
+            z-index: 1;
+            position: relative;
+        }
+        .study-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .study-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 16px 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+        }
+
+        .study-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .study-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .study-table tr.even {
+            background: var(--surface-hover);
+        }
+
+        .study-table tr.odd {
+            background: var(--surface);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 8px 6px;
+            }
+
+            .study-header {
+                margin-bottom: 0px;
+                padding: 6px;
+            }
+
+            .study-container {
+                margin-bottom: 0px;
+                padding: 6px;
+                margin-top: 6px;
+            }
+
+            .study-title{
+                font-size: 16px;
+                margin: 0 0 6px;
+            }
+
+            .study-subtitle {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-item span {
+                font-size: 11px;
+            }
+            
+            .nav-links {
+            
+                padding: 0 0;
+            }
+        
+            .level-options {
+                gap: 8px;
+                margin-bottom: 4px;
+            }
+
+            .level-option {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .study-table th,
+            .study-table td {
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+
+            .study-table th {
+                font-size: 12px;
+            }
+
+            .nav-item span {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .study-table {
+                font-size: 12px;
+            }
+
+            .study-table th {
+                padding: 12px 2px;
+                font-size: 11px;
+            }
+
+            .study-table td {
+                padding: 8px 2px;
+            }
+
+            .study-title {
+                font-size: 20px;
+            }
+
+            .study-subtitle {
+                font-size: 14px;
+            }
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <div class="nav-links">
-            <a href="index.html" class="nav-item">
-                <img src="images/home.png" alt="Home">
-                <span>Home</span>
-            </a>
-            <a href="study_area.html" class="nav-item">
-                <img src="images/learn.png" alt="Learn">
-                <span>Learn</span>
-            </a>
-            <a href="irregular_verbs.html" class="nav-item">
-                <img src="images/train.png" alt="Train">
-                <span>Train</span>
-            </a>
-            <a href="irregular_verbs_verifica.html" class="nav-item">
-                <img src="images/test.png" alt="Test_png">
-                <span>Test</span>
-            </a>       
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">
+                    <img src="images/home.png" alt="Home">
+                    <span>Home</span>
+                </a>
+                <a href="study_area.html" class="nav-item">
+                    <img src="images/learn.png" alt="Learn">
+                    <span>Learn</span>
+                </a>
+                <a href="irregular_verbs.html" class="nav-item">
+                    <img src="images/train.png" alt="Train">
+                    <span>Train</span>
+                </a>
+                <a href="irregular_verbs_verifica.html" class="nav-item">
+                    <img src="images/test.png" alt="Test">
+                    <span>Test</span>
+                </a>
+            </div>
         </div>
     </nav>
-    <script>
-function filterVerbs() {
-    let level = document.querySelector('input[name="level"]:checked').value;
-    let rows = document.querySelectorAll("table tr");
 
-    rows.forEach((row, index) => {
-        if (index === 0) return; // Skip header row
-        row.style.display = "none"; // Hide all rows initially
-    });
-    
-            // Nasconde tutte le righe
-            // rows.forEach(row => row.style.display = "none");
-            let verbs = []; // Declare the variable once
 
-            if (level === "easy") {
-                verbs = [
-                            "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
-                            "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
-                            "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
-                            "keep", "know", "learn", "leave", "let", "lose", "make", "meet", "pay", "put",
-                            "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
-                            "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
-                            "wake", "wear", "win", "write"
-                        ];
+    <div class="main-container">
+        <div class="study-header">
+            <h2 class="study-title">Irregular Verbs List</h2>
+            <p class="study-subtitle"><strong>Choose your Level and start your study session:</strong></p>
             
-            } else if (level === "medium") {
-                verbs = [
-                            "be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
-                            "catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
-                            "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
-                            "go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
-                            "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
-                            "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
-                            "show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
-                            "steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
-                            "understand", "wake", "wear", "win", "write"
-                        ];
-            } else if (level === "hard") {
-                verbs = [
-                            "awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind",
-                            "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst",
-                            "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal",
-                            "dig", "dive", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed",
-                            "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive",
-                            "forsake", "freeze", "get", "give", "go", "grind", "grow", "have", "hang", "hear",
-                            "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead", "learn",
-                            "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell",
-                            "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride",
-                            "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew",
-                            "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit",
-                            "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spoil",
-                            "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "sweep",
-                            "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread",
-                            "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
-                        ];
-                } 
-    let visibleRows = []; // Array to hold visible rows
+            <div class="level-options" id="level-options">
+                <label class="level-option">
+                    <input type="radio" name="level" value="easy" onchange="filterVerbs()">
+                    Facile (A2) - Ket Exam
+                </label>
+                <label class="level-option selected">
+                    <input type="radio" name="level" value="medium" class="selected" onchange="filterVerbs()" checked>
+                    Medio (B1) - Pet Exam
+                </label>
+                <label class="level-option">
+                    <input type="radio" name="level" value="hard" onchange="filterVerbs()">
+                    Difficile (B2/C1) - First Exam
+                </label>
+            </div>
+        </div>
 
-            verbs.forEach(id => {
-                let row = document.getElementById(id);
-                if (row) {
-                row.style.display = "table-row"; // Show the row
-
-                    visibleRows.push(row);
-                }
-            });
-                // Riassegna le classi per alternare i colori
-            // Assign classes for alternating colors
-            visibleRows.forEach((row, index) => {
-                row.classList.remove("even", "odd");
-                if (index % 2 === 0) {
-                    row.classList.add("even");
-                } else {
-                    row.classList.add("odd");
-                }
-            });
-
-
-        }
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-    </script>
-</head>
-<body onload="filterVerbs()">
-
-    <h2>Irregular Verbs List</h2>
-    <p><strong>Choose your Level and start your study session:</strong></p>
-    
-    <div id="level-options">
-        <label>
-            <input type="radio" name="level" value="easy" onchange="filterVerbs()">
-            Facile (A2) - Ket Exam
-        </label>
-        <label>
-            <input type="radio" name="level" value="medium" onchange="filterVerbs()" checked>
-            Medio (B1) - Pet Exam
-        </label>
-        <label>
-            <input type="radio" name="level" value="hard" onchange="filterVerbs()">
-            Difficile (B2/C1) - First Exam
-        </label>
-    </div>
-    
-
-    
-    <div id="study">
-        <table>
-            <!-- contenuto della tabella -->
-            <thead>
-                <tr>
-                    <th>Translation</th>
-                    <th>Base Form</th>
-                    <th>Simple Past</th>
-                    <th>Past Participle</th>
-                </tr>
-            </thead>
-       
-
-            <tbody>
-                
-                <tr id="awake"><td>svegliarsi (stato)</td><td>awake</td><td>awoke</td><td>awoken</td></tr>
+        <div class="study-container" id="study">
+            <table class="study-table">
+                <thead>
+                    <tr>
+                        <th>Translation</th>
+                        <th>Base Form</th>
+                        <th>Simple Past</th>
+                        <th>Past Participle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="awake"><td>svegliarsi (stato)</td><td>awake</td><td>awoke</td><td>awoken</td></tr>
                 <tr id="be"><td>essere</td><td>be</td><td>was - were</td><td>been</td></tr>
                 <tr id="bear"><td>sopportare / sostenere</td><td>bear</td><td>bore</td><td>borne</td></tr>
                 <tr id="beat"><td>battere / sconfiggere</td><td>beat</td><td>beat</td><td>beaten</td></tr>
@@ -304,10 +518,95 @@ function filterVerbs() {
                 <tr id="wring"><td>torcere/ strizzare</td><td>wring</td><td>wrung</td><td>wrung</td></tr>
                 <tr id="write"><td>scrivere</td><td>write</td><td>wrote</td><td>written</td></tr>
 
-            </tbody>
-        </table>
-    </div>    
+            </table>
+        </div>    
+    </div>
 
-        
+    <script>
+        function filterVerbs() {
+            let level = document.querySelector('input[name="level"]:checked').value;
+            let rows = document.querySelectorAll("table tr");
+
+            // Update level option styling
+            document.querySelectorAll('.level-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            document.querySelector(`input[value="${level}"]`).closest('.level-option').classList.add('selected');
+
+            rows.forEach((row, index) => {
+                if (index === 0) return; // Skip header row
+                row.style.display = "none"; // Hide all rows initially
+            });
+            
+            let verbs = []; // Declare the variable once
+
+            if (level === "easy") {
+                verbs = [
+                            "be", "become", "begin", "break", "bring", "build", "burn", "buy", "catch", "choose",
+                            "come", "cut", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feel",
+                            "find", "forget", "get", "give", "go", "grow", "have", "hear", "hit", "hurt",
+                            "keep", "know", "learn", "leave", "let", "lose", "make", "meet", "pay", "put",
+                            "read", "ride", "run", "say", "see", "sell", "send", "sing", "sit", "sleep",
+                            "speak", "spend", "stand", "swim", "take", "teach", "tell", "think", "understand",
+                            "wake", "wear", "win", "write"
+                ];
+            } else if (level === "medium") {
+                verbs = [
+                            "be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
+                            "catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
+                            "fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
+                            "go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
+                            "learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
+                            "ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
+                            "show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
+                            "steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
+                            "understand", "wake", "wear", "win", "write"
+                ];
+            } else if (level === "hard") {
+                verbs = [
+                            "awake", "be", "bear", "beat", "become", "begin", "bend", "bet", "bid", "bind",
+                            "bite", "bleed", "blow", "break", "breed", "bring", "broadcast", "build", "burn", "burst",
+                            "buy", "cast", "catch", "choose", "cling", "come", "cost", "creep", "cut", "deal",
+                            "dig", "dive", "do", "draw", "dream", "drink", "drive", "eat", "fall", "feed",
+                            "feel", "fight", "find", "fit", "flee", "fling", "fly", "forbid", "forget", "forgive",
+                            "forsake", "freeze", "get", "give", "go", "grind", "grow", "have", "hang", "hear",
+                            "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead", "learn",
+                            "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "misspell",
+                            "mistake", "overcome", "overtake", "pay", "plead", "prove", "put", "quit", "read", "ride",
+                            "ring", "rise", "run", "say", "see", "seek", "sell", "send", "set", "sew",
+                            "shake", "shine", "shoe", "shoot", "show", "shrink", "shut", "sing", "sink", "sit",
+                            "sleep", "smell", "slide", "speak", "speed", "spell", "spend", "spill", "spit", "spoil",
+                            "spread", "spring", "stand", "steal", "stick", "sting", "stink", "strike", "swear", "sweep",
+                            "swim", "swing", "take", "teach", "tear", "tell", "think", "throw", "thrust", "tread",
+                            "understand", "upset", "wake", "wear", "weave", "weep", "win", "wind", "wring", "write"
+                ];
+            } 
+
+            let visibleRows = []; // Array to hold visible rows
+
+            verbs.forEach(id => {
+                let row = document.getElementById(id);
+                if (row) {
+                    row.style.display = "table-row"; // Show the row
+                    visibleRows.push(row);
+                }
+            });
+
+            // Assign classes for alternating colors
+            visibleRows.forEach((row, index) => {
+                row.classList.remove("even", "odd");
+                if (index % 2 === 0) {
+                    row.classList.add("even");
+                } else {
+                    row.classList.add("odd");
+                }
+            });
+            
+        }
+        // Call filterVerbs on page load to apply initial styling
+        window.addEventListener('DOMContentLoaded', function() {
+            filterVerbs();
+        });
+    </script>
 </body>
 </html>
