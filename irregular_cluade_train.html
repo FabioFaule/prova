@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs Game</title>
+    <style>
+        /* Reset e variabili CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;   
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--background);
+            transition: all 0.2s ease;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            min-width: 60px;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color);
+            background: var(--surface-hover);
+        }
+
+        .nav-item img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Container principale */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            background-color: var(--surface);
+        }
+
+        /* Game Header */
+        .game-header {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .game-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .game-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .game-instructions {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgb(37 99 235 / 0.1);
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
+
+        /* Level Options */
+        .level-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .level-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--surface);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .level-option:hover {
+            background: var(--surface-hover);
+            border-color: var(--primary-color);
+        }
+
+        .level-option input[type="radio"] {
+            margin-right: 12px;
+            accent-color: var(--primary-color);
+        }
+
+        .level-option.selected {
+            border-color: var(--primary-color);
+            background: rgb(37 99 235 / 0.1);
+        }
+
+        /* Score and Stats */
+        .game-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: var(--surface);
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Game Container */
+        .game-container {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .game-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .game-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 16px 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+        }
+
+        .game-table td {
+            padding: 16px 12px;
+            text-align: center;
+            vertical-align: middle;
+            background: var(--surface);
+        }
+
+        .game-table input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .game-table input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+
+        .game-table input.correct {
+            border-color: var(--success-color);
+            background: rgb(16 185 129 / 0.1);
+            color: var(--success-color);
+        }
+
+        .game-table input.wrong {
+            border-color: var(--error-color);
+            background: rgb(239 68 68 / 0.1);
+            color: var(--error-color);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .hint-btn {
+            background: var(--warning-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .hint-btn:hover {
+            background: #d97706;
+            transform: translateY(-1px);
+        }
+
+        .hint-btn:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .success-text {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--border-color);
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 8px 6px;
+            }
+
+            .game-header {
+                margin-bottom: 12px;
+                padding: 16px;
+            }
+
+            .game-title {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            .game-subtitle {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+
+            .game-instructions {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .level-options {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .level-option {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .game-stats {
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+
+            .stat-item {
+                padding: 8px 12px;
+                min-width: 80px;
+            }
+
+            .stat-value {
+                font-size: 16px;
+            }
+
+            .game-table th,
+            .game-table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+
+            .game-table input {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            .hint-btn {
+                padding: 4px 8px;
+                font-size: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .nav-item span {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-table th {
+                padding: 8px 2px;
+                font-size: 10px;
+            }
+
+            .game-table td {
+                padding: 8px 2px;
+            }
+
+            .game-table input {
+                padding: 6px;
+                font-size: 11px;
+            }
+
+            .game-title {
+                font-size: 18px;
+            }
+
+            .game-subtitle {
+                font-size: 12px;
+            }
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">
+                    <img src="images/home.png" alt="Home">
+                    <span>Home</span>
+                </a>
+                <a href="study_area.html" class="nav-item">
+                    <img src="images/learn.png" alt="Learn">
+                    <span>Learn</span>
+                </a>
+                <a href="irregular_verbs.html" class="nav-item">
+                    <img src="images/train.png" alt="Train">
+                    <span>Train</span>
+                </a>
+                <a href="irregular_verbs_verifica.html" class="nav-item">
+                    <img src="images/test.png" alt="Test">
+                    <span>Test</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="game-header">
+            <h2 class="game-title">Irregular Verbs Training Game</h2>
+            <p class="game-subtitle">Fill in the gaps and learn irregular verbs</p>
+            <div class="game-instructions">
+                💡 Choose your level, then complete the missing verb forms. Use hints if you need help!
+            </div>
+            
+            <div class="level-options" id="level-options">
+                <label class="level-option">
+                    <input type="radio" name="level" value="easy" onchange="changeLevel()">
+                    Facile (A2) - KET Exam
+                </label>
+                <label class="level-option selected">
+                    <input type="radio" name="level" value="medium" onchange="changeLevel()" checked>
+                    Medio (B1) - PET Exam
+                </label>
+                <label class="level-option">
+                    <input type="radio" name="level" value="hard" onchange="changeLevel()">
+                    Difficile (B2/C1) - First Exam
+                </label>
+            </div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <div class="stat-value" id="score-value">0</div>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="attempts-value">0</div>
+                <div class="stat-label">Attempts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="accuracy-value">0%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="success-message" id="success-message">
+            <div class="success-title">🎉 Excellent Work!</div>
+            <div class="success-text">You completed the verb correctly! Get ready for the next challenge...</div>
+        </div>
+
+        <div class="game-container" id="game-container">
+            <table class="game-table">
+                <thead>
+                    <tr>
+                        <th>Translation</th>
+                        <th>Base Form</th>
+                        <th>Simple Past</th>
+                        <th>Past Participle</th>
+                    </tr>
+                </thead>
+                <tbody id="game-table-body">
+                    <!-- Game content will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="checkAnswers()">Check Answers</button>
+            <button class="btn btn-secondary" onclick="skipVerb()">Skip Verb</button>
+        </div>
+    </div>
+
+    <script>
+        const allVerbs = [
+            { Translation: "svegliarsi", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken", level: "hard" },
+            { Translation: "essere", "Base Form": "be", "Simple Past": "was / were", "Past Participle": "been", level: "easy" },
+            { Translation: "sopportare", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne", level: "hard" },
+            { Translation: "battere (colpire o sconfiggere)", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten", level: "medium" },
+            { Translation: "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become", level: "easy" },
+            { Translation: "iniziare", "Base Form": "begin", "Simple Past": "began", "Past Participle": "begun", level: "easy" },
+            { Translation: "piegare", "Base Form": "bend", "Simple Past": "bent", "Past Participle": "bent", level: "medium" },
+            { Translation: "scommettere", "Base Form": "bet", "Simple Past": "bet", "Past Participle": "bet", level: "hard" },
+            { Translation: "mordere", "Base Form": "bite", "Simple Past": "bit", "Past Participle": "bitten", level: "medium" },
+            { Translation: "soffiare", "Base Form": "blow", "Simple Past": "blew", "Past Participle": "blown", level: "medium" },
+            { Translation: "rompere", "Base Form": "break", "Simple Past": "broke", "Past Participle": "broken", level: "easy" },
+            { Translation: "portare", "Base Form": "bring", "Simple Past": "brought", "Past Participle": "brought", level: "easy" },
+            { Translation: "costruire", "Base Form": "build", "Simple Past": "built", "Past Participle": "built", level: "easy" },
+            { Translation: "bruciare", "Base Form": "burn", "Simple Past": "burned / burnt", "Past Participle": "burned / burnt", level: "easy" },
+            { Translation: "comprare", "Base Form": "buy", "Simple Past": "bought", "Past Participle": "bought", level: "easy" },
+            { Translation: "prendere", "Base Form": "catch", "Simple Past": "caught", "Past Participle": "caught", level: "easy" },
+            { Translation: "scegliere", "Base Form": "choose", "Simple Past": "chose", "Past Participle": "chosen", level: "easy" },
+            { Translation: "venire", "Base Form": "come", "Simple Past": "came", "Past Participle": "come", level: "easy" },
+            { Translation: "costare", "Base Form": "cost", "Simple Past": "cost", "Past Participle": "cost", level: "medium" },
+            { Translation: "tagliare", "Base Form": "cut", "Simple Past": "cut", "Past Participle": "cut", level: "easy" },
+            { Translation: "scavare", "Base Form": "dig", "Simple Past": "dug", "Past Participle": "dug", level: "medium" },
+            { Translation: "fare", "Base Form": "do", "Simple Past": "did", "Past Participle": "done", level: "easy" },
+            { Translation: "disegnare", "Base Form": "draw", "Simple Past": "drew", "Past Participle": "drawn", level: "easy" },
+            { Translation: "sognare", "Base Form": "dream", "Simple Past": "dreamed / dreamt", "Past Participle": "dreamed / dreamt", level: "easy" },
+            { Translation: "bere", "Base Form": "drink", "Simple Past": "drank", "Past Participle": "drunk", level: "easy" },
+            { Translation: "guidare", "Base Form": "drive", "Simple Past": "drove", "Past Participle": "driven", level: "easy" },
+            { Translation: "mangiare", "Base Form": "eat", "Simple Past": "ate", "Past Participle": "eaten", level: "easy" },
+            { Translation: "cadere", "Base Form": "fall", "Simple Past": "fell", "Past Participle": "fallen", level: "easy" },
+            { Translation: "nutrire", "Base Form": "feed", "Simple Past": "fed", "Past Participle": "fed", level: "medium" },
+            { Translation: "sentire", "Base Form": "feel", "Simple Past": "felt", "Past Participle": "felt", level: "easy" },
+            { Translation: "combattere", "Base Form": "fight", "Simple Past": "fought", "Past Participle": "fought", level: "medium" },
+            { Translation: "trovare", "Base Form": "find", "Simple Past": "found", "Past Participle": "found", level: "easy" },
+            { Translation: "volare", "Base Form": "fly", "Simple Past": "flew", "Past Participle": "flown", level: "medium" },
+            { Translation: "dimenticare", "Base Form": "forget", "Simple Past": "forgot", "Past Participle": "forgotten", level: "easy" },
+            { Translation: "ottenere", "Base Form": "get", "Simple Past": "got", "Past Participle": "got / gotten", level: "easy" },
+            { Translation: "dare", "Base Form": "give", "Simple Past": "gave", "Past Participle": "given", level: "easy" },
+            { Translation: "andare", "Base Form": "go", "Simple Past": "went", "Past Participle": "gone", level: "easy" },
+            { Translation: "crescere", "Base Form": "grow", "Simple Past": "grew", "Past Participle": "grown", level: "easy" },
+            { Translation: "avere", "Base Form": "have", "Simple Past": "had", "Past Participle": "had", level: "easy" },
+            { Translation: "sentire", "Base Form": "hear", "Simple Past": "heard", "Past Participle": "heard", level: "easy" },
+            { Translation: "nascondere", "Base Form": "hide", "Simple Past": "hid", "Past Participle": "hidden", level: "medium" },
+            { Translation: "colpire", "Base Form": "hit", "Simple Past": "hit", "Past Participle": "hit", level: "easy" },
+            { Translation: "tenere", "Base Form": "hold", "Simple Past": "held", "Past Participle": "held", level: "medium" },
+            { Translation: "ferire", "Base Form": "hurt", "Simple Past": "hurt", "Past Participle": "hurt", level: "easy" },
+            { Translation: "mantenere", "Base Form": "keep", "Simple Past": "kept", "Past Participle": "kept", level: "easy" },
+            { Translation: "sapere", "Base Form": "know", "Simple Past": "knew", "Past Participle": "known", level: "easy" },
+            { Translation: "imparare", "Base Form": "learn", "Simple Past": "learned / learnt", "Past Participle": "learned / learnt", level: "easy" },
+            { Translation: "lasciare", "Base Form": "leave", "Simple Past": "left", "Past Participle": "left", level: "easy" },
+            { Translation: "permettere", "Base Form": "let", "Simple Past": "let", "Past Participle": "let", level: "easy" },
+            { Translation: "perdere", "Base Form": "lose", "Simple Past": "lost", "Past Participle": "lost", level: "easy" },
+            { Translation: "fare", "Base Form": "make", "Simple Past": "made", "Past Participle": "made", level: "easy" },
+            { Translation: "significare", "Base Form": "mean", "Simple Past": "meant", "Past Participle": "meant", level: "medium" },
+            { Translation: "incontrare", "Base Form": "meet", "Simple Past": "met", "Past Participle": "met", level: "easy" },
+            { Translation: "pagare", "Base Form": "pay", "Simple Past": "paid", "Past Participle": "paid", level: "easy" },
+            { Translation: "mettere", "Base Form": "put", "Simple Past": "put", "Past Participle": "put", level: "easy" },
+            { Translation: "leggere", "Base Form": "read", "Simple Past": "read", "Past Participle": "read", level: "easy" },
+            { Translation: "cavalcare", "Base Form": "ride", "Simple Past": "rode", "Past Participle": "ridden", level: "easy" },
+            { Translation: "squillare", "Base Form": "ring", "Simple Past": "rang", "Past Participle": "rung", level: "medium" },
+            { Translation: "sorgere", "Base Form": "rise", "Simple Past": "rose", "Past Participle": "risen", level: "medium" },
+            { Translation: "correre", "Base Form": "run", "Simple Past": "ran", "Past Participle": "run", level: "easy" },
+            { Translation: "dire", "Base Form": "say", "Simple Past": "said", "Past Participle": "said", level: "easy" },
+            { Translation: "vedere", "Base Form": "see", "Simple Past": "saw", "Past Participle": "seen", level: "easy" },
+            { Translation: "vendere", "Base Form": "sell", "Simple Past": "sold", "Past Participle": "sold", level: "easy" },
+            { Translation: "mandare", "Base Form": "send", "Simple Past": "sent", "Past Participle": "sent", level: "easy" },
+            { Translation: "cantare", "Base Form": "sing", "Simple Past": "sang", "Past Participle": "sung", level: "easy" },
+            { Translation: "sedersi", "Base Form": "sit", "Simple Past": "sat", "Past Participle": "sat", level: "easy" },
+            { Translation: "dormire", "Base Form": "sleep", "Simple Past": "slept", "Past Participle": "slept", level: "easy" },
+            { Translation: "parlare", "Base Form": "speak", "Simple Past": "spoke", "Past Participle": "spoken", level: "easy" },
+            { Translation: "spendere", "Base Form": "spend", "Simple Past": "spent", "Past Participle": "spent", level: "easy" },
+            { Translation: "stare in piedi", "Base Form": "stand", "Simple Past": "stood", "Past Participle": "stood", level: "easy" },
+            { Translation: "nuotare", "Base Form": "swim", "Simple Past": "swam", "Past Participle": "swum", level: "easy" },
+            { Translation: "prendere", "Base Form": "take", "Simple Past": "took", "Past Participle": "taken", level: "easy" },
+            { Translation: "insegnare", "Base Form": "teach", "Simple Past": "taught", "Past Participle": "taught", level: "easy" },
+            { Translation: "raccontare", "Base Form": "tell", "Simple Past": "told", "Past Participle": "told", level: "easy" },
+            { Translation: "pensare", "Base Form": "think", "Simple Past": "thought", "Past Participle": "thought", level: "easy" },
+            { Translation: "capire", "Base Form": "understand", "Simple Past": "understood", "Past Participle": "understood", level: "easy" },
+            { Translation: "svegliare", "Base Form": "wake", "Simple Past": "woke", "Past Participle": "woken", level: "easy" },
+            { Translation: "indossare", "Base Form": "wear", "Simple Past": "wore", "Past Participle": "worn", level: "easy" },
+            { Translation: "vincere", "Base Form": "win", "Simple Past": "won", "Past Participle": "won", level: "easy" },
+            { Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written", level: "easy" }
+        ];
+        
+        let verbs = []; // Will be filtered based on selected level
+        const fields = ["Translation", "Base Form", "Simple Past", "Past Participle"];
+        let verb, visibleField, visibleValue, missingFields, hintProgress;
+        let score = 0;
+        let attempts = 0;
+        let currentStreak = 0;
+        let bestStreak = 0;
+        let currentLevel = "medium";
+
+        function changeLevel() {
+            const selectedLevel = document.querySelector('input[name="level"]:checked').value;
+            currentLevel = selectedLevel;
+            
+            // Update level option styling
+            document.querySelectorAll('.level-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            document.querySelector(`input[value="${selectedLevel}"]`).closest('.level-option').classList.add('selected');
+            
+            // Filter verbs based on level
+            filterVerbsByLevel();
+            
+            // Reset stats and start new game
+            resetStats();
+            startGame();
+        }
+
+        function filterVerbsByLevel() {
+            if (currentLevel === "easy") {
+                verbs = allVerbs.filter(verb => verb.level === "easy");
+            } else if (currentLevel === "medium") {
+                verbs = allVerbs.filter(verb => verb.level === "easy" || verb.level === "medium");
+            } else if (currentLevel === "hard") {
+                verbs = allVerbs; // All levels
+            }
+        }
+
+        function resetStats() {
+            score = 0;
+            attempts = 0;
+            currentStreak = 0;
+            updateStats();
+        }
+
+        function startGame() {
+            // Check if verbs array has items
+            if (!verbs || verbs.length === 0) {
+                console.error('No verbs available for current level');
+                return;
+            }
+            
+            verb = verbs[Math.floor(Math.random() * verbs.length)];
+            visibleField = fields[Math.floor(Math.random() * fields.length)];
+            visibleValue = verb[visibleField];
+            missingFields = fields.filter(field => field !== visibleField);
+
+            hintProgress = {};
+            missingFields.forEach(field => {
+                hintProgress[field] = 0;
+            });
+
+            printTable();
+            updateProgressBar();
+        }
+
+        function checkAnswers() {
+            let allCorrect = true;
+            let correctCount = 0;
+            
+            attempts++;
+
+            missingFields.forEach(field => {
+                const inputElement = document.getElementById(`input-${field}`);
+                const userAnswer = inputElement.value.trim().toLowerCase();
+                const correctAnswer = verb[field].toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    inputElement.classList.add("correct");
+                    inputElement.classList.remove("wrong");
+                    inputElement.disabled = true;
+                    correctCount++;
+                } else {
+                    inputElement.classList.add("wrong");
+                    inputElement.classList.remove("correct");
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                score++;
+                currentStreak++;
+                if (currentStreak > bestStreak) {
+                    bestStreak = currentStreak;
+                }
+                
+                updateStats();
+                showSuccessMessage();
+                
+                setTimeout(() => {
+                    hideSuccessMessage();
+                    startGame();
+                }, 3000);
+            } else {
+                currentStreak = 0;
+                updateStats();
+            }
+        }
+
+        function skipVerb() {
+            attempts++;
+            currentStreak = 0;
+            updateStats();
+            startGame();
+        }
+
+        function giveHint(field) {
+            const inputElement = document.getElementById(`input-${field}`);
+            const hintButton = document.querySelector(`button[onclick="giveHint('${field}')"]`);
+            const correctAnswer = verb[field].toLowerCase();
+            const hintLength = ++hintProgress[field];
+
+            if (hintLength <= correctAnswer.length) {
+                inputElement.value = correctAnswer.slice(0, hintLength);
+                
+                if (hintLength === correctAnswer.length) {
+                    hintButton.disabled = true;
+                    hintButton.textContent = 'Complete';
+                }
+            }
+        }
+
+        function updateStats() {
+            document.getElementById("score-value").textContent = score;
+            document.getElementById("attempts-value").textContent = attempts;
+            
+            const accuracy = attempts > 0 ? Math.round((score / attempts) * 100) : 0;
+            document.getElementById("accuracy-value").textContent = accuracy + "%";
+        }
+
+        function updateProgressBar() {
+            const progress = attempts > 0 ? (score / Math.max(attempts, 10)) * 100 : 0;
+            document.getElementById("progress-bar").style.width = progress + "%";
+        }
+
+        function showSuccessMessage() {
+            const successMessage = document.getElementById("success-message");
+            successMessage.classList.add("show");
+        }
+
+        function hideSuccessMessage() {
+            const successMessage = document.getElementById("success-message");
+            successMessage.classList.remove("show");
+        }
+
+        function printTable() {
+            const tableHTML = `
+                <tr>
+                    ${fields.map(field => `
+                        <td>
+                            ${visibleField === field ? 
+                                `<strong>${visibleValue}</strong>` : 
+                                `<input type="text" id="input-${field}" placeholder="Type here...">
+                                 <button class="hint-btn" onclick="giveHint('${field}')">💡 Hint</button>`
+                            }
+                        </td>
+                    `).join('')}
+                </tr>
+            `;
+
+            document.getElementById("game-table-body").innerHTML = tableHTML;
+            
+            // Focus on first input field
+            const firstInput = document.querySelector('input[type="text"]');
+            if (firstInput) {
+                setTimeout(() => firstInput.focus(), 100);
+            }
+        }
+
+        // Add keyboard support
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswers();
+            } else if (event.key === 'Escape') {
+                skipVerb();
+            }
+        });
+
+        // Initialize game when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            filterVerbsByLevel(); // Set initial verb list
+            startGame();
+            updateStats();
+        });
+    </script>
+</body>
+</html>
