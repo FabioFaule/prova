@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
+     crossorigin="anonymous"></script>
     <title>Irregular Verbs Trainer</title>
     <style>
         /* Reset e variabili CSS */
@@ -49,7 +51,6 @@
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow);
-            position: relative;
         }
 
         .nav-container {
@@ -287,6 +288,27 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+        /* Add these CSS rules to enhance the styling */
+
+        /* Make sure navigation buttons are properly styled */
+        #restart-level {
+            background: #3fa4b9cc;
+            color: white;
+        }
+
+        #restart-level:hover {
+            background: var(--primary-hover);
+        }
+
+        #back-to-settings {
+            background: #95aac5e4;
+            color: white;
+        }
+
+        #back-to-settings:hover {
+            background: var(--primary-hover);
+        }
+
 
         /* Test Table */
         .test-container {
@@ -299,6 +321,7 @@
         .test-table {
             width: 100%;
             border-collapse: collapse;
+            border: 2px solid var(--border-color);
         }
 
         .test-table th {
@@ -308,18 +331,14 @@
             font-weight: 600;
             font-size: 14px;
             text-align: center;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .test-table td {
             padding: 12px;
-            border-bottom: 1px solid var(--border-color);
+            border: 1px solid var(--border-color);
             text-align: center;
             vertical-align: middle;
-        }
-
-        .test-table tr:last-child td {
-            border-bottom: none;
         }
 
         .test-table tr:nth-child(even) {
@@ -475,6 +494,15 @@
                 justify-content: center;
                 text-align: center;
             }
+
+            #restart-level, #back-to-settings {
+                font-size: 12px;
+                padding: 8px 12px;
+                flex: 1 1 0;
+                min-width: 0;
+                background-color: var(--secondary-color);
+            }
+
             .main-actions {
                 flex-direction: row;
                 width: 100%;
@@ -511,6 +539,16 @@
             .nav-links {
             
                 padding: 0 0;
+            }
+            
+            .main-actions {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            
+            .main-actions .btn-control {
+                flex: 1 1 calc(50% - 2px);
+                min-width: 0;
             }
         }
 
@@ -579,11 +617,11 @@
                     <img src="images/learn.png" alt="Learn">
                     <span>Learn</span>
                 </a>
-                <a href="irregular_verbs.html" class="nav-item">
+                <a href="train.html" class="nav-item">
                     <img src="images/train.png" alt="Train">
                     <span>Train</span>
                 </a>
-                <a href="irregular_verbs_verifica.html" class="nav-item">
+                <a href="test.html" class="nav-item">
                     <img src="images/test.png" alt="Test">
                     <span>Test</span>
                 </a>
@@ -646,13 +684,14 @@
                     <button id="give-up" onclick="giveUp()" class="btn-control btn-give-up">
                         😓 Arrendi
                     </button>
+                    <!-- Add these buttons inside the control-row div, after the existing buttons -->
+                    <button id="restart-level" onclick="restartLevel()" class="btn-control hidden">
+                        🔄 Restart Level
+                    </button>
+                    <button id="back-to-settings" onclick="backToSettings()" class="btn-control hidden">
+                        ⚙️ Back to Settings
+                    </button>
                 </div>
-                <button id="start-again" onclick="startAgain()" class="btn-control btn-secondary hidden">
-                    🔄 Riprova
-                </button>
-                <button id="settings-again" onclick="toggleSettings()" class="btn-control btn-secondary hidden">
-                    ⚙️ Impostazioni
-                </button>
             </div>
         </div>
 
@@ -847,11 +886,31 @@
             return columns[Math.floor(Math.random() * columns.length)];
         }
 
+        // Updated showSettings function
         function showSettings() {
+            // Stop any running timer
+            if (stopwatchInterval) {
+                clearInterval(stopwatchInterval);
+            }
+            
+            // Show settings panel
             document.getElementById("settings-panel").classList.remove("hidden");
+            
+            // Hide control panel
             document.getElementById("control-panel").classList.add("hidden");
+            
+            // Clear test content
             document.getElementById("test").innerHTML = "";
+            
+            // Hide all control buttons including the new ones
             hideAllControlButtons();
+            
+            // Reset timer display
+            document.getElementById("timer").innerText = "0s";
+            document.getElementById("timer").className = "timer";
+            
+            // Load settings
+            loadSettings();
         }
 
         function hideSettings() {
@@ -859,12 +918,24 @@
             document.getElementById("control-panel").classList.remove("hidden");
         }
 
+        // Fixed hideAllControlButtons function with null checks
         function hideAllControlButtons() {
-            document.getElementById("check-answers").classList.add("hidden");
-            document.getElementById("give-up").classList.add("hidden");
-            document.getElementById("start-again").classList.add("hidden");
-            document.getElementById("settings-again").classList.add("hidden");
-            document.getElementById("toggle-timer").classList.add("hidden");
+            const buttons = [
+                "check-answers",
+                "give-up", 
+                "start-again",
+                "settings-again",
+                "toggle-timer",
+                "restart-level",
+                "back-to-settings"
+            ];
+            
+            buttons.forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add("hidden");
+                }
+            });
         }
 
         function showGameButtons() {
@@ -988,7 +1059,7 @@
                 
                 if (percentage > 0.5) {
                     timerElement.className = "timer";
-                } else if (percentage > 0.2) {
+                } else if (percentage > 0.1) {
                     timerElement.className = "timer warning";
                 } else {
                     timerElement.className = "timer danger";
@@ -1138,6 +1209,10 @@
             return shuffled.slice(0, numberOfVerbs);
         }
 
+
+
+        // 1. Modified checkAnswers function
+        // 1. Modified checkAnswers function
         function checkAnswers() {
             const inputs = document.querySelectorAll('.verb-input');
             let correctAnswers = 0;
@@ -1180,8 +1255,8 @@
             // Mostra risultato
             showResultModal(correctAnswers, numberOfVerbs);
             
-            // Mostra bottoni di fine gioco
-            showEndGameButtons();
+            // Mostra bottoni di fine gioco con nuove opzioni
+            showEndGameButtonsWithOptions();
         }
 
         function showResultModal(correct, total) {
@@ -1209,6 +1284,7 @@
             showModal(title, message, type);
         }
 
+        // 2. Modified giveUp function
         function giveUp() {
             const inputs = document.querySelectorAll('.verb-input');
             
@@ -1222,7 +1298,6 @@
 
             stopStopwatch();
             isTimerRunning = false;
-            showEndGameButtons();
             
             // Calcola comunque il punteggio delle risposte corrette
             let correctAnswers = 0;
@@ -1239,8 +1314,95 @@
             document.getElementById("score").innerText = `Score: ${correctAnswers}/${numberOfVerbs}`;
             
             showModal("😓 Test Terminato", "Hai visualizzato tutte le risposte. Studia e riprova!", "warning");
+            
+            // Mostra bottoni di fine gioco con nuove opzioni
+            showEndGameButtonsWithOptions();
+        }
+                // 3. New function to show end game buttons with new options
+        function showEndGameButtonsWithOptions() {
+            document.getElementById("check-answers").classList.add("hidden");
+            document.getElementById("give-up").classList.add("hidden");
+            document.getElementById("toggle-timer").classList.add("hidden");
+            
+            // Show the new navigation buttons
+            document.getElementById("restart-level").classList.remove("hidden");
+            document.getElementById("back-to-settings").classList.remove("hidden");
         }
 
+        // 4. New function to restart current level
+        function restartLevel() {
+            // Reset variabili
+            score = 0;
+            elapsedTime = 0;
+            isTimerRunning = true;
+            
+            // Reset timer button
+            const timerButton = document.getElementById("toggle-timer");
+            timerButton.innerHTML = "⏸️ Pausa";
+            timerButton.className = "btn-control btn-pause";
+            
+            // Nascondi modal se aperto
+            hideModal();
+            
+            // Hide navigation buttons and show game buttons
+            document.getElementById("restart-level").classList.add("hidden");
+            document.getElementById("back-to-settings").classList.add("hidden");
+            
+            // Riavvia il gioco con le stesse impostazioni
+            startGame();
+            showGameButtons();
+        }
+// Debug version - use this temporarily to see what's happening
+        // Clean version of backToSettings (replace the debug version with this)
+        function backToSettings() {
+            // Stop any running timer
+            if (stopwatchInterval) {
+                clearInterval(stopwatchInterval);
+            }
+            
+            // Reset all variables
+            score = 0;
+            elapsedTime = 0;
+            isTimerRunning = true;
+            
+            // Reset timer button to initial state
+            const timerButton = document.getElementById("toggle-timer");
+            if (timerButton) {
+                timerButton.innerHTML = "⏸️ Pausa";
+                timerButton.className = "btn-control btn-pause";
+            }
+            
+            // Hide modal if open
+            hideModal();
+            
+            // Hide navigation buttons
+            const restartBtn = document.getElementById("restart-level");
+            const backBtn = document.getElementById("back-to-settings");
+            
+            if (restartBtn) restartBtn.classList.add("hidden");
+            if (backBtn) backBtn.classList.add("hidden");
+            
+            // Show settings panel and hide control panel
+            const settingsPanel = document.getElementById("settings-panel");
+            const controlPanel = document.getElementById("control-panel");
+            
+            if (settingsPanel) settingsPanel.classList.remove("hidden");
+            if (controlPanel) controlPanel.classList.add("hidden");
+            
+            // Clear the test area
+            const testArea = document.getElementById("test");
+            if (testArea) testArea.innerHTML = "";
+            
+            // Reset timer display
+            const timerElement = document.getElementById("timer");
+            if (timerElement) {
+                timerElement.innerText = "0s";
+                timerElement.className = "timer";
+            }
+            
+            // Load current settings into the form
+            loadSettings();
+        }
         function startAgain() {
             // Reset variabili
             score = 0;
@@ -1324,5 +1486,9 @@
             }
         });
     </script>
+    <footer style="text-align: center; margin-top: 2rem; font-size: 0.9em;">
+        <p>© 2025 LearnWithMe - All rights reserved</p>
+        <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
+    </footer>
 </body>
 </html>
