@@ -4,8 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320"
-     crossorigin="anonymous"></script>
+
+    <script>
+        if (location.hostname === "learnwithme.work") {
+            var ads = document.createElement("script");
+            ads.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320";
+            ads.setAttribute("crossorigin", "anonymous");
+            ads.async = true;
+            document.head.appendChild(ads);
+        }
+    </script>
+
+
+
+
+
     <title>Home - Learning Games</title>
     
 
@@ -290,10 +303,12 @@
             document.querySelector('.nav-links').classList.toggle('active');
         }
     </script>
+    
     <footer style="text-align: center; margin-top: 2rem; font-size: 0.9em;">
         <p>© 2025 LearnWithMe - All rights reserved</p>
         <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
     </footer>
+
 
 </body>
 </html>
