@@ -896,9 +896,106 @@
             updateStats();
         });
     </script>
+
+    <div id="cookie-banner" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    ">
+        <div style="
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: sans-serif;
+        ">
+            <p style="margin-bottom: 1rem;">
+            We use cookies to personalize ads and measure traffic.
+            <a href="/privacy.html" target="_blank">Learn more</a>
+            </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <button id="accept-cookies" style="padding: 0.6rem 1.2rem; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        Accept and learn 🍪
+                    </button>
+                    <button id="reject-cookies" style="padding: 0.6rem 1.2rem; background: #ccc; color: black; border: none; border-radius: 5px; cursor: pointer;">
+                        Reject
+                    </button>
+                </div>
+        </div>
+    </div>
+
+
+
     <footer style="text-align: center; margin-top: 2rem; font-size: 0.9em;">
         <p>© 2025 LearnWithMe - All rights reserved</p>
         <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
     </footer>
+    <script>
+        function loadGoogleAds() {
+            if (location.hostname === "learnwithme.work") {
+            var adsScript = document.createElement('script');
+            adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX";
+            adsScript.setAttribute("crossorigin", "anonymous");
+            adsScript.async = true;
+            document.head.appendChild(adsScript);
+            } else {
+            console.log("Google Ads not loaded (local test)");
+            }
+        }
+
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.style.display = 'flex'; // Mostra il banner come flex centrato
+            document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
+        }
+
+        function hideCookieBanner() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.body.style.overflow = ''; // Ripristina scroll
+        }
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const consent = getCookie("cookie_consent");
+
+            if (consent === "accepted") {
+            loadGoogleAds();
+            } else if (!consent) {
+            showCookieBanner();
+            }
+
+            document.getElementById("accept-cookies").addEventListener("click", function () {
+            setCookie("cookie_consent", "accepted", 365);
+            hideCookieBanner();
+            loadGoogleAds();
+            });
+
+            document.getElementById("reject-cookies").addEventListener("click", function () {
+            setCookie("cookie_consent", "rejected", 365);
+            hideCookieBanner();
+            });
+        });
+    </script>
 </body>
 </html>
