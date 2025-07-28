@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        if (location.hostname === "learnwithme.work") {
-            var ads = document.createElement("script");
-            ads.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624143381240320";
-            ads.setAttribute("crossorigin", "anonymous");
-            ads.async = true;
-            document.head.appendChild(ads);
-        }
-    </script>
-
 
     <title>Study Area</title>
     <style>
@@ -138,6 +128,15 @@
             margin-bottom: 24px;
         }
 
+        .study-instructions {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgb(37 99 235 / 0.1);
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
+
         /* Level Options */
         .level-options {
             display: flex;
@@ -242,6 +241,15 @@
                 margin-bottom: 6px;
             }
 
+            .study-instructions {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgb(37 99 235 / 0.1);
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            }
+
             .menu-icon {
                 display: block;
             }
@@ -301,6 +309,15 @@
             .study-subtitle {
                 font-size: 14px;
             }
+
+            .study-instructions {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgb(37 99 235 / 0.1);
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
         }
 
         /* Utilities */
@@ -350,20 +367,22 @@
     <div class="main-container">
         <div class="study-header">
             <h2 class="study-title">Irregular Verbs List</h2>
-            <p class="study-subtitle"><strong>Choose your Level and start your study session:</strong></p>
-            
+            <p class="study-subtitle"><strong>Explore and memorize all the main irregular verbs</strong></p>
+            <div class="study-instructions">
+            💡 Choose your level, then browse the complete list!
+            </div>
             <div class="level-options" id="level-options">
                 <label class="level-option">
                     <input type="radio" name="level" value="easy" onchange="filterVerbs()">
-                    Facile (A2) - Ket Exam
+                    Easy (A2) - Ket Exam
                 </label>
                 <label class="level-option selected">
                     <input type="radio" name="level" value="medium" class="selected" onchange="filterVerbs()" checked>
-                    Medio (B1) - Pet Exam
+                    Medium (B1) - Pet Exam
                 </label>
                 <label class="level-option">
                     <input type="radio" name="level" value="hard" onchange="filterVerbs()">
-                    Difficile (B2/C1) - First Exam
+                    Hard (B2/C1) - First Exam
                 </label>
             </div>
         </div>
@@ -620,38 +639,106 @@
             filterVerbs();
         });
     </script>
+    <!-- Cookie Banner - Sostituisci il div esistente con questo -->
     <div id="cookie-banner" style="
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(3px);
     ">
         <div style="
             background: #fff;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 12px;
             max-width: 500px;
+            margin: 1rem;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-family: sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            animation: slideIn 0.3s ease-out;
         ">
-            <p style="margin-bottom: 1rem;">
-            We use cookies to personalize ads and measure traffic.
-            <a href="/privacy.html" target="_blank">Learn more</a>
+            <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1.2em;">
+                🍪 Informativa Cookie
+            </h3>
+            <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.5;">
+                Utilizziamo i cookie per personalizzare gli annunci e misurare il traffico. 
+                I tuoi dati sono sicuri e rispettiamo la tua privacy.
+                <br>
+                <a href="/privacy.html" target="_blank" style="color: #2563eb; text-decoration: underline;">
+                    Scopri di più
+                </a>
             </p>
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button id="accept-cookies" style="padding: 0.6rem 1.2rem; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        Accept and learn 🍪
-                    </button>
-                    <button id="reject-cookies" style="padding: 0.6rem 1.2rem; background: #ccc; color: black; border: none; border-radius: 5px; cursor: pointer;">
-                        Reject
-                    </button>
-                </div>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <button id="accept-cookies" style="
+                    padding: 0.75rem 1.5rem; 
+                    background: linear-gradient(135deg, #10b981, #059669); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+                " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.4)'" 
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.3)'">
+                    ✓ Accetta e Impara
+                </button>
+                <button id="reject-cookies" style="
+                    padding: 0.75rem 1.5rem; 
+                    background: #6b7280; 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#4b5563'" onmouseout="this.style.background='#6b7280'">
+                    ✗ Rifiuta
+                </button>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.8em; color: #9ca3af;">
+                La tua scelta verrà ricordata per tutte le pagine del sito
+            </p>
         </div>
     </div>
+
+    <style>
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Responsive per il banner cookie */
+    @media (max-width: 480px) {
+        #cookie-banner > div {
+            margin: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        #cookie-banner h3 {
+            font-size: 1.1em;
+        }
+        
+        #cookie-banner button {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        
+        #cookie-banner > div > div {
+            flex-direction: column;
+        }
+    }
+    </style>
 
 
 
@@ -660,65 +747,284 @@
         <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
     </footer>
     <script>
-        function loadGoogleAds() {
-            if (location.hostname === "learnwithme.work") {
-            var adsScript = document.createElement('script');
-            adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX";
-            adsScript.setAttribute("crossorigin", "anonymous");
-            adsScript.async = true;
-            document.head.appendChild(adsScript);
-            } else {
-            console.log("Google Ads not loaded (local test)");
-            }
-        }
+        // Cookie Consent Manager - Codice da utilizzare su tutte le pagine
+        // Sostituisci il codice JavaScript esistente con questo
 
-        function showCookieBanner() {
-            const banner = document.getElementById('cookie-banner');
-            banner.style.display = 'flex'; // Mostra il banner come flex centrato
-            document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
-        }
+        // Configurazione
+        const COOKIE_CONFIG = {
+            consentCookieName: 'cookie_consent',
+            expirationDays: 365,
+            // Per localhost non impostiamo domain, per domini reali sì
+            domain: (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? null : window.location.hostname,
+            adsClientId: 'ca-pub-8624143381240320' // Il tuo client ID reale
+        };
 
-        function hideCookieBanner() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            document.body.style.overflow = ''; // Ripristina scroll
-        }
-
-        function setCookie(name, value, days) {
+        // Utility functions per gestire i cookie
+        function setCookie(name, value, days, domain = null) {
             let expires = "";
             if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
-            document.cookie = name + "=" + value + expires + "; path=/";
+            
+            // Per localhost usiamo un approccio più semplice
+            let cookieString = `${name}=${value}${expires}; path=/`;
+            
+            // Solo per domini reali (non localhost) aggiungiamo domain e SameSite
+            if (domain && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+                cookieString += `; domain=${domain}; SameSite=Lax`;
+            }
+            
+            document.cookie = cookieString;
+            console.log(`Cookie impostato: ${name}=${value} su ${window.location.hostname}`);
+            console.log(`Stringa cookie completa: ${cookieString}`);
         }
 
         function getCookie(name) {
             const value = "; " + document.cookie;
             const parts = value.split("; " + name + "=");
-            if (parts.length === 2) return parts.pop().split(";").shift();
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Cookie letto: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            console.log(`Cookie non trovato: ${name}`);
+            return null;
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const consent = getCookie("cookie_consent");
+        function deleteCookie(name, domain = null) {
+            // Prova più varianti per essere sicuri di eliminare il cookie
+            const paths = ['/', ''];
+            const domains = domain ? [domain, `.${domain}`, ''] : [''];
+            
+            paths.forEach(path => {
+                domains.forEach(dom => {
+                    let cookieString = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};`;
+                    if (dom && !window.location.hostname.includes('localhost')) {
+                        cookieString += ` domain=${dom};`;
+                    }
+                    document.cookie = cookieString;
+                });
+            });
+            
+            console.log(`Cookie eliminato: ${name}`);
+        }
 
-            if (consent === "accepted") {
-            loadGoogleAds();
-            } else if (!consent) {
-            showCookieBanner();
+        // Funzione per caricare Google Ads
+        function loadGoogleAds() {
+            // Verifica se gli ads sono già stati caricati
+            if (window.adsLoaded) {
+                console.log("Google Ads già caricati");
+                return;
             }
+            
+            // In localhost non carichiamo gli ads reali
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname.includes('file://')) {
+                console.log("Ambiente locale - simulo caricamento Google Ads");
+                window.adsLoaded = true;
+                return;
+            }
+            
+            if (location.hostname === "learnwithme.work") {
+                try {
+                    var adsScript = document.createElement('script');
+                    adsScript.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${COOKIE_CONFIG.adsClientId}`;
+                    adsScript.setAttribute("crossorigin", "anonymous");
+                    adsScript.async = true;
+                    adsScript.onload = function() {
+                        window.adsLoaded = true;
+                        console.log("Google Ads caricati con successo");
+                    };
+                    adsScript.onerror = function() {
+                        console.error("Errore nel caricamento di Google Ads");
+                    };
+                    document.head.appendChild(adsScript);
+                } catch (error) {
+                    console.error("Errore durante l'inizializzazione di Google Ads:", error);
+                }
+            } else {
+                console.log("Google Ads non caricati (ambiente di sviluppo)");
+            }
+        }
 
-            document.getElementById("accept-cookies").addEventListener("click", function () {
-            setCookie("cookie_consent", "accepted", 365);
+        // Funzioni per gestire il banner
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                console.log("Banner cookie mostrato");
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'none';
+                document.body.style.overflow = '';
+                console.log("Banner cookie nascosto");
+            }
+        }
+
+        // Fallback per localStorage in ambiente locale
+        function setLocalConsent(value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('local_cookie_consent', value);
+                console.log(`LocalStorage consent impostato: ${value}`);
+            }
+        }
+
+        function getLocalConsent() {
+            if (typeof(Storage) !== "undefined") {
+                const value = localStorage.getItem('local_cookie_consent');
+                console.log(`LocalStorage consent letto: ${value}`);
+                return value;
+            }
+            return null;
+        }
+
+        // Funzione principale per gestire il consenso
+        function handleCookieConsent() {
+            let consent = getCookie(COOKIE_CONFIG.consentCookieName);
+            
+            // Se siamo in localhost e non troviamo cookie, prova localStorage
+            if (!consent && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+                consent = getLocalConsent();
+                console.log("Localhost: usando localStorage per consenso:", consent);
+            }
+            
+            console.log("Stato consenso finale:", consent);
+            
+            if (consent === "accepted") {
+                console.log("Consenso già dato - caricamento Google Ads");
+                loadGoogleAds();
+                hideCookieBanner();
+            } else if (consent === "rejected") {
+                console.log("Consenso rifiutato - nessun ads");
+                hideCookieBanner();
+            } else {
+                console.log("Nessun consenso trovato - mostra banner");
+                showCookieBanner();
+            }
+        }
+
+        // Funzione per accettare i cookie
+        function acceptCookies() {
+            console.log("Utente ha accettato i cookie");
+            setCookie(COOKIE_CONFIG.consentCookieName, "accepted", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalConsent("accepted");
+            }
+            
             hideCookieBanner();
             loadGoogleAds();
-            });
+            
+            // Notifica altre schede aperte del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('cookie_consent_changed', Date.now().toString());
+            }
+        }
 
-            document.getElementById("reject-cookies").addEventListener("click", function () {
-            setCookie("cookie_consent", "rejected", 365);
+        // Funzione per rifiutare i cookie
+        function rejectCookies() {
+            console.log("Utente ha rifiutato i cookie");
+            setCookie(COOKIE_CONFIG.consentCookieName, "rejected", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalConsent("rejected");
+            }
+            
             hideCookieBanner();
-            });
-        });
+            
+            // Notifica altre schede aperte del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('cookie_consent_changed', Date.now().toString());
+            }
+        }
+
+        // Listener per cambiamenti di consenso in altre schede
+        function setupCrossTabSync() {
+            if (typeof(Storage) !== "undefined") {
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'cookie_consent_changed') {
+                        console.log("Consenso cookie cambiato in altra scheda - aggiorno");
+                        handleCookieConsent();
+                    }
+                });
+            }
+        }
+
+        // Inizializzazione quando il DOM è pronto
+        function initializeCookieConsent() {
+            console.log("Inizializzazione gestione cookie consent");
+            
+            // Gestisci il consenso esistente
+            handleCookieConsent();
+            
+            // Configura la sincronizzazione tra schede
+            setupCrossTabSync();
+            
+            // Aggiungi event listeners ai pulsanti
+            const acceptButton = document.getElementById("accept-cookies");
+            if (acceptButton) {
+                acceptButton.addEventListener("click", acceptCookies);
+            }
+            
+            const rejectButton = document.getElementById("reject-cookies");
+            if (rejectButton) {
+                rejectButton.addEventListener("click", rejectCookies);
+            }
+            
+            console.log("Gestione cookie consent inizializzata");
+        }
+
+        // Debug function - rimuovi in produzione
+        function debugCookies() {
+            console.log("=== DEBUG COOKIES ===");
+            console.log("Hostname:", location.hostname);
+            console.log("Tutti i cookie:", document.cookie);
+            console.log("Consenso corrente:", getCookie(COOKIE_CONFIG.consentCookieName));
+            console.log("Domain config:", COOKIE_CONFIG.domain);
+            console.log("Ads caricati:", window.adsLoaded || false);
+            console.log("localStorage consent:", localStorage.getItem('cookie_consent_changed'));
+            
+            // Test manuale cookie
+            console.log("--- TEST COOKIE ---");
+            setCookie('test_cookie', 'test_value', 1, COOKIE_CONFIG.domain);
+            console.log("Cookie test impostato:", getCookie('test_cookie'));
+            deleteCookie('test_cookie', COOKIE_CONFIG.domain);
+            console.log("Cookie test dopo eliminazione:", getCookie('test_cookie'));
+            console.log("====================");
+        }
+
+        // Funzione per resettare i cookie (utile per test)
+        function resetCookieConsent() {
+            deleteCookie(COOKIE_CONFIG.consentCookieName, COOKIE_CONFIG.domain);
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem('cookie_consent_changed');
+                localStorage.removeItem('local_cookie_consent'); // Rimuovi anche il fallback localStorage
+            }
+            window.adsLoaded = false;
+            console.log("Consenso cookie resettato completamente");
+            location.reload();
+        }
+
+        // Avvia l'inizializzazione quando il DOM è pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCookieConsent);
+        } else {
+            initializeCookieConsent();
+        }
+
+        // Rendi disponibili le funzioni debug globalmente (rimuovi in produzione)
+        window.debugCookies = debugCookies;
+        window.resetCookieConsent = resetCookieConsent;
     </script>
+
+
 </body>
 </html>

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
     <script>
         if (location.hostname === "learnwithme.work") {
             var ads = document.createElement("script");
@@ -13,11 +12,6 @@
             document.head.appendChild(ads);
         }
     </script>
-
-
-
-
-
     <title>Irregular Verbs Trainer</title>
     <style>
         /* Reset e variabili CSS */
@@ -58,7 +52,7 @@
         /* Navigation */
         nav {
             background: var(--primary-color);
-            
+           
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -113,6 +107,41 @@
             margin: 0 auto;
             padding: 20px 16px;
         }
+
+/* Game Header */
+        .game-header {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .game-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .game-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .game-instructions {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: rgb(37 99 235 / 0.1);
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
+
 
         /* Settings Panel */
         .settings-panel {
@@ -389,7 +418,7 @@
         }
 
         .verb-input.revealed {
-            background: rgb(100 116 139 / 0.1);
+            background: #de8d2a;
             color: var(--text-secondary);
         }
 
@@ -498,7 +527,7 @@
                 padding: 5px;
             }
             .btn-give-up, .btn-pause, .btn-check {
-                
+               
                 font-size: 12px;
                 padding: 3px;
                 /* center horizontally */
@@ -528,7 +557,7 @@
                 padding: 3px;
                 font-size: 12px;
             }
-            
+           
 
             .test-table th,
             .test-table td {
@@ -548,17 +577,17 @@
             .nav-item span {
                 font-size: 11px;
             }
-            
+           
             .nav-links {
-            
+           
                 padding: 0 0;
             }
-            
+           
             .main-actions {
                 flex-wrap: wrap;
                 gap: 4px;
             }
-            
+           
             .main-actions .btn-control {
                 flex: 1 1 calc(50% - 2px);
                 min-width: 0;
@@ -643,42 +672,49 @@
     </nav>
 
     <div class="main-container">
+        <div class="game-header" id="game-header">
+        <h2 class="game-title">Irregular Verbs Test</h2>
+        <p class="game-subtitle">Fill in the gaps and test your competences</p>
+        <div class="game-instructions">
+        💡 Choose your settings, then complete the missing verb forms. Good luck!
+        </div>
+    </div>
         <!-- Settings Panel -->
         <div id="settings-panel" class="settings-panel">
-            <h2 class="settings-title">⚙️ Impostazioni Test</h2>
-            
+            <h2 class="settings-title">⚙️ Test Settings</h2>
+           
             <div class="form-group">
-                <label for="difficulty" class="form-label">🎯 Livello di difficoltà</label>
+                <label for="difficulty" class="form-label">🎯 Difficulty Level</label>
                 <select id="difficulty" class="form-select">
-                    <option value="easy">Facile (A2) - Ket Exam</option>
-                    <option value="medium">Medio (B1) - Pet Exam</option>
-                    <option value="hard">Difficile (B2/C1) - First Exam</option>
+                    <option value="easy">Easy (A2) - Ket Exam</option>
+                    <option value="medium">Medium (B1) - Pet Exam</option>
+                    <option value="hard">Hard (B2/C1) - First Exam</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="time" class="form-label">⏰ Tempo a disposizione</label>
+                <label for="time" class="form-label">⏰ Test Duration</label>
                 <select id="time" class="form-select">
-                    <option value="1">1 minuto</option>
-                    <option value="15">15 minuti</option>
-                    <option value="30">30 minuti</option>
-                    <option value="60">60 minuti</option>
+                    <option value="1">1 minute</option>
+                    <option value="15">15 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="60">60 minutes</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="numberOfVerbs" class="form-label">📝 Numero di verbi</label>
+                <label for="numberOfVerbs" class="form-label">📝 Number of Verbs</label>
                 <select id="numberOfVerbs" class="form-select">
-                    <option value="5">5 verbi</option>
-                    <option value="10">10 verbi</option>
-                    <option value="15">15 verbi</option>
-                    <option value="20">20 verbi</option>
-                    <option value="50">50 verbi</option>
+                    <option value="5">5 verbs</option>
+                    <option value="10">10 verbs</option>
+                    <option value="15">15 verbs</option>
+                    <option value="20">20 verbs</option>
+                    <option value="50">50 verbs</option>
                 </select>
             </div>
 
             <button onclick="applySettings()" class="btn-primary">
-                🚀 Inizia il Test
+                🚀 Start the Test
             </button>
         </div>
 
@@ -689,13 +725,13 @@
                 <div id="score" class="score">Score: 0/10</div>
                 <div class="main-actions">
                     <button id="toggle-timer" onclick="toggleTimer()" class="btn-control btn-pause">
-                        ⏸️ Pausa
+                        ⏸️ Pause
                     </button>
                     <button id="check-answers" onclick="checkAnswers()" class="btn-control btn-check">
-                        ✅ Controlla
+                        ✅ Check
                     </button>
                     <button id="give-up" onclick="giveUp()" class="btn-control btn-give-up">
-                        😓 Arrendi
+                        😓 Give Up
                     </button>
                     <!-- Add these buttons inside the control-row div, after the existing buttons -->
                     <button id="restart-level" onclick="restartLevel()" class="btn-control hidden">
@@ -734,154 +770,157 @@
         let maxTime;
 
         const verbs = [
-            { Translation: "svegliarsi (stato)", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
-			{ Translation: "essere", "Base Form": "be", "Simple Past": "was - were", "Past Participle": "been" },
-			{ Translation: "sopportare / sostenere", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
-			{ Translation: "battere / sconfiggere", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten" },
-			{ Translation: "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become" },
-			{ Translation: "iniziare / cominciare", "Base Form": "begin", "Simple Past": "began", "Past Participle": "begun" },
-			{ Translation: "piegare", "Base Form": "bend", "Simple Past": "bent", "Past Participle": "bent" },
-			{ Translation: "scommettere", "Base Form": "bet", "Simple Past": "bet", "Past Participle": "bet" },
-			{ Translation: "fare un’offerta", "Base Form": "bid", "Simple Past": "bid", "Past Participle": "bid" },
-			{ Translation: "legare / bendare", "Base Form": "bind", "Simple Past": "bound", "Past Participle": "bound" },
-			{ Translation: "mordere", "Base Form": "bite", "Simple Past": "bit", "Past Participle": "bitten" },
-			{ Translation: "sanguinare", "Base Form": "bleed", "Simple Past": "bled", "Past Participle": "bled" },
-			{ Translation: "soffiare", "Base Form": "blow", "Simple Past": "blew", "Past Participle": "blown" },
-			{ Translation: "rompere", "Base Form": "break", "Simple Past": "broke", "Past Participle": "broken" },
-			{ Translation: "allevare", "Base Form": "breed", "Simple Past": "bred", "Past Participle": "bred" },
-			{ Translation: "portare", "Base Form": "bring", "Simple Past": "brought", "Past Participle": "brought" },
-			{ Translation: "trasmettere", "Base Form": "broadcast", "Simple Past": "broadcast", "Past Participle": "broadcast" },
-			{ Translation: "costruire", "Base Form": "build", "Simple Past": "built", "Past Participle": "built" },
-			{ Translation: "bruciare", "Base Form": "burn", "Simple Past": "burned / burnt", "Past Participle": "burned / burnt" },
-			{ Translation: "esplodere", "Base Form": "burst", "Simple Past": "burst", "Past Participle": "burst" },
-			{ Translation: "comprare", "Base Form": "buy", "Simple Past": "bought", "Past Participle": "bought" },
-			{ Translation: "gettare", "Base Form": "cast", "Simple Past": "cast", "Past Participle": "cast" },
-			{ Translation: "prendere / afferrare", "Base Form": "catch", "Simple Past": "caught", "Past Participle": "caught" },
-			{ Translation: "scegliere", "Base Form": "choose", "Simple Past": "chose", "Past Participle": "chosen" },
-			{ Translation: "attaccarsi", "Base Form": "cling", "Simple Past": "clung", "Past Participle": "clung" },
-			{ Translation: "venire", "Base Form": "come", "Simple Past": "came", "Past Participle": "come" },
-			{ Translation: "costare", "Base Form": "cost", "Simple Past": "cost", "Past Participle": "cost" },
-			{ Translation: "strisciare", "Base Form": "creep", "Simple Past": "crept", "Past Participle": "crept" },
-			{ Translation: "tagliare", "Base Form": "cut", "Simple Past": "cut", "Past Participle": "cut" },
-			{ Translation: "distribuire le carte", "Base Form": "deal", "Simple Past": "dealt", "Past Participle": "dealt" },
-			{ Translation: "scavare", "Base Form": "dig", "Simple Past": "dug", "Past Participle": "dug" },
-			{ Translation: "tuffarsi / immergersi", "Base Form": "dive", "Simple Past": "dived / dove", "Past Participle": "dived" },
-			{ Translation: "fare/ agire", "Base Form": "do", "Simple Past": "did", "Past Participle": "done" },
-			{ Translation: "disegnare", "Base Form": "draw", "Simple Past": "drew", "Past Participle": "drawn" },
-			{ Translation: "sognare", "Base Form": "dream", "Simple Past": "dreamed / dreamt", "Past Participle": "dreamed / dreamt" },
-			{ Translation: "bere", "Base Form": "drink", "Simple Past": "drank", "Past Participle": "drunk" },
-			{ Translation: "guidare", "Base Form": "drive", "Simple Past": "drove", "Past Participle": "driven" },
-			{ Translation: "mangiare", "Base Form": "eat", "Simple Past": "ate", "Past Participle": "eaten" },
-			{ Translation: "cadere", "Base Form": "fall", "Simple Past": "fell", "Past Participle": "fallen" },
-			{ Translation: "nutrire", "Base Form": "feed", "Simple Past": "fed", "Past Participle": "fed" },
-			{ Translation: "sentire", "Base Form": "feel", "Simple Past": "felt", "Past Participle": "felt" },
-			{ Translation: "combattere / lottare", "Base Form": "fight", "Simple Past": "fought", "Past Participle": "fought" },
-			{ Translation: "trovare / scoprire", "Base Form": "find", "Simple Past": "found", "Past Participle": "found" },
-			{ Translation: "calzare / addattarsi", "Base Form": "fit", "Simple Past": "fitted / fit", "Past Participle": "fitted / fit" },
-			{ Translation: "fuggire", "Base Form": "flee", "Simple Past": "fled", "Past Participle": "fled" },
-			{ Translation: "scagliare / lanciare", "Base Form": "fling", "Simple Past": "flung", "Past Participle": "flung" },
-			{ Translation: "volare", "Base Form": "fly", "Simple Past": "flew", "Past Participle": "flown" },
-			{ Translation: "proibire / vietare", "Base Form": "forbid", "Simple Past": "forbade", "Past Participle": "forbidden" },
-			{ Translation: "dimenticare", "Base Form": "forget", "Simple Past": "forgot", "Past Participle": "forgotten" },
-			{ Translation: "perdonare", "Base Form": "forgive", "Simple Past": "forgave", "Past Participle": "forgiven" },
-			{ Translation: "abbandonare", "Base Form": "forsake", "Simple Past": "forsook", "Past Participle": "forsaken" },
-			{ Translation: "congelare / gelare", "Base Form": "freeze", "Simple Past": "froze", "Past Participle": "frozen" },
-			{ Translation: "ricevere / ottenere", "Base Form": "get", "Simple Past": "got", "Past Participle": "got / gotten" },
-			{ Translation: "dare", "Base Form": "give", "Simple Past": "gave", "Past Participle": "given" },
-			{ Translation: "andare", "Base Form": "go", "Simple Past": "went", "Past Participle": "gone" },
-			{ Translation: "macinare", "Base Form": "grind", "Simple Past": "ground", "Past Participle": "ground" },
-			{ Translation: "crescere / coltivare", "Base Form": "grow", "Simple Past": "grew", "Past Participle": "grown" },
-			{ Translation: "appendere", "Base Form": "hang", "Simple Past": "hung", "Past Participle": "hung" },
-			{ Translation: "sentire / udire", "Base Form": "hear", "Simple Past": "heard", "Past Participle": "heard" },
-			{ Translation: "nascondere", "Base Form": "hide", "Simple Past": "hid", "Past Participle": "hidden" },
-			{ Translation: "colpire", "Base Form": "hit", "Simple Past": "hit", "Past Participle": "hit" },
-			{ Translation: "stringere / tenere", "Base Form": "hold", "Simple Past": "held", "Past Participle": "held" },
-			{ Translation: "far male / ferire", "Base Form": "hurt", "Simple Past": "hurt", "Past Participle": "hurt" },
-			{ Translation: "tenere / mantenere", "Base Form": "keep", "Simple Past": "kept", "Past Participle": "kept" },
-			{ Translation: "inginocchiarsi", "Base Form": "kneel", "Simple Past": "knelt / kneeled", "Past Participle": "knelt / kneeled" },
-			{ Translation: "sapere / conoscere", "Base Form": "know", "Simple Past": "knew", "Past Participle": "known" },
-			{ Translation: "stendere", "Base Form": "lay", "Simple Past": "laid", "Past Participle": "laid" },
-			{ Translation: "guidare / condurre", "Base Form": "lead", "Simple Past": "led", "Past Participle": "led" },
-			{ Translation: "imparare", "Base Form": "learn", "Simple Past": "learned / learnt", "Past Participle": "learned / learnt" },
-			{ Translation: "lasciare / partire", "Base Form": "leave", "Simple Past": "left", "Past Participle": "left" },
-			{ Translation: "prestare", "Base Form": "lend", "Simple Past": "lent", "Past Participle": "lent" },
-			{ Translation: "permettere / lasciare", "Base Form": "let", "Simple Past": "let", "Past Participle": "let" },
-			{ Translation: "essere sdraiato", "Base Form": "lie", "Simple Past": "lay", "Past Participle": "lain" },
-			{ Translation: "accendere / illuminare", "Base Form": "light", "Simple Past": "lit / lighted", "Past Participle": "lit / lighted" },
-			{ Translation: "perdere", "Base Form": "lose", "Simple Past": "lost", "Past Participle": "lost" },
-			{ Translation: "fare /fabbricare", "Base Form": "make", "Simple Past": "made", "Past Participle": "made" },
-			{ Translation: "significare / intendere", "Base Form": "mean", "Simple Past": "meant", "Past Participle": "meant" },
-			{ Translation: "incontrare / incontrarsi", "Base Form": "meet", "Simple Past": "met", "Past Participle": "met" },
-			{ Translation: "sbagliare a scrivere", "Base Form": "misspell", "Simple Past": "misspelt / misspelled", "Past Participle": "misspelt / misspelled" },
-			{ Translation: "sbagliare", "Base Form": "mistake", "Simple Past": "mistook", "Past Participle": "mistaken" },
-			{ Translation: "dominare", "Base Form": "overcome", "Simple Past": "overcame", "Past Participle": "overcome" },
-			{ Translation: "sorpassare", "Base Form": "overtake", "Simple Past": "overtook", "Past Participle": "overtaken" },
-			{ Translation: "pagare", "Base Form": "pay", "Simple Past": "paid", "Past Participle": "paid" },
-			{ Translation: "dichiararsi", "Base Form": "plead", "Simple Past": "pleaded / pled", "Past Participle": "pleaded / pled" },
-			{ Translation: "provare", "Base Form": "prove", "Simple Past": "proved", "Past Participle": "proved / proven" },
-			{ Translation: "mettere", "Base Form": "put", "Simple Past": "put", "Past Participle": "put" },
-			{ Translation: "smettere / abbandonare", "Base Form": "quit", "Simple Past": "quit", "Past Participle": "quit" },
-			{ Translation: "leggere", "Base Form": "read", "Simple Past": "read", "Past Participle": "read" },
-			{ Translation: "cavalcare", "Base Form": "ride", "Simple Past": "rode", "Past Participle": "ridden" },
-			{ Translation: "squillare", "Base Form": "ring", "Simple Past": "rang", "Past Participle": "rung" },
-			{ Translation: "aumentare / sorgere", "Base Form": "rise", "Simple Past": "rose", "Past Participle": "risen" },
-			{ Translation: "correre", "Base Form": "run", "Simple Past": "ran", "Past Participle": "run" },
-			{ Translation: "dire", "Base Form": "say", "Simple Past": "said", "Past Participle": "said" },
-			{ Translation: "vedere", "Base Form": "see", "Simple Past": "saw", "Past Participle": "seen" },
-			{ Translation: "cercare", "Base Form": "seek", "Simple Past": "sought", "Past Participle": "sought" },
-			{ Translation: "vendere", "Base Form": "sell", "Simple Past": "sold", "Past Participle": "sold" },
-			{ Translation: "mandare / spedire", "Base Form": "send", "Simple Past": "sent", "Past Participle": "sent" },
-			{ Translation: "impostare / mettere", "Base Form": "set", "Simple Past": "set", "Past Participle": "set" },
-			{ Translation: "cucire", "Base Form": "sew", "Simple Past": "sewed", "Past Participle": "sewed / sewn" },
-			{ Translation: "agitare / scuotere", "Base Form": "shake", "Simple Past": "shook", "Past Participle": "shaken" },
-			{ Translation: "brillare / risplendere", "Base Form": "shine", "Simple Past": "shone", "Past Participle": "shone" },
-			{ Translation: "ferrare", "Base Form": "shoe", "Simple Past": "shod", "Past Participle": "shod" },
-			{ Translation: "sparare", "Base Form": "shoot", "Simple Past": "shot", "Past Participle": "shot" },
-			{ Translation: "mostrare / esibire", "Base Form": "show", "Simple Past": "showed", "Past Participle": "shown" },
-			{ Translation: "restringersi", "Base Form": "shrink", "Simple Past": "shrank", "Past Participle": "shrunk" },
-			{ Translation: "chiudere", "Base Form": "shut", "Simple Past": "shut", "Past Participle": "shut" },
-			{ Translation: "cantare", "Base Form": "sing", "Simple Past": "sang", "Past Participle": "sung" },
-			{ Translation: "affondare", "Base Form": "sink", "Simple Past": "sank", "Past Participle": "sunk" },
-			{ Translation: "sedersi / sedere", "Base Form": "sit", "Simple Past": "sat", "Past Participle": "sat" },
-			{ Translation: "dormire", "Base Form": "sleep", "Simple Past": "slept", "Past Participle": "slept" },
-			{ Translation: "odorare / annusare", "Base Form": "smell", "Simple Past": "smelled / smelt", "Past Participle": "smelled / smelt" },
-			{ Translation: "scorrere / scivolare", "Base Form": "slide", "Simple Past": "slid", "Past Participle": "slid" },
-			{ Translation: "parlare", "Base Form": "speak", "Simple Past": "spoke", "Past Participle": "spoken" },
-			{ Translation: "andare veloce / accelerare", "Base Form": "speed", "Simple Past": "sped", "Past Participle": "sped" },
-			{ Translation: "sillabare", "Base Form": "spell", "Simple Past": "spelled / spelt", "Past Participle": "spelled / spelt" },
-			{ Translation: "spendere", "Base Form": "spend", "Simple Past": "spent", "Past Participle": "spent" },
-			{ Translation: "versare / rovesciare", "Base Form": "spill", "Simple Past": "spilt / spilled", "Past Participle": "spilt / spilled" },
-			{ Translation: "sputare", "Base Form": "spit", "Simple Past": "spat", "Past Participle": "spat" },
-			{ Translation: "diffondere", "Base Form": "spread", "Simple Past": "spread", "Past Participle": "spread" },
-			{ Translation: "saltare", "Base Form": "spring", "Simple Past": "sprang", "Past Participle": "sprung" },
-			{ Translation: "alzarsi / stare in piedi", "Base Form": "stand", "Simple Past": "stood", "Past Participle": "stood" },
-			{ Translation: "rubare", "Base Form": "steal", "Simple Past": "stole", "Past Participle": "stolen" },
-			{ Translation: "incollare", "Base Form": "stick", "Simple Past": "stuck", "Past Participle": "stuck" },
-			{ Translation: "pungere", "Base Form": "sting", "Simple Past": "stung", "Past Participle": "stung" },
-			{ Translation: "puzzare", "Base Form": "stink", "Simple Past": "stank", "Past Participle": "stunk" },
-			{ Translation: "colpire / battere", "Base Form": "strike", "Simple Past": "struck", "Past Participle": "struck" },
-			{ Translation: "giurare", "Base Form": "swear", "Simple Past": "swore", "Past Participle": "sworn" },
-			{ Translation: "nuotare", "Base Form": "swim", "Simple Past": "swam", "Past Participle": "swum" },
-			{ Translation: "oscillare", "Base Form": "swing", "Simple Past": "swang", "Past Participle": "swung" },
-			{ Translation: "prendere", "Base Form": "take", "Simple Past": "took", "Past Participle": "taken" },
-			{ Translation: "insegnare", "Base Form": "teach", "Simple Past": "taught", "Past Participle": "taught" },
-			{ Translation: "strappare", "Base Form": "tear", "Simple Past": "tore", "Past Participle": "torn" },
-			{ Translation: "raccontare", "Base Form": "tell", "Simple Past": "told", "Past Participle": "told" },
-			{ Translation: "pensare", "Base Form": "think", "Simple Past": "thought", "Past Participle": "thought" },
-			{ Translation: "tirare / lanciare", "Base Form": "throw", "Simple Past": "threw", "Past Participle": "thrown" },
-			{ Translation: "spingere", "Base Form": "thrust", "Simple Past": "thrust", "Past Participle": "thrust" },
-			{ Translation: "calpestare", "Base Form": "tread", "Simple Past": "trod", "Past Participle": "trodden" },
-			{ Translation: "capire", "Base Form": "understand", "Simple Past": "understood", "Past Participle": "understood" },
-			{ Translation: "turbare / arrabbiare", "Base Form": "upset", "Simple Past": "upset", "Past Participle": "upset" },
-			{ Translation: "svegliare / svegliarsi", "Base Form": "wake", "Simple Past": "woke", "Past Participle": "woken" },
-			{ Translation: "indossare", "Base Form": "wear", "Simple Past": "wore", "Past Participle": "worn" },
-			{ Translation: "intrecciare", "Base Form": "weave", "Simple Past": "wove", "Past Participle": "woven" },
-			{ Translation: "piangere", "Base Form": "weep", "Simple Past": "wept", "Past Participle": "wept" },
-			{ Translation: "vincere", "Base Form": "win", "Simple Past": "won", "Past Participle": "won" },
-			{ Translation: "avvolgere", "Base Form": "wind", "Simple Past": "wound", "Past Participle": "wound" },
-			{ Translation: "torcere/ strizzare", "Base Form": "wring", "Simple Past": "wrung", "Past Participle": "wrung" },
-			{ Translation: "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
-        ];
+ { "Translation": "svegliarsi", "Base Form": "awake", "Simple Past": "awoke", "Past Participle": "awoken" },
+ { "Translation": "essere", "Base Form": "be", "Simple Past": "was - were", "Past Participle": "been" },
+ { "Translation": "sopportare / sostenere", "Base Form": "bear", "Simple Past": "bore", "Past Participle": "borne" },
+ { "Translation": "battere / sconfiggere", "Base Form": "beat", "Simple Past": "beat", "Past Participle": "beaten" },
+ { "Translation": "diventare", "Base Form": "become", "Simple Past": "became", "Past Participle": "become" },
+ { "Translation": "iniziare / cominciare", "Base Form": "begin", "Simple Past": "began", "Past Participle": "begun" },
+ { "Translation": "piegare", "Base Form": "bend", "Simple Past": "bent", "Past Participle": "bent" },
+ { "Translation": "scommettere", "Base Form": "bet", "Simple Past": "bet", "Past Participle": "bet" },
+ { "Translation": "fare un'offerta", "Base Form": "bid", "Simple Past": "bid", "Past Participle": "bid" },
+ { "Translation": "legare / bendare", "Base Form": "bind", "Simple Past": "bound", "Past Participle": "bound" },
+ { "Translation": "mordere", "Base Form": "bite", "Simple Past": "bit", "Past Participle": "bitten" },
+ { "Translation": "sanguinare", "Base Form": "bleed", "Simple Past": "bled", "Past Participle": "bled" },
+ { "Translation": "soffiare", "Base Form": "blow", "Simple Past": "blew", "Past Participle": "blown" },
+ { "Translation": "rompere", "Base Form": "break", "Simple Past": "broke", "Past Participle": "broken" },
+ { "Translation": "allevare", "Base Form": "breed", "Simple Past": "bred", "Past Participle": "bred" },
+ { "Translation": "portare", "Base Form": "bring", "Simple Past": "brought", "Past Participle": "brought" },
+ { "Translation": "trasmettere", "Base Form": "broadcast", "Simple Past": "broadcast", "Past Participle": "broadcast" },
+ { "Translation": "costruire", "Base Form": "build", "Simple Past": "built", "Past Participle": "built" },
+ { "Translation": "bruciare", "Base Form": "burn", "Simple Past": "burned / burnt", "Past Participle": "burned / burnt" },
+ { "Translation": "esplodere", "Base Form": "burst", "Simple Past": "burst", "Past Participle": "burst" },
+ { "Translation": "comprare", "Base Form": "buy", "Simple Past": "bought", "Past Participle": "bought" },
+ { "Translation": "gettare", "Base Form": "cast", "Simple Past": "cast", "Past Participle": "cast" },
+ { "Translation": "prendere / afferrare", "Base Form": "catch", "Simple Past": "caught", "Past Participle": "caught" },
+ { "Translation": "scegliere", "Base Form": "choose", "Simple Past": "chose", "Past Participle": "chosen" },
+ { "Translation": "attaccarsi", "Base Form": "cling", "Simple Past": "clung", "Past Participle": "clung" },
+ { "Translation": "venire", "Base Form": "come", "Simple Past": "came", "Past Participle": "come" },
+ { "Translation": "costare", "Base Form": "cost", "Simple Past": "cost", "Past Participle": "cost" },
+ { "Translation": "strisciare", "Base Form": "creep", "Simple Past": "crept", "Past Participle": "crept" },
+ { "Translation": "tagliare", "Base Form": "cut", "Simple Past": "cut", "Past Participle": "cut" },
+ { "Translation": "distribuire le carte", "Base Form": "deal", "Simple Past": "dealt", "Past Participle": "dealt" },
+ { "Translation": "scavare", "Base Form": "dig", "Simple Past": "dug", "Past Participle": "dug" },
+ { "Translation": "tuffarsi / immergersi", "Base Form": "dive", "Simple Past": "dived / dove", "Past Participle": "dived" },
+ { "Translation": "fare/ agire", "Base Form": "do", "Simple Past": "did", "Past Participle": "done" },
+ { "Translation": "disegnare", "Base Form": "draw", "Simple Past": "drew", "Past Participle": "drawn" },
+ { "Translation": "sognare", "Base Form": "dream", "Simple Past": "dreamed / dreamt", "Past Participle": "dreamed / dreamt" },
+ { "Translation": "bere", "Base Form": "drink", "Simple Past": "drank", "Past Participle": "drunk" },
+ { "Translation": "guidare", "Base Form": "drive", "Simple Past": "drove", "Past Participle": "driven" },
+ { "Translation": "mangiare", "Base Form": "eat", "Simple Past": "ate", "Past Participle": "eaten" },
+ { "Translation": "cadere", "Base Form": "fall", "Simple Past": "fell", "Past Participle": "fallen" },
+ { "Translation": "nutrire", "Base Form": "feed", "Simple Past": "fed", "Past Participle": "fed" },
+ { "Translation": "sentire", "Base Form": "feel", "Simple Past": "felt", "Past Participle": "felt" },
+ { "Translation": "combattere / lottare", "Base Form": "fight", "Simple Past": "fought", "Past Participle": "fought" },
+ { "Translation": "trovare / scoprire", "Base Form": "find", "Simple Past": "found", "Past Participle": "found" },
+ { "Translation": "calzare / addattarsi", "Base Form": "fit", "Simple Past": "fitted / fit", "Past Participle": "fitted / fit" },
+ { "Translation": "fuggire", "Base Form": "flee", "Simple Past": "fled", "Past Participle": "fled" },
+ { "Translation": "scagliare / lanciare", "Base Form": "fling", "Simple Past": "flung", "Past Participle": "flung" },
+ { "Translation": "volare", "Base Form": "fly", "Simple Past": "flew", "Past Participle": "flown" },
+ { "Translation": "proibire / vietare", "Base Form": "forbid", "Simple Past": "forbade", "Past Participle": "forbidden" },
+ { "Translation": "dimenticare", "Base Form": "forget", "Simple Past": "forgot", "Past Participle": "forgotten" },
+ { "Translation": "perdonare", "Base Form": "forgive", "Simple Past": "forgave", "Past Participle": "forgiven" },
+ { "Translation": "abbandonare", "Base Form": "forsake", "Simple Past": "forsook", "Past Participle": "forsaken" },
+ { "Translation": "congelare / gelare", "Base Form": "freeze", "Simple Past": "froze", "Past Participle": "frozen" },
+ { "Translation": "ricevere / ottenere", "Base Form": "get", "Simple Past": "got", "Past Participle": "got / gotten" },
+ { "Translation": "dare", "Base Form": "give", "Simple Past": "gave", "Past Participle": "given" },
+ { "Translation": "andare", "Base Form": "go", "Simple Past": "went", "Past Participle": "gone" },
+ { "Translation": "macinare", "Base Form": "grind", "Simple Past": "ground", "Past Participle": "ground" },
+ { "Translation": "crescere / coltivare", "Base Form": "grow", "Simple Past": "grew", "Past Participle": "grown" },
+ { "Translation": "avere", "Base Form": "have", "Simple Past": "had", "Past Participle": "had" },
+ { "Translation": "appendere", "Base Form": "hang", "Simple Past": "hung", "Past Participle": "hung" },
+ { "Translation": "sentire / udire", "Base Form": "hear", "Simple Past": "heard", "Past Participle": "heard" },
+ { "Translation": "nascondere", "Base Form": "hide", "Simple Past": "hid", "Past Participle": "hidden" },
+ { "Translation": "colpire", "Base Form": "hit", "Simple Past": "hit", "Past Participle": "hit" },
+ { "Translation": "stringere / tenere", "Base Form": "hold", "Simple Past": "held", "Past Participle": "held" },
+ { "Translation": "far male / ferire", "Base Form": "hurt", "Simple Past": "hurt", "Past Participle": "hurt" },
+ { "Translation": "tenere / mantenere", "Base Form": "keep", "Simple Past": "kept", "Past Participle": "kept" },
+ { "Translation": "inginocchiarsi", "Base Form": "kneel", "Simple Past": "knelt / kneeled", "Past Participle": "knelt / kneeled" },
+ { "Translation": "sapere / conoscere", "Base Form": "know", "Simple Past": "knew", "Past Participle": "known" },
+ { "Translation": "stendere", "Base Form": "lay", "Simple Past": "laid", "Past Participle": "laid" },
+ { "Translation": "guidare / condurre", "Base Form": "lead", "Simple Past": "led", "Past Participle": "led" },
+ { "Translation": "imparare", "Base Form": "learn", "Simple Past": "learned / learnt", "Past Participle": "learned / learnt" },
+ { "Translation": "lasciare / partire", "Base Form": "leave", "Simple Past": "left", "Past Participle": "left" },
+ { "Translation": "prestare", "Base Form": "lend", "Simple Past": "lent", "Past Participle": "lent" },
+ { "Translation": "permettere / lasciare", "Base Form": "let", "Simple Past": "let", "Past Participle": "let" },
+ { "Translation": "essere sdraiato", "Base Form": "lie", "Simple Past": "lay", "Past Participle": "lain" },
+ { "Translation": "accendere / illuminare", "Base Form": "light", "Simple Past": "lit / lighted", "Past Participle": "lit / lighted" },
+ { "Translation": "perdere", "Base Form": "lose", "Simple Past": "lost", "Past Participle": "lost" },
+ { "Translation": "fare /fabbricare", "Base Form": "make", "Simple Past": "made", "Past Participle": "made" },
+ { "Translation": "significare / intendere", "Base Form": "mean", "Simple Past": "meant", "Past Participle": "meant" },
+ { "Translation": "incontrare / incontrarsi", "Base Form": "meet", "Simple Past": "met", "Past Participle": "met" },
+ { "Translation": "sbagliare a scrivere", "Base Form": "misspell", "Simple Past": "misspelt / misspelled", "Past Participle": "misspelt / misspelled" },
+ { "Translation": "sbagliare", "Base Form": "mistake", "Simple Past": "mistook", "Past Participle": "mistaken" },
+ { "Translation": "dominare", "Base Form": "overcome", "Simple Past": "overcame", "Past Participle": "overcome" },
+ { "Translation": "sorpassare", "Base Form": "overtake", "Simple Past": "overtook", "Past Participle": "overtaken" },
+ { "Translation": "pagare", "Base Form": "pay", "Simple Past": "paid", "Past Participle": "paid" },
+ { "Translation": "dichiararsi", "Base Form": "plead", "Simple Past": "pleaded / pled", "Past Participle": "pleaded / pled" },
+ { "Translation": "provare", "Base Form": "prove", "Simple Past": "proved", "Past Participle": "proved / proven" },
+ { "Translation": "mettere", "Base Form": "put", "Simple Past": "put", "Past Participle": "put" },
+ { "Translation": "smettere / abbandonare", "Base Form": "quit", "Simple Past": "quit", "Past Participle": "quit" },
+ { "Translation": "leggere", "Base Form": "read", "Simple Past": "read", "Past Participle": "read" },
+ { "Translation": "cavalcare", "Base Form": "ride", "Simple Past": "rode", "Past Participle": "ridden" },
+ { "Translation": "squillare", "Base Form": "ring", "Simple Past": "rang", "Past Participle": "rung" },
+ { "Translation": "aumentare / sorgere", "Base Form": "rise", "Simple Past": "rose", "Past Participle": "risen" },
+ { "Translation": "correre", "Base Form": "run", "Simple Past": "ran", "Past Participle": "run" },
+ { "Translation": "dire", "Base Form": "say", "Simple Past": "said", "Past Participle": "said" },
+ { "Translation": "vedere", "Base Form": "see", "Simple Past": "saw", "Past Participle": "seen" },
+ { "Translation": "cercare", "Base Form": "seek", "Simple Past": "sought", "Past Participle": "sought" },
+ { "Translation": "vendere", "Base Form": "sell", "Simple Past": "sold", "Past Participle": "sold" },
+ { "Translation": "mandare / spedire", "Base Form": "send", "Simple Past": "sent", "Past Participle": "sent" },
+ { "Translation": "impostare / mettere", "Base Form": "set", "Simple Past": "set", "Past Participle": "set" },
+ { "Translation": "cucire", "Base Form": "sew", "Simple Past": "sewed", "Past Participle": "sewed / sewn" },
+ { "Translation": "agitare / scuotere", "Base Form": "shake", "Simple Past": "shook", "Past Participle": "shaken" },
+ { "Translation": "brillare / risplendere", "Base Form": "shine", "Simple Past": "shone", "Past Participle": "shone" },
+ { "Translation": "ferrare", "Base Form": "shoe", "Simple Past": "shod", "Past Participle": "shod" },
+ { "Translation": "sparare", "Base Form": "shoot", "Simple Past": "shot", "Past Participle": "shot" },
+ { "Translation": "mostrare / esibire", "Base Form": "show", "Simple Past": "showed", "Past Participle": "shown" },
+ { "Translation": "restringersi", "Base Form": "shrink", "Simple Past": "shrank", "Past Participle": "shrunk" },
+ { "Translation": "chiudere", "Base Form": "shut", "Simple Past": "shut", "Past Participle": "shut" },
+ { "Translation": "cantare", "Base Form": "sing", "Simple Past": "sang", "Past Participle": "sung" },
+ { "Translation": "affondare", "Base Form": "sink", "Simple Past": "sank", "Past Participle": "sunk" },
+ { "Translation": "sedersi / sedere", "Base Form": "sit", "Simple Past": "sat", "Past Participle": "sat" },
+ { "Translation": "dormire", "Base Form": "sleep", "Simple Past": "slept", "Past Participle": "slept" },
+ { "Translation": "odorare / annusare", "Base Form": "smell", "Simple Past": "smelled / smelt", "Past Participle": "smelled / smelt" },
+ { "Translation": "scorrere / scivolare", "Base Form": "slide", "Simple Past": "slid", "Past Participle": "slid" },
+ { "Translation": "parlare", "Base Form": "speak", "Simple Past": "spoke", "Past Participle": "spoken" },
+ { "Translation": "andare veloce / accelerare", "Base Form": "speed", "Simple Past": "sped", "Past Participle": "sped" },
+ { "Translation": "sillabare", "Base Form": "spell", "Simple Past": "spelled / spelt", "Past Participle": "spelled / spelt" },
+ { "Translation": "spendere", "Base Form": "spend", "Simple Past": "spent", "Past Participle": "spent" },
+ { "Translation": "versare / rovesciare", "Base Form": "spill", "Simple Past": "spilt / spilled", "Past Participle": "spilt / spilled" },
+ { "Translation": "sputare", "Base Form": "spit", "Simple Past": "spat", "Past Participle": "spat" },
+ { "Translation": "rovinare / viziare", "Base Form": "spoil", "Simple Past": "spoilt / spoiled", "Past Participle": "spoilt/spoiled" },
+ { "Translation": "diffondere", "Base Form": "spread", "Simple Past": "spread", "Past Participle": "spread" },
+ { "Translation": "saltare", "Base Form": "spring", "Simple Past": "sprang", "Past Participle": "sprung" },
+ { "Translation": "alzarsi / stare in piedi", "Base Form": "stand", "Simple Past": "stood", "Past Participle": "stood" },
+ { "Translation": "rubare", "Base Form": "steal", "Simple Past": "stole", "Past Participle": "stolen" },
+ { "Translation": "incollare", "Base Form": "stick", "Simple Past": "stuck", "Past Participle": "stuck" },
+ { "Translation": "pungere", "Base Form": "sting", "Simple Past": "stung", "Past Participle": "stung" },
+ { "Translation": "puzzare", "Base Form": "stink", "Simple Past": "stank", "Past Participle": "stunk" },
+ { "Translation": "colpire / battere", "Base Form": "strike", "Simple Past": "struck", "Past Participle": "struck" },
+ { "Translation": "giurare", "Base Form": "swear", "Simple Past": "swore", "Past Participle": "sworn" },
+ { "Translation": "spazzare", "Base Form": "sweep", "Simple Past": "swept / sweeped", "Past Participle": "swept / sweeped" },
+ { "Translation": "nuotare", "Base Form": "swim", "Simple Past": "swam", "Past Participle": "swum" },
+ { "Translation": "oscillare", "Base Form": "swing", "Simple Past": "swang", "Past Participle": "swung" },
+ { "Translation": "prendere", "Base Form": "take", "Simple Past": "took", "Past Participle": "taken" },
+ { "Translation": "insegnare", "Base Form": "teach", "Simple Past": "taught", "Past Participle": "taught" },
+ { "Translation": "strappare", "Base Form": "tear", "Simple Past": "tore", "Past Participle": "torn" },
+ { "Translation": "raccontare", "Base Form": "tell", "Simple Past": "told", "Past Participle": "told" },
+ { "Translation": "pensare", "Base Form": "think", "Simple Past": "thought", "Past Participle": "thought" },
+ { "Translation": "tirare / lanciare", "Base Form": "throw", "Simple Past": "threw", "Past Participle": "thrown" },
+ { "Translation": "spingere", "Base Form": "thrust", "Simple Past": "thrust", "Past Participle": "thrust" },
+ { "Translation": "calpestare", "Base Form": "tread", "Simple Past": "trod", "Past Participle": "trodden" },
+ { "Translation": "capire", "Base Form": "understand", "Simple Past": "understood", "Past Participle": "understood" },
+ { "Translation": "turbare / arrabbiare", "Base Form": "upset", "Simple Past": "upset", "Past Participle": "upset" },
+ { "Translation": "svegliare / svegliarsi", "Base Form": "wake", "Simple Past": "woke", "Past Participle": "woken" },
+ { "Translation": "indossare", "Base Form": "wear", "Simple Past": "wore", "Past Participle": "worn" },
+ { "Translation": "intrecciare", "Base Form": "weave", "Simple Past": "wove", "Past Participle": "woven" },
+ { "Translation": "piangere", "Base Form": "weep", "Simple Past": "wept", "Past Participle": "wept" },
+ { "Translation": "vincere", "Base Form": "win", "Simple Past": "won", "Past Participle": "won" },
+ { "Translation": "avvolgere", "Base Form": "wind", "Simple Past": "wound", "Past Participle": "wound" },
+ { "Translation": "torcere/ strizzare", "Base Form": "wring", "Simple Past": "wrung", "Past Participle": "wrung" },
+ { "Translation": "scrivere", "Base Form": "write", "Simple Past": "wrote", "Past Participle": "written" }
+];
 
         // Inizializzazione
         window.onload = function() {
@@ -905,23 +944,23 @@
             if (stopwatchInterval) {
                 clearInterval(stopwatchInterval);
             }
-            
+           
             // Show settings panel
             document.getElementById("settings-panel").classList.remove("hidden");
-            
+           
             // Hide control panel
             document.getElementById("control-panel").classList.add("hidden");
-            
+           
             // Clear test content
             document.getElementById("test").innerHTML = "";
-            
+           
             // Hide all control buttons including the new ones
             hideAllControlButtons();
-            
+           
             // Reset timer display
             document.getElementById("timer").innerText = "0s";
             document.getElementById("timer").className = "timer";
-            
+           
             // Load settings
             loadSettings();
         }
@@ -935,14 +974,14 @@
         function hideAllControlButtons() {
             const buttons = [
                 "check-answers",
-                "give-up", 
+                "give-up",
                 "start-again",
                 "settings-again",
                 "toggle-timer",
                 "restart-level",
                 "back-to-settings"
             ];
-            
+           
             buttons.forEach(buttonId => {
                 const button = document.getElementById(buttonId);
                 if (button) {
@@ -968,6 +1007,10 @@
             const time = document.getElementById("time").value;
             const numberOfVerbs = document.getElementById("numberOfVerbs").value;
 
+const header = document.getElementById('game-header');
+if (header) {
+header.style.display = 'none';
+}
             // Salva impostazioni
             localStorage.setItem("difficulty", difficulty);
             localStorage.setItem("time", time);
@@ -1016,15 +1059,15 @@
             ];
 
             let mediumVerbs = [
-								"be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
-								"catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
-								"fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
-								"go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
-								"learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
-								"ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
-								"show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
-								"steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
-								"understand", "wake", "wear", "win", "write"
+"be", "beat", "become", "begin", "bend", "bite", "blow", "break", "bring", "build", "burn", "buy",
+"catch", "choose", "come", "cost", "cut", "deal", "dig", "do", "draw", "dream", "drink", "drive", "eat",
+"fall", "feed", "feel", "fight", "find", "fly", "forbid", "forget", "forgive", "freeze", "get", "give",
+"go", "grow", "hang", "have", "hear", "hide", "hit", "hold", "hurt", "keep", "kneel", "know", "lay", "lead",
+"learn", "leave", "lend", "let", "lie", "light", "lose", "make", "mean", "meet", "pay", "put", "read",
+"ride", "ring", "rise", "run", "say", "see", "sell", "send", "set", "sew", "shake", "shine", "shoot",
+"show", "shut", "sing", "sink", "sit", "sleep", "smell", "speak", "spell", "spend", "spoil", "stand",
+"steal", "stick", "strike", "sweep", "swim", "swing", "take", "teach", "tear", "tell", "think", "throw",
+"understand", "wake", "wear", "win", "write"
             ];
 
             let hardVerbs = [
@@ -1069,7 +1112,7 @@
                 // Cambia colore timer in base al tempo rimasto
                 const timerElement = document.getElementById("timer");
                 const percentage = remainingTime / maxTime;
-                
+               
                 if (percentage > 0.5) {
                     timerElement.className = "timer";
                 } else if (percentage > 0.1) {
@@ -1127,7 +1170,7 @@
             let tableHTML = `
                 <table class="test-table">
                     <thead>
-                        <tr> 
+                        <tr>
                             <th>Translation</th>
                             <th>Base Form</th>
                             <th>Simple Past</th>
@@ -1136,44 +1179,44 @@
                     </thead>
                     <tbody>
             `;
-            
+           
             selectedVerbs.forEach(verb => {
                 // Get random column to show for this row
                 const shownColumn = getRandomColumn();
-                
+               
                 tableHTML += `<tr>`;
-                
+               
                 // Translation column
                 if (shownColumn === 'translation') {
                     tableHTML += `<td class="given-word">${verb.Translation}</td>`;
                 } else {
                     tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb.Translation}" data-form="translation" placeholder="Translation"></td>`;
                 }
-                
+               
                 // Base Form column
                 if (shownColumn === 'base') {
                     tableHTML += `<td class="given-word">${verb['Base Form']}</td>`;
                 } else {
                     tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Base Form']}" data-form="base" placeholder="Base Form"></td>`;
                 }
-                
+               
                 // Simple Past column
                 if (shownColumn === 'past') {
                     tableHTML += `<td class="given-word">${verb['Simple Past']}</td>`;
                 } else {
                     tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Simple Past']}" data-form="past" placeholder="Simple Past"></td>`;
                 }
-                
+               
                 // Past Participle column
                 if (shownColumn === 'participle') {
                     tableHTML += `<td class="given-word">${verb['Past Participle']}</td>`;
                 } else {
                     tableHTML += `<td><input type="text" class="verb-input" data-verb="${verb['Past Participle']}" data-form="participle" placeholder="Past Participle"></td>`;
                 }
-                
+               
                 tableHTML += `</tr>`;
             });
-            
+           
             tableHTML += `
                     </tbody>
                 </table>
@@ -1181,7 +1224,7 @@
 
             document.getElementById("test").innerHTML = tableHTML;
             startStopwatch();
-            
+           
             // Focus sul primo input
             const firstInput = document.querySelector('.verb-input');
             if (firstInput) {
@@ -1206,10 +1249,10 @@
                 input.addEventListener('input', function() {
                     const userAnswer = this.value.trim().toLowerCase();
                     const correctAnswer = this.getAttribute('data-verb').toLowerCase();
-                    
+                   
                     // Rimuovi classi precedenti
                     this.classList.remove('correct', 'wrong');
-                    
+                   
                     if (userAnswer && userAnswer === correctAnswer) {
                         this.classList.add('correct');
                     }
@@ -1225,52 +1268,74 @@
 
 
         // 1. Modified checkAnswers function
-        // 1. Modified checkAnswers function
-        function checkAnswers() {
-            const inputs = document.querySelectorAll('.verb-input');
-            let correctAnswers = 0;
-            let totalAnswers = inputs.length;
+function checkAnswers() {
+const inputs = document.querySelectorAll('.verb-input');
+const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
 
-            inputs.forEach(input => {
-                const userAnswer = input.value.trim().toLowerCase();
-                const correctAnswer = input.getAttribute('data-verb').toLowerCase();
-                
-                // Rimuovi classi precedenti
-                input.classList.remove('correct', 'wrong', 'revealed');
+// Raggruppa gli input per riga (assumendo che ogni riga abbia 3 input: base, past, participle)
+const rows = [];
+for (let i = 0; i < inputs.length; i += 3) {
+rows.push([inputs[i], inputs[i + 1], inputs[i + 2]]);
+}
 
-                if (userAnswer === correctAnswer) {
-                    input.classList.add('correct');
-                    correctAnswers++;
-                } else if (userAnswer !== '') {
-                    input.classList.add('wrong');
-                    // Mostra la risposta corretta
-                    input.value = input.getAttribute('data-verb');
-                    input.classList.add('revealed');
-                } else {
-                    // Campo vuoto, mostra la risposta
-                    input.value = input.getAttribute('data-verb');
-                    input.classList.add('revealed');
-                }
-                
-                // Disabilita l'input
-                input.disabled = true;
-            });
+let correctRows = 0;
+let totalCellsCorrect = 0;
 
-            // Aggiorna il punteggio
-            const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
-            score = Math.round((correctAnswers / totalAnswers) * numberOfVerbs);
-            document.getElementById("score").innerText = `Score: ${correctAnswers}/${numberOfVerbs}`;
+// Controlla ogni riga
+rows.forEach(row => {
+let rowCorrect = true;
+let rowCellsCorrect = 0;
 
-            // Ferma il timer
-            stopStopwatch();
-            isTimerRunning = false;
+// Controlla ogni cella nella riga
+row.forEach(input => {
+const userAnswer = input.value.trim().toLowerCase();
+const correctAnswer = input.getAttribute('data-verb').toLowerCase();
 
-            // Mostra risultato
-            showResultModal(correctAnswers, numberOfVerbs);
-            
-            // Mostra bottoni di fine gioco con nuove opzioni
-            showEndGameButtonsWithOptions();
-        }
+// Rimuovi classi precedenti
+input.classList.remove('correct', 'wrong', 'revealed');
+
+// Gestisci opzioni multiple separate da " / "
+const correctOptions = correctAnswer.split(' / ').map(option => option.trim().toLowerCase());
+const isCorrect = correctOptions.includes(userAnswer);
+
+if (isCorrect) {
+input.classList.add('correct');
+rowCellsCorrect++;
+totalCellsCorrect++;
+} else {
+rowCorrect = false;
+if (userAnswer !== '') {
+input.classList.add('wrong');
+}
+// Mostra la risposta corretta
+input.value = input.getAttribute('data-verb');
+input.classList.add('revealed');
+}
+
+// Disabilita l'input
+input.disabled = true;
+});
+
+// Se tutta la riga è corretta, incrementa il contatore delle righe corrette
+if (rowCorrect) {
+correctRows++;
+}
+});
+
+// Aggiorna il punteggio basandoti sulle righe corrette
+score = correctRows;
+document.getElementById("score").innerText = `Score: ${correctRows}/${numberOfVerbs}`;
+
+// Ferma il timer
+stopStopwatch();
+isTimerRunning = false;
+
+// Mostra risultato
+showResultModal(correctRows, numberOfVerbs);
+
+// Mostra bottoni di fine gioco con nuove opzioni
+showEndGameButtonsWithOptions();
+}
 
         function showResultModal(correct, total) {
             const percentage = Math.round((correct / total) * 100);
@@ -1300,7 +1365,7 @@
         // 2. Modified giveUp function
         function giveUp() {
             const inputs = document.querySelectorAll('.verb-input');
-            
+           
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     input.value = input.getAttribute('data-verb');
@@ -1311,7 +1376,7 @@
 
             stopStopwatch();
             isTimerRunning = false;
-            
+           
             // Calcola comunque il punteggio delle risposte corrette
             let correctAnswers = 0;
             inputs.forEach(input => {
@@ -1325,9 +1390,9 @@
 
             const numberOfVerbs = parseInt(localStorage.getItem("numberOfVerbs")) || 10;
             document.getElementById("score").innerText = `Score: ${correctAnswers}/${numberOfVerbs}`;
-            
+           
             showModal("😓 Test Terminato", "Hai visualizzato tutte le risposte. Studia e riprova!", "warning");
-            
+           
             // Mostra bottoni di fine gioco con nuove opzioni
             showEndGameButtonsWithOptions();
         }
@@ -1336,7 +1401,7 @@
             document.getElementById("check-answers").classList.add("hidden");
             document.getElementById("give-up").classList.add("hidden");
             document.getElementById("toggle-timer").classList.add("hidden");
-            
+           
             // Show the new navigation buttons
             document.getElementById("restart-level").classList.remove("hidden");
             document.getElementById("back-to-settings").classList.remove("hidden");
@@ -1348,19 +1413,19 @@
             score = 0;
             elapsedTime = 0;
             isTimerRunning = true;
-            
+           
             // Reset timer button
             const timerButton = document.getElementById("toggle-timer");
             timerButton.innerHTML = "⏸️ Pausa";
             timerButton.className = "btn-control btn-pause";
-            
+           
             // Nascondi modal se aperto
             hideModal();
-            
+           
             // Hide navigation buttons and show game buttons
             document.getElementById("restart-level").classList.add("hidden");
             document.getElementById("back-to-settings").classList.add("hidden");
-            
+           
             // Riavvia il gioco con le stesse impostazioni
             startGame();
             showGameButtons();
@@ -1372,47 +1437,47 @@
             if (stopwatchInterval) {
                 clearInterval(stopwatchInterval);
             }
-            
+           
             // Reset all variables
             score = 0;
             elapsedTime = 0;
             isTimerRunning = true;
-            
+           
             // Reset timer button to initial state
             const timerButton = document.getElementById("toggle-timer");
             if (timerButton) {
                 timerButton.innerHTML = "⏸️ Pausa";
                 timerButton.className = "btn-control btn-pause";
             }
-            
+           
             // Hide modal if open
             hideModal();
-            
+           
             // Hide navigation buttons
             const restartBtn = document.getElementById("restart-level");
             const backBtn = document.getElementById("back-to-settings");
-            
+           
             if (restartBtn) restartBtn.classList.add("hidden");
             if (backBtn) backBtn.classList.add("hidden");
-            
+           
             // Show settings panel and hide control panel
             const settingsPanel = document.getElementById("settings-panel");
             const controlPanel = document.getElementById("control-panel");
-            
+           
             if (settingsPanel) settingsPanel.classList.remove("hidden");
             if (controlPanel) controlPanel.classList.add("hidden");
-            
+           
             // Clear the test area
             const testArea = document.getElementById("test");
             if (testArea) testArea.innerHTML = "";
-            
+           
             // Reset timer display
             const timerElement = document.getElementById("timer");
             if (timerElement) {
                 timerElement.innerText = "0s";
                 timerElement.className = "timer";
             }
-            
+           
             // Load current settings into the form
             loadSettings();
         }
@@ -1421,15 +1486,15 @@
             score = 0;
             elapsedTime = 0;
             isTimerRunning = true;
-            
+           
             // Reset timer button
             const timerButton = document.getElementById("toggle-timer");
             timerButton.innerHTML = "⏸️ Pausa";
             timerButton.className = "btn-control btn-pause";
-            
+           
             // Nascondi modal se aperto
             hideModal();
-            
+           
             // Riavvia il gioco
             startGame();
             showGameButtons();
@@ -1442,7 +1507,7 @@
 
             modalTitle.textContent = title;
             modalText.textContent = message;
-            
+           
             modal.className = `modal ${type} fade-in`;
             modal.classList.remove("hidden");
 
@@ -1484,7 +1549,7 @@
                     }
                 }
             }
-            
+           
             if (e.key === 'Escape') {
                 hideModal();
             }
@@ -1492,45 +1557,114 @@
 
         // Previeni il refresh accidentale durante il test
         window.addEventListener('beforeunload', function (e) {
-            if (!document.getElementById("control-panel").classList.contains("hidden") && 
+            if (!document.getElementById("control-panel").classList.contains("hidden") &&
                 !document.getElementById("start-again").classList.contains("hidden") === false) {
                 e.preventDefault();
                 e.returnValue = '';
             }
         });
     </script>
+
+    <!-- Cookie Banner - Sostituisci il div esistente con questo -->
     <div id="cookie-banner" style="
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: none;
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(3px);
     ">
         <div style="
             background: #fff;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 12px;
             max-width: 500px;
+            margin: 1rem;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-family: sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            animation: slideIn 0.3s ease-out;
         ">
-            <p style="margin-bottom: 1rem;">
-            We use cookies to personalize ads and measure traffic.
-            <a href="/privacy.html" target="_blank">Learn more</a>
+            <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1.2em;">
+                🍪 Informativa Cookie
+            </h3>
+            <p style="margin-bottom: 1.5rem; color: #666; line-height: 1.5;">
+                Utilizziamo i cookie per personalizzare gli annunci e misurare il traffico. 
+                I tuoi dati sono sicuri e rispettiamo la tua privacy.
+                <br>
+                <a href="/privacy.html" target="_blank" style="color: #2563eb; text-decoration: underline;">
+                    Scopri di più
+                </a>
             </p>
-                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                    <button id="accept-cookies" style="padding: 0.6rem 1.2rem; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        Accept and learn 🍪
-                    </button>
-                    <button id="reject-cookies" style="padding: 0.6rem 1.2rem; background: #ccc; color: black; border: none; border-radius: 5px; cursor: pointer;">
-                        Reject
-                    </button>
-                </div>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <button id="accept-cookies" style="
+                    padding: 0.75rem 1.5rem; 
+                    background: linear-gradient(135deg, #10b981, #059669); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+                " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.4)'" 
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.3)'">
+                    ✓ Accetta e Impara
+                </button>
+                <button id="reject-cookies" style="
+                    padding: 0.75rem 1.5rem; 
+                    background: #6b7280; 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#4b5563'" onmouseout="this.style.background='#6b7280'">
+                    ✗ Rifiuta
+                </button>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.8em; color: #9ca3af;">
+                La tua scelta verrà ricordata per tutte le pagine del sito
+            </p>
         </div>
     </div>
+
+    <style>
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Responsive per il banner cookie */
+    @media (max-width: 480px) {
+        #cookie-banner > div {
+            margin: 0.5rem;
+            padding: 1.5rem;
+        }
+        
+        #cookie-banner h3 {
+            font-size: 1.1em;
+        }
+        
+        #cookie-banner button {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        
+        #cookie-banner > div > div {
+            flex-direction: column;
+        }
+    }
+    </style>
 
 
 
@@ -1539,65 +1673,284 @@
         <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
     </footer>
     <script>
-        function loadGoogleAds() {
-            if (location.hostname === "learnwithme.work") {
-            var adsScript = document.createElement('script');
-            adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX";
-            adsScript.setAttribute("crossorigin", "anonymous");
-            adsScript.async = true;
-            document.head.appendChild(adsScript);
-            } else {
-            console.log("Google Ads not loaded (local test)");
-            }
-        }
+        // Cookie Consent Manager - Codice da utilizzare su tutte le pagine
+        // Sostituisci il codice JavaScript esistente con questo
 
-        function showCookieBanner() {
-            const banner = document.getElementById('cookie-banner');
-            banner.style.display = 'flex'; // Mostra il banner come flex centrato
-            document.body.style.overflow = 'hidden'; // Blocca scroll della pagina
-        }
+        // Configurazione
+        const COOKIE_CONFIG = {
+            consentCookieName: 'cookie_consent',
+            expirationDays: 365,
+            // Per localhost non impostiamo domain, per domini reali sì
+            domain: (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? null : window.location.hostname,
+            adsClientId: 'ca-pub-8624143381240320' // Il tuo client ID reale
+        };
 
-        function hideCookieBanner() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            document.body.style.overflow = ''; // Ripristina scroll
-        }
-
-        function setCookie(name, value, days) {
+        // Utility functions per gestire i cookie
+        function setCookie(name, value, days, domain = null) {
             let expires = "";
             if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
-            document.cookie = name + "=" + value + expires + "; path=/";
+            
+            // Per localhost usiamo un approccio più semplice
+            let cookieString = `${name}=${value}${expires}; path=/`;
+            
+            // Solo per domini reali (non localhost) aggiungiamo domain e SameSite
+            if (domain && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+                cookieString += `; domain=${domain}; SameSite=Lax`;
+            }
+            
+            document.cookie = cookieString;
+            console.log(`Cookie impostato: ${name}=${value} su ${window.location.hostname}`);
+            console.log(`Stringa cookie completa: ${cookieString}`);
         }
 
         function getCookie(name) {
             const value = "; " + document.cookie;
             const parts = value.split("; " + name + "=");
-            if (parts.length === 2) return parts.pop().split(";").shift();
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Cookie letto: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            console.log(`Cookie non trovato: ${name}`);
+            return null;
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const consent = getCookie("cookie_consent");
+        function deleteCookie(name, domain = null) {
+            // Prova più varianti per essere sicuri di eliminare il cookie
+            const paths = ['/', ''];
+            const domains = domain ? [domain, `.${domain}`, ''] : [''];
+            
+            paths.forEach(path => {
+                domains.forEach(dom => {
+                    let cookieString = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};`;
+                    if (dom && !window.location.hostname.includes('localhost')) {
+                        cookieString += ` domain=${dom};`;
+                    }
+                    document.cookie = cookieString;
+                });
+            });
+            
+            console.log(`Cookie eliminato: ${name}`);
+        }
 
-            if (consent === "accepted") {
-            loadGoogleAds();
-            } else if (!consent) {
-            showCookieBanner();
+        // Funzione per caricare Google Ads
+        function loadGoogleAds() {
+            // Verifica se gli ads sono già stati caricati
+            if (window.adsLoaded) {
+                console.log("Google Ads già caricati");
+                return;
             }
+            
+            // In localhost non carichiamo gli ads reali
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname.includes('file://')) {
+                console.log("Ambiente locale - simulo caricamento Google Ads");
+                window.adsLoaded = true;
+                return;
+            }
+            
+            if (location.hostname === "learnwithme.work") {
+                try {
+                    var adsScript = document.createElement('script');
+                    adsScript.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${COOKIE_CONFIG.adsClientId}`;
+                    adsScript.setAttribute("crossorigin", "anonymous");
+                    adsScript.async = true;
+                    adsScript.onload = function() {
+                        window.adsLoaded = true;
+                        console.log("Google Ads caricati con successo");
+                    };
+                    adsScript.onerror = function() {
+                        console.error("Errore nel caricamento di Google Ads");
+                    };
+                    document.head.appendChild(adsScript);
+                } catch (error) {
+                    console.error("Errore durante l'inizializzazione di Google Ads:", error);
+                }
+            } else {
+                console.log("Google Ads non caricati (ambiente di sviluppo)");
+            }
+        }
 
-            document.getElementById("accept-cookies").addEventListener("click", function () {
-            setCookie("cookie_consent", "accepted", 365);
+        // Funzioni per gestire il banner
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                console.log("Banner cookie mostrato");
+            }
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'none';
+                document.body.style.overflow = '';
+                console.log("Banner cookie nascosto");
+            }
+        }
+
+        // Fallback per localStorage in ambiente locale
+        function setLocalConsent(value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('local_cookie_consent', value);
+                console.log(`LocalStorage consent impostato: ${value}`);
+            }
+        }
+
+        function getLocalConsent() {
+            if (typeof(Storage) !== "undefined") {
+                const value = localStorage.getItem('local_cookie_consent');
+                console.log(`LocalStorage consent letto: ${value}`);
+                return value;
+            }
+            return null;
+        }
+
+        // Funzione principale per gestire il consenso
+        function handleCookieConsent() {
+            let consent = getCookie(COOKIE_CONFIG.consentCookieName);
+            
+            // Se siamo in localhost e non troviamo cookie, prova localStorage
+            if (!consent && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+                consent = getLocalConsent();
+                console.log("Localhost: usando localStorage per consenso:", consent);
+            }
+            
+            console.log("Stato consenso finale:", consent);
+            
+            if (consent === "accepted") {
+                console.log("Consenso già dato - caricamento Google Ads");
+                loadGoogleAds();
+                hideCookieBanner();
+            } else if (consent === "rejected") {
+                console.log("Consenso rifiutato - nessun ads");
+                hideCookieBanner();
+            } else {
+                console.log("Nessun consenso trovato - mostra banner");
+                showCookieBanner();
+            }
+        }
+
+        // Funzione per accettare i cookie
+        function acceptCookies() {
+            console.log("Utente ha accettato i cookie");
+            setCookie(COOKIE_CONFIG.consentCookieName, "accepted", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalConsent("accepted");
+            }
+            
             hideCookieBanner();
             loadGoogleAds();
-            });
+            
+            // Notifica altre schede aperte del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('cookie_consent_changed', Date.now().toString());
+            }
+        }
 
-            document.getElementById("reject-cookies").addEventListener("click", function () {
-            setCookie("cookie_consent", "rejected", 365);
+        // Funzione per rifiutare i cookie
+        function rejectCookies() {
+            console.log("Utente ha rifiutato i cookie");
+            setCookie(COOKIE_CONFIG.consentCookieName, "rejected", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalConsent("rejected");
+            }
+            
             hideCookieBanner();
-            });
-        });
+            
+            // Notifica altre schede aperte del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('cookie_consent_changed', Date.now().toString());
+            }
+        }
+
+        // Listener per cambiamenti di consenso in altre schede
+        function setupCrossTabSync() {
+            if (typeof(Storage) !== "undefined") {
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'cookie_consent_changed') {
+                        console.log("Consenso cookie cambiato in altra scheda - aggiorno");
+                        handleCookieConsent();
+                    }
+                });
+            }
+        }
+
+        // Inizializzazione quando il DOM è pronto
+        function initializeCookieConsent() {
+            console.log("Inizializzazione gestione cookie consent");
+            
+            // Gestisci il consenso esistente
+            handleCookieConsent();
+            
+            // Configura la sincronizzazione tra schede
+            setupCrossTabSync();
+            
+            // Aggiungi event listeners ai pulsanti
+            const acceptButton = document.getElementById("accept-cookies");
+            if (acceptButton) {
+                acceptButton.addEventListener("click", acceptCookies);
+            }
+            
+            const rejectButton = document.getElementById("reject-cookies");
+            if (rejectButton) {
+                rejectButton.addEventListener("click", rejectCookies);
+            }
+            
+            console.log("Gestione cookie consent inizializzata");
+        }
+
+        // Debug function - rimuovi in produzione
+        function debugCookies() {
+            console.log("=== DEBUG COOKIES ===");
+            console.log("Hostname:", location.hostname);
+            console.log("Tutti i cookie:", document.cookie);
+            console.log("Consenso corrente:", getCookie(COOKIE_CONFIG.consentCookieName));
+            console.log("Domain config:", COOKIE_CONFIG.domain);
+            console.log("Ads caricati:", window.adsLoaded || false);
+            console.log("localStorage consent:", localStorage.getItem('cookie_consent_changed'));
+            
+            // Test manuale cookie
+            console.log("--- TEST COOKIE ---");
+            setCookie('test_cookie', 'test_value', 1, COOKIE_CONFIG.domain);
+            console.log("Cookie test impostato:", getCookie('test_cookie'));
+            deleteCookie('test_cookie', COOKIE_CONFIG.domain);
+            console.log("Cookie test dopo eliminazione:", getCookie('test_cookie'));
+            console.log("====================");
+        }
+
+        // Funzione per resettare i cookie (utile per test)
+        function resetCookieConsent() {
+            deleteCookie(COOKIE_CONFIG.consentCookieName, COOKIE_CONFIG.domain);
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem('cookie_consent_changed');
+                localStorage.removeItem('local_cookie_consent'); // Rimuovi anche il fallback localStorage
+            }
+            window.adsLoaded = false;
+            console.log("Consenso cookie resettato completamente");
+            location.reload();
+        }
+
+        // Avvia l'inizializzazione quando il DOM è pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCookieConsent);
+        } else {
+            initializeCookieConsent();
+        }
+
+        // Rendi disponibili le funzioni debug globalmente (rimuovi in produzione)
+        window.debugCookies = debugCookies;
+        window.resetCookieConsent = resetCookieConsent;
     </script>
+
+
 </body>
 </html>
