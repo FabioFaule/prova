@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://learnwithme.work/sitemap2.xml
+
+# Crawl-delay (opzionale)
+Crawl-delay: 1
+
+# Disallow per eventuali cartelle private
+Disallow: /admin/
+Disallow: /private/
