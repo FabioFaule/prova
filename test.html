@@ -1306,9 +1306,21 @@ const correctAnswer = input.getAttribute('data-verb').toLowerCase();
 // Rimuovi classi precedenti
 input.classList.remove('correct', 'wrong', 'revealed');
 
-// Gestisci opzioni multiple separate da " / "
-const correctOptions = correctAnswer.split(' / ').map(option => option.trim().toLowerCase());
-const isCorrect = correctOptions.includes(userAnswer);
+function normalizeAnswer(answer) {
+  return answer
+    .toLowerCase()
+    .split(/\/|,|-/) // separatori: / , -
+    .map(word => word.trim())
+    .filter(word => word); // rimuove vuoti
+}
+
+const userOptions = normalizeAnswer(userAnswer);
+const correctOptions = normalizeAnswer(correctAnswer);
+
+// ✅ Corretto se almeno UNA parola dell'utente è tra quelle corrette
+const isCorrect = userOptions.some(word => correctOptions.includes(word));
+
+
 
 if (isCorrect) {
 input.classList.add('correct');
