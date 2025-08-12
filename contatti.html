@@ -1,0 +1,183 @@
+<!-- Contatti - LearnWithMe -->
+
+<section id="contatti" class="contatti-section" aria-labelledby="contatti-heading">
+  <h2 id="contatti-heading">Contattaci</h2>
+  <p class="contatti-intro">
+    Hai domande, suggerimenti o vuoi segnalare un problema? Siamo felici di aiutarti! Compila il modulo qui sotto oppure scrivici direttamente via email.
+  </p>
+
+  <div class="contatti-info">
+    <div class="contatti-card">
+      <h3>Email</h3>
+      <p>
+        <a href="mailto:info@learnwithme.work">info@learnwithme.work</a>
+      </p>
+    </div>
+    <div class="contatti-card">
+      <h3>Modulo di contatto</h3>
+      <form class="contatti-form" name="contatti" method="POST" data-netlify="true">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required autocomplete="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+
+        <label for="messaggio">Messaggio</label>
+        <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
+
+        <button type="submit">Invia</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --surface-hover: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contatti-section {
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    padding: 1.5rem 1rem 2rem 1rem;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    font-family: inherit;
+  }
+
+  .contatti-section h2 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    color: var(--primary-color);
+    text-align: center;
+    letter-spacing: -1px;
+    font-weight: 700;
+  }
+
+  .contatti-intro {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .contatti-info {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contatti-card {
+    background: var(--surface-hover);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem 1.2rem;
+    min-width: 260px;
+    flex: 1 1 320px;
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contatti-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .contatti-card a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.2s;
+    word-break: break-all;
+  }
+
+  .contatti-card a:hover {
+    color: var(--primary-hover);
+  }
+
+  .contatti-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .contatti-form label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+  }
+
+  .contatti-form input,
+  .contatti-form textarea {
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+    font-family: inherit;
+    resize: vertical;
+  }
+
+  .contatti-form input:focus,
+  .contatti-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+
+  .contatti-form button {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.7rem 1.2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s, opacity 0.2s;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.13);
+  }
+
+  .contatti-form button:hover {
+    opacity: 0.92;
+    background: linear-gradient(to right, #2563eb, #4e54c8);
+  }
+
+  @media (max-width: 700px) {
+    .contatti-info {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .contatti-card {
+      max-width: 100%;
+      min-width: unset;
+    }
+  }
+</style>

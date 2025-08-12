@@ -1,0 +1,258 @@
+<!-- FAQ - LearnWithMe
+     Copia questo blocco nella pagina desiderata (es. faq.html) o includilo nella sezione corrispondente del tuo template.
+     Usa il CSS del sito se preferisci per uniformare lo stile: qui c'è solo uno stile di base per renderlo subito leggibile.
+-->
+
+<section id="faq" class="faq-section" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">Domande Frequenti (FAQ)</h2>
+  <p class="faq-intro">Qui trovi le risposte alle domande più comuni su <strong>LearnWithMe</strong>. Se non trovi quello che cerchi, contattaci dalla pagina <em>Contatti</em>.</p>
+
+  <div class="faq-list">
+    <details>
+      <summary><strong>1. Cos’è LearnWithMe?</strong></summary>
+      <div class="faq-answer">
+        <p>LearnWithMe è una piattaforma interattiva per migliorare il tuo inglese, con particolare attenzione ai verbi irregolari: giochi, allenamenti e test graduati per livello.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>2. Come funziona il percorso di apprendimento?</strong></summary>
+      <div class="faq-answer">
+        <p>Inizia da <em>Learn</em> per studiare i verbi, passa a <em>Train</em> per esercitarti con attività pratiche e infine valuta i tuoi progressi in <em>Test</em>. Ogni sezione è pensata per consolidare le conoscenze passo dopo passo.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>3. Devo registrarmi per usare il sito?</strong></summary>
+      <div class="faq-answer">
+        <p>Al momento la registrazione non è obbligatoria. In futuro prevediamo di offrire account per salvare i progressi, visualizzare statistiche e sbloccare contenuti extra.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>4. Che livelli di difficoltà ci sono?</strong></summary>
+      <div class="faq-answer">
+        <p>Puoi scegliere tra:</p>
+        <ul>
+          <li><strong>Facile (A2)</strong> — ideale per principianti;</li>
+          <li><strong>Medio (B1)</strong> — per chi ha una buona base;</li>
+          <li><strong>Difficile (B2/C1)</strong> — per utenti avanzati.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>5. Posso usare LearnWithMe da smartphone o tablet?</strong></summary>
+      <div class="faq-answer">
+        <p>Sì, il sito è ottimizzato per dispositivi mobili: puoi esercitarti ovunque con una connessione Internet.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>6. Gli esercizi sono sempre uguali?</strong></summary>
+      <div class="faq-answer">
+        <p>No: il sistema seleziona casualmente i verbi per ogni sessione, offrendo sfide sempre diverse per favorire il consolidamento.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>7. Come vengono calcolati i punteggi?</strong></summary>
+      <div class="faq-answer">
+        <p>I punteggi si basano sulle risposte corrette, sul numero di tentativi e sulla percentuale di successo. Rispondere correttamente in serie può migliorare il punteggio totale.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>8. Quanto tempo devo dedicare ogni giorno?</strong></summary>
+      <div class="faq-answer">
+        <p>Bastano anche <strong>10–15 minuti al giorno</strong> per vedere progressi costanti: la regolarità è più importante della durata di ogni sessione.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>9. Il sito è gratuito?</strong></summary>
+      <div class="faq-answer">
+        <p>Sì: le funzionalità principali sono gratuite. Potrebbero essere introdotte in futuro feature premium opzionali.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><strong>10. Come posso segnalare un problema o dare un suggerimento?</strong></summary>
+      <div class="faq-answer">
+        <p>Usa la pagina <a href="/contatti.html">Contatti</a> o invia una email indicando chiaramente il problema o il suggerimento; risponderemo appena possibile.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- Stili minimi — rimuovi o sostituisci con il tuo CSS -->
+<style>
+  :root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --surface-hover: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-section {
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    padding: 1.5rem 1rem 2rem 1rem;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    font-family: inherit;
+  }
+
+  .faq-section h2 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    color: var(--primary-color);
+    text-align: center;
+    letter-spacing: -1px;
+    font-weight: 700;
+  }
+
+  .faq-intro {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .faq-list {
+    margin-top: 1rem;
+  }
+
+  .faq-list details {
+    background: var(--surface-hover);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    margin: 1.1rem 0;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .faq-list details[open] {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(37,99,235,0.07);
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    outline: none;
+    font-size: 1.13rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: color 0.2s;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-list summary:focus {
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.13);
+    border-radius: 6px;
+    color: var(--primary-hover);
+  }
+
+  .faq-answer {
+    margin-top: .7rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 1rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+  }
+
+  .faq-answer ul {
+    margin: .5rem 0 0 1.3rem;
+    padding-left: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+  }
+
+  .faq-answer a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .faq-answer a:hover {
+    color: var(--primary-hover);
+  }
+
+  @media (max-width: 600px) {
+    .faq-section {
+      padding: 0.7rem 0.2rem 1.2rem 0.2rem;
+      margin: 1.2rem 0.2rem;
+    }
+    .faq-section h2 {
+      font-size: 1.3rem;
+    }
+    .faq-list details {
+      padding: 0.7rem 0.7rem;
+    }
+    .faq-answer {
+      font-size: 0.98rem;
+    }
+  }
+</style>
+
+<!-- JSON-LD per SEO (FAQPage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cos'è LearnWithMe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LearnWithMe è una piattaforma interattiva per migliorare il tuo inglese, con particolare attenzione ai verbi irregolari: giochi, allenamenti e test graduati per livello."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come funziona il percorso di apprendimento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inizia da Learn per studiare i verbi, passa a Train per esercitarti con attività pratiche e infine valuta i tuoi progressi in Test."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Devo registrarmi per usare il sito?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Al momento la registrazione non è obbligatoria; in futuro prevediamo di offrire account per salvare progressi e statistiche."
+      }
+    }
+    /* Aggiungi altri Q/A qui se desideri */
+  ]
+}
+</script>
