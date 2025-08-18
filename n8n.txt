@@ -11,3 +11,6 @@ Meteo: Il 12 agosto 2025 alle 22:26:03, a Torino la temperatura massima sarà di
 Linea aggiunta da n8n 
 Eseguito il: 18/08/2025, 16:49:02
 Meteo: Il 18 agosto 2025, alle ore 16:48:48, a Torino la temperatura massima sarà di 30.9°C e la minima di 23.1°C. Per il giorno seguente, 19 agosto 2025, la temperatura massima prevista è di 30.7°C e la minima di 20.9°C.
+Linea aggiunta da n8n 
+Eseguito il: 18/08/2025, 17:00:38
+Meteo: Il 18 agosto 2025, alle ore 17:00:26, a Torino la temperatura massima sarà di 30.9°C e la minima di 23.1°C. Per il giorno seguente, 19 agosto 2025, la temperatura massima prevista è di 30.7°C e la minima di 20.9°C.
