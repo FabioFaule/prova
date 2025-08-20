@@ -189,6 +189,296 @@
 
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Hidden Garden Discovery</h1>
+      <p>Seleziona il livello di difficoltà più adatto a te</p>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+          <div class="level-description">Livello base</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+          <div class="level-description">Livello medio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+          <div class="level-description">Livello difficile</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+        <div class="no-story">Seleziona un livello per leggere la storia</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Scope everything to THIS card only
+      const root = document.currentScript.closest('.lw-card');
+
+      // ---- Stories data injected by n8n ----
+      const storiesData = {
+        a2: {
+          title: "Leo's Secret Garden",
+          content: `Leo *found* an old map. It *was* in his grandpa's attic. The map *showed* a **hidden** garden. Leo *took* the map. He *went* into the woods. He *walked* far. He *came* to a big wall. He *saw* a small gate. He *pushed* it. It *opened*. Inside, he *saw* pretty flowers and trees. A small stream *ran*. He *sat* on a bench. He *felt* very happy. He *knew* it *was* special. He *decided* to **keep** it secret. He *brought* a small **seed** home.`,
+          level: "A2",
+          difficultWords: {"":"hidden: not easy to see; keep: to hold onto something; seed: a small thing that grows into a plant or tree"}
+        },
+        b1: {
+          title: "The Discovery of the Secret Garden",
+          content: `One afternoon, Leo *found* an old, **dusty** map while exploring his grandpa's attic. The map clearly *showed* the location of a secret garden. Excited, he *took* the map and *set* off into the dense woods behind his house. He *walked* for what *seemed* like hours until he *came* upon an ancient, moss-covered wall. Following the map's faded lines, he soon *spotted* a small, **concealed** wooden gate. He *gave* it a gentle push, and it *creaked* open. Inside, Leo *beheld* a breathtaking sight: vibrant flowers *grew* everywhere, tall trees *stood* majestically, and a clear stream *ran* gently through the middle. He *chose* to *sit* on a weathered stone bench, where he *felt* an overwhelming sense of peace. He *knew* immediately that he *had* stumbled upon something truly magical. He *swore* to *keep* this **sanctuary** a secret. Before *leaving*, he *brought* a small seed from a unique flower to plant at home.`,
+          level: "B1",
+          difficultWords: {"":"dusty: covered in fine, dry dirt; concealed: hidden from view; sanctuary: a place of refuge or safety"}
+        },
+        c1: {
+          title: "Unearthing the Verdant Enigma",
+          content: `In a forgotten corner of his grandfather's **creaking** attic, Leo *found* a brittle, parchment map, its surface **mottled** with age. It *bore* the intricate markings for a fabled, clandestine garden. A surge of anticipation *ran* through him as he *took* the relic and *set* out on an expedition into the labyrinthine woods bordering his ancestral home. Hours *passed* before he *came* upon a crumbling, ivy-clad stone wall, a barrier of forgotten time. Consulting the map's intricate etchings, he *spied* a discreet, iron-bound gate, almost hidden by foliage. With a deliberate shove, it *gave* way, emitting a low, drawn-out groan. What *lay* beyond was nothing short of an Elysian vision: a riotous symphony of flora *grew* in effusive bloom, ancient trees *stood* skyward like silent sentinels, and a pristine brook *wound* serenely through the heart of the space. He *chose* a moss-laden stone bench, where a profound sense of tranquility *suffused* him. He *knew* instinctively that he *had* unearthed an unparalleled haven. He *made* a solemn vow to *keep* its existence veiled from the outside world. As dusk *began* to *fall*, he *brought* a solitary, iridescent seed, a tangible whisper of the garden's magic, to nurture within his own domain.`,
+          level: "C1",
+          difficultWords: {"":"creaking: making a long, high-pitched, squeaking sound, often from something old or worn; mottled: marked with spots or smears of different colors or shades; whereabouts: the precise location of a person or thing"}
+        }
+      };
+
+      // ---- Helpers (scoped) ----
+      function formatStoryText(text) {
+        // **bold** -> <strong class="highlighted-word">bold</strong>
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="highlighted-word">$1</strong>');
+        // *italic* -> <em>italic</em>
+        return text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      }
+
+      function showStory(level) {
+        const container = root.querySelector('.lw-story-container');
+        const story = storiesData[level];
+        if (!container || !story) return;
+
+        let difficultWordsHtml = '';
+        if (story.difficultWords && Object.keys(story.difficultWords).length > 0) {
+          difficultWordsHtml = `
+            <div class="difficult-words">
+              <h3>📚 Parole Difficili:</h3>
+              <div class="words-list">
+                ${Object.entries(story.difficultWords).map(([word, definition]) =>
+                  `<div class="word-item"><strong>${word}</strong>: ${definition}</div>`
+                ).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        container.innerHTML = `
+          <div class="story-title">${story.title}</div>
+          <div class="story-level-badge">Livello ${story.level}</div>
+          <div class="story-content">${formatStoryText(story.content)}</div>
+          ${difficultWordsHtml}
+        `;
+        container.classList.add('show');
+      }
+
+      // ---- Bind buttons inside this card only ----
+      root.querySelectorAll('.lw-level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          root.querySelectorAll('.lw-level-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          showStory(btn.getAttribute('data-level'));
+        });
+      });
+    })();
+  </script>
+</div>
+
+
+<!-- ⬇️ One self-contained, appendable card (scoped CSS + JS) -->
+<div class="lw-card">
+  <style>
+    /* ------- Scoped styles: only affect elements inside .lw-card ------- */
+    .lw-card { margin: 16px 0; }
+    .lw-card * { box-sizing: border-box; }
+
+    .lw-card .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+      animation: lw-slideIn 0.6s ease-out;
+      margin: 0 auto;
+    }
+
+    @keyframes lw-slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .lw-card .card-header {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .lw-card .card-header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .lw-card .card-header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .lw-card .card-body { padding: 40px; }
+
+    .lw-card .level-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .lw-card .level-btn {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border: 2px solid #dee2e6;
+      border-radius: 15px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lw-card .level-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .lw-card .level-btn.active {
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      border-color: #0984e3;
+    }
+
+    .lw-card .level-btn.facile { border-color: #00b894; }
+    .lw-card .level-btn.facile:hover,
+    .lw-card .level-btn.facile.active {
+      background: linear-gradient(135deg, #00b894, #00a085);
+      border-color: #00a085;
+    }
+
+    .lw-card .level-btn.medio { border-color: #fdcb6e; }
+    .lw-card .level-btn.medio:hover,
+    .lw-card .level-btn.medio.active {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      border-color: #e17055;
+    }
+
+    .lw-card .level-btn.difficile { border-color: #e84393; }
+    .lw-card .level-btn.difficile:hover,
+    .lw-card .level-btn.difficile.active {
+      background: linear-gradient(135deg, #e84393, #d63384);
+      border-color: #d63384;
+    }
+
+    .lw-card .level-icon { font-size: 2em; margin-bottom: 10px; }
+    .lw-card .level-title { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
+    .lw-card .level-description { font-size: 0.9em; opacity: 0.8; }
+
+    .lw-card .story-container {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px;
+      min-height: 300px;
+      display: none;
+      animation: lw-fadeIn 0.5s ease-in;
+    }
+
+    .lw-card .story-container.show { display: block; }
+
+    @keyframes lw-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lw-card .story-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2d3436;
+    }
+
+    .lw-card .story-content {
+      line-height: 1.8;
+      font-size: 1.1em;
+      color: #636e72;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    .lw-card .story-level-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .lw-card .highlighted-word {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .lw-card .difficult-words {
+      background: #e8f4f8;
+      border-left: 4px solid #74b9ff;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 8px;
+    }
+
+    .lw-card .difficult-words h3 {
+      color: #2d3436;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    .lw-card .words-list { display: grid; gap: 10px; }
+
+    .lw-card .word-item {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 0.95em;
+    }
+
+    .lw-card .word-item strong { color: #0984e3; }
+
+    .lw-card .no-story {
+      text-align: center;
+      color: #74b9ff;
+      font-style: italic;
+      font-size: 1.2em;
+      padding: 60px 20px;
+    }
+  </style>
+
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Leo and the Whispering Compass</h1>
       <p>Seleziona il livello di difficoltà più adatto a te</p>
     </div>
