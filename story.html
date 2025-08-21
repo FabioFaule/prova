@@ -189,6 +189,310 @@
 
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Castle's Whisper </h1>
+      <p>Seleziona il livello di difficoltà più adatto a te</p>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+          <div class="level-description">Livello base</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+          <div class="level-description">Livello medio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+          <div class="level-description">Livello difficile</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+        <div class="no-story">Seleziona un livello per leggere la storia</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Scope everything to THIS card only
+      const root = document.currentScript.closest('.lw-card');
+
+      // ---- Stories data injected by n8n ----
+      const storiesData = {
+          a2: {
+            title: "Elara and the Castle's Secret",
+            content: `Elara *lived* in Castle Grimfang. It *was* a very old place. She often *saw* the tall, **ancient** walls. She *heard* many old stories from her grandmother about kings and queens who *lived* there. One sunny morning, Elara *went* to a quiet, forgotten room in the castle. She *found* a small, **dusty** wooden chest. Inside, she *saw* a beautiful, shining stone. It *had* a special **secret**. Elara *felt* a strong connection to the castle. She *knew* she *would keep* its history safe. She *thought* she *would become* an important part of its future.`,
+            level: "A2",
+            difficultWords: {"ancient":"very old.","dusty":"covered with fine, dry powder.","secret":"something that is kept hidden."}
+          },
+          b1: {
+            title: "Elara and the Castle's Chronicles",
+            content: `Elara *lived* within the formidable **fortress** of Castle Grimfang, a place that *had seen* centuries of history. She often *stood* by the imposing walls and *heard* countless tales of bravery and hardship from her ancestors. One day, her curiosity *drove* her to an unexplored wing. There, behind a heavy tapestry, she *found* a hidden chamber. The air *was* thick with the scent of old wood and parchment. On a small, stone table, she *saw* an ancient book, its cover **faded** and worn. This book *held* the forgotten **chronicles** of the castle, telling of knights who *fought* and queens who *built*. Elara *felt* a profound bond with the past she *read* about. She *knew* her own path *was* now clear. She *understood* that she *had* a special **destiny** within the castle walls. She *would become* its future.`,
+            level: "B1",
+            difficultWords: {"fortress":"a strong building or a place that is protected against attack.","faded":"having lost its original colour or brightness.","chronicles":"historical records of events in the order in which they happened."}
+          },
+          c1: {
+            title: "Elara: Custodian of Grimfang's Legacy",
+            content: `Elara *dwelt* within the ancient **citadel** of Grimfang, a bastion that *had borne* witness to countless epochs. She frequently *stood* atop its formidable ramparts, *drawing* solace from the **revered** stones and *hearing* the echoes of valor *woven* into its very fabric. One pivotal afternoon, an inexplicable **urge** *drove* her to a long-forsaken wing, where dust motes *danced* in the faint light filtering through *broken* windows. There, concealed by a tattered arras, she *found* a clandestine alcove. Within, an atmosphere of venerable stillness *hung* heavy. On a timeworn plinth, she *saw* a bound tome, its leather cover *worn* smooth by untold ages. This ancient codex *held* the profound **legacy** of Grimfang, chronicling the triumphs and tribulations of those who *had built* and *defended* it. As she *read*, Elara *felt* an indissoluble connection to the lineage that *had given* the castle its character. She *knew* her *destiny was* irrevocably intertwined with the castle's survival. She *understood* that she *was meant* to *become* the custodian of its enduring spirit, ensuring its future *would shine* as brightly as its storied past.`,
+            level: "C1",
+            difficultWords: {"citadel":"a fortress protecting a city, sometimes a castle on high ground.","revered":"regarded with deep respect.","legacy":"something transmitted by or received from an ancestor or predecessor."}
+          }
+        };
+
+      // ---- Helpers (scoped) ----
+      function formatStoryText(text) {
+        // **bold** -> <strong class="highlighted-word">bold</strong>
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="highlighted-word">$1</strong>');
+        // *italic* -> <em>italic</em>
+        return text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      }
+
+      function showStory(level) {
+        const container = root.querySelector('.lw-story-container');
+        const story = storiesData[level];
+        if (!container || !story) return;
+
+      let difficultWordsHtml = '';
+      if (story.difficultWords) {
+        // Se è una stringa JSON, trasformala in oggetto
+        let difficultWordsObj = story.difficultWords;
+        if (typeof difficultWordsObj === 'string') {
+          try {
+            difficultWordsObj = JSON.parse(difficultWordsObj);
+          } catch (err) {
+            console.error('Errore parsing difficultWords:', err);
+            difficultWordsObj = {};
+          }
+        }
+      
+        if (Object.keys(difficultWordsObj).length > 0) {
+          difficultWordsHtml = `
+            <div class="difficult-words">
+              <h3>📚 Parole Difficili:</h3>
+              <div class="words-list">
+                ${Object.entries(difficultWordsObj).map(([word, definition]) =>
+                  `<div class="word-item"><strong>${word}</strong>: ${definition}</div>`
+                ).join('')}
+              </div>
+            </div>
+          `;
+        }
+      }
+
+
+        container.innerHTML = `
+          <div class="story-title">${story.title}</div>
+          <div class="story-level-badge">Livello ${story.level}</div>
+          <div class="story-content">${formatStoryText(story.content)}</div>
+          ${difficultWordsHtml}
+        `;
+        container.classList.add('show');
+      }
+
+      // ---- Bind buttons inside this card only ----
+      root.querySelectorAll('.lw-level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          root.querySelectorAll('.lw-level-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          showStory(btn.getAttribute('data-level'));
+        });
+      });
+    })();
+  </script>
+</div>
+
+
+<!-- ⬇️ One self-contained, appendable card (scoped CSS + JS) -->
+<div class="lw-card">
+  <style>
+    /* ------- Scoped styles: only affect elements inside .lw-card ------- */
+    .lw-card { margin: 16px 0; }
+    .lw-card * { box-sizing: border-box; }
+
+    .lw-card .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+      animation: lw-slideIn 0.6s ease-out;
+      margin: 0 auto;
+    }
+
+    @keyframes lw-slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .lw-card .card-header {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .lw-card .card-header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .lw-card .card-header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .lw-card .card-body { padding: 40px; }
+
+    .lw-card .level-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .lw-card .level-btn {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border: 2px solid #dee2e6;
+      border-radius: 15px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lw-card .level-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .lw-card .level-btn.active {
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      border-color: #0984e3;
+    }
+
+    .lw-card .level-btn.facile { border-color: #00b894; }
+    .lw-card .level-btn.facile:hover,
+    .lw-card .level-btn.facile.active {
+      background: linear-gradient(135deg, #00b894, #00a085);
+      border-color: #00a085;
+    }
+
+    .lw-card .level-btn.medio { border-color: #fdcb6e; }
+    .lw-card .level-btn.medio:hover,
+    .lw-card .level-btn.medio.active {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      border-color: #e17055;
+    }
+
+    .lw-card .level-btn.difficile { border-color: #e84393; }
+    .lw-card .level-btn.difficile:hover,
+    .lw-card .level-btn.difficile.active {
+      background: linear-gradient(135deg, #e84393, #d63384);
+      border-color: #d63384;
+    }
+
+    .lw-card .level-icon { font-size: 2em; margin-bottom: 10px; }
+    .lw-card .level-title { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
+    .lw-card .level-description { font-size: 0.9em; opacity: 0.8; }
+
+    .lw-card .story-container {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px;
+      min-height: 300px;
+      display: none;
+      animation: lw-fadeIn 0.5s ease-in;
+    }
+
+    .lw-card .story-container.show { display: block; }
+
+    @keyframes lw-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lw-card .story-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2d3436;
+    }
+
+    .lw-card .story-content {
+      line-height: 1.8;
+      font-size: 1.1em;
+      color: #636e72;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    .lw-card .story-level-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .lw-card .highlighted-word {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .lw-card .difficult-words {
+      background: #e8f4f8;
+      border-left: 4px solid #74b9ff;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 8px;
+    }
+
+    .lw-card .difficult-words h3 {
+      color: #2d3436;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    .lw-card .words-list { display: grid; gap: 10px; }
+
+    .lw-card .word-item {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 0.95em;
+    }
+
+    .lw-card .word-item strong { color: #0984e3; }
+
+    .lw-card .no-story {
+      text-align: center;
+      color: #74b9ff;
+      font-style: italic;
+      font-size: 1.2em;
+      padding: 60px 20px;
+    }
+  </style>
+
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Park Race: A Story of True Spirit </h1>
       <p>Seleziona il livello di difficoltà più adatto a te</p>
     </div>
