@@ -189,6 +189,310 @@
 
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Big Splash </h1>
+      <p>Seleziona il livello di difficoltà più adatto a te</p>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+          <div class="level-description">Livello base</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+          <div class="level-description">Livello medio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+          <div class="level-description">Livello difficile</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+        <div class="no-story">Seleziona un livello per leggere la storia</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Scope everything to THIS card only
+      const root = document.currentScript.closest('.lw-card');
+
+      // ---- Stories data injected by n8n ----
+      const storiesData = {
+          a2: {
+            title: "Leo's Big Splash",
+            content: `Leo *went* to the swimming **pool**. He *felt* a little scared. His teacher, Maya, *was* there. She *told* him, "Let's *begin*!" Leo *got* into the water. It *was* cold. He *put* his face in the water and *blew* bubbles. He *held* his breath. Maya *taught* him to *kick* his legs. Leo *did* small kicks. He *came* up for air. He *kept* trying to be **brave**. Slowly, Leo *began* to **float**. He *swam* a little bit. He *felt* very happy. He *knew* he *was* able to *learn* more. He *became* a swimmer!`,
+            level: "A2",
+            difficultWords: {"pool":"a basin of water for swimming.","brave":"ready to face and endure danger or pain; showing courage.","float":"rest or move on or near the surface of a liquid without sinking."}
+          },
+          b1: {
+            title: "Leo's Big Splash",
+            content: `Leo *went* to the public **pool**, feeling a clear sense of **hesitation**. His swim teacher, Maya, *was* already there, her encouraging smile *made* him *feel* a bit better. "Today we *begin* properly!" she *said*. Leo *got* into the cool water; it *felt* colder than he *thought* it *would*. He *put* his face under the surface and *blew* out long streams of bubbles, *holding* his breath for longer periods. Maya *showed* him the correct leg **technique**, how to *kick* from his hips. He *did* as she *told* him, moving his arms in smooth strokes. He *came* up for air, *feeling* less afraid. He *kept* practicing, and soon he *felt* a sense of real **progress**. Slowly but surely, Leo *swam* across a small section of the pool. He *knew* he *had* truly *taken* the first big step. He *became* incredibly proud of himself.`,
+            level: "B1",
+            difficultWords: {"hesitation":"a pause or delay before saying or doing something.","technique":"a skillful or efficient way of doing something.","progress":"forward or onward movement toward a destination."}
+          },
+          c1: {
+            title: "Leo's Big Splash",
+            content: `A palpable sense of **apprehension** *clung* to Leo as he *went* to the municipal **pool**. His esteemed swim instructor, Maya, *was* already there, her calm demeanor subtly easing his nerves. "It's time we truly *began* to *overcome* this challenge," she *said* softly. Leo cautiously *got* into the cool, crystal-clear water; it *felt* bracing, but not unwelcome. He *put* his face beneath the surface, *blew* a steady stream of bubbles, and *held* his breath, *feeling* the pressure against his eardrums. Maya meticulously *showed* him the intricate arm strokes and the precise leg kick, *teaching* him to *make* his movements fluid. He *did* exactly as she *bade* him, synchronizing his breath with his strokes. Each time he *came* up for air, a sliver of confidence *began* to *grow*. He *kept* persevering, and gradually, a burgeoning sense of **mastery** *took* hold. He *swam* a full length of the lane, his movements confident and strong. He *knew* he *had* not only *learned* to swim but *had* also *beaten* a deep-seated fear. The feeling of **elation** *washed* over him, a testament to his newly *found* ability.`,
+            level: "C1",
+            difficultWords: {"apprehension":"anxiety or fear that something bad will happen.","mastery":"comprehensive knowledge or skill in a subject or activity.","elation":"great happiness and exhilaration."}
+          }
+        };
+
+      // ---- Helpers (scoped) ----
+      function formatStoryText(text) {
+        // **bold** -> <strong class="highlighted-word">bold</strong>
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="highlighted-word">$1</strong>');
+        // *italic* -> <em>italic</em>
+        return text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      }
+
+      function showStory(level) {
+        const container = root.querySelector('.lw-story-container');
+        const story = storiesData[level];
+        if (!container || !story) return;
+
+      let difficultWordsHtml = '';
+      if (story.difficultWords) {
+        // Se è una stringa JSON, trasformala in oggetto
+        let difficultWordsObj = story.difficultWords;
+        if (typeof difficultWordsObj === 'string') {
+          try {
+            difficultWordsObj = JSON.parse(difficultWordsObj);
+          } catch (err) {
+            console.error('Errore parsing difficultWords:', err);
+            difficultWordsObj = {};
+          }
+        }
+      
+        if (Object.keys(difficultWordsObj).length > 0) {
+          difficultWordsHtml = `
+            <div class="difficult-words">
+              <h3>📚 Parole Difficili:</h3>
+              <div class="words-list">
+                ${Object.entries(difficultWordsObj).map(([word, definition]) =>
+                  `<div class="word-item"><strong>${word}</strong>: ${definition}</div>`
+                ).join('')}
+              </div>
+            </div>
+          `;
+        }
+      }
+
+
+        container.innerHTML = `
+          <div class="story-title">${story.title}</div>
+          <div class="story-level-badge">Livello ${story.level}</div>
+          <div class="story-content">${formatStoryText(story.content)}</div>
+          ${difficultWordsHtml}
+        `;
+        container.classList.add('show');
+      }
+
+      // ---- Bind buttons inside this card only ----
+      root.querySelectorAll('.lw-level-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          root.querySelectorAll('.lw-level-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          showStory(btn.getAttribute('data-level'));
+        });
+      });
+    })();
+  </script>
+</div>
+
+
+<!-- ⬇️ One self-contained, appendable card (scoped CSS + JS) -->
+<div class="lw-card">
+  <style>
+    /* ------- Scoped styles: only affect elements inside .lw-card ------- */
+    .lw-card { margin: 16px 0; }
+    .lw-card * { box-sizing: border-box; }
+
+    .lw-card .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+      animation: lw-slideIn 0.6s ease-out;
+      margin: 0 auto;
+    }
+
+    @keyframes lw-slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .lw-card .card-header {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .lw-card .card-header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .lw-card .card-header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .lw-card .card-body { padding: 40px; }
+
+    .lw-card .level-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .lw-card .level-btn {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border: 2px solid #dee2e6;
+      border-radius: 15px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lw-card .level-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .lw-card .level-btn.active {
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      border-color: #0984e3;
+    }
+
+    .lw-card .level-btn.facile { border-color: #00b894; }
+    .lw-card .level-btn.facile:hover,
+    .lw-card .level-btn.facile.active {
+      background: linear-gradient(135deg, #00b894, #00a085);
+      border-color: #00a085;
+    }
+
+    .lw-card .level-btn.medio { border-color: #fdcb6e; }
+    .lw-card .level-btn.medio:hover,
+    .lw-card .level-btn.medio.active {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      border-color: #e17055;
+    }
+
+    .lw-card .level-btn.difficile { border-color: #e84393; }
+    .lw-card .level-btn.difficile:hover,
+    .lw-card .level-btn.difficile.active {
+      background: linear-gradient(135deg, #e84393, #d63384);
+      border-color: #d63384;
+    }
+
+    .lw-card .level-icon { font-size: 2em; margin-bottom: 10px; }
+    .lw-card .level-title { font-size: 1.3em; font-weight: bold; margin-bottom: 5px; }
+    .lw-card .level-description { font-size: 0.9em; opacity: 0.8; }
+
+    .lw-card .story-container {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 20px;
+      min-height: 300px;
+      display: none;
+      animation: lw-fadeIn 0.5s ease-in;
+    }
+
+    .lw-card .story-container.show { display: block; }
+
+    @keyframes lw-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lw-card .story-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #2d3436;
+    }
+
+    .lw-card .story-content {
+      line-height: 1.8;
+      font-size: 1.1em;
+      color: #636e72;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    .lw-card .story-level-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .lw-card .highlighted-word {
+      background: linear-gradient(135deg, #fdcb6e, #e17055);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .lw-card .difficult-words {
+      background: #e8f4f8;
+      border-left: 4px solid #74b9ff;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 8px;
+    }
+
+    .lw-card .difficult-words h3 {
+      color: #2d3436;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    .lw-card .words-list { display: grid; gap: 10px; }
+
+    .lw-card .word-item {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 0.95em;
+    }
+
+    .lw-card .word-item strong { color: #0984e3; }
+
+    .lw-card .no-story {
+      text-align: center;
+      color: #74b9ff;
+      font-style: italic;
+      font-size: 1.2em;
+      padding: 60px 20px;
+    }
+  </style>
+
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Dream Weaver's Flight </h1>
       <p>Seleziona il livello di difficoltà più adatto a te</p>
     </div>
