@@ -57,6 +57,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Rainy Picnic Adventure</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Rainy Picnic Adventure (A2)",
+        content: `Clara and Ben *went* to the park. They *chose* a nice spot. They *put* a blanket on the grass. They *had* a picnic basket. They *took* sandwiches and fruit out. They *ate* their food. The sun *felt* warm.
+Then, dark clouds *came*. The sky *became* grey. A strong wind *began* to *blow*. Soon, rain *fell* down fast. Clara and Ben *got* up quickly. They *ran* to a big tree for **shelter**. They *felt* wet, but they *did* not *feel* sad. They laughed. It *was* a fun, **sudden** adventure. They will remember this **funny** day.`,
+        level: "A2",
+        difficultWords: {"shelter":"a place giving protection from bad weather or danger.","sudden":"happening quickly and unexpectedly.","funny":"making you laugh; amusing."}
+      },
+      b1: {
+        title: "The Rainy Picnic Adventure (B1)",
+        content: `Clara and Ben *went* to a **serene** meadow for a picnic. They *found* a perfect spot under a large oak tree. They *spread* their patterned blanket and *took* out a feast of sandwiches, fruit, and homemade cookies. As they *ate*, enjoying the warm sun, a few white clouds *began* to drift across the blue sky.
+Soon, these clouds *grew* larger and *became* dark. A cool breeze *blew*, and the distant sky *showed* hints of grey. Suddenly, without warning, heavy raindrops *began* to *fall*. They quickly gathered their belongings. They *ran* laughing towards their car, feeling the cool drops on their skin. They *got* completely wet, but they *did* not mind. They *knew* it *was* an **unforgettable** picnic, filled with **spontaneous** joy.`,
+        level: "B1",
+        difficultWords: {"serene":"calm, peaceful, and untroubled.","unforgettable":"impossible to forget; very memorable.","spontaneous":"done or happening naturally and suddenly without any planning."}
+      },
+      c1: {
+        title: "The Rainy Picnic Adventure (C1)",
+        content: `Clara and Ben *chose* a truly **idyllic** spot in a vast meadow for their long-anticipated picnic. They *drove* for miles, *seeking* the perfect **expanse** of greenery. Upon arrival, they *spread* a vibrant blanket beneath the sprawling branches of an ancient oak, unpacked a carefully curated spread of artisanal cheeses, freshly baked bread, and gourmet sandwiches. As they *ate*, sharing stories and *drank* lemonade, the initial clear blue sky *began* to *give* way to an increasingly dramatic display of cumulus clouds.
+The air *grew* heavy, and a strong wind *blew* through the tall grass, *making* the leaves dance. Suddenly, the heavens *opened*, and a torrential downpour *began* to *fall*. Without a moment's hesitation, they *sprang* into action, hastily gathering their picnic items, which *became* soaked in seconds. They *ran*, their laughter echoing through the sudden storm, towards the distant car, *feeling* the full force of the rain. Though completely drenched, they *were* utterly **unfazed*, *knowing* this unexpected adventure *would forever bind* them to the memory of a truly spontaneous and exhilarating day.`,
+        level: "C1",
+        difficultWords: {"idyllic":"extremely happy, peaceful, or picturesque.","expanse":"a wide, continuous area of something.","unfazed":"not surprised or worried by something that happens."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Grandma's Golden Apple Pie</h1>
     </div>
 
