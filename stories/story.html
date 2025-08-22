@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Whispering Cave's Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Mysterious Cave",
+        content: `Leo and Mia *went* to a big cave. People *said* it *was* a **mystery**. They *saw* a dark hole. It *was* cold inside. They *began* to walk slowly. They *had* a light. The light *made* the walls bright. They *found* shiny rocks. The rocks *were* special. They *came* to a small pool. The water *gave* a soft **glow**. It *was* beautiful. They *felt* happy. They *took* a picture. Then they *went* out. They *knew* they *saw* something amazing. They *would* *tell* their friends about the **wonder**.`,
+        level: "A2",
+        difficultWords: {"mystery":"something that is not known or understood.","glow":"a soft, steady light.","wonder":"a feeling of surprise and admiration."}
+      },
+      b1: {
+        title: "Discovering the Cave's Wonders",
+        content: `Leo and Mia *went* to explore a big cave that people *said* *held* a **mystery**. They *saw* a dark entrance, and a cool breeze *met* them. Carrying a powerful torch, they *began* to walk deeper inside. The light *shone* on strange rock formations. They *found* unique, brightly colored crystals that *felt* smooth. Further in, they *came* across a hidden pool. The water *gave* off an amazing **iridescent** glow, changing colors softly. They *felt* a sense of awe at the natural beauty. They *took* many photos. As they *left* the cave, the sun *began* to set. They *knew* they *had* *seen* something truly special and *wanted* to *tell* everyone about their **discovery**.`,
+        level: "B1",
+        difficultWords: {"mystery":"something that is not known or understood, often intriguing.","iridescent":"showing luminous colors that seem to change when seen from different angles.","discovery":"the act of finding something for the first time."}
+      },
+      c1: {
+        title: "Unveiling the Enigmatic Grotto",
+        content: `Leo and Mia *had* long *heard* tales of a vast, **enigmatic** cave nestled deep within the ancient forest. Driven by a thirst for adventure, they *set* out to explore the cavern people *said* *held* profound secrets. They *found* the hidden entrance, a gaping maw from which a chilling draft *blew*. Undeterred, they *lit* their high-powered lamps and *began* their descent into the darkness. The beams *swept* across geological formations that *bore* the marks of ages, revealing intricate patterns. Deeper still, they *came* upon a subterranean grotto where a tranquil pool *lay*. The water *shone* with an otherworldly **luminescence**, its surface a shimmering canvas of shifting, vibrant hues. They *felt* utterly captivated by the sight. They *took* numerous photographs, ensuring they *caught* the ethereal beauty. As they *made* their way back, the setting sun *cast* long shadows. They *knew* they *had* *seen* an extraordinary natural phenomenon and *were* eager to *spread* their **revelation** with the world.`,
+        level: "C1",
+        difficultWords: {"enigmatic":"difficult to understand; mysterious.","luminescence":"the emission of light by a substance not resulting from heat.","revelation":"a surprising and previously unknown fact, especially one that is made known in a dramatic way."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Spicy Surprise</h1>
     </div>
 
