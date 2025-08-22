@@ -11,6 +11,65 @@
 
   <!-- Contenitore dove n8n inserirà le card -->
   <div id="cards-container">
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
+      <h1>📚 A Hectic Morning</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Hectic Morning",
+        content: `Liam *woke* up. The sun *came* into his room. He *saw* the clock. Oh no! It *was* 8:00 AM! School *began* at 8:30. He *felt* a sudden **panic**. He *got* out of bed fast. He *ran* to the kitchen. His mom *made* breakfast. He *ate* it very quickly. He *took* his bag and *went* out the door. He *ran* all the way to school. When he *came* to class, his teacher *was* there. She *knew* he *was* late. He *did* not like that. He *missed* the math test. He *felt* sad. He *knew* he *had* to **set** his alarm louder next time. He *made* a promise to himself to *sleep* earlier. What a **messy** morning!`,
+        level: "A2",
+        difficultWords: {"panic":"a sudden strong feeling of fear.","set":"to put something in a particular position or state.","messy":"not neat or clean; full of disorder."}
+      },
+      b1: {
+        title: "A Hectic Morning",
+        content: `Liam *woke* up abruptly. A bright **beam** of sunlight *fell* across his face. He *saw* the clock on his bedside table: 8:00 AM. His heart *began* to *beat* fast. School *started* at 8:30! A wave of panic *swept* over him. He *leapt* out of bed and *ran* to the kitchen where his mother *stood*, finishing breakfast. He *ate* quickly. He *grabbed* his backpack, *took* a quick goodbye, and *flew* out the door, *running* as fast as his legs *could* *take* him. When he *got* to school, the hallways *were* silent. He *crept* into class, but his teacher *already* *knew* he *was* late. He *had* *missed* the first period—an important science test. He *felt* a pang of **regret**. He *understood* he *had* *brought* this upon himself. He *made* a mental note to **prioritize** sleep and *set* two alarms from now on.`,
+        level: "B1",
+        difficultWords: {"beam":"a ray or shaft of light.","regret":"a feeling of sadness, repentance, or disappointment over something that has happened or been done.","prioritize":"to organize (items) in order of importance."}
+      },
+      c1: {
+        title: "A Hectic Morning",
+        content: `Liam *awoke* abruptly, a **torrent** of sunlight *shot* through a gap in his curtains. He *saw* his digital clock: 8:00 AM. A jolt of adrenaline *ran* through him. School *began* in thirty minutes! A profound sense of dread *swept* over him, replacing his usual morning *languor*. He *leapt* from his bed, his mind *went* into overdrive, and he *fled* to the kitchen. His mother *stood* by the stove, seemingly unfazed, as he *ate* his breakfast, the usual flavors *lost* amidst his burgeoning panic. He *took* his satchel, *bid* a rushed farewell, and *flung* himself out the door, *running* with a frantic intensity that *left* him breathless. The school corridors *were* eerily silent when he *crept* into his classroom, only to *find* his teacher, Ms. Evans, *had* *already* *taken* attendance. He *had* *missed* the crucial English literature test. A wave of bitter **chagrin** *came* over him. He *knew* he *had* *brought* this predicament upon himself, a direct consequence of his late-night gaming. He *swore* to **rectify** his habits, *resolving* to *go* to bed earlier and *set* multiple alarms, determined that such a calamitous start *would* never again *befall* him.`,
+        level: "C1",
+        difficultWords: {"torrent":"a strong and fast-moving stream of water or other liquid; here, a rush or flow of something.","chagrin":"a feeling of distress or embarrassment at having failed or been humiliated.","rectify":"to put right; correct."}
+      }
+    };
+  </script>
+
+  <!-- Script statico con la logica -->
+  <script src="script.js"></script>
+</div>
+
+
     <!-- n8n aggiungerà qui dentro le nuove storie -->
   </div>
 
