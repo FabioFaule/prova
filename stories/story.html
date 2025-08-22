@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Grandma's Sweet Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Grandma's Sweet Secret (A2)",
+        content: `Lily *had* a great idea. She *wanted* to *make* Grandma’s berry tart. Mom *said*, “Let’s *do* it!” They *went* to the kitchen and *found* an old recipe book. Grandma *wrote* it. They *saw* the list of things they *would* *need*. “We *must* *get* fresh berries,” Mom *said*. They *drove* to the market and *bought* many red berries. Back home, Mom *cut* the butter, and Lily *put* flour in a bowl. They *mixed* it. Lily *felt* the dough. It *was* very soft. They *spread* it in a pan. Then they *put* the berries on top. The kitchen *began* to **smell** so good. They *set* the oven. Soon, the tart *was* ready. They *took* it out. It *was* golden and **delicious**. They *did* not *wait* to *eat* it. They *ate* a big piece. Lily *knew* Grandma *would* *be* proud. It *was* a **special** day.`,
+        level: "A2",
+        difficultWords: {"smell":"To perceive an odor with the nose.","delicious":"Having a very pleasant taste or smell.","special":"Better, greater, or otherwise different from what is usual."}
+      },
+      b1: {
+        title: "Grandma's Sweet Secret (B1)",
+        content: `Lily *had* an inspired idea: to *make* Grandma’s berry tart. Her mom *said*, “That’s a wonderful idea! Let’s *do* it today.” They *went* to the kitchen and *found* Grandma’s old, **handwritten** recipe book, which she *had* *kept* for years. Grandma *had* *written* down every step. They *saw* the list of required ingredients. “We *must* *get* fresh berries,” Mom *said*. They *drove* to the local market and *bought* an **abundance** of ripe, red berries. Back home, Mom *cut* the butter precisely, while Lily *put* flour into a large mixing bowl. They *began* to combine the ingredients thoroughly. Lily *felt* the pastry dough *become* soft and pliable. They *spread* it carefully into a tart pan, then *put* the juicy berries on top. The kitchen *soon* *began* to fill with a delightful aroma. They *set* the oven to the correct temperature. After some time, the tart *was* ready. They *took* it out; it *was* golden brown and *looked* incredibly **tempting**. They *did* not *wait* for it to cool entirely. Each *ate* a generous slice. Lily *knew* Grandma *would* *be* truly proud of their delicious creation.`,
+        level: "B1",
+        difficultWords: {"handwritten":"Written by hand, not printed or typed.","abundance":"A very large quantity of something.","tempting":"Appealing or attractive, making one want to have or do something."}
+      },
+      c1: {
+        title: "Grandma's Sweet Secret (C1)",
+        content: `Lily *felt* a sudden **impetus** to recreate Grandma’s legendary berry tart. Her mother, **enthusiastically** agreeing, *said*, “What a splendid notion! Let’s *begin* this culinary adventure today.” They *went* to the kitchen and *brought* out Grandma’s cherished, well-worn recipe book, a family heirloom that *had* *been* *kept* for generations. Grandma *had* *written* each intricate step with elegant script. They *read* the comprehensive list of required ingredients. “We *must* *get* the freshest berries available,” Mom *said*. They *drove* to the bustling local market, where they *bought* an ample **profusion** of succulent, crimson berries. Returning home, Mom *cut* the butter with practiced precision, whilst Lily *put* the flour into a substantial mixing bowl. They *began* to meticulously blend the components. Lily *felt* the pastry dough *become* exquisitely soft and pliant beneath her fingertips. They *spread* it evenly into the tart pan, then *put* the glistening berries atop. Soon, the kitchen *began* to fill with an irresistible aroma. They *set* the oven to the precise temperature prescribed. After a suitable interval, the tart *was* ready. They *took* it out; it *had* *grown* a perfect golden-brown hue and looked utterly irresistible. They *did* not hesitate to savor it. Each *ate* a generous slice, the flavors a symphony on their palates. Lily *knew* Grandma *would* *have* *been* immensely proud of their delectable accomplishment.`,
+        level: "C1",
+        difficultWords: {"impetus":"A force that makes something happen or happen more quickly.","enthusiastically":"In a way that shows intense and eager enjoyment, interest, or approval.","profusion":"An abundance or large quantity of something."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Mia's Unexpected Detour</h1>
     </div>
 
