@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A Hectic Morning</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Hectic Morning",
+        content: `The alarm *did not ring*. Sarah *woke up* late. She *felt* **startled**. She *got* out of bed fast. Sarah *went* to the kitchen. She *made* coffee and *ate* a quick **toast**. She *drank* her coffee quickly. She *thought* about work. Then, she *ran* to her room. She *put on* her clothes. She *took* her bag and *left* the house. Sarah *ran* to the train station. She *saw* her train. It *was* almost gone! She *got* on just as the doors *began* to close. Sarah *felt* a big **relief**. She *sat* down and *began* to relax. Today *was* a very busy morning!`,
+        level: "A2",
+        difficultWords: {"startled":"surprised or alarmed.","toast":"slices of bread made warm and crisp by heating.","relief":"the feeling of being happy that something unpleasant has not happened or has ended."}
+      },
+      b1: {
+        title: "A Hectic Morning",
+        content: `The alarm *did not ring*. Sarah *woke up* with a **jolt**, realizing she *had overslept*. She *felt* a sudden panic. Quickly, she *got* out of bed and *went* straight to the kitchen. She *made* a strong cup of coffee and *ate* a piece of toast, barely tasting it. She *drank* her coffee while *thinking* about her important meeting. She *knew* she *had to hurry*. Sarah *ran* to her closet, *chose* her clothes, and *put them on* in record time. She *grabbed* her bag, *found* her keys, and *left* the apartment, locking the door behind her. She *ran* at top speed towards the train station. From a distance, she *saw* her train. It *was* already *drawing* away from the **platform**! She *let out* a sigh of relief as she *got* on just before the doors *shut*. She *felt* a wave of calm and *sat* down, her heart *beating* fast. It *had been* a truly hectic morning, and she *had barely made* it.`,
+        level: "B1",
+        difficultWords: {"jolt":"a sudden, rough movement.","overslept":"slept for longer than intended.","platform":"a raised surface next to a railway track where passengers get on and off trains."}
+      },
+      c1: {
+        title: "A Hectic Morning",
+        content: `The piercing shriek of the alarm *failed* to *sound*. Sarah *awoke* with a **startle**, the stark realization that she *had overslept* sending a surge of adrenaline through her. A profound sense of urgency *swept* over her. Leaping from her bed, she *flew* to the kitchen, where she swiftly *brewed* a potent coffee and *gobbled* down a piece of toast, its taste barely registering amidst her rising anxiety. She *drank* the scalding liquid, her mind already *racing* through the day's commitments. She *knew* a crucial meeting *lay* ahead. Sarah *fled* to her wardrobe, *chose* an outfit, and *threw* it on with frantic haste. She *grabbed* her briefcase, *found* her car keys (though she *knew* she wouldn't *drive* today), and *shot* out the door, locking it without a second glance. She *ran* at an **unprecedented** pace toward the train station. As she *drew* near, her heart *sank*: she *beheld* her train, already *gliding* away from the platform. With a last, desperate sprint, she *threw* herself into the carriage just as the doors *slid shut*. She *leaned* against the wall, utterly **spent**, her chest *heaving*. What a tumultuous start to the day! She *had barely made* it.`,
+        level: "C1",
+        difficultWords: {"startle":"a sudden shock or surprise.","unprecedented":"never done or known before; without previous instance.","spent":"exhausted, worn out."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Lena's Big Test Day</h1>
     </div>
 
