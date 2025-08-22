@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Alex's Busy Morning</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Alex's Busy Morning",
+        content: `Alex *woke* up late. The sun *came* in through the window. Alex *got* out of bed fast. They *went* to the bathroom and *took* a quick shower. Alex *put* on clothes. They *ran* to the kitchen. Alex *drank* coffee and *ate* some toast. They *saw* the time. "Oh no!" Alex *said*. "I *have* to *go*!" Alex *found* keys. They *ran* out the door. Then, Alex *came* back. "I *forgot* my lunch!" they *thought*. Alex *took* the lunch bag and *left* the house quickly. Alex *drove* to work, hoping not to be too late. It *was* a **hectic** start. Alex *felt* a little **weary** but *knew* the day *would be* **worthwhile**.`,
+        level: "A2",
+        difficultWords: {"hectic":"very busy and full of activity.","weary":"tired.","worthwhile":"useful and important."}
+      },
+      b1: {
+        title: "Alex's Busy Morning",
+        content: `The alarm clock *did not ring*, and Alex *woke* up late. A ray of sunlight *shone* through the blinds, making the room **bright**. Alex *sprang* out of bed, a sense of urgency *began* to *build*. They *ran* to the bathroom and *took* a quick, cold shower, which *made* them *feel* more awake. Quickly, Alex *chose* clothes and *put* them on. In the kitchen, Alex *drank* a large cup of coffee and *ate* a piece of fruit. They *saw* the clock and *knew* they *had* to *leave* immediately. Alex *found* their keys and *said* goodbye to the empty house. As they *went* out the front door, Alex *came* to a sudden halt. "Oh, I almost *forgot* my lunch!" they *thought*, *making* them *go* back inside. Alex *took* the lunch bag that *lay* on the counter and *ran* back out. Alex *drove* to work, trying to **beat** the traffic. Despite the **commotion**, they *felt* ready for the day.`,
+        level: "B1",
+        difficultWords: {"bright":"full of light.","beat":"to defeat or do better than something.","commotion":"a state of confused and noisy disturbance."}
+      },
+      c1: {
+        title: "Alex's Busy Morning",
+        content: `The alarm clock *kept* silent, and Alex *awoke* with a sudden jolt, already **behind schedule**. A shaft of sunlight *shone* through the blinds, *making* the room appear instantly brighter. Alex *sprang* from bed, a palpable sense of urgency *began* to *hold* their thoughts. They *flew* to the bathroom, *took* a bracingly cold shower that *sent* shivers through them, yet *left* them feeling invigorated. Swiftly, Alex *chose* an outfit and *put* it on, barely *giving* it a second thought. In the kitchen, they *drank* a potent cup of coffee and *ate* a piece of fruit, scarcely *feeling* its taste. Their eyes *fell* upon the kitchen clock, and they *knew* they *had* to *leave* instantly. Alex *found* their car keys, *wrote* a mental note of their tasks, and *bid* farewell to the quiet apartment. Just as they *tread* onto the pavement, a critical detail *sprang* to mind. "I *forsook* my lunch!" they *spoke* under their breath, *making* them *come* back on their heel. Alex *brought* the insulated bag that *lay* on the counter, *held* it, and *shot* out the door. Alex *drove* to work, *weaving* through the early morning traffic, determined to **overcome** any delays. Despite the chaotic start, Alex *felt* surprisingly composed, ready to *undertake* the day's **endeavors**.`,
+        level: "C1",
+        difficultWords: {"behind schedule":"later than planned.","overcome":"to successfully deal with or defeat a problem or difficulty.","endeavors":"serious attempts or efforts."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Leo's Test Triumph</h1>
     </div>
 
