@@ -57,6 +57,68 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Lena's Big Test Day</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Lena's Big Test",
+        content: `Lena *woke* up early. Her stomach *felt* funny. Today *was* the big test! Her heart *began* to **flutter**. She *went* to the kitchen. She *drank* some juice but *couldn't eat* much. She *put* on her uniform.
+At school, she *saw* her friend, Tom. He *came* to her. Lena *felt* a little better. They *went* to class. She *sat* at her desk. Her teacher *gave* them the papers. Lena *took* a deep breath. She *began* to *write*. It *was* hard, but she *did* her best. She *knew* she *could do* it. When she *finished* the test, she *felt* happy. The test *was* over. She *had done* well, she *thought*. She *felt* more **calm**. She *saw* Tom and they *spoke* in a **whisper**.`,
+        level: "A2",
+        difficultWords: {"flutter":"move lightly and quickly","calm":"peaceful and not worried","whisper":"speak very softly"}
+      },
+      b1: {
+        title: "Lena's Big Test",
+        content: `Lena *awoke* with a jolt. Her stomach *did* a little **churn**. Today *was* the math test, and her heart *began* to *pound*. She *went* to the kitchen and *made* herself some tea. She *tried* to *eat* toast, but the food *felt* like it *got* *stuck* in her throat. She *put* on her school uniform, her hands *shook* slightly.
+As she *made* her way to school, she *saw* familiar faces. Her friend, Maya, *came* over and *gave* her a smile. Lena *felt* a bit better. Maya *said*, "You *know* this material, Lena! You *did* your best." Her words *made* Lena **reassure** herself.
+Inside the classroom, Lena *found* her seat. The teacher *gave* out the test papers. Lena *took* a deep breath, *held* her pen, and *began* to *write* **diligently**. She *knew* she *could do* it. When the bell *rang*, she *felt* a wave of relief. She *had done* her best.`,
+        level: "B1",
+        difficultWords: {"churn":"(of a liquid or stomach) move around violently","reassure":"make someone feel less anxious or worried","diligently":"in a careful and persistent manner"}
+      },
+      c1: {
+        title: "Lena's Big Test",
+        content: `Lena *awoke* abruptly, a knot of **dread** *clung* to her stomach. Today *was* the highly anticipated math exam, and her heart *began* to *beat* with an alarming rhythm. She *crept* to the kitchen, *made* a strong coffee, and *ate* a piece of toast, but the morsel *stuck* in her throat, refusing to *go* down. Her hands *shook* as she *put* on her uniform.
+Each step she *trod* on the way to school *felt* heavy. She *saw* classmates chatting, their lightheartedness a stark contrast to her internal turmoil. Then, Maya, her closest friend, *came* up to her, her presence a comforting anchor. Maya *spoke* softly, "You *have* *spent* countless hours preparing, Lena. Remember how much effort you *put* in. You *will overcome* this." Her gentle words *brought* Lena a sense of **calm**.
+Inside the bustling classroom, Lena *found* her assigned seat. Her apprehension *was* **palpable**. The invigilator *laid* the test papers on each desk. Lena *took* a profound breath, *held* her pen, and with a newly *found* resolve, *began* to *write*. Her focus *was* **unwavering**. She *knew* she *could do* this. When the final bell *rang*, a profound sense of catharsis *swept* over her. She *had done* her absolute best, and that *was* enough.`,
+        level: "C1",
+        difficultWords: {"dread":"great fear or apprehension","palpable":"(of a feeling or atmosphere) so intense as to be almost touched or felt","unwavering":"steady or resolute; not wavering"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Byte, the Homework Helper</h1>
     </div>
 
