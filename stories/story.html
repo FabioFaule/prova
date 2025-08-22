@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Birthday Cake Catastrophe</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Level A2: The Birthday Cake Catastrophe",
+        content: `It *was* Tom’s birthday. Lisa *wanted* to *make* him a cake. She *did* it very well. The cake *was* big and nice. Lisa *put* the cake on the kitchen table. She *went* to *get* candles. Max, her little dog, *came* into the kitchen. He *saw* the cake. It *smelled* so good! Max *jumped* on a chair. He *ate* a big piece of the cake! Oh no! Lisa *came* back. She *saw* the **mess**. She *felt* very sad. "Max, you *are* a **naughty** dog!" she *said*. Tom *came* home. He *did not see* the cake. Lisa *had* to *tell* him. "The cake is **gone**," she *said*. Tom *was* surprised. But then Lisa *had* an idea. She *went* to the shop and *bought* a new cake. Everyone *was* happy and *ate* the cake. They *had* a fun party.`,
+        level: "A2",
+        difficultWords: {"mess":"a dirty or untidy state of things.","naughty":"behaving badly; disobedient.","gone":"not present; away from a place."}
+      },
+      b1: {
+        title: "Level B1: The Birthday Cake Catastrophe",
+        content: `It *was* a special day. It *was* Tom’s birthday! Lisa *decided* to *bake* him a surprise cake. She *spent* hours making it perfect. The chocolate cake *stood* proudly on the kitchen counter. Lisa *went* to the living room to *find* the birthday candles. Suddenly, a small shadow *crept* into the kitchen. It *was* Max, Lisa’s **mischievous** dog. He *smelled* the sweet **aroma** and his eyes *grew* wide. He *knew* it *was* for Tom. Max *jumped* onto a chair, then onto the counter. He *began* to *eat* the cake with great enthusiasm. Lisa *came* back and *saw* the **devastation**. The cake *was* half-*eaten*, crumbs *were* everywhere. She *felt* a wave of disappointment. "Max, you *have made* a terrible mess!" she *said*. When Tom *arrived*, Lisa *had* to *tell* him the bad news. His face *fell*. But Lisa quickly *thought* of a solution. She *ran* to the local bakery and *bought* a beautiful new cake. They *brought* it home and everyone *sang* "Happy Birthday." The party *went* on, and everyone *felt* joyful.`,
+        level: "B1",
+        difficultWords: {"mischievous":"causing trouble in a playful way.","aroma":"a pleasant, distinctive smell.","devastation":"great destruction or damage."}
+      },
+      c1: {
+        title: "Level C1: The Birthday Cake Catastrophe",
+        content: `The day *broke* bright for Tom’s birthday, and Lisa *had risen* early to *make* a special mission: baking his favorite chocolate fudge cake. She *began* work meticulously, ensuring every layer *was* perfect. The magnificent cake *stood* resplendent on the kitchen island, a true confectionary masterpiece. Lisa *left* to *fetch* the candles from the attic. Unbeknownst to her, a mischievous glint *lit* up in Max's eyes, her Labrador. He *had caught* the enticing **waft** of chocolate, a scent that *drew* him irresistibly. Stealthily, he *crept* onto a chair, then *leapt* onto the counter, his paws finding precarious purchase. He *fell* upon the cake, *biting* into a substantial portion before Lisa *came* back. What she *beheld* *was* a scene of utter **ruin**: the once-proud cake *was rent* asunder, crumbs *strewn* across the gleaming countertop. Her heart *sank*. "Max, you *have wrought* havoc!" she *said*, her voice full of dismay. When Tom *came* home, Lisa *knew* she *had* to *break* the news. His hopeful anticipation *gave way* to palpable disappointment. However, Lisa, ever resourceful, *chose* not to *give in* to despair. She *sped* to the city's renowned **patisserie** and *bought* a dazzling replacement. They *brought* it back, *lit* the candles, and *sang* with gusto. The evening *went* on joyously, *proving* that even a cake catastrophe *could not spoil* their spirits.`,
+        level: "C1",
+        difficultWords: {"waft":"a gentle movement of air, carrying a scent.","ruin":"the physical destruction or collapse of something.","patisserie":"a French or similar bakery specializing in pastries and sweets."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Missing Suitcase</h1>
     </div>
 
