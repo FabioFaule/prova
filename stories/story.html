@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Our Saturday Clean-Up</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Our Saturday Clean-Up",
+        content: `Saturday morning, the sun *shone* brightly. Mia and Leo *woke* up. Mom *came* and *said*, "Let's clean!" Mia *chose* to *sweep* the floor. She *swept* it fast. Leo *took* out the trash. He *put* his toys away. They *did* their best. Mia *made* the kitchen counter **sparkle**. Leo *stood* his books on the shelf. He *felt* a bit tired, but happy. Soon, the house *was* clean and **tidy**. Mom *gave* them juice and a snack. She *said*, "You *did* a great job!" They *felt* proud. Their home *was* ready for fun. Mom's **praise** *made* them smile.`,
+        level: "A2",
+        difficultWords: {"sparkle":"to shine brightly with flashes of light","tidy":"neat and organized","praise":"words that express approval or admiration"}
+      },
+      b1: {
+        title: "Our Saturday Clean-Up",
+        content: `Saturday morning, the sun *shone* with a soft **gleam**. Mia and Leo *awoke* early. Their mom *came* into their room and *said*, "Time to tackle our weekend chores!" Mia *chose* to *sweep* the living room. She *swept* the dust away with focus. Leo *took* out the overflowing trash bags. He *put* his scattered books neatly back on the shelf. Together, they *did* a fantastic job. Mia *made* the kitchen sink *shine*, it truly *began* to **gleam**. Leo *dealt* with the bathroom, making sure everything *was* spotless. They *felt* a sense of achievement. Soon, their home *became* **meticulous**. Mom *gave* them fresh juice and *made* cookies. She *said*, "Your effort *was* amazing, thank you!" They *drank* their juice, *ate* their snacks, and *knew* their hard work *had* *brought* a peaceful feeling. This small act of teamwork *was* their special **recompense**.`,
+        level: "B1",
+        difficultWords: {"gleam":"to shine softly, often with a reflected light","meticulous":"showing great attention to detail; very careful and precise","recompense":"compensation or reward given for loss or harm suffered, or for effort made"}
+      },
+      c1: {
+        title: "Our Saturday Clean-Up",
+        content: `Saturday morning, a gentle **radiance** *began* to *spread* through the bedroom curtains. Mia and Leo *awoke* with a shared sigh of weekend ambition. Their mother *came* in, her voice soft but firm, *saying*, "Let's conquer the weekend *clutter*!" Mia *chose* to *sweep* the entire ground floor. She *swept* away every speck of dust with **fastidious** attention, her movements almost rhythmic. Leo *took* the overflowing refuse bins to the curb. He diligently *put* every misplaced book back into its rightful place on the shelves. As a united front, they *did* their utmost. Mia *made* the kitchen surfaces *shine* with renewed vitality. Leo *dealt* with the bathrooms, ensuring every fixture *was* immaculate. They *felt* a profound sense of accomplishment. Before long, their home *became* a paragon of order. Their mother *gave* them chilled fruit juice and *brought* fresh pastries. She *said*, "Your collective effort *was* outstanding, a true testament to teamwork!" They *drank* their juice, *ate* their treats, and *knew* the peace their hard work *had* *brought* was its own substantial **commendation**.`,
+        level: "C1",
+        difficultWords: {"radiance":"light or heat as emitted or reflected by something; a glow","fastidious":"very attentive to and concerned about accuracy and detail","commendation":"formal praise or an official award"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Golden Goal</h1>
     </div>
 
