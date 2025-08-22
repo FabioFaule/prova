@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Whiskers' Secret Garden</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Talking Cat's Secret",
+        content: `Lily *was* in her garden. The sun *felt* warm. Her cat, Whiskers, *sat* by a big green bush. Suddenly, Whiskers *spoke*! "Lily," he *said*, "I *know* a **secret**." Lily *did not* *understand*. "The bush," Whiskers *told* her, "it *has* a special flower. It *gives* **magic**." Lily *was* surprised. She *came* closer. Whiskers *went* first. He *led* her behind the bush. There, they *found* a flower that *gave* off a soft light. Whiskers **whispered**, "Take one leaf." Lily *took* a small leaf. She *felt* happy. Her garden *was* full of wonders.`,
+        level: "A2",
+        difficultWords: {"secret":"something that others do not know","magic":"a special power that can make impossible things happen","whispered":"spoke very softly"}
+      },
+      b1: {
+        title: "The Enchanted Garden Flower",
+        content: `Lily *spent* a quiet afternoon in her garden, *sipping* tea. The warm sun *felt* pleasant. Her orange cat, Whiskers, *sat* intently by a particular rose bush, his gaze *fixed* on an **unusual** plant. Suddenly, Whiskers *began* to speak! "Lily," he *said* clearly, "I *know* of an **enchanted** flower that *grows* here." Lily nearly *fell* from her chair, her tea *went* everywhere. She *did not* *believe* her ears, having *heard* no animal *speak* before. "It *gives* special gifts to those who *find* it," Whiskers *told* her, his voice steady. Lily *felt* a mix of shock and wonder. Whiskers then *led* her through a hidden path deeper into the garden. Behind an old oak tree, they *found* the remarkable flower. It *shone* with a soft, **glowing** light, unlike anything she *had ever* *seen*. "Take just one," Whiskers *said*. Lily gently *took* a single petal, *feeling* an inexplicable warmth. She *came* to *understand* that her garden *held* wonders she *had never* *dreamt* of.`,
+        level: "B1",
+        difficultWords: {"unusual":"not common or normal; strange","enchanted":"having a magical spell on it","glowing":"producing a soft, steady light"}
+      },
+      c1: {
+        title: "Unveiling the Garden's Ancient Magic",
+        content: `Lily *spent* a **serene** afternoon in her lush, verdant garden, *sipping* chamomile tea. A gentle breeze *swept* through the flowering shrubs, making the air *feel* particularly fresh. Her ginger cat, Whiskers, *sat* with an uncanny stillness beside a rather peculiar fern, his emerald eyes *fixed* on its **ephemeral** blossoms. Suddenly, Whiskers *began* to speak with startling clarity. "Lily," he *said* calmly, "I *know* of an ancient, sentient flower that *grows* concealed within this very patch." Lily nearly *fell* from her wicker chair, her cup *went* clattering to the flagstones. Having *heard* of such things only in folklore, she *found* herself utterly bewildered, unable to fully *understand* its implication. "It *brings* extraordinary gifts upon those deemed worthy," Whiskers *told* her, his voice resonating with an almost human depth. A profound sense of awe **pervaded** Lily, blending with her initial disbelief. Whiskers then *led* her along a barely discernible path that *wound* behind an old, gnarled oak. There, nestled amidst trailing ivy, they *found* the fabled bloom. It *shone* with an iridescent, otherworldly luminescence, unlike anything she *had ever* *seen* or even *known* of. "Take but one petal," Whiskers *said*. Lily cautiously *took* a single, pulsating petal, *feeling* an inexplicable surge of ancient energy. She *came* to *understand* that her garden *held* secrets far grander than she *had ever* *dreamt* possible.`,
+        level: "C1",
+        difficultWords: {"serene":"calm, peaceful, and untroubled","ephemeral":"lasting for a very short time","pervaded":"spread throughout all parts of (something)"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Friendly New Face</h1>
     </div>
 
