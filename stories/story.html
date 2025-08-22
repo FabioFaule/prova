@@ -15,6 +15,65 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Mia's Unexpected Detour</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Mia's Unexpected Detour",
+        content: `Mia *went* to the train station. She *bought* a ticket for Brighton. She *saw* a train and *thought* it *was* hers. She *got* on it. The train *began* to move. Mia *read* her book. After a while, she *looked* out. She *didn't see* the sea. "This isn't Brighton," she *thought*. She *felt* a little **worried**. She *found* a man who *worked* on the train. He *told* her, "You *took* the wrong train! This train *is going* to Bristol." Mia *felt* very **sad**. The man *said*, "You *must get* off at the next stop." She *did*. She *caught* the right train later. She *got* to Brighton very **late**. She *learned* a big lesson.`,
+        level: "A2",
+        difficultWords: {"worried":"feeling anxious or troubled about actual or potential problems.","sad":"feeling or showing sorrow; unhappy.","late":"after the usual or expected time."}
+      },
+      b1: {
+        title: "Mia's Unexpected Detour",
+        content: `Mia *went* to the bustling train station. She *bought* her ticket for Brighton and *made* her way to Platform 3. She *saw* a train waiting and, assuming it *was* hers, *got* on without checking. The train *began* its journey. Mia *read* a magazine, feeling relaxed. After some time, she *looked* out the window, realizing the landscape *didn't seem* familiar. She *felt* a sudden **unease**. This *wasn't* the coastal view she *knew*. She *found* a conductor and *spoke* to him. He *told* her gravely, "You've *taken* the wrong train. It's *going* to Bristol." Mia's heart *sank*. He *said* she *should get* off at the next station and *catch* a return train. She *did* as he *said*. Though she *arrived* in Brighton much **later** than planned, she *knew* she *would never make* that **mistake** again.`,
+        level: "B1",
+        difficultWords: {"unease":"a feeling of anxiety or discomfort.","later":"after the expected or usual time.","mistake":"an act or judgment that is misguided or wrong."}
+      },
+      c1: {
+        title: "Mia's Unexpected Detour",
+        content: `Mia *made* her way through the **cacophony** of the sprawling train station, having *bought* her ticket for Brighton. She *saw* a train waiting at Platform 3 and, *thinking* it *was* hers, *got* on board. The locomotive *began* its journey. Mia *read* a complex novel, completely absorbed. After a considerable period, she *looked* out, and a profound sense of **disquiet** *crept* in. The unfamiliar landscape *did not strike* her as the coastal scenery she *had come* to *know*. A feeling of panic *rose* within her. She *sought* out a conductor, who *bore* a weary expression. He *told* her, "You've *taken* a considerable wrong turn, madam. This service *is bound* for Bristol." Mia's heart *sank*. He *told* her to *get* off at the ensuing stop and *catch* a connecting service back. She *did* as he *said*. Though she *got* to Brighton considerably **delayed** and bereft of her initial enthusiasm, the experience *made* an indelible lesson. She *swore* to pay more attention to station announcements henceforward.`,
+        level: "C1",
+        difficultWords: {"cacophony":"a harsh, discordant mixture of sounds.","disquiet":"a feeling of anxiety or worry.","delayed":"behind schedule."}
+      }
+    };
+  </script>
+
+  <!-- Script statico con la logica -->
+  <script src="script.js"></script>
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Hectic Morning</h1>
     </div>
 
