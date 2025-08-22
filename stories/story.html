@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Old Bookshop's Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Old Bookshop's Secret (A2)",
+        content: `Leo *felt* very **sad**. His friend, Mia, *had* a sick cat. Mia needed money. Leo *did not know* what to *do*. He *went* to his grandpa’s old bookshop. He *saw* many old books. One book *was* very **dusty**. He *took* it. Inside, he *found* an old, shiny coin. Leo *knew* it *was* a **special** coin. He *ran* to Mia and *gave* it to her. Mia *sold* the coin. She *got* money for her cat. Her cat *got* well. Leo *felt* happy he *could* help his friend. They *were* good friends.`,
+        level: "A2",
+        difficultWords: {"sad":"feeling unhappy","dusty":"covered with a fine dry powder","special":"better or more important than usual things"}
+      },
+      b1: {
+        title: "The Old Bookshop's Secret (B1)",
+        content: `Leo *felt* **distressed**. His dear friend, Mia, *had* a sick pet and *did not know* how to *pay* for its vet bills. Leo *understood* her worry. He decided to *go* to his grandfather's **ancient** bookshop. He *thought* he *might find* something useful. As he looked around, his eyes *fell* upon a thick, old book that *lay* hidden. He *took* it down, and a layer of dust *rose*. He opened the *worn* cover and *found* a single, **gleaming** coin tucked inside. Leo *knew* instantly it *was* valuable. He *ran* to Mia, *gave* her the coin, and *told* her to *sell* it. Mia *did* so, and the money *brought* her pet the care it needed. Soon, the pet recovered. Leo *felt* a great sense of relief, knowing he *had been able* to help his friend. Their bond *grew* stronger.`,
+        level: "B1",
+        difficultWords: {"distressed":"suffering from anxiety, sorrow, or pain","ancient":"belonging to the very distant past and no longer in existence","gleaming":"shining brightly, especially with reflected light"}
+      },
+      c1: {
+        title: "The Old Bookshop's Secret (C1)",
+        content: `Leo *was* **bereft** when his cherished friend, Mia, confided that her beloved pet *was* gravely ill, and she lacked the funds to afford the urgent veterinary treatment. He *knew* he *had* to *do* something. He recalled his grandfather's **decrepit**, but beloved, bookshop, a place where forgotten tales resided. He *went* there, *driven* by a profound sense of loyalty. As he perused the dusty shelves, his gaze *fell* upon an antique tome, its cover *worn* and faded. He *drew* it from its resting place, and a cloud of fine dust *arose*. Upon opening it, he discerned a small, **resplendent** coin nestled within its pages, seemingly *lying* in wait for discovery. Leo instantly *understood* its considerable value. He *flew* back to Mia, *thrust* the coin into her hand, and urged her to *sell* it without delay. She *did* as he *bade*, and the proceeds sufficed to secure her pet's recovery. The animal thrived, and Mia's despair *began* to recede. Leo *felt* an immense satisfaction, knowing his prompt action had alleviated her burden and forged an even stronger bond between them. Their friendship remained unwavering.`,
+        level: "C1",
+        difficultWords: {"bereft":"deprived of or lacking something; sad and lonely because something has been taken away","decrepit":"worn out or ruined because of age or neglect","resplendent":"shining brilliantly; very impressive in appearance"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Whispering Cave's Secret</h1>
     </div>
 
