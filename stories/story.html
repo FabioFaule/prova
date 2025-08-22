@@ -53,6 +53,63 @@
       </div>
       <!-- Contenitore dove n8n inserirà le card -->
       <div id="cards-container">
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
+      <h1>📚 A Late Start</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Late Start",
+        content: `Leo *was* asleep. His alarm *did not ring*. He *woke* up very late. He *knew* he *was* late! He *got* out of bed fast. He *ran* to the bathroom. He *took* a quick wash. He *put* on his **uniform**. He *went* to the kitchen. He *ate* his toast fast. He *drank* some juice. He *took* his bag. He *ran* out the door. Then he *thought*! He *forgot* his book! He *ran* back inside. He *found* it on the table. He *came* out again and *ran* very fast to school. He *came* into class. The teacher *saw* him. Leo *felt* very **shy**. He *sat* down and *began* his day. It *was* a **tough** start.`,
+        level: "A2",
+        difficultWords: {"uniform":"A special set of clothes worn by members of an organization or school.","shy":"Feeling nervous or uncomfortable about meeting and talking to other people.","tough":"Difficult to do or deal with."}
+      },
+      b1: {
+        title: "A Late Start",
+        content: `Leo *slept* soundly. His alarm *did not ring*, and he *woke* up to the sun *shining* brightly. He *knew* instantly he *was* incredibly late for school! He *shot* out of bed and *ran* to the bathroom. He *took* a quick, cold shower, then *threw* on his school uniform. He *went* to the kitchen, where he *ate* his toast quickly and *drank* his juice. He *took* his backpack and *flew* out the door. Halfway down the street, it *came* to him: he *had forgotten* his science project! He *came* back inside, *found* it on the counter, and *took* it. He *ran* like the wind all the way to school. He *burst* into the classroom, breathless. His teacher, Mrs. Davis, *gave* him a **stern** look. Leo *felt* his face *grow* red. He *sank* into his seat and *began* his lesson, hoping the rest of the day *would not be* so **frantic**. This *was* a **harried** morning.`,
+        level: "B1",
+        difficultWords: {"stern":"Serious and often disapproving; showing that you expect to be obeyed.","frantic":"Done quickly and with a lot of activity, but not very organized.","harried":"Feeling strained and troubled, especially by a number of demands or requests."}
+      },
+      c1: {
+        title: "A Late Start",
+        content: `Leo *had slept* through his alarm, *was immersed* in a particularly vivid dream. He *awoke* abruptly, not to a bell, but to the **blinding** glare of sunlight *streaming* through his window. A sudden *jolt* of dread *shot* through him; he *knew* instantly he *was* perilously late for school. He *flung* himself from bed, *sprang* towards the bathroom, and *began* his frantic preparations. A bracing, frigid shower *gave* him a momentary jolt before he *wore* his wrinkled uniform. He *ran* to the kitchen, where he *ate* a piece of toast and *drank* his juice, a sense of urgency *driving* every movement. *Taking* his satchel, he *flew* out the front door, *felt convinced* he *had* barely made up lost time. However, a sudden, **agonizing** thought *struck* him: his meticulously crafted history essay! He *spun* on his heel, *ran* back inside, *found* it precisely where he *had left* it, and *took* it. He *sped* through the streets, his lungs *burning*, until he *burst* into the classroom, his entrance creating a palpable ripple of attention. Mrs. Davis, his history teacher, *gave* him a **reproachful** gaze. Leo *felt* a deep flush *creep* up his neck. He *slid* into his chair, *knowing* this tumultuous start *would cast* a long shadow over his day.`,
+        level: "C1",
+        difficultWords: {"blinding":"Extremely bright; making it difficult to see.","agonizing":"Causing extreme physical or mental suffering.","reproachful":"Expressing disapproval or blame."}
+      }
+    };
+  </script>
+
+</div>
+
+
 
 
 
