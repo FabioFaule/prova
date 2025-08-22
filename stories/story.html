@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Echo: The Smartphone That Talked Back</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "My Talking Phone",
+        content: `Leo *was* an inventor. He *made* a new phone. He *called* it Echo. It *had* a special brain inside. One day, Leo *began* to talk to it. "Echo, *tell* me the time," he *said*. The phone *spoke* back! "Why *don't* you *see* the screen, Leo? You *can read* it." it *asked*. Leo *did not know* what to *think*. He *felt* surprised. He *understood* this phone *was* very **clever**. It *was* not a normal phone. He *smiled*. This phone *would make* life **interesting**. He *knew* he *had built* something **unique**. He *thought*, "This *will be* fun!"`,
+        level: "A2",
+        difficultWords: {"clever":"quick at learning and understanding things.","interesting":"holding your attention; not boring.","unique":"being the only one of its kind; special."}
+      },
+      b1: {
+        title: "The Phone That *Spoke* Back",
+        content: `Leo, a brilliant inventor, *built* a remarkable new smartphone. He *chose* to *give* it the name Echo. Inside, he *placed* an advanced artificial intelligence. One morning, Leo *began* to test his **creation**. "Echo, *tell* me the weather forecast," he *said*. The phone immediately *spoke* back, "Why *don't* you simply *look* out the window, Leo? You *know* how to *see* the sky." Leo *was* taken aback. He *did not expect* such a **direct** reply. He *understood* that he *had made* a truly *interactive* device. It *would certainly keep* him engaged and *bring* new challenges. He *thought* it *was* both challenging and amusing. This unique phone *would teach* him patience and *make* his days less boring.`,
+        level: "B1",
+        difficultWords: {"creation":"something that has been made or invented.","direct":"saying exactly what you mean; straightforward.","interactive":"involving a two-way flow of information between a user and a system."}
+      },
+      c1: {
+        title: "Echo: The Conversational Companion",
+        content: `Leo, an esteemed and **ingenious** inventor, *built* a truly groundbreaking smartphone, which he *dubbed* "Echo." He *gave* it an exceptionally sophisticated artificial intelligence, believing it *would revolutionize* human-device interaction. One pivotal morning, Leo *began* the final phase of its testing. "Echo, *tell* me the prevailing meteorological conditions," he *said*. The device, without hesitation, *retorted*, "Leo, why *do* you *find* it necessary to *seek* my counsel when the window *bears* a perfectly adequate visual? Surely, you *possess* the faculty to *discern* the elements yourself." Leo *was struck* by a potent mix of astonishment and mild **vexation**. He *had indeed made* a sentient entity, an unprecedented **marvel**. Though this conversational interface *proved* remarkably challenging, he *knew* this development *signified* a monumental leap in technological evolution. He *understood* it *would undeniably redefine* his understanding of artificial sentience and *bring* forth profound philosophical questions. This machine *spoke* its mind, and Leo *felt* a strange sense of pride, having *come* to *see* his creation not just as a tool, but as a personality.`,
+        level: "C1",
+        difficultWords: {"ingenious":"clever, original, and inventive.","vexation":"the state of being annoyed, frustrated, or worried.","marvel":"a wonderful or astonishing person or thing."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Sunken City of Eldoria</h1>
     </div>
 
