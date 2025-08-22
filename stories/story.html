@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Whiskers' Garden Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Talking Cat in Leo's Garden (A2)",
+        content: `Leo *went* to his **garden**. He *saw* a small cat near the roses. The cat *looked* up and *said*, "Hello, Leo!" Leo *was* very **surprised**. He *did not know* cats *could speak*. The cat *came* closer. "My name *is* Whiskers," it *told* him. "I *live* here and *know* all its secrets." Leo *felt* a strange joy. He *thought* his garden *was* very **special** now. He *ran* inside and *brought* Whiskers some milk. They *drank* together. Leo *knew* he *would come* to the garden every day to *speak* with his new friend.`,
+        level: "A2",
+        difficultWords: {"garden":"An area of ground where plants (such as flowers or vegetables) are grown.","surprised":"Feeling wonder or surprise, especially because something unexpected has happened.","special":"Better, greater, or more important than usual."}
+      },
+      b1: {
+        title: "Whiskers' Astonishing Revelation (B1)",
+        content: `Leo *went* into his **lush** garden one sunny morning. He *saw* a sleek, black cat *sitting* amongst the sunflowers. The cat *gave* him a calm look and *spoke*, "Good morning, Leo." Leo *was utterly **stunned***. He *had never known* that **felines** *could speak* with such grace. The cat *came* closer, its tail gently *swaying*. "My name *is* Whiskers," it *said* calmly. "I *live* here and *know* all the garden's hidden wonders." Leo *felt* an odd fascination. He *thought* his garden *had become* truly **extraordinary** overnight. He *ran* indoors and *brought* a small bowl of fresh cream. They *sat* together as Whiskers *drank* the cream. Leo *understood* his daily visits *would now take* a much deeper and more enchanting meaning.`,
+        level: "B1",
+        difficultWords: {"lush":"Having a lot of healthy growth of plants, especially of grass and trees.","stunned":"So shocked that you cannot think clearly or react.","felines":"Animals of the cat family."}
+      },
+      c1: {
+        title: "The Enigmatic Feline of the Verdant Domain (C1)",
+        content: `Leo *arose* early and *made* his way into his expansive **verdant** garden. He *beheld* an enigmatic feline *sitting* with unusual poise amidst the resplendent flora. The cat *cast* him an unnerving glance, its emerald eyes *struck* him with an intense gaze, and *spoke*, "Greetings, Leo." Leo *found* himself utterly **dumbfounded**. He *had always known* such **sapient** creatures *came* solely from folklore. The cat *drew* closer with an almost ethereal grace. "I *am* Whiskers," it *said* with an air of ancient wisdom. "I *dwell* here and *understand* every concealed enigma of this domain." Leo *felt* a profound sense of awe. He *knew* his garden *had become* a place of profound **mystique**. He *ran* indoors and *brought* a delicate saucer of artisanal cream. They *sat* and *drank* in a shared, contemplative silence. Leo *grasped* that his routine visits *were thenceforth destined to transcend* mere recreation, *becoming* an immersive journey into the extraordinary.`,
+        level: "C1",
+        difficultWords: {"verdant":"Green with grass or other rich vegetation.","dumbfounded":"Greatly astonished or amazed.","mystique":"A quality of mystery, glamour, or power associated with someone or something."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A New Friend at School</h1>
     </div>
 
