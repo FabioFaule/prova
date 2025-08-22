@@ -57,6 +57,69 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Missing Suitcase</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Missing Suitcase",
+        content: `Leo *went* to the airport. He *came* off the plane and *saw* many bags. He *waited* for his blue suitcase at the **carousel**, but it *did* not *come*. He *felt* worried. He *knew* he *had* to *do* something.
+
+He *went* to a special **desk**. A kind woman *was* there. Leo *spoke* to her. He *told* her his bag *was* lost. He *gave* her his flight number. She *ran* his details. After a few minutes, she *found* his bag! It *had gone* to a different city by mistake. She *told* him they *would bring* it to his hotel tomorrow. Leo *was* still a little sad, but he *understood*. He *went* to a shop and *bought* a new toothbrush and a shirt for his **holiday**. He *knew* everything *would be* fine. He *began* his holiday.`,
+        level: "A2",
+        difficultWords: {"carousel":"A moving belt that delivers luggage at an airport.","desk":"A counter or table where you get information or help.","holiday":"A time when you do not work or go to school but relax or travel."}
+      },
+      b1: {
+        title: "The Missing Suitcase",
+        content: `Leo *flew* to a new country, *feeling* excited for his vacation. He *went* to the **baggage claim** area and *stood* by the carousel, watching suitcases *come* out. He *waited* patiently, but his distinctive blue suitcase never *came*. A cold feeling *ran* through him as he *knew* something *was* wrong. He *had* to *find* out what *happened*.
+
+He *made* his way to the lost and found **counter**. A busy agent *was* there. Leo *spoke* clearly, *telling* her his luggage *had not arrived*. He *gave* her his ticket and a detailed description of the bag. The agent *took* his information and *began* to search the system. She soon *found* it; his bag *had been* mistakenly *sent* to a different city. She *told* him they *would bring* it to his hotel the next day. Leo *felt* a pang of disappointment but *understood* that errors *could occur*. He *chose* to **make the best of it** and *went* to an airport shop, where he *bought* some essential items. He *knew* his adventure *would still be* great.`,
+        level: "B1",
+        difficultWords: {"baggage claim":"The area in an airport where passengers collect their luggage after a flight.","counter":"A long, flat surface over which business is transacted in a shop, bank, or other establishment.","make the best of it":"To accept a bad situation and try to be positive about it."}
+      },
+      c1: {
+        title: "The Missing Suitcase",
+        content: `Leo *had flown* to an exotic destination, *feeling* a surge of anticipation for his long-awaited **sojourn**. Upon disembarking, he *made* his way to the bustling baggage claim hall and *stood* vigilantly by the **conveyor belt**, observing the diverse array of luggage as it *came* into view. His patient wait, however, *proved* fruitless; his distinctive sapphire suitcase, meticulously packed, *failed* to *materialize*. A profound sense of dismay *swept* over him as he *knew* an unfortunate mishap *had transpired*. He *felt compelled* to *ascertain* the whereabouts of his belongings.
+
+He *proceeded* swiftly to the somewhat chaotic lost and found **enclave**. There, a composed yet visibly strained agent *was present*. Leo *spoke* with articulate precision, *relaying* the specifics of his missing bag. He *furnished* her with his boarding pass and an elaborate description. The agent *took* his particulars and *began* a comprehensive system search. To his relief, she eventually *found* it; his luggage *had been* erroneously *sent* to a distant metropolis. She *assured* him it *would be brought* to his hotel within twenty-four hours. While a faint shadow of vexation *fell* upon him, he *understood* that such logistical **impasses** *were not unheard of*. Resolving to *make the best of a bad job*, he *went* to an airport boutique and *bought* some essential toiletries and a change of clothes. He *knew* his adventure, though momentarily *sidetracked*, *would still prove* unforgettable.`,
+        level: "C1",
+        difficultWords: {"sojourn":"A temporary stay.","conveyor belt":"A continuous moving band used for transporting items from one place to another.","impasses":"Situations in which no progress is possible, especially because of disagreement; a deadlock."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Weekend Chores Together</h1>
     </div>
 
