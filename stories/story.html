@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Golden Goal</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Golden Goal (A2)",
+        content: `Maya *felt* nervous before her football game. Her heart *beat* fast. She *stood* on the field. The whistle *blew*, and the game *began*. Maya *ran* with the ball. She *saw* her chance. She *took* a big shot. The ball *went* into the net! It *was* a goal! Everyone *came* and *cheered*. Maya *knew* she *had won*. She *felt* so happy. Her face *did* not stop smiling. This win *was* a **memorable** moment. She *made* a **clever** play. The joy *made* her **glow**.`,
+        level: "A2",
+        difficultWords: {"memorable":"worth remembering or easy to remember","clever":"smart or intelligent","glow":"to shine with soft light or happiness"}
+      },
+      b1: {
+        title: "The Golden Goal (B1)",
+        content: `Maya *felt* a deep nervousness before her crucial football match. Her heart *beat* a rapid rhythm as she *stood* on the vibrant green field. The referee's whistle *blew*, and the game *began*. Maya *took* control, skillfully *running* with the ball. She *saw* an opening, a perfect moment to strike. With a powerful kick, she *sent* the ball flying. It *went* past the goalkeeper and *hit* the net! A fantastic goal! The crowd *rose* in cheers. Maya *knew* she *had achieved* victory. A wave of immense joy *came* over her. Her entire being *shone* with happiness, a feeling she *had not felt* so intensely before. This win *was* truly **exhilarating**, a testament to her **resilience**. Her success *did* not just *feel* good, it *brought* a deep sense of **triumph**.`,
+        level: "B1",
+        difficultWords: {"exhilarating":"making one feel very happy, animated, or thrilled","resilience":"the capacity to recover quickly from difficulties; toughness","triumph":"a great victory or achievement"}
+      },
+      c1: {
+        title: "The Golden Goal (C1)",
+        content: `A profound sense of apprehension *crept* into Maya's thoughts as she *stood* poised for the pivotal football championship. Her pulse *beat* a frantic rhythm, a counterpoint to the hushed anticipation that *had fallen* over the stadium. As the whistle *blew*, signaling the commencement of play, Maya *found* her focus, her movements becoming fluid and decisive. She *drew* defenders in, then *flew* past them, *bearing* the ball with masterful control. A sudden **lucid** opportunity *sprang* forth; she *knew* this *was* her moment. With an exquisite strike, she *sent* the ball soaring, *seeing* it *sweep* past the outstretched hands of the bewildered goalkeeper to *fall* perfectly into the back of the net. The roar of the crowd *became* an **overwhelming** surge of jubilation. Maya *understood* instantly: she *had sealed* their victory. An incandescent wave of euphoria *swept* over her, a feeling so potent it *made* her eyes *shine*. This hard-*won* success *bore* testament to her unwavering spirit, *bringing* an unparalleled sense of **elation**.`,
+        level: "C1",
+        difficultWords: {"lucid":"expressed clearly; easy to understand, or clear-minded","overwhelming":"very great in amount, or so strong that you cannot think or feel anything else","elation":"great happiness and exhilaration"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Echo: The Smartphone That Talked Back</h1>
     </div>
 
