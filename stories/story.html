@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Grandma's Golden Apple Pie</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Grandma's Golden Apple Pie (A2)",
+        content: `Mia *came* to Grandma Rose’s house. Grandma *had* an old cookbook. "Let's *make* apple pie!" she *said*. They *went* to the shop and *bought* red apples. Back home, Mia *cut* the apples. Grandma *made* the dough. The kitchen *began* to **smell** sweet. The pie *was* in the oven. When it *was* ready, they *ate* it. Mia *felt* very happy. She *knew* the **secret** recipe now. Grandma *gave* her a big hug. It *was* a **lovely** day. Mia *thought* she *would* *keep* this memory.`,
+        level: "A2",
+        difficultWords: {"smell":"the aroma or scent produced by something","secret":"something kept hidden or unknown to others","lovely":"beautiful or delightful"}
+      },
+      b1: {
+        title: "Grandma's Golden Apple Pie (B1)",
+        content: `Mia *came* to her Grandma Rose’s **cozy** home, eager for their special day. Grandma *had* *found* her old, *worn* cookbook on a high shelf. "Today, we *will* *make* my famous apple pie!" she *said*, her eyes *shone* with excitement. They *drove* to the local market, where they *chose* the best, crisp apples. Back in the kitchen, Mia carefully *cut* the apples, while Grandma expertly *made* the flaky dough. Soon, a warm aroma *began* to *fill* the air. The pie *baked* in the oven, its scent a **promise** of deliciousness. When it *was* done, they *sat* together, *ate* a large slice, and *drank* tea. Mia *felt* a profound happiness. She *knew* she *had* *learned* more than just a recipe; she *had* *spent* **precious** time with Grandma. This memory, she *thought*, she *would* always *keep*.`,
+        level: "B1",
+        difficultWords: {"cozy":"giving a feeling of comfort, warmth, and relaxation","promise":"a declaration or assurance that one will do a particular thing or that a particular thing will happen","precious":"of great value; not to be wasted or treated carelessly"}
+      },
+      c1: {
+        title: "Grandma's Golden Apple Pie (C1)",
+        content: `Mia *came* to Grandma Rose’s **quaint** cottage, a place that *had* *borne* countless cherished memories. Grandma, her eyes *shining* with an inner light, *had* *found* a **tattered**, leather-bound cookbook. "We *shall* *undertake* the creation of my legendary apple pie today!" she *spoke*, her voice *ringing* with genuine enthusiasm. They *drove* through winding country lanes to a small, **bustling** farmer's market, where they meticulously *chose* the most succulent apples. Upon their return, Mia *began* to *cleave* the apples with practiced precision, while Grandma, a master artisan, *wove* together the rich, buttery dough. Soon, an intoxicating aroma *spread* throughout the entire house. The pie *baked* to a golden perfection, its fragrance a *harbinger* of culinary delight. As twilight *fell*, they *sat* by the window, *biting* into generous slices of pie and *drinking* hot tea, sharing stories that *bound* them closer. Mia *felt* an overwhelming sense of contentment. She *knew* she *had* *understood* an invaluable family tradition, forging an enduring bond. This experience, she *swore*, she *would* *keep* etched in her memory eternally.`,
+        level: "C1",
+        difficultWords: {"quaint":"attractively unusual or old-fashioned","tattered":"old and torn; in poor condition","bustling":"full of activity"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Unexpected Journey</h1>
     </div>
 
