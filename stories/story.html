@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Golden Goal</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Golden Goal (A2)",
+        content: `The school football match *was* exciting. The Eagles and The Lions *were* on the field. The score *was* 0-0. Time *was* almost finished. Leo *got* the ball. He *saw* the goal far away. He *ran* fast. He *went* past many players. He *came* near the goal. Leo *knew* he *had* to try. He *hit* the ball hard. It *went* into the net! The crowd *made* a big noise. The referee *blew* his whistle. The Eagles *won*! Leo *felt* so happy. His team *came* to him. They *were* all very happy. It *was* a **memorable** moment. The joy *spread* through the team like a **wave**. Everyone **cheered** loudly.`,
+        level: "A2",
+        difficultWords: {"memorable":"easy to remember because it is special.","wave":"a strong feeling that quickly moves through a group of people.","cheered":"shouted to show happiness or to encourage."}
+      },
+      b1: {
+        title: "The Golden Goal (B1)",
+        content: `The school football match *began* with intense energy. The Eagles and The Lions *were* locked in a fierce contest. The score *stood* at a tense 0-0 as the final minutes *ran* out. Leo, the Eagles' forward, *found* himself with the ball deep in his own half. He *saw* a **flicker** of opportunity. Dribbling with remarkable speed, he *drove* past one opponent, then another, his determination clear. He *kept* his eyes on the opposing goal as he *came* into the penalty area. He *knew* this *was* his chance. With a powerful strike, he *shot* the ball. It *flew* past the goalkeeper and *hit* the back of the net! The crowd *rose* to its feet and *gave* a thunderous cheer. The referee *blew* the final whistle. The Eagles *had* *won*! Leo *felt* an overwhelming **surge** of joy. His teammates *ran* to him, their faces beaming, and *held* him high. It *was* a truly **triumphant** moment.`,
+        level: "B1",
+        difficultWords: {"flicker":"a quick, unsteady light or movement; a brief feeling.","surge":"a sudden powerful forward or upward movement, especially of a crowd or a strong emotion.","triumphant":"having achieved victory or success; victorious."}
+      },
+      c1: {
+        title: "The Golden Goal (C1)",
+        content: `The **decisive** school football match *began* with palpable tension between The Eagles and The Lions. The scoreboard *stood* stubbornly blank, 0-0, as the clock *crept* towards its final, agonizing seconds. Leo, the Eagles' dynamic forward, *found* himself unexpectedly with possession deep within his own defensive third. He *saw* a fleeting window of opportunity. With a breathtaking burst of speed, he *drew* defenders out, *wove* through the midfield, and *bore* down on the opposing goal. He *knew* the hopes of his entire team *lay* upon his shoulders. As he *came* within striking distance, he *struck* the ball with immense force. It *flew* like a missile, *beat* the outstretched goalkeeper, and *burst* into the top corner of the net! A collective roar *arose* from the stands, reverberating across the field. The referee *blew* his whistle, signifying the end of the game. The Eagles *had* *won*! Leo *felt* an **unfathomable** wave of elation wash over him. His teammates *ran* and *bore* him aloft, their faces alight with unadulterated joy. It *was* an **epitome** of sporting triumph.`,
+        level: "C1",
+        difficultWords: {"decisive":"producing a definite result; crucial or conclusive.","unfathomable":"incapable of being fully explored or understood; mysterious.","epitome":"a perfect example of something."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Whiskers' Garden Secret</h1>
     </div>
 
