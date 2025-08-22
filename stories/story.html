@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Test Triumph</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Test Triumph",
+        content: `Leo *had* a big math test. He *felt* very nervous. Last night, he *went* home and *did* his homework. He *did* not *sleep* well. In the morning, he *ate* an apple and *drank* some juice. At school, he *saw* the test paper. His hands *began* to *shake* a little. He *began* to *write* carefully. He *knew* many answers. He *did* his best. Later, the results *came*. Leo *got* a good score! He *felt* happy and proud. He *understood* that studying *made* him **confident**. Nerves *were* okay, but he **faced** them. He **realized** he *could* do it.`,
+        level: "A2",
+        difficultWords: {"confident":"feeling sure about yourself and your abilities.","faced":"dealt with (a difficult situation or person).","realized":"understood or became aware of something."}
+      },
+      b1: {
+        title: "Leo's Test Triumph",
+        content: `Leo *had* a significant math exam. He *felt* increasingly nervous as the day *drew* closer. He *had* *spent* many hours studying, trying to commit all the formulas to memory. The night before, he *went* to bed early but *slept* poorly, his mind *ran* with worries. In the morning, he *ate* a quick breakfast and *drank* a calming tea. At school, when he *saw* the exam paper, his heart *began* to *beat* fast. He *took* a deep breath and *began* to *write*. Although he *felt* a pang of fear, he *knew* he *had* prepared. He *gave* it his full effort and finished on time. When the results *came*, Leo *got* an excellent grade. He *felt* a great sense of **relief** and pride. He *understood* that while nerves *were* natural, consistent preparation *made* him **overcome** them. He gained confidence in his abilities.`,
+        level: "B1",
+        difficultWords: {"relief":"a feeling of happiness that something unpleasant has not happened or has ended.","overcome":"to successfully deal with or control a problem or feeling.","gained":"obtained or acquired (something wanted or desirable)."}
+      },
+      c1: {
+        title: "Leo's Test Triumph",
+        content: `Leo *foresaw* a formidable math examination, and a profound sense of anxiety *crept* over him as the date *drew* near. He *had* *spent* countless hours attempting to **assimilate** all the complex formulas and theorems. The night preceding the test, despite retiring early, he *slept* fitfully, his thoughts *awash* with apprehension. Come morning, he *ate* a light breakfast and *drank* a soothing herbal infusion. Upon receiving the exam paper at school, his pulse *quickened*, and his hands *trembled* imperceptibly. He *took* a moment to compose himself, *drew* a deep breath, and *began* to *write*. Though an initial wave of dread *swept* over him, he *knew* he *had* meticulously *undertaken* his preparation. He *gave* his utmost, finishing with a sense of **resolve**. When the results *were* *disclosed*, Leo *found* he *had* *won* a stellar grade. He *felt* an immense surge of **vindication** and self-assurance. He *understood* that while trepidation *was* an inherent human response, diligent groundwork *led* him to transcend it, ultimately paving the way for his triumph.`,
+        level: "C1",
+        difficultWords: {"assimilate":"to fully understand and incorporate new information or ideas.","resolve":"firm determination to do something.","vindication":"the action of clearing someone of blame or suspicion, or the proof that someone or something is right, reasonable, or justified."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Sparky the Homework Helper</h1>
     </div>
 
