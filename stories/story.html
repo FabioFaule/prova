@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Sunken City of Eldoria</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Sunken City of Eldoria",
+        content: `Long ago, a great city *was*. People *said* it *was* called Eldoria. One day, the city *fell* under the sea. Many *heard* the **legend** but *did not know* if it *was* true. A young explorer, Maya, *read* old books. She *went* to find this lost city. Near the ocean, she *found* a hidden cave. Inside, she *saw* a **glimmer** of light. Maya *came* to a big room. There, a magic crystal *kept* the city alive. She *understood* its power. Maya *knew* she *could not take* it. She *left* the crystal. She *went* home and *told* her story. Eldoria *slept* still, a secret **ancient** city under the waves. She *felt* happy she *found* it.`,
+        level: "A2",
+        difficultWords: {"legend":"an old story, perhaps not true, about brave people or big events.","glimmer":"a weak, unsteady light.","ancient":"very, very old."}
+      },
+      b1: {
+        title: "The Sunken City of Eldoria",
+        content: `Centuries ago, a magnificent city *stood*. People *knew* it *was* Eldoria. One fateful day, a great power *made* it *sink* beneath the ocean waves. Generations *spoke* of the **legend**, but few *thought* it *was* true. A determined young explorer, Maya, *read* countless ancient texts and *heard* whispers of its whereabouts. Driven by curiosity, she *set* out on an expedition. After weeks of searching, she *found* a hidden cavern along the coast. As she *went* deeper, she *saw* a mysterious **flicker** of light. Maya *came* into a vast chamber, where an immense crystal *shone* brightly. This crystal *kept* the city's magic alive. She *understood* its profound significance. Maya *knew* she *could not take* it. She *left* Eldoria in peace, *taking* only the knowledge she *won* from her journey. Upon her return, she *told* her incredible tale, and the lost city *began* to *come* alive again, a true **marvel** beneath the sea.`,
+        level: "B1",
+        difficultWords: {"legend":"a traditional story, sometimes popularly regarded as historical but unauthenticated.","flicker":"to shine unsteadily; a brief flash or glow.","marvel":"a wonderful or astonishing thing."}
+      },
+      c1: {
+        title: "The Sunken City of Eldoria",
+        content: `Aeons ago, a resplendent civilization *stood*, *known* by its inhabitants as Eldoria. Its demise *came* abruptly when a cataclysmic event, perhaps a surge of uncontrolled arcane energy, *sent* the entire metropolis *falling* beneath the ocean's formidable **expanse**. For millennia, its existence *lay* shrouded in myth, whispered about in fragmented **lore**. Generations of intrepid scholars and adventurers *sought* to discern truth from fabrication, yet none *drew* close. It *was* then that Maya, a seasoned archaeologist, *began* an ambitious quest. Having meticulously *read* countless ancient scrolls and *found* cryptic clues from forgotten texts, she *knew* the city's secrets *lay* hidden. Her arduous expedition *led* her to a clandestine grotto, where she *found* an entrance to the submerged ruins. Descending into the *gloom*, she *saw* an ethereal luminescence that *grew* more potent as she *drew* nearer. She *came* upon the city's central chamber, where a colossal crystal *gave* off an iridescent glow, the very heart that *kept* Eldoria's essence **vibrant**. Maya *understood* the profound gravity of her discovery. Though she *felt* an intense desire to claim its power, her reverence *forbade* her. She *chose* to *leave* Eldoria undisturbed, *taking* back only her profound insights. Her groundbreaking account *wrote* history anew, *giving* the lost city a new life in collective consciousness, a testament to enduring wonders.`,
+        level: "C1",
+        difficultWords: {"expanse":"a wide, continuous area of something.","lore":"a body of traditions and knowledge on a subject or held by a particular group, typically passed from person to person by word of mouth.","vibrant":"full of energy and enthusiasm; or (of color) bright and striking."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Maya's First Swim</h1>
     </div>
 
