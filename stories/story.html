@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Flying Dream</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Flying Dream",
+        content: `Leo *had* a big dream. He *wanted* to *fly*. He *began* to *build* a machine. He *went* to his **garage**. He *found* old wood and metal **parts**. He *did* not *sleep* much. He *thought* about flying every day. He *drew* many pictures of his machine. He *put* the pieces together. He *spent* many days working. His first machine *fell* down. Leo *felt* sad, but he *did* not *give* up. He *made* new plans. He *knew* he could *do* it. One sunny day, he *took* his new machine to a big **field**. He *stood* inside it. He *got* ready. The machine *rose* slowly! Leo *saw* the trees below. He *became* very happy. His dream *came* true. He *flew*!`,
+        level: "A2",
+        difficultWords: {"garage":"A building for keeping a car or cars, or for storing tools and other things.","parts":"Individual pieces that make up a whole machine or structure.","field":"An area of open land, especially one used for sports or for growing crops."}
+      },
+      b1: {
+        title: "Leo's Flying Dream",
+        content: `Young Leo *had* always *dreamt* of soaring through the sky. He *knew* he *was* meant to *fly*. So, he *began* to *build* his very own flying machine. He *spent* weeks in his workshop, carefully *choosing* and *gathering* discarded materials. He *found* old bicycle wheels, an engine he *bought* at a market, and fabric that *came* from an old tent. He *drew* detailed blueprints, *thinking* of every component. He *put* his heart and soul into the project. Many times, he *felt* frustrated when parts *did* not *come* together. His first prototype *fell* quite dramatically, but Leo *did* not *give* in to despair. He *rose* above the setbacks, *knowing* his vision *was* possible. He *made* crucial adjustments, and on a crisp autumn morning, he *took* his improved contraption to a vast, **desolate** plain. He *climbed* inside, his heart *beat* fast. With a deep breath, he *pushed* a lever. The machine *began* to hum, then slowly *rose* into the air. Leo *saw* the ground *grow* smaller. He *was* flying! A sense of **elation** *swept* over him as he *became* the master of his own **destiny**.`,
+        level: "B1",
+        difficultWords: {"desolate":"(Of a place) uninhabited and giving an impression of bleak emptiness.","elation":"Great happiness and excitement.","destiny":"The events that will necessarily happen to a particular person or thing in the future."}
+      },
+      c1: {
+        title: "Leo's Flying Dream",
+        content: `From an early age, Leo *bore* an insatiable **yearning** to defy gravity. He *dreamt* vividly of the day he *would* flee the confines of the earth and soar amidst the clouds. This fervent desire *drove* him to *begin* the ambitious undertaking of *building* a personal flying machine. He *spent* countless hours poring over treatises, *drawing* intricate schematics, and *scouring* junkyards, where he *found* discarded materials that others *forsook*. He *meticulously* *put* together salvaged components, his hands often *bled* from the sharp edges, yet he *never* *gave* in. He *knew* that **perseverance** *would* ultimately *bring* his vision to fruition. His initial attempts *proved* fraught with peril; one prototype *fell* and *broke* apart, another *began* to *burn* fiercely. Each failure, however, *taught* him invaluable lessons. He *rebuilt*, *re-evaluated*, and *made* critical refinements, *thinking* of every possible contingency. Finally, on a morning when the air *felt* crisp and still, he *brought* his magnificent contraption to a vast, *wind-swept* plateau. He *climbed* into the cockpit, his heart *beat* a frantic rhythm. As he *engaged* the rudimentary engine, a powerful **vibration** *shook* the entire structure. Slowly, majestically, the machine *rose* from the ground, *lifting* him higher and higher. Leo *saw* the world *shrink* beneath him, a vibrant tapestry of greens and blues. His lifelong ambition *had* *come* to pass; he *was* truly flying, a pioneer in his own right.`,
+        level: "C1",
+        difficultWords: {"yearning":"A feeling of intense longing for something.","perseverance":"Persistence in doing something despite difficulty or delay in achieving success.","vibration":"An oscillation of the parts of a fluid or an elastic solid continuously or with very short intervals around an equilibrium position."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Old Bookshop's Secret</h1>
     </div>
 
