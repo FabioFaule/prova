@@ -15,6 +15,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Rainy Picnic Adventure</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Rainy Picnic Adventure",
+        content: `Lily, Tom, and their dog Buster *went* to the park. They *chose* a nice **spot** under a big tree. Lily *put* the blanket down. Tom *took* out sandwiches and juice. Buster *ran* and played. They *ate* the food and *felt* very happy.
+Then, the sky *became* dark. Big, grey clouds *came* fast. A **sudden** rain *began* to *fall*! It *was* very quick. Lily and Tom *knew* they *had* to *go*. They quickly *put* their things in the basket. Buster *came* to them. They *ran* to *get* **shelter** in their car. They *got* a little wet, but they *did* not *feel* sad. They laughed. They *would come* back another day.`,
+        level: "A2",
+        difficultWords: {"spot":"a particular place or point.","sudden":"happening quickly and unexpectedly.","shelter":"a place giving protection from bad weather or danger."}
+      },
+      b1: {
+        title: "The Rainy Picnic Adventure",
+        content: `Lily and Tom, with their lively dog Buster, *went* to the local park for a picnic. They *found* a perfect **patch** of grass under a mature oak tree. Lily *spread* their colourful blanket, while Tom *laid* out a delicious spread of sandwiches, fruit, and homemade cookies. Buster *ran* around, his tail wagging happily. They *ate* and *spoke* about their plans, *felt* relaxed and content. The sun *shone* brightly.
+However, the sky quickly *grew* dark. Ominous clouds *swept* in, bringing with them a strong wind that *made* the leaves dance. Tom *knew* the weather *was* about to *break*. A few large drops *fell*, then the rain *began* to pour. They quickly grabbed their belongings, folded the wet blanket, and *ran* for the car, Buster *leading* the way. They *got* completely soaked but *could* not help but laugh. Their picnic *had been* **brief**, but the memory *stuck* with them. They decided to reschedule for a clearer day, eager for another **outing**.`,
+        level: "B1",
+        difficultWords: {"patch":"a small area of something, especially land.","brief":"lasting only for a short time.","outing":"a short trip or excursion, usually for pleasure."}
+      },
+      c1: {
+        title: "The Rainy Picnic Adventure",
+        content: `Lily and Tom, along with their spirited canine companion, Buster, *set forth* to the picturesque local park, intent on enjoying an **idyllic** al fresco picnic. They *chose* a secluded **expanse** beneath the venerable boughs of an ancient oak, deeming it the perfect spot. Lily unfurled a vibrant blanket, while Tom *laid* out an array of gourmet sandwiches, ripe fruits, and artisanal pastries he *had baked*. Buster, ever ebullient, *chased* squirrels that *fled* up trees, his joyous barks *made* the air lively. They *ate* and chatted, *felt* the warm sun *spread* its warmth, a sense of profound tranquility *came* upon them.
+Suddenly, the sky *underwent* a dramatic transformation. Ominous, charcoal-grey clouds *began* to gather with alarming speed, and a fierce gust of wind *swept* through the clearing, causing the surrounding foliage to thrash. Tom, ever attuned to nature's whims, *knew* an imminent downpour *was* coming. Large, cold drops *fell*, quickly intensifying into a torrential shower. With a shared glance, they swiftly gathered their scattered provisions, folding the now-drenched blanket. Buster, sensing the urgency, *flew* to their side. They *ran*, *sought* **refuge** in their car, utterly drenched but *bursting* with laughter. Though their repast *had been* curtailed, the spontaneous joy of their hasty retreat *would come* to define a cherished memory. They vowed to return soon, hoping for more favourable skies.`,
+        level: "C1",
+        difficultWords: {"idyllic":"like an idyll; extremely happy, peaceful, or picturesque.","expanse":"an area of something, typically large and unbroken.","refuge":"the state of being safe or sheltered from pursuit, danger, or difficulty."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Grandma's Sweet Secret</h1>
     </div>
 
