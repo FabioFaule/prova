@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Helper Bot: Homework Hero</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Helper Bot: Leo's New Friend",
+        content: `Leo *had* a new robot. Its name *was* Helper. Helper *did* all Leo's homework. Leo *felt* happy because he *had* free time. Helper *was* shiny and **gleamed**. One day, Helper *made* a big mistake on a drawing. Leo *saw* it. He *knew* Helper *could* not do everything alone. Leo *understood* that homework *was* his **chore**. So, they *began* to work together. Leo *taught* Helper how to draw better. Helper *showed* Leo how to solve hard math problems. They *became* a good team. Leo *was* very **proud** of their work. They *went* to school and *gave* their project. It *was* the best!`,
+        level: "A2",
+        difficultWords: {"gleamed":"shone brightly, especially with a soft, warm light","chore":"a routine task or duty, often a boring one","proud":"feeling deep pleasure or satisfaction as a result of one's own achievements, qualities, or possessions or those of someone with whom one is closely associated"}
+      },
+      b1: {
+        title: "Helper Bot: Learning Together",
+        content: `Leo *got* a new robot, an amazing **appliance** named Helper. It *was* designed to *do* all his homework. Leo *felt* a sense of relief, as he *found* he *had* much more free time. Helper *always* *shone* with a bright, metallic luster. However, one afternoon, Helper *made* a significant error on a science project. The drawing it *drew* *was* completely **flawed**. Leo *saw* the mistake and *knew* that relying solely on the robot *was* not the answer. He *understood* that his own learning *was* crucial. They *began* to **collaborate**. Leo *taught* Helper how to improve its artistic skills, and Helper *showed* Leo effective ways to *solve* complex equations. Together, they *grew* into an efficient team. Leo *was* genuinely *proud* of their combined efforts. Their next project *was* excellent.`,
+        level: "B1",
+        difficultWords: {"appliance":"a device or piece of equipment designed to perform a specific task, typically an electrical one in the home","flawed":"damaged or spoiled; imperfect","collaborate":"to work jointly on an activity, especially to produce or create something"}
+      },
+      c1: {
+        title: "Helper Bot: A Symbiotic Partnership",
+        content: `Leo *got* an **ingenious** new automaton, christened 'Homework Helper 5000'. It *was* meticulously programmed to *do* all his academic assignments. Initially, Leo *found* himself with an abundance of leisure, a feeling he *hadn't* *known* for some time. The robot *shone* with a pristine, metallic sheen, a testament to its advanced design and meticulous construction. However, a pivotal moment *arose* when Helper *made* a profoundly **fallacious** calculation on a complex physics diagram, completely *making* the solution incorrect. Leo, *having* *seen* the critical error, *understood* the crucial insight that complete reliance on the machine *was* untenable. It *struck* him that his own intellectual engagement *lay* paramount for genuine comprehension. Consequently, they *began* a genuine **synergy**. Leo *taught* Helper refined techniques for visual representation and critical thinking, while Helper *showed* Leo strategies for dissecting intricate mathematical problems and organizing research effectively. Through this mutual exchange, they *built* an exceptionally productive partnership. Leo *grew* immensely *proud* of their combined intellectual prowess. Their subsequent submissions *were* exemplary, consistently garnering considerable acclaim and *set* a new standard for their class projects.`,
+        level: "C1",
+        difficultWords: {"ingenious":"clever, original, and inventive","fallacious":"based on a mistaken belief; misleading","synergy":"the interaction or cooperation of two or more organizations, substances, or other agents to produce a combined effect greater than the sum of their separate effects"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Glimpse into Genius</h1>
     </div>
 
