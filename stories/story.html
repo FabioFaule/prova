@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A Friendly New Face</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Friendly New Face (A2)",
+        content: `Leo *came* to school. He *saw* a new girl. She *stood* alone near a big **desk**. Her eyes *were* a bit sad. Leo *went* to her. "Hello," he *said*. "Are you new here?" The girl *looked* up. "Yes, I *am*," she *spoke* softly. "My name *is* Maya." Leo *smiled*. "I *am* Leo. *Come*, I can *show* you around." They *walked*. Leo *told* her about the classes. Maya *felt* better. They *found* her first class. "See you later, Maya!" Leo *said*. Maya *knew* she *had* a new friend. It *was* a good day.`,
+        level: "A2",
+        difficultWords: {"desk":"a table, often with drawers, used for writing or working.","alone":"without other people.","softly":"in a quiet or gentle way."}
+      },
+      b1: {
+        title: "A Friendly New Face (B1)",
+        content: `Leo *came* to school, a usual Monday morning, *feeling* ready for the week. He *found* himself noticing a new student near the main entrance. She *stood* by the main office, her gaze **wandering** around the busy hallway, clearly searching for something. She *seemed* a little lost amidst the familiar faces. Leo *felt* a friendly **urge** to help. He *walked* over, a welcoming smile on his face. "Hi, I *haven't* *seen* you before. Are you new here?" he *asked* kindly. She *turned*, and a shy smile slowly *came* to her face. "Yes, I *am*," she *said*. "My name *is* Maya." "I'm Leo," he *responded* warmly. "Let me *show* you where things *are*. This school can be a bit confusing at first." He *took* her map, and *showed* her where her first class *was*. As they *walked*, they *spoke* about their favorite subjects and shared a few laughs. Maya *began* to *feel* much more comfortable. Leo *knew* they *had* *made* a good connection, and *thought* about seeing her again at lunch.`,
+        level: "B1",
+        difficultWords: {"wandering":"moving slowly away from a fixed place or without a clear purpose.","urge":"a strong desire or impulse.","responded":"said something in reply."}
+      },
+      c1: {
+        title: "A Friendly New Face (C1)",
+        content: `The morning bell *had* already *rung* with its usual insistent clamor when Leo *came* to the bustling school corridor. His keen eyes swiftly *caught* sight of an unfamiliar figure, a girl who *stood* somewhat **tentatively** near the main notice board, a solitary presence amidst the vibrant chaos. She *bore* an unmistakable air of quiet apprehension, her gaze *swept* nervously across the animated throng of students. Leo, a naturally empathetic individual, sensing her slight disorientation, *felt* a sudden, compelling impulse to extend a genuine welcome. He *made* his way purposefully through the dense crowd. "Excuse me," he *began* gently, a warm smile on his face, "I *haven't* *seen* you around before. Are you perhaps new here?" She *turned*, her initial wariness *gave* way to a hesitant, yet grateful, smile. "Indeed, I *am*," she *spoke* softly, her voice barely audible above the din. "My name *is* Maya." "Leo," he *gave* his name, extending a hand. "Perhaps I can *lead* you to your first class? The sprawling layout of this campus can be quite **bewildering** at first, even for seasoned students." He *took* her schedule, quickly *found* her classroom location, and they *spoke* animatedly about their shared academic interests and hopes for the term. By the time they *got* to her destination, a comfortable rapport *had* already *grown* organically between them. Leo *knew* they *had* *forged* a promising friendship, a pleasant **anomaly** in the often-impersonal and transient school environment.`,
+        level: "C1",
+        difficultWords: {"tentatively":"in a way that shows a lack of confidence or certainty; hesitantly.","bewildering":"causing someone to feel confused and unsure of what to do.","anomaly":"something that is unusual or unexpected."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Rainy Picnic Adventure</h1>
     </div>
 
