@@ -15,6 +15,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Spicy Surprise</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Spicy Treat",
+        content: `Leo *went* to the market. He *saw* a new food stall. It *had* bright colours. A nice woman *sold* small dishes. Leo *chose* a red one. He *paid* for it. He *took* a bite. Oh! It *was* very spicy! His face *became* red. He *felt* very hot. He quickly *drank* some water. He *did* not *know* what to *do*. But then, he *thought* it *was* good. He *ate* the whole dish. It *gave* him a big **surprise**. He *came* back later. He *got* another one. He *liked* the **flavour**. The market *had* a special **buzz**. It *made* him smile.`,
+        level: "A2",
+        difficultWords: {"surprise":"an unexpected event or piece of information","flavour":"the distinctive taste of a food or drink","buzz":"a feeling of excitement and energy"}
+      },
+      b1: {
+        title: "Leo's Spicy Treat",
+        content: `Leo *went* to the bustling street market. He *saw* a vibrant new food stall. It *shone* with colourful spices and fresh ingredients. He *chose* a small, mysterious red dish and *paid* the vendor. He *took* a cautious bite. Immediately, a wave of heat *swept* over him! His eyes *began* to water, and his face *grew* flushed. He *felt* quite surprised and quickly *drank* his entire bottle of water. He *thought* he *had made* a mistake, but a strange **craving** *came* over him. He *ate* the whole dish, finding an unexpected pleasure in the intense heat. He *knew* he *would* *find* himself returning. The unique **aroma** of the market stalls *drew* him in, and the stall's food *became* his new favourite **adventure**.`,
+        level: "B1",
+        difficultWords: {"craving":"a strong desire for something","aroma":"a pleasant, distinctive smell","adventure":"an unusual, exciting, and daring experience"}
+      },
+      c1: {
+        title: "Leo's Spicy Treat",
+        content: `Leo *found* himself immersed in the **cacophony** of the bustling street market, a sensory overload he had *grown* to cherish. His gaze *was drawn* to an unfamiliar stall, its array of vibrant, aromatic dishes *shone* under the afternoon sun, beckoning him. He *chose* a small, crimson-hued concoction, *paid* the vendor who *gave* him a knowing smile, and *took* a tentative bite. A sudden, intense inferno *swept* through his palate. His eyes *began* to water profusely, and his face *became* flushed. He *felt* a profound jolt of surprise, instinctively *drank* the entire contents of his water bottle. Initially, he *thought* he *had made* a grave misjudgment, but an inexplicable, almost compelling **urge** *came* over him. He *ate* the entirety of the dish, discovering an unexpected delight in the searing heat, a sensation that *had never before* truly stirred his culinary interest. He *knew* then that he *would* *seek* out this *fledgling* culinary experience again, *driven* by the market's pervasive, complex **allure** and the stall's newfound ability to *awaken* his adventurous spirit.`,
+        level: "C1",
+        difficultWords: {"cacophony":"a harsh, discordant mixture of sounds","urge":"a strong desire or impulse","allure":"the quality of being powerfully and mysteriously attractive or fascinating"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Hidden Lake Road Trip</h1>
     </div>
 
