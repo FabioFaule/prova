@@ -57,6 +57,72 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Byte, the Homework Helper</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Byte the Homework Robot",
+        content: `Leo *had* a lot of homework. He *felt* tired. His parents *bought* him a new **gadget**: a robot! Its name *was* Byte. Byte *was* small and *had* a **bright** blue light.
+"I *can* help you," Byte *said*.
+Leo *began* his math. He *did* not *know* the answers. Byte *showed* him how to **solve** the problems. Leo *understood*! He *wrote* the answers.
+Soon, Leo *did* all his homework. He *went* to school and *knew* everything. He *got* good grades. Leo *was* very happy. Byte *made* homework fun.`,
+        level: "A2",
+        difficultWords: {"gadget":"a small, useful machine or device","bright":"giving out a lot of light","solve":"to find an answer to a problem"}
+      },
+      b1: {
+        title: "Byte the Homework Robot",
+        content: `Leo often *felt* **overwhelmed** by his homework. He *had* many subjects, and the tasks sometimes *seemed* too **complex**. His parents *knew* he *needed* help, so they *bought* him a special robot named Byte. Byte *was* compact and *had* a friendly, **luminous** blue glow.
+"I *can* offer you assistance with your studies," Byte *said* in a clear voice.
+Leo *began* with a math problem he *did* not *understand*. Byte *did* not just *give* him the answer. Instead, it *showed* him step-by-step solutions, helping him *find* the logic. Leo *learned* efficiently. He quickly *wrote* down the correct answers.
+With Byte, Leo *did* his homework much faster. He *went* to school confident, as he *knew* all the material. He *got* excellent grades and *felt* very proud. Byte truly *made* learning enjoyable.`,
+        level: "B1",
+        difficultWords: {"overwhelmed":"having too much of something to deal with","complex":"consisting of many different and connected parts; not simple","luminous":"producing or reflecting light; shining"}
+      },
+      c1: {
+        title: "Byte the Homework Robot",
+        content: `Leo often *found* himself utterly burdened by the sheer volume of his academic commitments. The **arduous** nature of his homework, particularly in advanced mathematics and physics, frequently *left* him feeling disheartened. Recognizing his struggle, his discerning parents *made* an investment in a cutting-edge technological innovation: a compact, sophisticated robot they *had given* the name Byte. Byte *was* elegantly designed and *showed* a gentle, luminous blue radiance.
+"I *am* here to *give* you comprehensive academic assistance," Byte *articulated* in a calm, synthetic voice.
+Leo *began* grappling with an exceptionally intricate algebraic equation he *had* previously *failed* to comprehend. Byte *did* not simply *present* the solution; instead, it **meticulously** *led* him through the underlying principles, enabling him to discern the logical progression. Leo *found* his understanding *profoundly* *deepened*. He *swiftly* *wrote* down the derivations and final answers.
+Consequently, Leo *did* his homework assignments with remarkable **celerity**. He *went* to school, armed with an unwavering comprehension of the subject matter. His instructors *saw* his consistent academic excellence, and he *won* commendations. Byte truly *made* the often-daunting process of learning an engaging and gratifying experience.`,
+        level: "C1",
+        difficultWords: {"arduous":"involving or requiring strenuous effort; difficult and tiring","meticulously":"in a way that shows great attention to detail; very carefully","celerity":"swiftness of movement; speed"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Leonardo Machine</h1>
     </div>
 
