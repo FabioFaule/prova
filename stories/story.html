@@ -15,6 +15,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Maya's First Swim</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Maya's First Swim",
+        content: `Maya *was* scared of the water. She *did not know* how to *swim*. Her Aunt Lily *came* with her to the pool. Aunt Lily *was* a good swimmer. "You *can do* it!" she *said*. Maya *felt* very **nervous**.
+They *went* to the **shallow** part. Aunt Lily *showed* her how to *kick*. Maya *put* her face in the water and *blew* bubbles. She *began* to *feel* brave. Aunt Lily *let* go a little. Maya *did* a small **splash**. She *swam* a short way! She *felt* so happy. She *knew* she *could* *swim*.`,
+        level: "A2",
+        difficultWords: {"nervous":"feeling worried or afraid about something","shallow":"not deep","splash":"to make water fly up in drops"}
+      },
+      b1: {
+        title: "Maya's First Swim",
+        content: `Maya *felt* a strong sense of **hesitation** when she *stood* by the pool. She *did not know* how to *swim*, and the water *looked* deep. Her Aunt Lily, who *was* an experienced swimmer, *came* to help. "Don't worry, you *can do* it," Aunt Lily *said* kindly, *giving* Maya a warm smile.
+They *went* to the shallow end. Aunt Lily *taught* Maya how to float, explaining the concept of **buoyancy**. Maya *put* her face in, *blew* bubbles, and *began* to *kick* her legs gently. She *felt* herself slowly *getting* more comfortable. Aunt Lily *let* go, and Maya *found* herself moving forward. She *did* it! She *swam* a short distance on her own. It *was* a wonderful **accomplishment**. She *knew* she *would* *swim* again, filled with newfound confidence.`,
+        level: "B1",
+        difficultWords: {"hesitation":"the act of pausing before doing something because you are uncertain or worried","buoyancy":"the ability of an object to float in water or air","accomplishment":"something successful or impressive that is achieved after a lot of effort"}
+      },
+      c1: {
+        title: "Maya's First Swim",
+        content: `Maya *stood* at the edge of the pool, a palpable sense of **trepidation** *creeping* into her resolve. The vast expanse of shimmering water *felt* like an insurmountable challenge; she *had never undertaken* to *swim* before. Her Aunt Lily, a seasoned swimmer, *came* forward, her presence immediately **reassuring**. "You possess the inherent ability," Aunt Lily *said*, her voice imbued with quiet confidence, "you merely *need* to *find* it."
+They *went* to the *shallower* section. Aunt Lily expertly *taught* Maya the fundamentals of propulsion and *buoyancy*, emphasizing the crucial role of breath control. Maya *put* her face into the cool water, *blew* steady streams of bubbles, and *began* to orchestrate her limbs into a coordinated effort. She *felt* an initial awkwardness slowly *give* way to a nascent rhythm. When Aunt Lily *let* go, Maya *found* herself moving independently. She *had done* it! She *swam* a considerable length, a profound sense of **elation** *rose* within her. She *knew* this *was* merely the *beginning* of a lifelong affinity with the water.`,
+        level: "C1",
+        difficultWords: {"trepidation":"a feeling of fear or anxiety about something that may happen","reassuring":"making someone feel less worried or afraid; restoring confidence","elation":"great happiness and exhilaration"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Leo's Flying Dream</h1>
     </div>
 
