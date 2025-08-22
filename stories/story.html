@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Night Forest's Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Night Forest's Secret - A2 Level",
+        content: `Lily *went* into the forest at night. The moon *was* big. She *saw* tiny lights, like stars. They *flew* around. They *were* fireflies. Lily *heard* soft sounds. The wind *sang* a quiet song. She *felt* happy. She *walked* on a small **path**. Suddenly, she *saw* something bright. It *was* a mushroom, and it *began* to **sparkle**. It *gave* a soft **glow**. Lily *knew* it *was* special. She *stood* there and *thought* about the forest. She *came* home, feeling calm.`,
+        level: "A2",
+        difficultWords: {"path":"A way made by people walking.","sparkle":"To shine brightly with small flashes of light.","glow":"To produce a soft, steady light."}
+      },
+      b1: {
+        title: "The Night Forest's Secret - B1 Level",
+        content: `Maya *chose* to *go* for a walk in the forest after dark. The full moon *cast* long shadows. She *saw* many fireflies that *flew* and *shone* like little lamps. Their light *made* the night feel **enchanted**. Maya *heard* the wind *sing* through the trees. She *felt* a sense of **serenity**. As she *walked*, her feet *found* a hidden trail. Suddenly, she *came* upon a strange sight. A mushroom *began* to *give* a soft, **luminescent** light. She *knew* she *had found* something magical. She *took* a moment to *feel* the forest's quiet beauty. Maya *went* home, feeling peaceful and refreshed.`,
+        level: "B1",
+        difficultWords: {"enchanted":"Filled with delight; charming.","serenity":"The state of being calm, peaceful, and untroubled.","luminescent":"Emitting light not caused by heat."}
+      },
+      c1: {
+        title: "The Night Forest's Secret - C1 Level",
+        content: `Evelyn *felt* an irresistible urge to *seek* the forest's depths under the shroud of night. A full moon *hung* low, its pale light *wove* intricate patterns through the ancient canopy. She *saw* countless fireflies, their **iridescent** flashes dotting the darkness, *making* the woodland seem truly **ethereal**. The wind *sang* a low, melancholic tune that *bore* whispers through the towering trees. Evelyn *found* herself enveloped in a profound sense of **tranquility**. As she *trod* carefully, her gaze *caught* a faint radiance. There, nestled amongst the moss, a mushroom *began* to *give* off a soft, pulsating glow. She *knew* she *had stumbled* upon a secret, a testament to nature's hidden wonders. She *stood* for a long moment, *lost* in contemplation before she *took* her leave, *bearing* the forest's magic within her.`,
+        level: "C1",
+        difficultWords: {"iridescent":"Showing luminous colors that seem to change when seen from different angles.","ethereal":"Extremely delicate and light in a way that seems too perfect for this world.","tranquility":"The quality or state of being tranquil; calm."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Birthday Cake Catastrophe</h1>
     </div>
 
