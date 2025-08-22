@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Unexpected Journey</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Wrong Train",
+        content: `Sarah *went* to the **platform**. She *had* a **ticket** for Brighton. She *saw* a train and *thought* it *was* hers. She *got* on and *sat* down. The train *began* to *go*. Sarah *read* her book. After some time, she *looked* out the window. She *saw* a sign that *said*, "Hastings." "Oh no!" she *thought*. "I *took* the wrong train!" She *felt* very **confused**. She *did* not *know* Hastings. She *got off* at the next stop. A kind man *came* to help. He *told* her how to *get* back. Sarah *understood* her mistake. She *made* her way back and *caught* the right train. It *was* a long day, but she *learned* a lesson. It *was* important to check.`,
+        level: "A2",
+        difficultWords: {"platform":"the area next to the railway track where people get on and off trains.","ticket":"a piece of paper or card that allows you to travel on a train or attend an event.","confused":"not able to think clearly or understand what is happening."}
+      },
+      b1: {
+        title: "A Detour to Hastings",
+        content: `Sarah *went* to the **bustling** train station, her mind *filled* with thoughts of Brighton's sunny beaches. She *had* her ticket ready. Spotting a train on Platform 3, she *assumed* it *was* hers and quickly *got* on, *finding* an empty seat. The train *began* to *move*, slowly picking up speed. Sarah *read* a novel for a while, feeling relaxed. After some time, she *looked* up and *saw* a sign for a town she *did* not *recognize*: "Hastings." Her heart *sank*. "Oh no!" she *thought*. "I *took* the wrong train!" A wave of **dismay** *swept* over her. She *felt* completely lost, as she *knew* nothing about Hastings. She *got off* at the next **stopover**. A friendly passenger *came* and *spoke* to her, explaining how she *could get* back to Brighton. Sarah *understood* her error and, though delayed, *made* her way back. She eventually *caught* the correct train. It *was* a long and unexpected journey, but she *learned* the vital importance of double-checking.`,
+        level: "B1",
+        difficultWords: {"bustling":"full of activity and noise.","dismay":"a feeling of shock and unhappiness.","stopover":"a break in a journey."}
+      },
+      c1: {
+        title: "An Unforeseen Excursion",
+        content: `Sarah *made* her way through the **bustling** throng at the train station, her mind *was awash* with anticipation of Brighton's serene shores. She *held* her meticulously acquired ticket, *convinced* she *knew* precisely which platform *to seek*. Spotting a carriage on Platform 3, she *thought* it *was* her designated departure and swiftly *got* on, *finding* an unoccupied window seat. The train *began* its **inexorable** glide, gradually *built* momentum. Sarah *read* a captivating tome, feeling deeply *drawn* into its narrative, completely *unaware* of her unfolding predicament. After a considerable period, her gaze *fell* upon a station sign, *bearing* the unfamiliar name: "Hastings." A chilling realization *struck* her calm. "Good heavens!" she *thought*. "I *have taken* the entirely wrong train!" A profound sense of **consternation** *swept* over her as she *found* herself contemplating this unforeseen detour; she *knew* absolutely nothing of Hastings. She *got off* at the subsequent stop, feeling utterly disoriented. Fortuitously, a compassionate fellow passenger *came* to her aid, *gave* clear directions on how *to get* back to her intended route. Sarah *understood* the gravity of her oversight and, though significantly delayed, diligently *went* back. She eventually *caught* the correct express. What *had been* conceived as a routine journey *became* an unforeseen escapade, yet she *had learned* the indelible lesson of vigilant verification.`,
+        level: "C1",
+        difficultWords: {"bustling":"full of activity; moving about in an energetic and noisy manner.","inexorable":"impossible to stop or prevent; relentless.","consternation":"a feeling of anxiety or dismay, typically at something unexpected."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Late Start</h1>
     </div>
 
