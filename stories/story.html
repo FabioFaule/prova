@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Miller Family Reunion</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Simple Family Get-Together",
+        content: `The Miller family *met* for a reunion. Everyone *came* to Grandma’s house. The house *was* full of smiles. Children *ran* and *played*. Adults *spoke* and *laughed*. Grandma *made* a big dinner. They all *ate* delicious food and *drank* juice. Uncle Tom *sang* a happy song. Little Lily *drew* a colorful picture for Grandma. Grandma *gave* everyone a small gift. It *was* a special day. They all *felt* very happy and *knew* they *would* *come* again next year. The day *went* fast. It *was* a **warm** day, full of **joy**. They *had* a great time and *thought* about the next **gathering**.`,
+        level: "A2",
+        difficultWords: {"warm":"having a temperature between cool and hot.","joy":"a feeling of great happiness.","gathering":"a meeting or a coming together of people."}
+      },
+      b1: {
+        title: "An Unforgettable Family Day",
+        content: `The annual Miller family *reunion* *began* with great **anticipation**. Relatives *came* from far and wide, *filling* Grandma Eleanor's spacious home with their cheerful presence. The house *felt* alive with chatter and laughter. Children *ran* freely, while adults *spoke* of shared memories and new experiences. Grandma *had* *prepared* a magnificent feast, and everyone *ate* heartily, *drinking* a variety of beverages. Uncle Tom, known for his **melodious** voice, *sang* a series of old family favorites, and everyone *joined* in. Young Lily, a budding artist, *drew* a beautiful landscape that *she* *gave* to Grandma. Later, Grandma *brought* out small, thoughtful gifts for each person. A **profound** sense of belonging *grew* among them. They all *felt* immense happiness and *knew* this bond *would* *keep* them close until they *met* again. The day *went* by quickly, leaving them with fond memories and plans for the future.`,
+        level: "B1",
+        difficultWords: {"anticipation":"a feeling of looking forward to something, usually with pleasure.","melodious":"having a pleasant musical sound.","profound":"very great or intense."}
+      },
+      c1: {
+        title: "A Cherished Kinship Rekindled",
+        content: `The annual Miller family *reunion* *began* with a palpable sense of **eagerness**, drawing relatives from distant locales to Grandma Eleanor's ancestral home. The atmosphere *became* *charged* with the vibrant hum of conversation and the **effervescent** ring of laughter, as the grand old house *brimmed* with life. Children *ran* about, their energy boundless, while adults *spoke* of shared histories and *told* tales of recent endeavors. Grandma Eleanor *had* *come* up with and *laid* out an opulent feast, which everyone *ate* with gusto, *drank* a selection of refined beverages. Uncle Tom, whose **repertoire** of family ballads *was* legendary, *sang* with such heartfelt resonance that it *drew* everyone into a collective chorus. Young Lily, already *showing* considerable artistic promise, *drew* a remarkably intricate landscape and *gave* it to Grandma. Subsequently, Grandma *brought* forth a carefully *chosen* memento for each family member, each one *meant* to evoke cherished memories. A sense of profound kinship *grew* among them, solidifying their collective identity. They all *knew* this enduring connection *would* *bind* them until their paths *met* again. The day *flew* by with a rapid grace, *leaving* an indelible mark of warmth and belonging.`,
+        level: "C1",
+        difficultWords: {"eagerness":"a strong and impatient desire to do something or for something to happen.","effervescent":"vivacious and enthusiastic; bubbly.","repertoire":"a stock of pieces that a performer knows or is prepared to perform."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Night Forest's Secret</h1>
     </div>
 
