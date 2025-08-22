@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A New Friend at School</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A New Friend at School (A2)",
+        content: `Leo *went* to school. He *saw* a new girl. She *stood* **alone**. Leo *felt* a little shy. But he *knew* he *wanted* to *speak* to her. He *came* to her and *did* his best to **greet** her. "Hello," he *said*. "My name *is* Leo." The girl *smiled*. "I *am* Maya," she *said*. "I *am* new here." They *began* to talk. Leo *found* Maya lived near him. They *found* they liked the same games. They *had* many things in **common**. They *became* friends. Leo *thought* the day *was* good. He *met* a nice new friend. Maya *felt* happy too. It *was* a good start.`,
+        level: "A2",
+        difficultWords: {"alone":"by oneself; without other people.","greet":"to say hello or welcome someone.","common":"shared by two or more people or things."}
+      },
+      b1: {
+        title: "A New Friend at School (B1)",
+        content: `Leo *drove* to school on the first day. He *saw* a girl he *had* never *seen* before. She *stood* a bit **hesitantly** near the entrance. Leo *felt* a pang of shyness, but he *knew* he *had* to *make* an effort. He *went* over and *spoke* to her. "Hi, I'm Leo," he *said*. "Are you new here?" The girl *gave* a faint smile. "Yes, I'm Maya," she replied. "I just *came* to town." They *began* to exchange details. Leo *found* out Maya lived only a few blocks away, and they *had* a **mutual** love for reading fantasy books. Soon, they *became* fast friends. Leo *thought* he *had* really *hit* it off with Maya. The day, which *began* nervously, *felt* like a **promising** start to a new friendship.`,
+        level: "B1",
+        difficultWords: {"hesitantly":"in a tentative or unsure manner.","mutual":"(of a feeling or action) experienced or done by each of two or more parties towards the other or others.","promising":"showing signs of future success or good results."}
+      },
+      c1: {
+        title: "A New Friend at School (C1)",
+        content: `As Leo *drove* to the prestigious academy on the inaugural day, his gaze *fell* upon a figure he *had* not *beheld* before. She *stood* with a palpable air of **apprehension** near the stately gates, seemingly adrift amidst the bustling throng. Leo, despite *feeling* a familiar wave of introversion, *knew* it *was* incumbent upon him to *make* a positive **impression**. He *went* forth, overcoming his initial reluctance, and *said* to her, "Good morning, I'm Leo. Are you perhaps new to our institution?" The girl *gave* a brief, hesitant smile. "Indeed, I'm Maya," she *replied*. "My family just *came* to settle in this locale." Their conversation *began* to *come* to life with surprising ease. Leo soon *understood* that Maya *was* a neighbor. Even more serendipitously, they *bore* a profound, **reciprocal** enthusiasm for complex fantasy narratives. They *spent* the remainder of the morning *speaking*, *knowing* they *had* found a remarkable rapport. Swiftly, they *became* close companions, and Leo *felt* a genuine connection *grow*. He *knew* he *had* truly *struck* a chord with Maya. The day, which *began* with a subtle sense of trepidation, *brought* the genesis of an undoubtedly auspicious and enduring friendship.`,
+        level: "C1",
+        difficultWords: {"apprehension":"anxiety or fear that something bad or unpleasant will happen.","impression":"an idea, feeling, or opinion about something or someone, especially one formed without conscious thought or on the basis of little evidence.","reciprocal":"(of an action or feeling) given or felt by each of two people or things toward the other."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Rainy Picnic Adventure</h1>
     </div>
 
