@@ -57,6 +57,77 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Helping Hand</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Helping Hand",
+        content: `Alex *was* sad. He *had* a big school project. He *did not know* what to *do*. He *felt* **overwhelmed**.
+His friend, Ben, *saw* him. Ben *came* to Alex’s house.
+"What *is* wrong?" Ben *said*. Alex *told* him about the big **task**. It *was* too much.
+Ben *said*, "I *can* help." He *began* to help Alex. They *made* a plan together. Alex *felt* **relieved**. They *did* a big part of the project.
+Alex *knew* he *could do* it now. Ben *went* home. Alex *was* very happy he *had* a good friend.`,
+        level: "A2",
+        difficultWords: {"overwhelmed":"feeling that you have too much to do or too many problems to deal with.","task":"a piece of work that needs to be done.","relieved":"feeling happy because something difficult or unpleasant has not happened or has ended."}
+      },
+      b1: {
+        title: "The Helping Hand",
+        content: `Alex *felt* quite sad. He *had* a significant school **assignment** that *seemed* impossible. He *did not know* how to even *begin*.
+His close friend, Ben, *saw* Alex's **distress**. Ben *came* over to Alex's apartment.
+"What's *going* on?" Ben *said* gently. Alex *told* him about his struggles with the complex project. It *felt* completely overwhelming.
+Ben *said*, "We can *get* this *done*." He *began* by helping Alex *break* the large project into smaller steps. They *spent* hours working side-by-side, and progress *grew*.
+Together, they *made* a detailed plan. Alex *felt* a wave of **relief** *come* over him. They *got* a substantial part of the assignment *done*.
+Alex *knew* he *could complete* it now. Ben *left* later that evening. Alex *was* extremely grateful he *had* such a supportive friend.`,
+        level: "B1",
+        difficultWords: {"assignment":"a piece of work given to someone as part of their studies or job.","distress":"great worry, sadness, or suffering.","relief":"the feeling of happiness that comes when something unpleasant stops or does not happen."}
+      },
+      c1: {
+        title: "The Helping Hand",
+        content: `Alex *found* himself in a state of profound despondency. He *had* been **grappling** with a formidable academic undertaking that *felt* utterly insurmountable. He *did not know* how to even *begin* to address it.
+His astute friend, Ben, *saw* Alex's deep **malaise**. Ben *drove* directly to Alex's dwelling.
+"What *has gone* on?" Ben *said* with genuine concern. Alex *told* him about the formidable challenges presented by the intricate project; it *had become* entirely overwhelming.
+Ben *said*, "We *shall overcome* this together." He *began* by assisting Alex in deconstructing the colossal project into manageable segments. They *spent* hours working assiduously side-by-side, and their progress *grew* exponentially.
+Jointly, they *made* a meticulously detailed blueprint. Alex *felt* a palpable wave of **solace** *sweep* over him. They *brought* a significant portion of the assignment *to fruition*.
+Alex *knew* he *could* *see* it through now. Ben *left* late that evening. Alex *was* immeasurably thankful to *have* such an unwavering friend.`,
+        level: "C1",
+        difficultWords: {"grappling":"struggling to cope with or understand something difficult.","malaise":"a general feeling of discomfort, illness, or uneasiness whose exact cause is difficult to identify.","solace":"comfort or consolation in a time of distress or sadness."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Whisper Cave</h1>
     </div>
 
