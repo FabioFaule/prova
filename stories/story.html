@@ -57,6 +57,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Unexpected Shower</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Unexpected Shower (A2)",
+        content: `Mia and Tom *went* to the park. They *took* a big **basket**. They *found* a nice spot under a tree. They *ate* sandwiches and *drank* orange **juice**. The sun *was* warm and bright. They *saw* birds flying. Everything *felt* good.
+Suddenly, the sky *became* dark. Big grey clouds *came*. A cold wind *blew*. Rain *began* to fall. First, it *was* light, then it *came* down hard. Mia and Tom quickly *put* their food away. They *held* their things and *ran* to find **shelter**. They *got* a little wet. They *knew* the fun day *was* over, but they *would* *come* back soon.`,
+        level: "A2",
+        difficultWords: {"basket":"a container made of woven material.","juice":"a drink made from fruit or vegetables.","shelter":"a place giving protection from bad weather or danger."}
+      },
+      b1: {
+        title: "The Unexpected Shower (B1)",
+        content: `Mia and Tom *chose* a lovely spot in the meadow for their picnic. They *spread* a colorful blanket and *laid* out their meal from a big **hamper**. The sun *shone* brightly, and a gentle breeze *blew* through the trees. They *ate* homemade sandwiches and *drank* refreshing lemonade. They *felt* very happy and relaxed, enjoying the moment.
+Suddenly, the weather *began* to change on a **whim**. Dark clouds *came* quickly, and the sky *grew* dim. A few drops *fell*, then the rain *came* down harder. They *knew* they *had* to pack up fast. They quickly *put* everything back. They *took* the blanket and *ran* for the car, *getting* quite **damp**. They *were* a bit disappointed, but they *understood* that nature *can* *be* unpredictable. They *decided* they *would* *come* back when the weather *was* better.`,
+        level: "B1",
+        difficultWords: {"hamper":"a large basket, usually with a lid, used for food.","whim":"a sudden desire or change of mind, especially one that is unusual or unexplained.","damp":"slightly wet."}
+      },
+      c1: {
+        title: "The Unexpected Shower (C1)",
+        content: `Mia and Tom, seasoned picnickers, *had chosen* a **secluded** spot beside the tranquil lake. They *had painstakingly laid* out an array of gourmet provisions. The sun *had cast* a golden hue upon the serene landscape as they *began* to *eat* their elaborate meal. A gentle *breeze* *swept* through the willow trees, and the air *felt* exceptionally crisp. They *spoke* of future ventures, their spirits undimmed.
+Suddenly, without the slightest premonition, the azure sky *gave* way to an ominous grey. Dark, brooding clouds began to gather with startling celerity. A few drops *fell*, then a veritable **deluge** *came* down, *sending* them scrambling. Before they *could* *even understand* the sudden meteorological shift, the heavens opened and *brought* a downpour. They *knew* they *had* to act with utmost dispatch. They *threw* their belongings into a sturdy, waterproof bag, *making* a desperate dash for the relative cover of the dense woods. Thoroughly drenched, they *felt* a pang of disappointment, yet *understood* the unpredictable **caprice** of nature. They resolved to return, perhaps *bringing* a more robust tarp.`,
+        level: "C1",
+        difficultWords: {"secluded":"not seen or visited by many people; isolated.","deluge":"a severe flood; a great quantity of something arriving at the same time.","caprice":"a sudden and unaccountable change of mood or behavior."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Family Apple Pie Tradition</h1>
     </div>
 
