@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Winning Goal</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Winning Goal",
+        content: `It *was* a big day. Our school football team, the Falcons, *had* a match against the Lions. Many people *came* to watch. The game *began*. Both teams *ran* fast. Our captain, Leo, *did* his best. He *knew* we needed a goal. The score *was* 0-0 for a long time. Suddenly, Leo *got* the ball. He *ran* with it. He *saw* the goal. He *hit* the ball hard. The ball *went* into the net! The crowd *stood* up and *made* a loud sound. We *won* the game! Everyone *felt* happy. Leo *was* the hero. We all **clapped** for him. It *was* a truly **great** day. The team *drank* water and *went* home, full of **joy**.`,
+        level: "A2",
+        difficultWords: {"clapped":"hit your open hands together, especially to show you like something.","great":"very good or important.","joy":"a feeling of great happiness."}
+      },
+      b1: {
+        title: "The Winning Goal",
+        content: `It *was* a highly anticipated day. Our school football team, the Falcons, *met* the Lions in a crucial match. A large crowd *came* to witness the event. The game *began* with intense energy. Both teams *ran* tirelessly, each *giving* their all. Our captain, Leo, *knew* the pressure *was* on. The score *stood* at a goalless draw for much of the game. Suddenly, Leo *found* an opening and *got* the ball. He *drove* forward, *leaving* defenders behind him. He *saw* his chance and *shot* the ball with power. It *flew* into the net! The stadium erupted in cheers. We *had* *won* the game! Everyone *felt* a surge of happiness and *began* to celebrate. Leo *became* the undisputed hero. We **applauded** his skill. It *was* an **exhilarating** victory. The team *drank* water, *spoke* about the match, and *went* home, filled with **triumph**.`,
+        level: "B1",
+        difficultWords: {"applauded":"showed approval or praise by clapping hands.","exhilarating":"making one feel very happy, animated, or thrilled; exciting.","triumph":"a great victory or achievement."}
+      },
+      c1: {
+        title: "The Winning Goal",
+        content: `The day of the pivotal school football match *was* met with palpable anticipation. Our team, the Falcons, *chose* to face their long-standing rivals, the Lions, in a fixture that *held* immense significance. A considerable **assemblage** of spectators *had come* to witness the unfolding drama. The contest *began* with an unyielding intensity; both squads *ran* relentlessly, each striving to assert dominance. Our captain, Leo, *bore* the weight of expectation, *knowing* a solitary goal *could bring* them victory. The scoreboard *stood* obstinately blank for a substantial duration. Then, in a sudden **flurry** of movement, Leo *caught* the opportunity and *took* possession of the ball. He *drove* with unbridled determination, *leaving* a trail of bewildered defenders in his wake. Perceiving the opportune moment, he *shot* with power. The ball *flew*, a blur of motion, embedding itself in the back of the net! The entire stadium erupted in an overwhelming crescendo of cheers. We *had*, against all odds, *won* victory! A profound sense of euphoria *swept* through the team and supporters alike. Leo *became* an instant legend, his name *rang* through the stands. We vociferously **lauded** his pivotal contribution. It *was* an unparalleled and memorable triumph. The team *drank* from their water bottles, *spoke* about the defining moments, and *went* home, their spirits buoyant with collective achievement.`,
+        level: "C1",
+        difficultWords: {"assemblage":"a collection or gathering of things or people.","flurry":"a sudden, brief spell of activity or excitement.","lauded":"praised highly and publicly."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Talking Cat's Secret</h1>
     </div>
 
