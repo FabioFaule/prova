@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 From Jitters to Triumph: Leo's Test</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Test Day",
+        content: `Leo *had* a big math test today. He *felt* very nervous. Last night, he *couldn't sleep* well. His mind *was* full of numbers. In the morning, he *ate* a small breakfast. His stomach *felt* a little **queasy**. He *went* to school slowly. He *saw* his friend, Maya. Maya *came* and *said*, "Don't **worry**, Leo! You *put* in a lot of effort." Leo *thought* about her words. He *walked* to his classroom. He *took* a deep breath. He *began* to *write* his answers. He *knew* many of them! He *felt* much better. After the test, he *was* very **pleased**.`,
+        level: "A2",
+        difficultWords: {"queasy":"feeling sick in the stomach.","worry":"to think about problems.","pleased":"feeling happy or satisfied."}
+      },
+      b1: {
+        title: "Leo's Test Day",
+        content: `Leo *had* a significant math test approaching. He *felt* a wave of nervousness *begin* to *creep* into his mind. The previous night, he *couldn't sleep* soundly; his thoughts *were* a constant *buzz* of formulas. In the morning, he *ate* a meager breakfast, his stomach *felt* a bit **unsettled**. As he *went* to school, the air *felt* heavy with expectation. He *saw* his friend, Maya, by the entrance. Maya *came* over, *took* his hand, and *said*, "Leo, don't *lose* your calm! You *put* in so much preparation. You *know* this material." Leo *thought* deeply about her encouraging words. When he *went* into the exam room, he *made* himself *take* a slow, deliberate breath. He *began* to *write*, his pen *felt* steady. He *found* he *knew* the answers to most questions. A sense of relief *came* over him. After the test, he *felt* incredibly **relieved** and **satisfied**.`,
+        level: "B1",
+        difficultWords: {"unsettled":"feeling slightly nervous or anxious.","relieved":"feeling happy because something unpleasant has not happened or has ended.","satisfied":"feeling pleased because you have achieved something or because something you wanted has happened."}
+      },
+      c1: {
+        title: "Leo's Test Day",
+        content: `Leo *was* facing a formidable math examination, and an **unbidden** wave of apprehension *sprang* into his consciousness. The preceding night, he *hadn't slept* a wink; his mind *was* a ceaseless maelstrom of complex equations. By morning, he *had barely eaten* a bite, his stomach *felt* a disconcerting **churn**. As he *drove* to school, the atmosphere *bore* a palpable sense of gravity. He *caught* sight of his friend, Maya, near the main entrance. Maya *came* over, *held* his arm, and *said*, "Leo, you *mustn't give* in to this stress! You *have put* in a prodigious amount of effort. You *know* this material profoundly." Leo *thought* deeply about her sagacious words, their resonance *beginning* to temper his anxiety. Upon *going* into the examination hall, he *made* a conscious decision to *take* a deep, measured breath, allowing a semblance of calm to *steal* over him. His hand, which *had felt* a tremor moments before, now *held* the pen with resolute steadiness as he *began* to *write*. He *found* that the solutions to a significant majority of the problems *came* to him without undue struggle. A profound sense of release *swept* over him. Post-examination, he *felt* an immense surge of **elation** and contentment, knowing he *had borne* the challenge well and *did* his utmost.`,
+        level: "C1",
+        difficultWords: {"unbidden":"not asked or invited.","churn":"a state of confusion or agitation.","elation":"great happiness and excitement."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Leo's Homework Helper Robot</h1>
     </div>
 
