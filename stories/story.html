@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Unexpected Journey</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Unexpected Journey",
+        content: `Maya *went* to the train station. She *had* to *see* her friend Leo. She *saw* a train on **platform** 5 and *got* on it. She *sat* down and *began* to *read* her book. After some time, she looked outside. The buildings *did* not look right. She asked a woman, "Is this the train to Brighton?" The woman *said*, "No, this train *goes* to Dover!" Maya *felt* very surprised. She *knew* she *made* a mistake. She *got* off at the next stop. She *found* the right **direction** and *took* a train back. She *came* to Leo's house late. They *thought* her story *was* funny. It *was* an **unusual** journey!`,
+        level: "A2",
+        difficultWords: {"platform":"a raised flat surface next to a train track, where people get on and off trains.","direction":"the way that someone or something moves, points, or looks.","unusual":"not common or regular; different from what is expected."}
+      },
+      b1: {
+        title: "The Unexpected Journey",
+        content: `Maya *went* to the bustling train station, excited to *see* her friend Leo. She quickly *found* her **platform** and *got* on what she *thought* *was* her train to Brighton. She *chose* a window seat and *began* to *read* a novel. After a while, she looked up and *saw* unfamiliar landscapes pass by. A sudden feeling of unease *came* over her. She *heard* an **announcement** for 'Dover next stop'. Maya *realized* with a jolt that she *had taken* the wrong train! She *felt* quite **confused** but *knew* she *had* to act fast. She *got* off at the next station, *found* a staff member, and explained her predicament. She *was given* instructions and eventually *made* her way to the correct **destination**. She arrived late, but Leo *found* her story quite amusing. It *became* a memorable tale.`,
+        level: "B1",
+        difficultWords: {"platform":"a raised flat surface next to a train track, where people get on and off trains.","announcement":"a public statement that gives information about something.","confused":"unable to think clearly or understand something."}
+      },
+      c1: {
+        title: "The Unexpected Journey",
+        content: `Maya, anticipating a delightful reunion with her friend Leo, *went* to the **bustling** train station. With a quick glance at the departures board, she identified her platform and *boarded* what she *believed* *was* the express service to Brighton. She *chose* a window seat, *sank* into it, and *began* to *read* a captivating novel. After a considerable duration, a creeping sense of **disorientation** *arose* as she observed the passing scenery; it *did not conform* to her mental map of the route. A public announcement for 'Dover: next stop' solidified her growing apprehension. Maya *realized* with a jolt that she *had made* a grave error, having *taken* the wrong train entirely! Though initially *stricken* with mild panic, her composure quickly returned. She *got* off at the subsequent station, *sought* assistance from a railway employee, and swiftly *devised* a **contingency** plan. Despite the significant delay, she ultimately reached Leo's apartment, where her recounted tale of the unexpected detour *provoked* much laughter and *became* a cherished anecdote.`,
+        level: "C1",
+        difficultWords: {"bustling":"full of activity; moving about in an energetic and noisy manner.","disorientation":"a state of being confused about one's location, identity, or time.","contingency":"a future event or circumstance which is possible but cannot be predicted with certainty."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Morning Rush</h1>
     </div>
 
