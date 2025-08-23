@@ -54,6 +54,63 @@
       <!-- Contenitore dove n8n inserirà le card -->
       <div id="cards-container">
 <!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
+      <h1>📚 The Morning Rush</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Morning Rush (A2)",
+        content: `Mia *woke* up late. Her alarm *did* not *ring*. She *saw* the clock. It *was* 8:00 AM! School *began* at 8:15 AM. Mia *felt* very scared. She *got* out of bed fast. She *ran* to the bathroom. She *put* on her school **uniform**. She *went* to the kitchen. She *ate* her **toast** quickly and *drank* her milk. Mia *took* her backpack and *said* goodbye. She *ran* out the door. The sun *was* very bright, almost a **glow**. Mia *knew* she *was* late. She *ran* all the way to school. She *saw* her friends. They *were* already inside. Mia *thought*, "Oh no!"`,
+        level: "A2",
+        difficultWords: {"uniform":"special clothes that all students at a school wear.","toast":"sliced bread made warm and crispy.","glow":"a soft, warm light."}
+      },
+      b1: {
+        title: "The Morning Rush (B1)",
+        content: `Mia *woke* with a *start*. Her alarm clock, usually a reliable **device**, *hadn't rung*. She *saw* the time. It *read* 8:00 AM! School *began* in a mere fifteen minutes. A jolt of panic *shot* through her. She *leapt* out of bed, her heart *beat* fast. She *flew* to the bathroom, *did* a quick wash, and *put* on her school uniform. Downstairs, she *found* a note from her mom: "Overslept, *went* to work early. Toast on the table." Mia *took* the slice of **crispy** toast, *ate* it in two bites, and *drank* her juice. She *knew* she *had* to *leave* immediately. Her backpack *lay* by the door. She *caught* it, *said* a quick goodbye, and *ran* out. The morning sun *shone* brightly, illuminating the **path**. Mia *understood* she *would* be significantly late. She *ran* towards school, her breath *came* in short bursts, hoping her teacher *would* understand.`,
+        level: "B1",
+        difficultWords: {"device":"a tool or piece of equipment made for a specific purpose.","crispy":"pleasantly hard, dry, and easily broken.","path":"a way or track made by walking."}
+      },
+      c1: {
+        title: "The Morning Rush (C1)",
+        content: `Mia *awoke* with an abrupt *jolt*, her heart *pounding*. The **oblivious** alarm clock, typically her unwavering sentinel, *had remained* silent. Her gaze *flew* to the digital display: 8:00 AM! School *was set* to *begin* in a mere fifteen minutes. A surge of visceral panic *shot* through her veins. She *sprang* from her bed, adrenaline *coursing* through her. She *flew* into the bathroom, *threw* icy water onto her face, and *put* on her meticulously prepared school uniform. Downstairs, a hastily scribbled note from her mother *lay* on the counter: "Overslept, *went* to work early. Help yourself to the toast." Mia *took* a piece of the now-cold, **stale** toast, *ate* it in two rapid bites, and *drank* her juice. She *knew* she *had* to *flee* without another second's delay. Her satchel *hung* by the entryway. She *held* it, *bid* a silent farewell to the deserted house, and *burst* out the front door. The morning sun *shone* with a blinding intensity, casting long shadows across the familiar **thoroughfare**. Mia *understood* she *would* undoubtedly incur significant tardiness. She *ran* towards the school gates, her lungs *felt* like they *would burst*, hoping her form teacher *would show* some leniency.`,
+        level: "C1",
+        difficultWords: {"oblivious":"not aware of what is happening around one.","stale":"(of food) no longer fresh and pleasant to eat; hard, dry, or tasteless.","thoroughfare":"a main road or public highway."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
 
 
 
