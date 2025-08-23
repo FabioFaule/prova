@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A Hasty Start</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Hasty Start",
+        content: `The alarm *rang* late. Mia *woke* up and *felt* a rush. She *got* out of bed quickly. She *went* to the kitchen and *made* coffee. She *drank* it fast. She *ate* toast. Then she *chose* her clothes and *put* them on. She *ran* to the door and *saw* the time. Oh no, she *was* late! She *forgot* her keys! She *came* back and *took* them. She **grabbed** her bag. Mia *left* the house. She *went* to work. Today *was* a **tough** morning. She *knew* she *had* to sleep early tonight to avoid such a **frenzy**.`,
+        level: "A2",
+        difficultWords: {"grabbed":"took hold of something quickly or roughly.","tough":"difficult or challenging.","frenzy":"a state of uncontrolled excitement or wild behaviour."}
+      },
+      b1: {
+        title: "A Hasty Start",
+        content: `The alarm *rang* much later than usual. Mia *woke* with a jolt and *felt* a sudden surge of panic. She *knew* she *had* to hurry. Quickly, she *sprang* out of bed and *made* her way to the kitchen. She *made* a strong coffee, *drank* it almost instantly, and *ate* a piece of toast she *found* in the bread bin. Dressing was a quick affair; she *chose* the first clean outfit she *saw* and *put* it on. As she *ran* towards the front door, she *caught* a glimpse of the clock. It *was* already 8:30! She *had* completely *forgotten* her work ID. She *came* back, *took* it from the table, and **snatched** her laptop bag. Mia *left* her apartment, *ran* down the stairs, and *went* to catch her bus. This morning *had been* a complete **scramble**, leaving her feeling quite **frantic**.`,
+        level: "B1",
+        difficultWords: {"snatched":"quickly and eagerly grabbed something.","scramble":"a disordered or confused movement or activity.","frantic":"feeling or showing a lot of worry and fear, often expressed in wild, uncontrolled activity."}
+      },
+      c1: {
+        title: "A Hasty Start",
+        content: `The alarm *rang* incessantly, yet Mia *had* *fallen* into a profound sleep and *did not hear* it. She *awoke* much later than intended, an immediate jolt of anxiety **piercing** her consciousness as she *understood* the late hour. *Springing* from her bed, she *flew* to the kitchen, her movements a blur of desperation. She quickly *made* a robust espresso, *drank* it in a single, desperate gulp, and *ate* a piece of *stale* toast she *found* in the pantry. Her choice of attire was purely pragmatic; she *chose* the nearest presentable clothes and *put* them on haphazardly, barely *taking* time to glance in the mirror. As she *ran* towards the main door, her gaze *fell* upon the antique grandfather clock, its hands *showed* unequivocally a quarter past eight. A wave of dismay *swept* over her – she *had* regrettably *forgotten* her crucial work badge! Retracing her steps, she *took* the ID from the console table and **clutched** her satchel with a determined grip. With a final, **furtive** glance at her disheveled apartment, Mia *flung* open the door and *ran* out, desperate to catch her train, knowing her meticulously planned morning *had* completely **unraveled**.`,
+        level: "C1",
+        difficultWords: {"piercing":"(adjective/present participle of pierce) going into or through something; used to describe a sharp, intense feeling.","clutched":"(verb, past tense of clutch) held something tightly.","unraveled":"(verb, past tense of unravel) separated into its constituent parts; fell apart; became undone."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 From Jitters to Triumph: Leo's Test</h1>
     </div>
 
