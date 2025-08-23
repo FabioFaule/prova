@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Friends on the Road</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Friends on the Road",
+        content: `Leo, Mia, and Sam *did* a fun thing. They *went* on a road trip. They *drove* their car far. Soon, they *came* to a small town near the sea. They *found* a beach. The sand *was* yellow and soft. They *sat* on a big blanket. They *ate* sandwiches they *brought*. The sea *was* **vast** and blue. After lunch, they *took* many photos. Then, Leo *saw* a problem. The car tire *was* flat! They *felt* a bit sad. But Sam *knew* what to *do*. He *got* the spare tire. Together, they *made* it okay. They *saw* the sun **sink** slowly. It *was* a beautiful **glow**. They *went* home, happy. They *had* many good memories.`,
+        level: "A2",
+        difficultWords: {"vast":"very big","sink":"to go down slowly","glow":"soft, warm light"}
+      },
+      b1: {
+        title: "Friends on the Road",
+        content: `Leo, Mia, and Sam *began* an exciting adventure. They *chose* to *go* on a road trip. They *drove* their car for hours, covering a significant distance. Eventually, they *came* upon a charming coastal town. There, they *found* a secluded beach. The sand *felt* soft and warm beneath their feet. They *spread* a large blanket and *sat* down, ready for a break. They *ate* delicious food they *had brought* from home. The ocean *was* a **vibrant** blue, stretching out before them. After their meal, they *took* many pictures, capturing the beautiful scenery. Suddenly, Leo *saw* a problem: one of the car tires *was* flat. They *felt* a pang of worry. However, Sam *knew* how to *deal* with it. He quickly *got* the spare tire and they *put* it on together. As the day *drew* to a close, they *saw* a magnificent sunset, painting the sky with an orange **hue**. They *went* back, feeling content, knowing they *had made* some wonderful, **enduring** memories.`,
+        level: "B1",
+        difficultWords: {"vibrant":"bright and full of color","hue":"a shade or type of color","enduring":"lasting for a long time"}
+      },
+      c1: {
+        title: "Friends on the Road",
+        content: `The **genesis** of an unforgettable journey *began* for Leo, Mia, and Sam. They *chose* to *undertake* an impromptu road trip, their vehicle *eating* up the miles with effortless grace. After traversing varied landscapes, they *came* upon a picturesque coastal town, a hidden gem. There, they *found* a secluded beach, whose golden sands *drew* them in. They *unfurled* a large blanket, *sat* themselves comfortably, and *drew* out an array of gourmet provisions they *had brought*. The ocean, a tumultuous expanse, *shone* a **kaleidoscope** of blues under the midday sun. Post-luncheon, they *took* numerous photographs, each frame *spoke* volumes of their camaraderie. A sudden jolt of apprehension *shot* through Leo as he *saw* a flat tire. The gravity of the situation *brought* a cloud of worry, but Sam, ever the pragmatist, *knew* precisely how to *deal* with it. With practiced ease, he *got* the spare and, through their concerted efforts, they *overcame* the setback. As twilight *fell*, they *bore* witness to a breathtaking sunset, the horizon *ablaze* with a fiery **effulgence**. Their return journey *felt* imbued with a profound sense of satisfaction, having *woven* not just memories, but an unbreakable bond of shared experience.`,
+        level: "C1",
+        difficultWords: {"genesis":"the origin or beginning of something","kaleidoscope":"a constantly changing pattern or sequence of elements","effulgence":"a brilliant radiance; a shining forth"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Hasty Start</h1>
     </div>
 
