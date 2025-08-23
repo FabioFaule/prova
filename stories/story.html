@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A Spark Through Time</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A Spark Through Time",
+        content: `Leo *went* to his old **attic**. He *saw* dust. He *found* a strange **machine**. It *was* shiny. He *did* not *know* what it *was*. Leo *pressed* a button. The room *began* to **glow** with blue light. Suddenly, he *was* not in his attic. He *was* in a big room. A man *came* to him. "Hello," the man *said*. "I *am* Nikola Tesla." Leo *felt* surprised. Tesla *showed* him cool inventions. He *made* light without wires. Then, Leo *went* back home. He *was* excited. He *knew* he *wanted* to *make* his own inventions. This visit *gave* him new ideas.`,
+        level: "A2",
+        difficultWords: {"attic":"the space or room directly under the roof of a house","machine":"a piece of equipment with moving parts that does work when it is used","glow":"to produce a soft, steady light"}
+      },
+      b1: {
+        title: "A Spark Through Time",
+        content: `Leo *went* up to his old **attic**, a dusty space full of forgotten things. He *found* a peculiar, metallic **contraption**. It *had* many dials and strange symbols. He *did* not *know* its purpose. Curiosity *drew* him to press a button. The device *came* to life, and the room *began* to *shine* with an intense blue light. In a flash, Leo *felt* a jolt and *was* no longer in his attic. He *stood* in a bustling laboratory, *filled* with elaborate **apparatus**. A tall man turned to him. "Greetings," he *said* kindly. "I *am* Nikola Tesla. How *did* you *get* here?" Leo, still *feeling* disoriented, *told* him about the machine. Tesla *showed* him his revolutionary work on wireless power. Leo *understood* little but *was* deeply impressed. Soon, he *was* back home, *knowing* his perspective *had* *been* changed. He *felt* a strong urge to *do* great things.`,
+        level: "B1",
+        difficultWords: {"attic":"the space or room directly under the roof of a house, often used for storage","contraption":"a machine or device that appears strange or complicated","apparatus":"a set of equipment or tools used for a particular purpose"}
+      },
+      c1: {
+        title: "A Spark Through Time",
+        content: `Ascending into his family's seldom-visited **garret**, Leo *came* across a peculiar artifact. Amidst the detritus of forgotten generations, he discerned a polished, brass-bound **contrivance**, a veritable enigma awaiting discovery. Its intricate dials and arcane glyphs *spoke* of a technology far beyond his comprehension. Compelled by an irresistible curiosity, he pressed a luminous crystal. The device *sprang* to life, and the confined space *began* to *effulge* with an ethereal, cerulean glow. A sudden spatial disorientation *swept* over him, and the familiar confines of his attic *melted* away. He *found* himself *standing* in an expansive, humming laboratory, replete with sophisticated, yet antique, instrumentation. A gaunt, distinguished figure, whose intense eyes *held* an uncanny spark, turned from a workbench. "Remarkable," he uttered, his voice resonant. "I *am* Nikola Tesla. Pray *tell*, how *did* you *manifest* in my sanctuary?" Leo, momentarily bereft of speech, eventually *recounted* the inexplicable journey. Tesla, perceiving the profundity of the situation, offered a glimpse into his pioneering work on resonant frequencies and the transmission of power through the aether. Though the scientific intricacies *eluded* Leo, he *was* utterly captivated. His return to his own era *left* him with an **epiphany**: a profound realization that innovation *lay* not merely in invention, but in the boundless audacity of human imagination. He *knew* then that his destiny *was* irrevocably *bound* to scientific exploration.`,
+        level: "C1",
+        difficultWords: {"garret":"a small room, especially an attic room, at the top of a house, typically under the eaves","contrivance":"a device, especially a machine or ingenious mechanism; an invention","epiphany":"a moment of sudden and great revelation or realization"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Winning Goal</h1>
     </div>
 
