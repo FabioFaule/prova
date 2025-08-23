@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Family Apple Pie Tradition</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Grandma's Sweet Pie",
+        content: `Maya and Dad *went* to the kitchen. Dad *brought* an old **recipe** book. It *was* Grandma’s special pie. They *saw* apples, flour, sugar. Maya *took* the flour. Dad *taught* her how to *make* the dough. Maya *cut* the apples slowly. She *did* not *hurt* herself. They *put* the pie in the oven. Soon, a sweet smell *came* from it. The pie *began* to *become* golden. Later, they *ate* the **warm** pie. It *was* so **delicious**! Maya *felt* very happy. They *knew* they *would make* this pie every Sunday. It *became* their family special time.`,
+        level: "A2",
+        difficultWords: {"recipe":"a set of instructions for preparing a particular dish.","warm":"having or giving out a small amount of heat, but not hot.","delicious":"very pleasant to taste."}
+      },
+      b1: {
+        title: "Grandma's Special Apple Pie",
+        content: `Maya and her dad *went* into the kitchen. Her dad *brought* an old, *worn* **cookbook**. It *had come* from Grandma and *held* her famous apple pie **recipe**. They *found* all the ingredients: crisp apples, flour, sugar, and fragrant spices. Maya *took* a large bowl and Dad *taught* her how to *make* the pastry dough. She *cut* the apples into thin slices, being careful not to *hurt* herself. They *put* the pie into the hot oven. Soon, a wonderful aroma *began* to *rise* through the entire house. The pie *began* to *shine* a beautiful golden-brown. Later, they *sat* down and *ate* the **steaming** warm pie. It *was* incredibly **delicious**! Maya *felt* a deep sense of joy. They *knew* they *would keep* this **treasured** tradition. It *became* their special Sunday ritual.`,
+        level: "B1",
+        difficultWords: {"cookbook":"a book containing recipes.","steaming":"giving off steam or vapor, typically because of heat.","treasured":"kept or regarded as precious and valuable."}
+      },
+      c1: {
+        title: "The Legacy of Grandma's Apple Pie",
+        content: `Maya and her father *went* into the kitchen, their faces alight with shared anticipation. He *brought forth* an antique, *well-worn* **tome**, a culinary **heirloom** that *had come down* from Grandma, *bearing* her legendary apple pie recipe. They *sought out* the requisite ingredients: crisp, tart apples, unbleached flour, raw sugar, and an array of fragrant autumnal spices. Maya *took* a voluminous mixing bowl while her father *taught* her the precise technique to *make* the perfect flaky pastry. With a practiced hand, she *cut* the apples into thin slices, mindful not to *hurt* herself. The pie *was put* into the preheated oven. Before long, an intoxicating aroma *began* to *spread* through the entire dwelling. The crust *began* to *take on* a magnificent golden hue, its surface *shining* invitingly. Eventually, they *sat* down at the table and *ate* the **piping** hot pie. Its flavour *was* an unparalleled symphony of sweetness and spice! Maya *felt* a profound sense of contentment. They *knew* then that they *would keep* this cherished ritual, ensuring it *became* an enduring family legacy, one that *would bring* them joy for years to *come*.`,
+        level: "C1",
+        difficultWords: {"tome":"a large, heavy book.","heirloom":"a valuable object that has belonged to a family for several generations.","piping":"(of food or a drink) very hot."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Unplanned Journey</h1>
     </div>
 
