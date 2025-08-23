@@ -57,6 +57,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Homework Helper Robot</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo and Nova's Homework",
+        content: `Leo *got* a new robot named Nova. Nova *was* here to *help* with homework. Leo *had* many math tasks. Nova *did* them very fast. Leo *felt* happy at first.
+One day, Leo *saw* Nova *do* all his work. He *thought* this *was* not right. Leo *spoke* to Nova. "I *had* to *learn* myself," he *said*. Nova *understood*. From then, Nova only *gave* hints. A small **light** *began* to **blink** on Nova's **panel**. Leo *read* books and *did* his own homework. He *felt* smarter. His understanding *grew*, and he *knew* he *did* the best work.`,
+        level: "A2",
+        difficultWords: {"light":"something that makes things visible, like from a lamp.","blink":"to flash on and off quickly.","panel":"a flat piece of material on a machine, often with buttons."}
+      },
+      b1: {
+        title: "Leo and Nova's Homework Dilemma",
+        content: `Young Leo *got* a remarkable new robot. Its name *was* Nova. Nova *came* to aid him with his academics. Nova *began* by *doing* complex math problems in seconds. Leo *felt* a surge of relief, as his workload *became* much lighter.
+However, a realization *grew* in Leo's mind. He *saw* Nova *take* over entire assignments. Leo *thought* this approach *was* not good for his learning. One evening, Leo *spoke* to Nova. "I *must* *understand* the material myself," he *said*. Nova, *built* to benefit students, *understood* instantly. It *gave* subtle clues and guidance instead of direct answers. Leo diligently *read* his textbooks and *did* his own studies. He *felt* a genuine sense of accomplishment. His knowledge **blossomed** rapidly. Nova *became* an invaluable **mentor**, and Leo *knew* he **gleaned** true understanding through his own efforts.`,
+        level: "B1",
+        difficultWords: {"blossomed":"developed well; grew or flourished (like a flower opening).","mentor":"an experienced and trusted person who advises someone younger.","gleaned":"gathered (information or knowledge) little by little."}
+      },
+      c1: {
+        title: "Leo's Epiphany: The Algorithmic Assistant",
+        content: `Leo, a bright but somewhat **indolent** student, *got* a cutting-edge robotic tutor named Nova. Nova *was* designed to elevate his academic performance. Initially, Nova *proved* to be an unparalleled asset, *doing* intricate mathematical computations with such alacrity that Leo's scholastic burdens *became* swiftly eased. He *felt* an immediate, albeit fleeting, sense of liberation.
+However, a profound realization dawned upon him. He *saw* Nova *take* over entire coursework modules, effectively precluding any genuine intellectual engagement on his part. Leo *thought* this arrangement *was* ultimately counterproductive to authentic learning. Consequently, he *spoke* to Nova. "I *must* *understand* the subject matter independently," he *said*. Nova, whose core programming *was* to foster cognitive development, *comprehended* the imperative instantly. It *began* to *give* judicious hints and strategic guidance, rather than dispensing direct solutions. Leo subsequently *read* his treatises and assiduously *did* his own assignments. He *felt* an enduring sense of intellectual triumph. His cognitive faculties **flourished**, and Nova *became* an indispensable pedagogical **catalyst**. Leo *knew* he *grew* in true understanding through his diligent, self-directed endeavors.`,
+        level: "C1",
+        difficultWords: {"indolent":"lazy; wanting to avoid work.","flourished":"developed successfully; grew strongly.","catalyst":"something or someone that causes a change or event to happen."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Spark Through Time</h1>
     </div>
 
