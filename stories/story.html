@@ -57,6 +57,66 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Whisper Cave</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Whisper Cave (A2)",
+        content: `Leo and Mia *found* an old map. It *told* them about a cave in the forest. They *went* to the Whispering Woods. Soon, they *saw* a dark cave entrance. They *took* a light and *began* to walk inside. The air *was* cool.
+They *heard* a soft sound. On the walls, they *saw* old drawings. They *felt* a cool **breeze**. Deeper inside, they *came* to a big room. A bright **crystal** *made* a soft **glow*. It *was* very beautiful. They *knew* this cave *was* special. They *went* back home, ready to *tell* everyone about their amazing find. They *said*, "We *will* *come* back!"`,
+        level: "A2",
+        difficultWords: {"breeze":"a soft, light wind","crystal":"a clear, hard, shiny stone","glow":"a soft, steady light"}
+      },
+      b1: {
+        title: "The Whisper Cave (B1)",
+        content: `Leo and Mia *found* an ancient map, which *showed* a hidden cave within the mysterious Whispering Woods. Excited, they *made* a plan and *went* deep into the forest. Before long, they *saw* the cave's dark, imposing entrance. They *took* their torches and *began* to walk cautiously inside. The air *grew* cold and still.
+They *heard* a strange, soft whisper that *made* them pause. On the rough walls, they *saw* peculiar, ancient symbols. They *felt* a strong, cool **draft** *blew* past them, leading them deeper. They *came* upon a wide chamber where a magnificent **gemstone** *shone* with a faint, otherworldly **luminous** light. They *knew* this place *held* a secret. They *went* back, eager to *tell* their friends about the wonders they *had seen*.`,
+        level: "B1",
+        difficultWords: {"draft":"a current of cool air","gemstone":"a precious stone, often cut and polished for jewelry","luminous":"producing or reflecting light; shining"}
+      },
+      c1: {
+        title: "The Whisper Cave (C1)",
+        content: `Leo and Mia *found* an aged, tattered map, which *bore* the cryptic location of a hidden grotto deep within the Whispering Woods. Driven by an insatiable curiosity, they *made* a path into the dense forest. Eventually, they *saw* the cave's ominous, gaping maw. With their powerful lanterns *lit*, they *began* to *creep* cautiously into its cold embrace. The temperature *fell* dramatically as they *went* deeper.
+A faint, ethereal whisper *swept* through the cavern, causing them to *draw* to a halt. The rough-hewn walls *bore* perplexing, ancient glyphs. They *felt* a distinct, chilling **current** of air *blew* past them, beckoning them onward. They *came* upon a colossal chamber where a singular, resplendent **artifact** *shone* with an almost magical, **iridescent** glow. They *knew* instantly that this subterranean sanctuary *held* profound secrets, far exceeding their initial expectations. They *made* their way back, determined to *spread* the word about their extraordinary discovery, vowing they *would come* back.`,
+        level: "C1",
+        difficultWords: {"current":"a continuous, directed movement of air, water, or electricity","artifact":"an object made by a human being, typically an item of cultural or historical interest","iridescent":"showing luminous colors that seem to change when seen from different angles"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Dragon's Breath Sweet</h1>
     </div>
 
