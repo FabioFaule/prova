@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Dream of Wings</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Elara's First Flight",
+        content: `Elara *dreamed* of flying. She *knew* she *had* to *go* up. She *began* to *build* a machine. She *drew* pictures and *cut* wood. She *went* to a big **shed**. She *found* old metal. She *spent* many hours working. Soon, her machine *was* ready. It *had* big wings. She *brought* it to a high hill. The wind *blew* **softly**. She *sat* in the seat. She *felt* happy. She *ran* and *took* off. The machine *went* up quickly. Elara *was* in the air! She *saw* the trees below. Her heart *sang*. She *knew* her dream *came* true. She *made* it! She *would* *go* up **often**. It *was* a great feeling. The sun *shone* brightly.`,
+        level: "A2",
+        difficultWords: {"shed":"a small simple building used for storage or as a workshop.","softly":"in a gentle or quiet way.","often":"many times; frequently."}
+      },
+      b1: {
+        title: "Elara's Flying Contraption",
+        content: `Elara *had* always *dreamed* of soaring. She *knew* her destiny *was* in the sky. She *began* to *build* an aerial **contraption**. For weeks, she *drew* intricate plans and *cut* various materials. She *went* to an old, abandoned workshop and *found* forgotten components. She *spent* countless days *lost* in her work. Gradually, her machine *took* form. It *had* expansive wings and a cleverly *built* cockpit. When it *was* complete, she *brought* it to a prominent hill. A gentle breeze *blew*. She *sat* in the pilot's seat, her heart *beat* fast. With a determined push, she *ran*, and the machine *took* off, *rising* gracefully. Elara *flew*! She *saw* the world *spread* out beneath her. A joyous smile *came* to her face. She *knew* she *had* *made* her lifelong dream *come* true. She *would* *fly* whenever she *could*. She *felt* a deep **elation**. The sun *shone* **brilliantly**.`,
+        level: "B1",
+        difficultWords: {"contraption":"a machine or device that appears strange or complicated and is often not very practical.","elation":"great happiness and exhilaration.","brilliantly":"(of light or colour) very brightly."}
+      },
+      c1: {
+        title: "Elara's Ascendant Apparatus",
+        content: `Elara *had* ceaselessly *dreamed* of transcending earthly bounds. She *knew*, deep within her spirit, that the boundless sky *was* her true **calling**. Compelled by an unyielding vision, she *began* to *forge* an ingenious aerial **apparatus**. For months, she meticulously *drew* elaborate schematics and *cut* a myriad of materials – lightweight alloys, resilient fabrics, and polished woods. She *crept* into a dilapidated, long-forgotten workshop and *found* an assortment of rare, antiquated components. She *spent* countless, arduous days, utterly *lost* in the intricate mechanics of her creation. Gradually, her remarkable machine *took* definitive form, boasting expansive, elegantly *crafted* wings and a shrewdly *built* cockpit. When it *was* finally complete, she *bore* it to a towering, windswept bluff. A robust **gust** of wind *blew*. She *clung* to the controls as she *sat* in the pilot's seat, her heart *beating* a frantic rhythm. With a profound, decisive surge, she *ran*, and the contraption *sprang* forth, *taking* flight and *rising* majestically into the cerulean expanse. Elara *flew*! She *saw* the world *lay* beneath her like a vibrant, sprawling tapestry. An irrepressible, euphoric smile *spread* across her face. She *knew* she *had* *made* her most cherished aspiration *come* to fruition. She *swore* she *would* *fly* whenever the opportunity *arose*. She *felt* an unparalleled sense of liberation. The sun *shone* with an incandescent *radiance*.`,
+        level: "C1",
+        difficultWords: {"calling":"a strong urge to follow a particular career or profession.","apparatus":"a complex machine or device for a particular purpose.","gust":"a brief, strong rush of wind."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A Lending Hand</h1>
     </div>
 
