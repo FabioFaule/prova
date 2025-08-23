@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 A New Face in Class</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A New Face in Class (A2)",
+        content: `A new student *came* to our class today. His name *was* Leo. He *sat* next to me. I *felt* a little **nervous** to talk to him. I *did* not *know* what to *say*. Our teacher *told* us to *make* the new **newcomer** feel at home. I *went* to Leo at break time. "Hi," I *said*. Leo smiled back, very **friendly**. We *began* to *speak*. He *told* me he *came* from a different city. He *had* a cool backpack. He *liked* drawing. I *found* out he also *liked* reading, just like me. We *became* friends quickly. It *was* a good day. I *thought* we *would* have fun at school.`,
+        level: "A2",
+        difficultWords: {"nervous":"feeling worried or anxious.","newcomer":"a person who has recently arrived in a place or joined a group.","friendly":"behaving in a kind and pleasant way towards someone."}
+      },
+      b1: {
+        title: "A New Face in Class (B1)",
+        content: `A new student *came* into our classroom today. His name *was* Leo, and he *chose* a desk right beside mine. I *felt* a wave of **hesitation**, not *knowing* how to *begin* a conversation. Our teacher *gave* a warm introduction and *told* us to *make* him feel welcome. During the break, I *took* a deep breath and *went* over to his desk. "Hi, I'm Maya," I *said*. Leo smiled, and his eyes *shone* with friendliness. He *told* me he *came* from a smaller town, and he *brought* a fascinating sketchbook *full* of drawings. We *spoke* about our hobbies. I *found* that we *shared* a passion for mystery novels. It *was* easy to talk to him. We *drank* juice from the cafeteria. By the end of the day, we *had* *grown* quite comfortable, and I *knew* we *would* be good friends. Meeting him *felt* like a **fortunate** event.`,
+        level: "B1",
+        difficultWords: {"hesitation":"the act of pausing or feeling uncertain before doing something.","shone":"(past tense of shine) emitted a bright light; was very good or successful.","fortunate":"lucky."}
+      },
+      c1: {
+        title: "A New Face in Class (C1)",
+        content: `A new student *made* his entrance into our classroom today. His name *was* Leo, and he *chose* a vacant desk adjacent to mine. I *felt* a distinct sense of **apprehension**, somewhat *unwilling* to *initiate* a conversation with the unknown. Our teacher *gave* a cordial introduction, *bidding* us to *make* him feel entirely at ease. As the break *began*, I *took* a moment, then *drew* up my courage and *went* to his desk. "Hello, I'm Maya," I *said*. Leo grinned, his gaze *shone* with an inviting warmth. He *told* me he *had* *come* from a rather remote town, and he *had* *brought* an exquisite sketchbook *brimming* with intricate illustrations. We *spoke* at length about our respective avocations. I *soon* *found* that we *bore* a mutual passion for classic literature and enigmatic puzzles. The ease with which we *conversed* *was* quite remarkable. We *drank* coffee from the school's **dispenser**. By the time the final bell *rang*, we *had* *found* a comfortable rapport, and I *understood* that a valuable friendship *had* *begun*. His arrival *brought* a fresh **impetus** to the class, making the day feel particularly **propitious**.`,
+        level: "C1",
+        difficultWords: {"apprehension":"anxiety or fear that something bad or unpleasant will happen.","dispenser":"a machine or container that releases a measured amount of something.","propitious":"giving or indicating a good chance of success; favorable."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Unexpected Shower</h1>
     </div>
 
