@@ -1,11 +1,42 @@
 // Story functionality
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // Function to convert markdown-like syntax to HTML
+            function formatText(text) {
+                // Convert **text** to <strong class="highlighted-word">text</strong> (bold + highlighted)
+                text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="highlighted-word">$1</strong>');
+                // Convert *text* to <em>text</em> (italic)
+                text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                return text;
+            }
+            
             // Add event listeners to all level buttons
             document.querySelectorAll('.lw-level-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const level = this.getAttribute('data-level');
                     const card = this.closest('.lw-card');
                     const storyContainer = card.querySelector('.lw-story-container');
+                    
+                    // Check if this button is already active (story is open)
+                    const isCurrentlyActive = this.classList.contains('active');
+                    
+                    if (isCurrentlyActive) {
+                        // If the button is already active, close the story
+                        this.classList.remove('active');
+                        
+                        // Force blur to remove focus state
+                        this.blur();
+                        
+                        // Reset all inline styles that might persist
+                        this.style.cssText = '';
+                        
+                        // Force a reflow to ensure styles are reset
+                        this.offsetHeight;
+                        
+                        storyContainer.classList.remove('show');
+                        storyContainer.innerHTML = '';
+                        return;
+                    }
                     
                     // Find the script tag with storiesData in this card
                     const scriptTag = card.querySelector('script');
@@ -31,11 +62,14 @@
                         const storyData = storiesData[level];
                         if (!storyData) return;
                         
+                        // Format the story content with markdown-like syntax
+                        const formattedContent = formatText(storyData.content);
+                        
                         // Create story HTML
                         let storyHTML = `
                             <div class="story-level-badge">Level ${storyData.level}</div>
                             <div class="story-title">${storyData.title}</div>
-                            <div class="story-content">${storyData.content}</div>
+                            <div class="story-content">${formattedContent}</div>
                         `;
                         
                         // Add difficult words section if available
