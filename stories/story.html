@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Dragon's Breath Sweet</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "A New Taste at the Market",
+        content: `Leo *went* to the night market. He *saw* many bright lights and people. A sweet smell *came* from a small **stall**. He *felt* a little **nervous** but also excited. He *stood* there and *began* to look closely. The stall *sold* something **unique** called "Dragon's Breath Sweet." It *was* colourful. Leo *chose* a blue one. He *bought* it and *took* a small bite. The sweet *felt* strange and cool. Then, a tiny smoke *came* out of his nose! He *ate* it all. He *thought* it *was* fun and delicious. He *went* back and *got* a red one. It *made* him happy. He *knew* he *would* *come* again.`,
+        level: "A2",
+        difficultWords: {"stall":"a small shop or stand where things are sold.","nervous":"worried or afraid about something.","unique":"being the only one of its kind; special."}
+      },
+      b1: {
+        title: "Tasting the Dragon's Breath Sweet",
+        content: `Leo *went* to the bustling night market, his senses immediately *struck* by the vibrant atmosphere. He *saw* a **myriad** of bright lights and heard a cheerful murmur of voices. A deliciously sweet aroma *came* from a **quaint** stall amidst the crowd. He *felt* a mix of apprehension and excitement. He *stood* for a moment, *taking* in the lively scene before *beginning* to investigate. The vendor *sold* a surprisingly unique treat: "Dragon's Breath Sweet." It *was* brightly coloured, a true feast for the eyes. Leo *chose* a mesmerizing blue sphere. He *bought* it, his heart *beating* with anticipation, and *took* a cautious bite. The sweet *felt* surprisingly cool, almost icy, and then a playful wisp of smoke *rose* from his mouth! He *ate* the entire **confection**, his initial hesitation *forgotten*. He *thought* it *was* not only delicious but also a wonderfully fun experience. He promptly *went* back and *got* a fiery red one. This discovery *made* his evening. He *knew* he *would* eagerly *come* back for more market adventures.`,
+        level: "B1",
+        difficultWords: {"myriad":"a very large number of things.","quaint":"attractively unusual or old-fashioned.","confection":"a sweet food or candy."}
+      },
+      c1: {
+        title: "A Culinary Revelation: The Dragon's Breath Sweet",
+        content: `Leo *undertook* a **jaunt** to the bustling night market, his senses immediately *struck* by the **cacophony** of sounds and the vibrant tapestry of sights. He *saw* a myriad of dazzling lights that *cast* an ethereal glow, and *heard* the cheerful murmur of countless patrons. An enticing, saccharine aroma *arose* from a meticulously adorned, quaint stall, drawing him deeper into the throng. He *felt* a nuanced blend of trepidation and burgeoning excitement. He *stood* for a moment, *taking* in the mesmerizing scene before *beginning* to scrutinise the offerings. The genial vendor *bespoke* of a singularly unique confection: "Dragon's Breath Sweet." It *was* resplendently coloured, a veritable visual feast. Leo *chose* a captivating azure sphere. He *bought* it, his heart *beat* a quick rhythm of anticipation, and *took* a delicate bite. The sweet *felt* surprisingly cool, almost glacially so, and then, to his utter delight, a whimsical plume of smoke *rose* from his lips! He *ate* the entire confection, his initial hesitation *forsaken*. He *thought* it *was* not only exquisitely **palatable** but also an utterly captivating sensory experience. He promptly *went* back and *got* another, this time a vibrant scarlet. This serendipitous discovery *made* his evening an indelible memory. He *knew* he *would* henceforth *seek* out such culinary revelations at every opportunity.`,
+        level: "C1",
+        difficultWords: {"jaunt":"a short excursion or journey for pleasure.","cacophony":"a harsh, discordant mixture of sounds.","palatable":"pleasant to taste."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Friends on the Road</h1>
     </div>
 
