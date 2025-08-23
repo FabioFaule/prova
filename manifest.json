@@ -1,0 +1,32 @@
+{
+  "name": "Learning Games - Verbi Irregolari Inglesi",
+  "short_name": "Learning Games",
+  "description": "Impara i verbi irregolari inglesi con giochi interattivi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png", 
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "games", "productivity"],
+  "lang": "it",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
+}
