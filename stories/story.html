@@ -57,6 +57,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Talking Cat's Secret</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Talking Cat's Secret",
+        content: `Lily *went* into the garden. She *saw* a small cat. It *sat* under a big rose bush. Suddenly, the cat *spoke*! "Hello," it **whispered**. Lily *was* surprised. "You can talk?" she asked. The cat nodded. "I *know* a secret," it *said*. "Follow me." Lily *felt* a little scared but *went* with the cat. It *led* her to a hidden corner. There, a flower *grew*. It *began* to **sparkle**. It *was* not an **ordinary** flower. Lily *understood* magic *was* real. She *kept* the secret safe in her heart.`,
+        level: "A2",
+        difficultWords: {"whispered":"spoke very softly","sparkle":"shone with small, bright flashes","ordinary":"normal, not special"}
+      },
+      b1: {
+        title: "The Talking Cat's Secret",
+        content: `Lily *went* out into her garden one sunny afternoon. She *came* across a sleek black cat sitting calmly beneath a blooming rose bush. To her astonishment, the cat *spoke*! "Good day," it **muttered** softly. Lily's eyes *grew* wide. "You can actually speak?" she asked, almost a whisper. The cat nodded profoundly. "I *know* of an **enchanted** secret," it *said*. "Come with me." Though a bit hesitant, Lily followed where the feline *led*. It *brought* her to a secluded spot where a unique flower *grew*. As they *stood* there, the flower *began* to emit a **radiant** glow. Lily *felt* a sense of wonder and *understood* that magic *did* truly exist. She *kept* this extraordinary encounter a treasure in her memory.`,
+        level: "B1",
+        difficultWords: {"muttered":"spoke in a low, unclear voice","enchanted":"magical","radiant":"sending out light; shining brightly"}
+      },
+      c1: {
+        title: "The Talking Cat's Secret",
+        content: `One serene morning, Lily strolled into her verdant garden, seeking a moment of quiet contemplation. She soon *beheld* an elegant black feline perched with an air of profound composure beneath a burgeoning rose arbour. To her utter disbelief, the cat *spoke*! "A most **salutary** morning," it **murmured** with an almost human inflection. Lily's composure *forsook* her, and her eyes *grew* wide with astonishment. "Are you truly capable of **articulate** speech?" she queried, her voice barely a breath. The cat bowed its head, "I *knew* of a remarkable secret," it *told* her. "Allow me to *lead* you." Despite a flicker of trepidation, Lily followed where the enigmatic creature *led*. It *brought* her to an unseen, secluded niche where a rare, ethereal bloom thrived. As they *stood* in hushed reverence, the flower *began* to emanate an **effulgent** luminosity. Lily *felt* a deep sense of awe and *comprehended* that such wondrous magic *did* indeed exist. She *kept* this extraordinary revelation closely guarded within the sanctuary of her mind.`,
+        level: "C1",
+        difficultWords: {"salutary":"producing good effects; beneficial","articulate":"able to speak fluently and coherently","effulgent":"shining brightly; radiant"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 A New Face in Class</h1>
     </div>
 
