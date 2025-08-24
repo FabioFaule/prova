@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 
-
 <head>
     <!-- Meta base -->
     <meta charset="UTF-8">
@@ -109,7 +108,6 @@
     <link rel="alternate" hreflang="it" href="https://learnwithme.work/" />
     <link rel="alternate" hreflang="x-default" href="https://learnwithme.work/" />
 
-
     <style>
         * {
             margin: 0;
@@ -118,7 +116,7 @@
         }
 
         :root {
-            --primary-color:#ffffff;
+            --primary-color: #ffffff;
             --primary-hover: #1d4ed8;
             --secondary-color: #64748b;
             --success-color: #10b981;
@@ -136,10 +134,37 @@
             --radius-lg: 12px;
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-hero: linear-gradient(135deg, #1a365d 0%, #2b77ad 30%, #63b3ed 70%, #61718b 100%);
+            
+            /* Variabili per tema navbar */
+            --nav-bg: #ffffff;
+            --nav-text: #1a365d;
+            --nav-hover-bg: #f1f5f9;
+            --nav-border: #e2e8f0;
+            
+            /* Variabili per tema cards e footer */
+            --cards-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --card-text: #0f172a;
+            --card-text-secondary: #475569;
+            --footer-bg: transparent;
+            --footer-text: #475569;
         }
 
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --nav-bg: #1e293b;
+            --nav-text: #ffffff;
+            --nav-hover-bg: #334155;
+            --nav-border: #334155;
+            
+            --cards-bg: #0f172a;
+            --card-bg: #1e293b;
+            --card-text: #ffffff;
+            --card-text-secondary: #cbd5e1;
+            --footer-bg: #0f172a;
+            --footer-text: #ffffff;
+        }
 
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
             background: var(--background);
@@ -148,6 +173,7 @@
             min-height: 100vh;
             padding-bottom: 80px;
             margin: 0px;
+            transition: background-color 0.3s ease;
         }
 
         h3 {
@@ -286,24 +312,33 @@
             }
         }
 
+        /* Cards Section with theme support */
+        .cards-section {
+            background: var(--cards-bg);
+            transition: background-color 0.3s ease;
+            padding: 60px 0;
+            /* Assicurati che non ci siano gap */
+            margin: 0;
+        }
 
         .cards-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
-            margin: 60px auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
         .card {
-            background: white;
+            background: var(--card-bg);
+            color: var(--card-text);
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 25px;
             text-align: center;
             width: 300px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
 
         .card:hover {
@@ -328,17 +363,20 @@
         .icon-orange { background-color: #F3AD48; }
         .icon-blue { background-color: #246564; }
         .icon-green { background-color: #C2152B; }
+        .icon-purple { background-color: #E18997; }
 
         .card h2 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: #111;
+            color: var(--card-text);
+            transition: color 0.3s ease;
         }
 
         .card p {
             font-size: 15px;
-            color: #555;
+            color: var(--card-text-secondary);
             margin-bottom: 20px;
+            transition: color 0.3s ease;
         }
 
         .btn {
@@ -363,10 +401,6 @@
             background: linear-gradient(to right, #C2152B, #de354c);
         }
 
-        .icon-purple { 
-            background-color: #E18997; 
-        }
-
         .btn-purple {
             background: linear-gradient(to right, #E18997, #eb9eab);
         }
@@ -375,20 +409,22 @@
             opacity: 0.9;
         }
 
-        /* Navigation */
+        /* Navigation with theme support */
         nav {
-            background: var(--primary-color);
-            border-bottom: 1px solid var(--border-color);
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--nav-border);
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 16px;
+            position: relative;
         }
 
         .nav-links {
@@ -403,16 +439,15 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #1a365d;
-            transition: all 0.2s ease;
+            color: var(--nav-text);
+            transition: all 0.3s ease;
             padding: 8px 12px;
             border-radius: var(--radius);
             min-width: 60px;
         }
 
         .nav-item:hover {
-            color: var(--primary-color);
-            background: var(--surface-hover);
+            background: var(--nav-hover-bg);
         }
 
         .nav-item img {
@@ -426,31 +461,144 @@
             font-weight: 500;
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--nav-hover-bg);
+            border: 1px solid var(--nav-border);
+            border-radius: var(--radius);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--nav-text);
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        /* Footer with theme support */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center; 
+            margin: 0; /* Rimuovi margin top */
+            padding: 2rem 1rem;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        footer a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
 
         .menu-icon {
             display: none;
         }
 
-    @media screen and (max-width: 768px) {
-        .nav-links {
-            padding: 0 0;
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                padding: 8px 0;
+                /* Riduci padding right per dare spazio al toggle */
+                padding-right: 50px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-icon {
+                display: block;
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+            
+            .nav-item {
+                padding: 6px 8px;
+                min-width: 50px;
+            }
+            
+            .nav-item span {
+                font-size: 10px;
+            }
+            
+            .theme-toggle {
+                width: 32px;
+                height: 32px;
+                right: 8px;
+                font-size: 14px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
         }
-        .nav-links.active {
-            display: flex;
+
+        @media screen and (max-width: 480px) {
+            .nav-links {
+                /* Ulteriore riduzione per schermi molto piccoli */
+                padding-right: 45px;
+            }
+            
+            .nav-item {
+                padding: 4px 6px;
+                min-width: 45px;
+            }
+            
+            .nav-item img {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .nav-item span {
+                font-size: 9px;
+            }
+            
+            .cards-container {
+                gap: 20px;
+            }
+            
+            .card {
+                width: 280px;
+            }
+            
+            .theme-toggle {
+                width: 28px;
+                height: 28px;
+                right: 6px;
+                font-size: 12px;
+            }
         }
-        .menu-icon {
-            display: block;
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .nav-item span {
-            font-size: 11px;
-        }
-    }
     </style>
 </head>
 
@@ -459,32 +607,36 @@
         <div class="nav-container">
             <div class="nav-links">
                 <a href="index.html" class="nav-item">
-                    <img src="images/home.png" alt="Home">
+                    <img src="images/home.png" alt="Home" class="nav-icon">
                     <span>Home</span>
                 </a>
                 <a href="study_area.html" class="nav-item">
-                    <img src="images/learn.png" alt="Learn">
+                    <img src="images/learn.png" alt="Learn" class="nav-icon">
                     <span>Learn</span>
                 </a>
                 <a href="train.html" class="nav-item">
-                    <img src="images/train.png" alt="Train">
+                    <img src="images/train.png" alt="Train" class="nav-icon">
                     <span>Train</span>
                 </a>
                 <a href="test.html" class="nav-item">
-                    <img src="images/test.png" alt="Test">
+                    <img src="images/test.png" alt="Test" class="nav-icon">
                     <span>Test</span>
                 </a>
                 <a href="stories/story.html" class="nav-item">
-                    <img src="images/story.png" alt="Stories">
+                    <img src="images/story.png" alt="Stories" class="nav-icon">
                     <span>Stories</span>
                 </a>
             </div>
+            
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">
+                <span id="theme-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        
         <div class="hero-content">
             <div class="logo-container">
                 <div class="hero-logo">
@@ -497,58 +649,50 @@
                 La piattaforma interattiva per imparare i verbi irregolari inglesi. 
                 Trasforma lo studio in un'avventura coinvolgente!
             </p>
-            
         </div>
     </section>
 
-    <div class="cards-container">
-        <div class="card">
-            <div class="icon icon-orange">
-                <img src="images/learn1.png" alt="Learn">
+    <div class="cards-section">
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon icon-orange">
+                    <img src="images/learn1.png" alt="Learn">
+                </div>
+                <h2>Studio</h2>
+                <p>Esplora la tabella completa dei verbi irregolari organizzata per livelli di difficoltà. Studia base form, simple past, past participle.</p>
+                <a href="study_area.html" class="btn btn-orange">Esplora</a>
             </div>
-            <h2>Studio</h2>
-            <p>Esplora la tabella completa dei verbi irregolari organizzata per livelli di difficoltà. Studia base form, simple past, past participle.</p>
-            <a href="study_area.html" class="btn btn-orange">Esplora</a>
-        </div>
 
-        <div class="card">
-            <div class="icon icon-blue">
-                <img src="images/train1.png" alt="Train">
+            <div class="card">
+                <div class="icon icon-blue">
+                    <img src="images/train1.png" alt="Train">
+                </div>
+                <h2>Allenamento</h2>
+                <p>Metti alla prova le tue conoscenze con esercizi interattivi. Ricevi indizi e progredisci attraverso diversi livelli.</p>
+                <a href="train.html" class="btn btn-blue">Inizia Allenamento</a>
             </div>
-            <h2>Allenamento</h2>
-            <p>Metti alla prova le tue conoscenze con esercizi interattivi. Ricevi indizi e progredisci attraverso diversi livelli.</p>
-            <a href="train.html" class="btn btn-blue">Inizia Allenamento</a>
-        </div>
 
-        <div class="card">
-            <div class="icon icon-green">
-                <img src="images/test1.png" alt="Test">
+            <div class="card">
+                <div class="icon icon-green">
+                    <img src="images/test1.png" alt="Test">
+                </div>
+                <h2>Test</h2>
+                <p>Verifica completamente le tue competenze. Scegli il tempo e il livello di difficoltà per una valutazione accurata.</p>
+                <a href="test.html" class="btn btn-green">Avvia Test</a>
             </div>
-            <h2>Test</h2>
-            <p>Verifica completamente le tue competenze. Scegli il tempo e il livello di difficoltà per una valutazione accurata.</p>
-            <a href="test.html" class="btn btn-green">Avvia Test</a>
-        </div>
 
-        <div class="card">
-            <div class="icon icon-purple">
-                <img src="images/story1.png" alt="Stories">
+            <div class="card">
+                <div class="icon icon-purple">
+                    <img src="images/story1.png" alt="Stories">
+                </div>
+                <h2>Storie</h2>
+                <p>Leggi storie coinvolgenti in inglese a diversi livelli di difficoltà. Migliora il vocabolario con parole evidenziate e traduzioni interattive.</p>
+                <a href="stories/story.html" class="btn btn-purple">Leggi Storie</a>
             </div>
-            <h2>Storie</h2>
-            <p>Leggi storie coinvolgenti in inglese a diversi livelli di difficoltà. Migliora il vocabolario con parole evidenziate e traduzioni interattive.</p>
-            <a href="stories/story.html" class="btn btn-purple">Leggi Storie</a>
         </div>
     </div>
 
-
-
-    <script>
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-    </script>
-
     <!-- Cookie Banner - Sostituisci il div esistente con questo -->
-
     <div id="cookie-banner" style="
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -649,27 +793,322 @@
     }
     </style>
 
-
-
-    <footer style="text-align: center; margin-top: 2rem; font-size: 0.9em;">
+    <footer>
         <p><a href="faq.html" style="margin-right: 20px;">FAQ</a> <a href="contatti.html">Contacts</a></p>
         <p>© 2025 LearnWithMe - All rights reserved</p>
         <p><a href="privacy.html">Privacy & Cookie Policy</a></p>
     </footer>
-    <script>
-        // Cookie Consent Manager - Codice da utilizzare su tutte le pagine
-        // Sostituisci il codice JavaScript esistente con questo
 
-        // Configurazione
+    <script>
+        // Theme Management System
+        const THEME_CONFIG = {
+            cookieName: 'site_theme',
+            expirationDays: 365,
+            themes: {
+                light: {
+                    name: 'light',
+                    icon: '🌙',
+                    title: 'Attiva tema scuro'
+                },
+                dark: {
+                    name: 'dark',
+                    icon: '☀️',
+                    title: 'Attiva tema chiaro'
+                }
+            }
+        };
+
+        // Icon mapping for theme switching
+        const ICON_MAPPING = {
+            light: {
+                'images/home.png': 'images/home.png',
+                'images/learn.png': 'images/learn.png',
+                'images/train.png': 'images/train.png',
+                'images/test.png': 'images/test.png',
+                'images/story.png': 'images/story.png'
+            },
+            dark: {
+                'images/home.png': 'images/home1.png',
+                'images/learn.png': 'images/learn1.png',
+                'images/train.png': 'images/train1.png',
+                'images/test.png': 'images/test1.png',
+                'images/story.png': 'images/story1.png'
+            }
+        };
+
+        // Utility functions per gestire i cookie (riutilizzate dal sistema esistente)
+        function setThemeCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            
+            let cookieString = `${name}=${value}${expires}; path=/`;
+            document.cookie = cookieString;
+            console.log(`Theme cookie impostato: ${name}=${value}`);
+        }
+
+        function getThemeCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Theme cookie letto: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            return null;
+        }
+
+        // Fallback per localStorage in ambiente locale
+        function setLocalTheme(value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('local_site_theme', value);
+                console.log(`LocalStorage theme impostato: ${value}`);
+            }
+        }
+
+        function getLocalTheme() {
+            if (typeof(Storage) !== "undefined") {
+                const value = localStorage.getItem('local_site_theme');
+                console.log(`LocalStorage theme letto: ${value}`);
+                return value;
+            }
+            return null;
+        }
+
+        // Funzione per cambiare le icone della navbar
+        function updateNavIcons(theme) {
+            const navIcons = document.querySelectorAll('.nav-icon');
+            navIcons.forEach(icon => {
+                const currentSrc = icon.src;
+                const filename = currentSrc.split('/').pop();
+                const basePath = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+                
+                // Trova la mappatura corretta
+                for (const [lightIcon, darkIcon] of Object.entries(ICON_MAPPING.dark)) {
+                    const lightFilename = lightIcon.split('/').pop();
+                    const darkFilename = darkIcon.split('/').pop();
+                    
+                    if (theme === 'dark' && filename === lightFilename) {
+                        icon.src = basePath + darkFilename;
+                        break;
+                    } else if (theme === 'light' && filename === darkFilename) {
+                        icon.src = basePath + lightFilename;
+                        break;
+                    }
+                }
+            });
+        }
+
+        // Funzione per applicare il tema
+        function applyTheme(themeName) {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            // Applica o rimuove l'attributo data-theme
+            if (themeName === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.removeAttribute('data-theme');
+                themeName = 'light'; // Assicurati che sia sempre light se non dark
+            }
+            
+            // Aggiorna l'icona e il tooltip del bottone
+            const currentTheme = THEME_CONFIG.themes[themeName];
+            if (themeIcon && currentTheme) {
+                themeIcon.textContent = currentTheme.icon;
+                themeToggle.title = currentTheme.title;
+            }
+            
+            // Aggiorna le icone della navbar
+            updateNavIcons(themeName);
+            
+            console.log(`Tema applicato: ${themeName}`);
+        }
+
+        // --- Sostituisci la tua getCurrentTheme() con questa ---
+        function getCurrentTheme() {
+            // Prima fonte: attributo data-theme nel DOM (se presente)
+            const domTheme = document.documentElement.getAttribute('data-theme');
+            if (domTheme) {
+                console.log(`getCurrentTheme -> datasource: DOM, theme=${domTheme}`);
+                return domTheme;
+            }
+
+            // Altrimenti prova il cookie
+            let theme = getThemeCookie(THEME_CONFIG.cookieName);
+            if (theme) {
+                console.log(`getCurrentTheme -> datasource: cookie, theme=${theme}`);
+                return theme;
+            }
+
+            // Fallback per ambiente locale: localStorage
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                const local = getLocalTheme();
+                if (local) {
+                    console.log(`getCurrentTheme -> datasource: localStorage, theme=${local}`);
+                    return local;
+                }
+            }
+
+            // Default
+            console.log('getCurrentTheme -> default: light');
+            return 'light';
+        }
+
+        // --- Sostituisci toggleTheme() con questa versione ---
+        function toggleTheme() {
+            // Prendi il tema attuale dal DOM (priorità) o dal cookie/localStorage
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            console.log(`Cambio tema da ${currentTheme} a ${newTheme}`);
+
+            // Applica subito il tema al DOM (fonte visiva)
+            applyTheme(newTheme);
+
+            // Salva la scelta (cookie + localStorage fallback)
+            saveTheme(newTheme);
+        }
+
+
+        // Funzione per salvare il tema
+        function saveTheme(theme) {
+            setThemeCookie(THEME_CONFIG.cookieName, theme, THEME_CONFIG.expirationDays);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalTheme(theme);
+            }
+            
+            // Notifica altre schede del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('theme_changed', Date.now().toString());
+            }
+        }
+
+        // Funzione per sincronizzare tra schede
+        function setupThemeCrossTabSync() {
+            if (typeof(Storage) !== "undefined") {
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'theme_changed') {
+                        console.log("Tema cambiato in altra scheda - aggiorno");
+                        const currentTheme = getCurrentTheme();
+                        applyTheme(currentTheme);
+                    }
+                });
+            }
+        }
+
+        // Funzione di inizializzazione del sistema tema
+        function initializeThemeSystem() {
+            console.log("Inizializzazione sistema tema");
+            
+            // Applica il tema salvato
+            const savedTheme = getCurrentTheme();
+            console.log("Tema salvato trovato:", savedTheme);
+            applyTheme(savedTheme);
+            
+            // Configura il toggle button con un breve ritardo per assicurarsi che il DOM sia pronto
+            setTimeout(() => {
+                const themeToggle = document.getElementById('theme-toggle');
+                const themeIcon = document.getElementById('theme-icon');
+                
+                console.log("Cercando elementi tema...");
+                console.log("Theme toggle trovato:", !!themeToggle);
+                console.log("Theme icon trovato:", !!themeIcon);
+                
+                if (themeToggle) {
+                    // Rimuovi eventuali listener esistenti
+                    themeToggle.removeEventListener('click', toggleTheme);
+                    
+                    // Aggiungi il nuovo listener
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log("Click sul toggle tema!");
+                        toggleTheme();
+                    });
+                    
+                    console.log("Event listener tema configurato correttamente");
+                } else {
+                    console.error("Elemento theme-toggle non trovato!");
+                }
+            }, 100);
+            
+            // Configura sincronizzazione tra schede
+            setupThemeCrossTabSync();
+            
+            console.log("Sistema tema inizializzato con tema:", savedTheme);
+        }
+
+        // Funzione per resettare il tema (utile per test)
+        function resetTheme() {
+            const html = document.documentElement;
+            html.removeAttribute('data-theme');
+            
+            // Elimina cookie
+            document.cookie = `${THEME_CONFIG.cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            
+            // Elimina localStorage
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem('local_site_theme');
+                localStorage.removeItem('theme_changed');
+            }
+            
+            console.log("Tema resettato");
+            location.reload();
+        }
+
+        // Menu toggle function (esistente)
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Rendi disponibili le funzioni debug globalmente
+        window.resetTheme = resetTheme;
+        window.getCurrentTheme = getCurrentTheme;
+        window.testThemeSystem = testThemeSystem;
+        window.toggleTheme = toggleTheme; // Aggiungo anche questa per test manuali
+
+        // Inizializza il sistema tema quando il DOM è pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded - inizializzo sistema tema");
+            initializeThemeSystem();
+        });
+        
+        // Fallback se il DOM è già caricato
+        if (document.readyState !== 'loading') {
+            console.log("DOM già caricato - inizializzo sistema tema");
+            initializeThemeSystem();
+        }
+
+        // Test function per verificare che tutto funzioni
+        function testThemeSystem() {
+            console.log("=== TEST SISTEMA TEMA ===");
+            console.log("Tema corrente:", getCurrentTheme());
+            console.log("Toggle button:", document.getElementById('theme-toggle'));
+            console.log("Theme icon:", document.getElementById('theme-icon'));
+            console.log("Data-theme attributo:", document.documentElement.getAttribute('data-theme'));
+            
+            const navIcons = document.querySelectorAll('.nav-icon');
+            console.log("Icone navbar trovate:", navIcons.length);
+            navIcons.forEach((icon, index) => {
+                console.log(`Icona ${index}:`, icon.src);
+            });
+            console.log("========================");
+        }
+
+        // Cookie Consent Manager - Codice esistente (mantenuto identico)
         const COOKIE_CONFIG = {
             consentCookieName: 'cookie_consent',
             expirationDays: 365,
-            // Per localhost non impostiamo domain, per domini reali sì
             domain: (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? null : window.location.hostname,
-            adsClientId: 'ca-pub-8624143381240320' // Il tuo client ID reale
+            adsClientId: 'ca-pub-8624143381240320'
         };
 
-        // Utility functions per gestire i cookie
         function setCookie(name, value, days, domain = null) {
             let expires = "";
             if (days) {
@@ -678,17 +1117,14 @@
                 expires = "; expires=" + date.toUTCString();
             }
             
-            // Per localhost usiamo un approccio più semplice
             let cookieString = `${name}=${value}${expires}; path=/`;
             
-            // Solo per domini reali (non localhost) aggiungiamo domain e SameSite
             if (domain && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
                 cookieString += `; domain=${domain}; SameSite=Lax`;
             }
             
             document.cookie = cookieString;
             console.log(`Cookie impostato: ${name}=${value} su ${window.location.hostname}`);
-            console.log(`Stringa cookie completa: ${cookieString}`);
         }
 
         function getCookie(name) {
@@ -696,15 +1132,12 @@
             const parts = value.split("; " + name + "=");
             if (parts.length === 2) {
                 const cookieValue = parts.pop().split(";").shift();
-                console.log(`Cookie letto: ${name}=${cookieValue}`);
                 return cookieValue;
             }
-            console.log(`Cookie non trovato: ${name}`);
             return null;
         }
 
         function deleteCookie(name, domain = null) {
-            // Prova più varianti per essere sicuri di eliminare il cookie
             const paths = ['/', ''];
             const domains = domain ? [domain, `.${domain}`, ''] : [''];
             
@@ -717,19 +1150,14 @@
                     document.cookie = cookieString;
                 });
             });
-            
-            console.log(`Cookie eliminato: ${name}`);
         }
 
-        // Funzione per caricare Google Ads
         function loadGoogleAds() {
-            // Verifica se gli ads sono già stati caricati
             if (window.adsLoaded) {
                 console.log("Google Ads già caricati");
                 return;
             }
             
-            // In localhost non carichiamo gli ads reali
             if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname.includes('file://')) {
                 console.log("Ambiente locale - simulo caricamento Google Ads");
                 window.adsLoaded = true;
@@ -758,13 +1186,11 @@
             }
         }
 
-        // Funzioni per gestire il banner
         function showCookieBanner() {
             const banner = document.getElementById('cookie-banner');
             if (banner) {
                 banner.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                console.log("Banner cookie mostrato");
             }
         }
 
@@ -773,58 +1199,42 @@
             if (banner) {
                 banner.style.display = 'none';
                 document.body.style.overflow = '';
-                console.log("Banner cookie nascosto");
             }
         }
 
-        // Fallback per localStorage in ambiente locale
         function setLocalConsent(value) {
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('local_cookie_consent', value);
-                console.log(`LocalStorage consent impostato: ${value}`);
             }
         }
 
         function getLocalConsent() {
             if (typeof(Storage) !== "undefined") {
-                const value = localStorage.getItem('local_cookie_consent');
-                console.log(`LocalStorage consent letto: ${value}`);
-                return value;
+                return localStorage.getItem('local_cookie_consent');
             }
             return null;
         }
 
-        // Funzione principale per gestire il consenso
         function handleCookieConsent() {
             let consent = getCookie(COOKIE_CONFIG.consentCookieName);
             
-            // Se siamo in localhost e non troviamo cookie, prova localStorage
             if (!consent && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
                 consent = getLocalConsent();
-                console.log("Localhost: usando localStorage per consenso:", consent);
             }
             
-            console.log("Stato consenso finale:", consent);
-            
             if (consent === "accepted") {
-                console.log("Consenso già dato - caricamento Google Ads");
                 loadGoogleAds();
                 hideCookieBanner();
             } else if (consent === "rejected") {
-                console.log("Consenso rifiutato - nessun ads");
                 hideCookieBanner();
             } else {
-                console.log("Nessun consenso trovato - mostra banner");
                 showCookieBanner();
             }
         }
 
-        // Funzione per accettare i cookie
         function acceptCookies() {
-            console.log("Utente ha accettato i cookie");
             setCookie(COOKIE_CONFIG.consentCookieName, "accepted", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
             
-            // Fallback per localhost
             if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
                 setLocalConsent("accepted");
             }
@@ -832,53 +1242,39 @@
             hideCookieBanner();
             loadGoogleAds();
             
-            // Notifica altre schede aperte del cambiamento
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('cookie_consent_changed', Date.now().toString());
             }
         }
 
-        // Funzione per rifiutare i cookie
         function rejectCookies() {
-            console.log("Utente ha rifiutato i cookie");
             setCookie(COOKIE_CONFIG.consentCookieName, "rejected", COOKIE_CONFIG.expirationDays, COOKIE_CONFIG.domain);
             
-            // Fallback per localhost
             if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
                 setLocalConsent("rejected");
             }
             
             hideCookieBanner();
             
-            // Notifica altre schede aperte del cambiamento
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('cookie_consent_changed', Date.now().toString());
             }
         }
 
-        // Listener per cambiamenti di consenso in altre schede
         function setupCrossTabSync() {
             if (typeof(Storage) !== "undefined") {
                 window.addEventListener('storage', function(e) {
                     if (e.key === 'cookie_consent_changed') {
-                        console.log("Consenso cookie cambiato in altra scheda - aggiorno");
                         handleCookieConsent();
                     }
                 });
             }
         }
 
-        // Inizializzazione quando il DOM è pronto
         function initializeCookieConsent() {
-            console.log("Inizializzazione gestione cookie consent");
-            
-            // Gestisci il consenso esistente
             handleCookieConsent();
-            
-            // Configura la sincronizzazione tra schede
             setupCrossTabSync();
             
-            // Aggiungi event listeners ai pulsanti
             const acceptButton = document.getElementById("accept-cookies");
             if (acceptButton) {
                 acceptButton.addEventListener("click", acceptCookies);
@@ -888,54 +1284,31 @@
             if (rejectButton) {
                 rejectButton.addEventListener("click", rejectCookies);
             }
-            
-            console.log("Gestione cookie consent inizializzata");
         }
 
-        // Debug function - rimuovi in produzione
-        function debugCookies() {
-            console.log("=== DEBUG COOKIES ===");
-            console.log("Hostname:", location.hostname);
-            console.log("Tutti i cookie:", document.cookie);
-            console.log("Consenso corrente:", getCookie(COOKIE_CONFIG.consentCookieName));
-            console.log("Domain config:", COOKIE_CONFIG.domain);
-            console.log("Ads caricati:", window.adsLoaded || false);
-            console.log("localStorage consent:", localStorage.getItem('cookie_consent_changed'));
-            
-            // Test manuale cookie
-            console.log("--- TEST COOKIE ---");
-            setCookie('test_cookie', 'test_value', 1, COOKIE_CONFIG.domain);
-            console.log("Cookie test impostato:", getCookie('test_cookie'));
-            deleteCookie('test_cookie', COOKIE_CONFIG.domain);
-            console.log("Cookie test dopo eliminazione:", getCookie('test_cookie'));
-            console.log("====================");
-        }
-
-        // Funzione per resettare i cookie (utile per test)
         function resetCookieConsent() {
             deleteCookie(COOKIE_CONFIG.consentCookieName, COOKIE_CONFIG.domain);
             if (typeof(Storage) !== "undefined") {
                 localStorage.removeItem('cookie_consent_changed');
-                localStorage.removeItem('local_cookie_consent'); // Rimuovi anche il fallback localStorage
+                localStorage.removeItem('local_cookie_consent');
             }
             window.adsLoaded = false;
-            console.log("Consenso cookie resettato completamente");
             location.reload();
         }
 
-        // Avvia l'inizializzazione quando il DOM è pronto
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeCookieConsent);
-        } else {
+        // Debug functions
+        window.resetCookieConsent = resetCookieConsent;
+
+        // Inizializza il sistema cookie quando il DOM è pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded - inizializzo sistema cookie");
+            initializeCookieConsent();
+        });
+        
+        // Fallback se il DOM è già caricato
+        if (document.readyState !== 'loading') {
+            console.log("DOM già caricato - inizializzo sistema cookie");
             initializeCookieConsent();
         }
-
-        // Rendi disponibili le funzioni debug globalmente (rimuovi in produzione)
-        window.debugCookies = debugCookies;
-        window.resetCookieConsent = resetCookieConsent;
     </script>
-
-
 </body>
-
-</html>
