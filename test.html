@@ -44,13 +44,13 @@
             --surface: #ffffff;
             --surface-hover: #f1f5f9;
             --text-primary: #0f172a;
-            --text-secondary: #475569;
+            --text-secondary: #222f3f;
             --border-color: #e2e8f0;
             --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             --radius: 8px;
             --radius-lg: 12px;--gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-hero: linear-gradient(135deg, #1a365d 0%, #2b77ad 30%, #63b3ed 70%, #61718b 100%);
+            --gradient-hero: linear-gradient(135deg, #601d26 0%, #920c1e 30%, #C2152B 70%, #76121f 100%);
         }
 
         body {
@@ -123,7 +123,7 @@
 
 /* Game Header */
         .game-header {
-            background: var(--surface);
+            background: var(--gradient-hero);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             padding: 24px;
@@ -133,17 +133,37 @@
             position: relative;
         }
 
+        .game-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="0.5" cy="0.5" r="0.8"><stop offset="0%" stop-color="rgba(255,255,255,0.35)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="220" cy="220" r="200" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="600" cy="700" r="250" fill="url(%23a)"/><circle cx="400" cy="500" r="120" fill="url(%23a)"/><circle cx="900" cy="800" r="100" fill="url(%23a)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .game-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .game-subtitle {
             font-size: 16px;
             color: var(--text-secondary);
             margin-bottom: 24px;
+            font-weight: 700;
         }
 
         .game-instructions {
@@ -206,9 +226,14 @@
             box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
         }
 
+        .form-select:hover, .form-select:focus-visible {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgb(100 116 139 / 0.1); /* opzionale: ombra soft in tinta secondary */
+        }
+
         .btn-primary {
             width: 100%;
-            background: var(--primary-color);
+            background: var(--gradient-hero);
             color: white;
             border: none;
             padding: 16px 24px;
@@ -221,7 +246,7 @@
         }
 
         .btn-primary:hover {
-            background: var(--primary-hover);
+            background: #601d26;
             transform: translateY(-1px);
             box-shadow: var(--shadow-lg);
         }
@@ -259,7 +284,7 @@
             font-weight: 700;
             color: var(--primary-color);
             padding: 8px 16px;
-            background: rgb(37 99 235 / 0.1);
+            background: rgba(44, 75, 141, 0.3);
             border-radius: var(--radius);
             min-width: 120px;
             text-align: center;
@@ -380,10 +405,10 @@
         }
 
         .test-table th {
-            background: var(--primary-color);
+            background: #920c1e;
             color: white;
             padding: 16px 12px;
-            font-weight: 600;
+            font-weight: 800;
             font-size: 14px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
