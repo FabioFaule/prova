@@ -269,3 +269,259 @@
         } else {
             initializeCookieConsent();
         }
+
+        // Theme Management System - da aggiungere prima dello script filterVerbs esistente
+        const THEME_CONFIG = {
+            cookieName: 'site_theme',
+            expirationDays: 365,
+            themes: {
+                light: {
+                    name: 'light',
+                    icon: '🌙',
+                    title: 'Attiva tema scuro'
+                },
+                dark: {
+                    name: 'dark',
+                    icon: '☀️',
+                    title: 'Attiva tema chiaro'
+                }
+            }
+        };
+
+        // Icon mapping for theme switching
+        const ICON_MAPPING = {
+            light: {
+                'images/home.png': 'images/home.png',
+                'images/learn.png': 'images/learn.png',
+                'images/train.png': 'images/train.png',
+                'images/test.png': 'images/test.png',
+                'images/story.png': 'images/story.png'
+            },
+            dark: {
+                'images/home.png': 'images/home1.png',
+                'images/learn.png': 'images/learn1.png',
+                'images/train.png': 'images/train1.png',
+                'images/test.png': 'images/test1.png',
+                'images/story.png': 'images/story1.png'
+            }
+        };
+
+        // Utility functions per gestire i cookie
+        function setThemeCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            
+            let cookieString = `${name}=${value}${expires}; path=/`;
+            document.cookie = cookieString;
+            console.log(`Theme cookie impostato: ${name}=${value}`);
+        }
+
+        function getThemeCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Theme cookie letto: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            return null;
+        }
+
+        // Fallback per localStorage in ambiente locale
+        function setLocalTheme(value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('local_site_theme', value);
+                console.log(`LocalStorage theme impostato: ${value}`);
+            }
+        }
+
+        function getLocalTheme() {
+            if (typeof(Storage) !== "undefined") {
+                const value = localStorage.getItem('local_site_theme');
+                console.log(`LocalStorage theme letto: ${value}`);
+                return value;
+            }
+            return null;
+        }
+
+        // Funzione per cambiare le icone della navbar
+        function updateNavIcons(theme) {
+            const navIcons = document.querySelectorAll('.nav-item img');
+            navIcons.forEach(icon => {
+                const currentSrc = icon.src;
+                const filename = currentSrc.split('/').pop();
+                const basePath = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+                
+                // Trova la mappatura corretta
+                for (const [lightIcon, darkIcon] of Object.entries(ICON_MAPPING.dark)) {
+                    const lightFilename = lightIcon.split('/').pop();
+                    const darkFilename = darkIcon.split('/').pop();
+                    
+                    if (theme === 'dark' && filename === lightFilename) {
+                        icon.src = basePath + darkFilename;
+                        break;
+                    } else if (theme === 'light' && filename === darkFilename) {
+                        icon.src = basePath + lightFilename;
+                        break;
+                    }
+                }
+            });
+        }
+
+        // Funzione per applicare il tema
+        function applyTheme(themeName) {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            // Applica o rimuove l'attributo data-theme
+            if (themeName === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.removeAttribute('data-theme');
+                themeName = 'light';
+            }
+            
+            // Aggiorna l'icona e il tooltip del bottone
+            const currentTheme = THEME_CONFIG.themes[themeName];
+            if (themeIcon && currentTheme) {
+                themeIcon.textContent = currentTheme.icon;
+                themeToggle.title = currentTheme.title;
+            }
+            
+            // Aggiorna le icone della navbar
+            updateNavIcons(themeName);
+            
+            console.log(`Tema applicato: ${themeName}`);
+        }
+
+        function getCurrentTheme() {
+            // Prima fonte: attributo data-theme nel DOM
+            const domTheme = document.documentElement.getAttribute('data-theme');
+            if (domTheme) {
+                console.log(`getCurrentTheme -> datasource: DOM, theme=${domTheme}`);
+                return domTheme;
+            }
+
+            // Altrimenti prova il cookie
+            let theme = getThemeCookie(THEME_CONFIG.cookieName);
+            if (theme) {
+                console.log(`getCurrentTheme -> datasource: cookie, theme=${theme}`);
+                return theme;
+            }
+
+            // Fallback per ambiente locale: localStorage
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                const local = getLocalTheme();
+                if (local) {
+                    console.log(`getCurrentTheme -> datasource: localStorage, theme=${local}`);
+                    return local;
+                }
+            }
+
+            // Default
+            console.log('getCurrentTheme -> default: light');
+            return 'light';
+        }
+
+        function toggleTheme() {
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            console.log(`Cambio tema da ${currentTheme} a ${newTheme}`);
+
+            // Applica subito il tema al DOM
+            applyTheme(newTheme);
+
+            // Salva la scelta
+            saveTheme(newTheme);
+        }
+
+        // Funzione per salvare il tema
+        function saveTheme(theme) {
+            setThemeCookie(THEME_CONFIG.cookieName, theme, THEME_CONFIG.expirationDays);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalTheme(theme);
+            }
+            
+            // Notifica altre schede del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('theme_changed', Date.now().toString());
+            }
+        }
+
+        // Funzione per sincronizzare tra schede
+        function setupThemeCrossTabSync() {
+            if (typeof(Storage) !== "undefined") {
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'theme_changed') {
+                        console.log("Tema cambiato in altra scheda - aggiorno");
+                        const currentTheme = getCurrentTheme();
+                        applyTheme(currentTheme);
+                    }
+                });
+            }
+        }
+
+        // Funzione di inizializzazione del sistema tema
+        function initializeThemeSystem() {
+            console.log("Inizializzazione sistema tema");
+            
+            // Applica il tema salvato
+            const savedTheme = getCurrentTheme();
+            console.log("Tema salvato trovato:", savedTheme);
+            applyTheme(savedTheme);
+            
+            // Configura il toggle button
+            setTimeout(() => {
+                const themeToggle = document.getElementById('theme-toggle');
+                const themeIcon = document.getElementById('theme-icon');
+                
+                console.log("Cercando elementi tema...");
+                console.log("Theme toggle trovato:", !!themeToggle);
+                console.log("Theme icon trovato:", !!themeIcon);
+                
+                if (themeToggle) {
+                    // Rimuovi eventuali listener esistenti
+                    themeToggle.removeEventListener('click', toggleTheme);
+                    
+                    // Aggiungi il nuovo listener
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log("Click sul toggle tema!");
+                        toggleTheme();
+                    });
+                    
+                    console.log("Event listener tema configurato correttamente");
+                } else {
+                    console.error("Elemento theme-toggle non trovato!");
+                }
+            }, 100);
+            
+            // Configura sincronizzazione tra schede
+            setupThemeCrossTabSync();
+            
+            console.log("Sistema tema inizializzato con tema:", savedTheme);
+        }
+
+        // Rendi disponibili le funzioni debug globalmente
+        window.getCurrentTheme = getCurrentTheme;
+        window.toggleTheme = toggleTheme;
+
+        // Inizializza il sistema tema quando il DOM è pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded - inizializzo sistema tema");
+            initializeThemeSystem();
+        });
+        
+        // Fallback se il DOM è già caricato
+        if (document.readyState !== 'loading') {
+            console.log("DOM già caricato - inizializzo sistema tema");
+            initializeThemeSystem();
+        }

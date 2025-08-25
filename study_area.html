@@ -42,7 +42,43 @@
             --radius-lg: 12px;
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-hero: linear-gradient(135deg, #f89407 0%, #f1b35c 30%, #F3AD48 70%, #f89407 100%);
+            --nav-bg: #ffffff;
+            --nav-text: #1a365d;
+            --nav-hover-bg: #f1f5f9;
+            --nav-border: #e2e8f0;
+            --text-primary-header: #0f172a;
+            --text-secondary-header: #475569;
+            --cards-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --card-text: #0f172a;
+            --card-text-secondary: #475569;
+            --footer-bg: transparent;
+            --footer-text: #475569;
         }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --nav-bg: #1e293b;
+            --nav-text: #ffffff;
+            --nav-hover-bg: #334155;
+            --nav-border: #334155;
+            
+            --cards-bg: #0f172a;
+            --card-bg: #1e293b;
+            --card-text: #ffffff;
+            --card-text-secondary: #cbd5e1;
+            --footer-bg: #0f172a;
+            --footer-text: #ffffff;
+            
+            /* Override delle variabili esistenti per dark mode */
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #334155;   
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+        }
+
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
@@ -51,16 +87,18 @@
             line-height: 1.6;
             min-height: 100vh;
             padding-bottom: 80px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Navigation */
         nav {
-            background: var(--primary-color);
+            background: var(--nav-bg);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .nav-container {
@@ -81,8 +119,8 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: #1a365d;
-            transition: all 0.2s ease;
+            color: var(--nav-text);
+            transition: all 0.3s ease;
             padding: 8px 12px;
             border-radius: var(--radius);
             min-width: 60px;
@@ -90,7 +128,7 @@
 
         .nav-item:hover {
             color: var(--primary-color);
-            background: var(--surface-hover);
+            background: var(--nav-hover-bg);
         }
 
         .nav-item img {
@@ -111,6 +149,7 @@
             margin: 0 auto;
             padding: 20px 16px;
             background-color: var(--surface);
+            transition: background-color 0.3s ease;
         }
 
         /* Study Section */
@@ -154,13 +193,13 @@
 
         .study-subtitle {
             font-size: 16px;
-            color: var(--text-secondary);
+            color: var(--text-secondary-header);
             margin-bottom: 24px;
         }
 
         .study-instructions {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-secondary-header);
             background: rgb(37 99 235 / 0.1);
             padding: 12px;
             border-radius: var(--radius);
@@ -209,6 +248,7 @@
             margin-top: 20px;
             z-index: 1;
             position: relative;
+            transition: background-color 0.3s ease;
         }
         .study-table {
             width: 100%;
@@ -230,6 +270,8 @@
             border-bottom: 1px solid var(--border-color);
             text-align: center;
             vertical-align: middle;
+            color: var(--text-primary);
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .study-table tr:last-child td {
@@ -238,10 +280,54 @@
 
         .study-table tr.even {
             background: var(--surface-hover);
+            transition: background-color 0.3s ease;
         }
 
         .study-table tr.odd {
             background: var(--surface);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Footer con supporto tema */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        footer a {
+            color: var(--footer-text);
+            transition: color 0.3s ease;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--nav-hover-bg);
+            border: 1px solid var(--nav-border);
+            border-radius: var(--radius);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--nav-text);
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         /* Responsive Design */
@@ -262,8 +348,8 @@
             }
 
             .study-title{
-                font-size: 16px;
-                margin: 0 0 6px;
+                font-size: 2.25rem;
+                margin: 0 0 12px;
             }
 
             .study-subtitle {
@@ -289,7 +375,7 @@
             }
             
             .nav-links {
-            
+                padding-right: 50px;
                 padding: 0 0;
             }
         
@@ -313,6 +399,13 @@
                 font-size: 12px;
             }
 
+            .theme-toggle {
+            width: 32px;
+            height: 32px;
+            right: 8px;
+            font-size: 14px;
+            }
+
         }
 
         @media (max-width: 480px) {
@@ -329,14 +422,6 @@
                 padding: 8px 2px;
             }
 
-            .study-title {
-                font-size: 20px;
-            }
-
-            .study-subtitle {
-                font-size: 14px;
-            }
-
             .study-instructions {
             font-size: 14px;
             color: var(--text-secondary);
@@ -344,7 +429,18 @@
             padding: 12px;
             border-radius: var(--radius);
             margin-bottom: 16px;
-        }
+            }
+
+            .nav-links {
+            padding-right: 45px;
+            }
+            
+            .theme-toggle {
+                width: 28px;
+                height: 28px;
+                right: 6px;
+                font-size: 12px;
+            }
         }
 
         /* Utilities */
@@ -391,6 +487,9 @@
                     <span>Stories</span>
                 </a>
             </div>
+            <button class="theme-toggle" id="theme-toggle" title="Cambia tema">
+                <span id="theme-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
@@ -399,7 +498,7 @@
 
     <div class="main-container">
         <div class="study-header">
-            <h2 class="study-title">Irregular Verbs List</h2>
+            <h1 class="study-title">Irregular Verbs List</h1>
             <p class="study-subtitle"><strong>Explore and memorize all the main irregular verbs</strong></p>
             <div class="study-instructions">
             💡 Choose your level, then browse the complete list!
@@ -587,6 +686,262 @@
     </div>
 
     <script>
+        // Theme Management System - da aggiungere prima dello script filterVerbs esistente
+        const THEME_CONFIG = {
+            cookieName: 'site_theme',
+            expirationDays: 365,
+            themes: {
+                light: {
+                    name: 'light',
+                    icon: '🌙',
+                    title: 'Attiva tema scuro'
+                },
+                dark: {
+                    name: 'dark',
+                    icon: '☀️',
+                    title: 'Attiva tema chiaro'
+                }
+            }
+        };
+
+        // Icon mapping for theme switching
+        const ICON_MAPPING = {
+            light: {
+                'images/home.png': 'images/home.png',
+                'images/learn.png': 'images/learn.png',
+                'images/train.png': 'images/train.png',
+                'images/test.png': 'images/test.png',
+                'images/story.png': 'images/story.png'
+            },
+            dark: {
+                'images/home.png': 'images/home1.png',
+                'images/learn.png': 'images/learn1.png',
+                'images/train.png': 'images/train1.png',
+                'images/test.png': 'images/test1.png',
+                'images/story.png': 'images/story1.png'
+            }
+        };
+
+        // Utility functions per gestire i cookie
+        function setThemeCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            
+            let cookieString = `${name}=${value}${expires}; path=/`;
+            document.cookie = cookieString;
+            console.log(`Theme cookie impostato: ${name}=${value}`);
+        }
+
+        function getThemeCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Theme cookie letto: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            return null;
+        }
+
+        // Fallback per localStorage in ambiente locale
+        function setLocalTheme(value) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('local_site_theme', value);
+                console.log(`LocalStorage theme impostato: ${value}`);
+            }
+        }
+
+        function getLocalTheme() {
+            if (typeof(Storage) !== "undefined") {
+                const value = localStorage.getItem('local_site_theme');
+                console.log(`LocalStorage theme letto: ${value}`);
+                return value;
+            }
+            return null;
+        }
+
+        // Funzione per cambiare le icone della navbar
+        function updateNavIcons(theme) {
+            const navIcons = document.querySelectorAll('.nav-item img');
+            navIcons.forEach(icon => {
+                const currentSrc = icon.src;
+                const filename = currentSrc.split('/').pop();
+                const basePath = currentSrc.substring(0, currentSrc.lastIndexOf('/') + 1);
+                
+                // Trova la mappatura corretta
+                for (const [lightIcon, darkIcon] of Object.entries(ICON_MAPPING.dark)) {
+                    const lightFilename = lightIcon.split('/').pop();
+                    const darkFilename = darkIcon.split('/').pop();
+                    
+                    if (theme === 'dark' && filename === lightFilename) {
+                        icon.src = basePath + darkFilename;
+                        break;
+                    } else if (theme === 'light' && filename === darkFilename) {
+                        icon.src = basePath + lightFilename;
+                        break;
+                    }
+                }
+            });
+        }
+
+        // Funzione per applicare il tema
+        function applyTheme(themeName) {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            // Applica o rimuove l'attributo data-theme
+            if (themeName === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.removeAttribute('data-theme');
+                themeName = 'light';
+            }
+            
+            // Aggiorna l'icona e il tooltip del bottone
+            const currentTheme = THEME_CONFIG.themes[themeName];
+            if (themeIcon && currentTheme) {
+                themeIcon.textContent = currentTheme.icon;
+                themeToggle.title = currentTheme.title;
+            }
+            
+            // Aggiorna le icone della navbar
+            updateNavIcons(themeName);
+            
+            console.log(`Tema applicato: ${themeName}`);
+        }
+
+        function getCurrentTheme() {
+            // Prima fonte: attributo data-theme nel DOM
+            const domTheme = document.documentElement.getAttribute('data-theme');
+            if (domTheme) {
+                console.log(`getCurrentTheme -> datasource: DOM, theme=${domTheme}`);
+                return domTheme;
+            }
+
+            // Altrimenti prova il cookie
+            let theme = getThemeCookie(THEME_CONFIG.cookieName);
+            if (theme) {
+                console.log(`getCurrentTheme -> datasource: cookie, theme=${theme}`);
+                return theme;
+            }
+
+            // Fallback per ambiente locale: localStorage
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                const local = getLocalTheme();
+                if (local) {
+                    console.log(`getCurrentTheme -> datasource: localStorage, theme=${local}`);
+                    return local;
+                }
+            }
+
+            // Default
+            console.log('getCurrentTheme -> default: light');
+            return 'light';
+        }
+
+        function toggleTheme() {
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            console.log(`Cambio tema da ${currentTheme} a ${newTheme}`);
+
+            // Applica subito il tema al DOM
+            applyTheme(newTheme);
+
+            // Salva la scelta
+            saveTheme(newTheme);
+        }
+
+        // Funzione per salvare il tema
+        function saveTheme(theme) {
+            setThemeCookie(THEME_CONFIG.cookieName, theme, THEME_CONFIG.expirationDays);
+            
+            // Fallback per localhost
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                setLocalTheme(theme);
+            }
+            
+            // Notifica altre schede del cambiamento
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('theme_changed', Date.now().toString());
+            }
+        }
+
+        // Funzione per sincronizzare tra schede
+        function setupThemeCrossTabSync() {
+            if (typeof(Storage) !== "undefined") {
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'theme_changed') {
+                        console.log("Tema cambiato in altra scheda - aggiorno");
+                        const currentTheme = getCurrentTheme();
+                        applyTheme(currentTheme);
+                    }
+                });
+            }
+        }
+
+        // Funzione di inizializzazione del sistema tema
+        function initializeThemeSystem() {
+            console.log("Inizializzazione sistema tema");
+            
+            // Applica il tema salvato
+            const savedTheme = getCurrentTheme();
+            console.log("Tema salvato trovato:", savedTheme);
+            applyTheme(savedTheme);
+            
+            // Configura il toggle button
+            setTimeout(() => {
+                const themeToggle = document.getElementById('theme-toggle');
+                const themeIcon = document.getElementById('theme-icon');
+                
+                console.log("Cercando elementi tema...");
+                console.log("Theme toggle trovato:", !!themeToggle);
+                console.log("Theme icon trovato:", !!themeIcon);
+                
+                if (themeToggle) {
+                    // Rimuovi eventuali listener esistenti
+                    themeToggle.removeEventListener('click', toggleTheme);
+                    
+                    // Aggiungi il nuovo listener
+                    themeToggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log("Click sul toggle tema!");
+                        toggleTheme();
+                    });
+                    
+                    console.log("Event listener tema configurato correttamente");
+                } else {
+                    console.error("Elemento theme-toggle non trovato!");
+                }
+            }, 100);
+            
+            // Configura sincronizzazione tra schede
+            setupThemeCrossTabSync();
+            
+            console.log("Sistema tema inizializzato con tema:", savedTheme);
+        }
+
+        // Rendi disponibili le funzioni debug globalmente
+        window.getCurrentTheme = getCurrentTheme;
+        window.toggleTheme = toggleTheme;
+
+        // Inizializza il sistema tema quando il DOM è pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded - inizializzo sistema tema");
+            initializeThemeSystem();
+        });
+        
+        // Fallback se il DOM è già caricato
+        if (document.readyState !== 'loading') {
+            console.log("DOM già caricato - inizializzo sistema tema");
+            initializeThemeSystem();
+        }
+
         function filterVerbs() {
             let level = document.querySelector('input[name="level"]:checked').value;
             let rows = document.querySelectorAll("table tr");
