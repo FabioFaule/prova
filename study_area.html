@@ -924,6 +924,8 @@
             setupThemeCrossTabSync();
             
             console.log("Sistema tema inizializzato con tema:", savedTheme);
+
+            initializeStickyHeader();
         }
 
         // Rendi disponibili le funzioni debug globalmente
@@ -1021,6 +1023,8 @@
                 }
             });
             
+
+            refreshStickyHeaderAfterFilter();
         }
         // Call filterVerbs on page load to apply initial styling
         window.addEventListener('DOMContentLoaded', function() {
@@ -1411,8 +1415,325 @@
         // Rendi disponibili le funzioni debug globalmente (rimuovi in produzione)
         window.debugCookies = debugCookies;
         window.resetCookieConsent = resetCookieConsent;
-    </script>
 
+
+        // Sticky Table Header System
+        class StickyTableHeader {
+            constructor() {
+                this.originalTable = null;
+                this.stickyHeader = null;
+                this.isSticky = false;
+                this.navbarHeight = 0;
+                this.tableContainer = null;
+                this.init();
+            }
+
+            init() {
+                // Aspetta che il DOM sia caricato
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.setup());
+                } else {
+                    this.setup();
+                }
+            }
+
+            setup() {
+                this.originalTable = document.querySelector('.study-table');
+                this.tableContainer = document.querySelector('.study-container');
+                
+                if (!this.originalTable || !this.tableContainer) {
+                    console.log('Tabella non trovata');
+                    return;
+                }
+
+                // Calcola l'altezza della navbar
+                this.calculateNavbarHeight();
+                
+                // Crea l'header sticky
+                this.createStickyHeader();
+                
+                // Avvia il monitoraggio dello scroll
+                this.setupScrollListener();
+                
+                // Gestisci il ridimensionamento della finestra
+                this.setupResizeListener();
+                
+                console.log('Sistema sticky header inizializzato');
+            }
+
+            calculateNavbarHeight() {
+                const navbar = document.querySelector('nav');
+                this.navbarHeight = navbar ? navbar.offsetHeight : 60;
+            }
+
+            createStickyHeader() {
+                // Crea il contenitore per l'header sticky
+                this.stickyHeader = document.createElement('div');
+                this.stickyHeader.id = 'sticky-table-header';
+                this.stickyHeader.style.cssText = `
+                    position: fixed;
+                    top: ${this.navbarHeight}px;
+                    left: 0;
+                    right: 0;
+                    z-index: 50;
+                    background: var(--surface);
+                    box-shadow: var(--shadow);
+                    transform: translateY(-100%);
+                    transition: transform 0.2s ease-out;
+                    overflow-x: auto;
+                    display: none;
+                `;
+
+                // Crea la tabella sticky
+                const stickyTable = document.createElement('table');
+                stickyTable.className = 'study-table';
+                stickyTable.style.cssText = `
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 0;
+                `;
+
+                // Clona l'header originale
+                const originalThead = this.originalTable.querySelector('thead');
+                if (originalThead) {
+                    const stickyThead = originalThead.cloneNode(true);
+                    stickyTable.appendChild(stickyThead);
+                }
+
+                this.stickyHeader.appendChild(stickyTable);
+                document.body.appendChild(this.stickyHeader);
+            }
+
+            updateStickyHeaderWidth() {
+                if (!this.stickyHeader || !this.originalTable) return;
+
+                const stickyTable = this.stickyHeader.querySelector('.study-table');
+                const originalCells = this.originalTable.querySelectorAll('thead th');
+                const stickyCells = stickyTable.querySelectorAll('thead th');
+
+                // Sincronizza le larghezze delle colonne
+                originalCells.forEach((originalCell, index) => {
+                    if (stickyCells[index]) {
+                        const width = originalCell.offsetWidth;
+                        stickyCells[index].style.width = width + 'px';
+                        stickyCells[index].style.minWidth = width + 'px';
+                        stickyCells[index].style.maxWidth = width + 'px';
+                    }
+                });
+
+                // Imposta la larghezza totale della tabella sticky
+                const containerRect = this.tableContainer.getBoundingClientRect();
+                const containerWidth = containerRect.width;
+                
+                // Posiziona il sticky header per allinearsi con il container
+                this.stickyHeader.style.left = containerRect.left + 'px';
+                this.stickyHeader.style.width = containerWidth + 'px';
+                stickyTable.style.width = containerWidth + 'px';
+            }
+
+            setupScrollListener() {
+                let ticking = false;
+
+                const handleScroll = () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            this.checkStickyPosition();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+            }
+
+            setupResizeListener() {
+                let resizeTimeout;
+                
+                const handleResize = () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.calculateNavbarHeight();
+                        this.stickyHeader.style.top = this.navbarHeight + 'px';
+                        if (this.isSticky) {
+                            this.updateStickyHeaderWidth();
+                        }
+                    }, 100);
+                };
+
+                window.addEventListener('resize', handleResize, { passive: true });
+            }
+
+            checkStickyPosition() {
+                if (!this.originalTable || !this.tableContainer) return;
+
+                const tableRect = this.originalTable.getBoundingClientRect();
+                const containerRect = this.tableContainer.getBoundingClientRect();
+                const thead = this.originalTable.querySelector('thead');
+                
+                if (!thead) return;
+
+                const theadRect = thead.getBoundingClientRect();
+                const triggerPoint = this.navbarHeight;
+
+                // Determina se l'header dovrebbe essere sticky
+                const shouldBeSticky = (
+                    theadRect.top <= triggerPoint && 
+                    containerRect.bottom > triggerPoint + 50 // Mantieni sticky finché la tabella è visibile
+                );
+
+                if (shouldBeSticky && !this.isSticky) {
+                    this.showStickyHeader();
+                } else if (!shouldBeSticky && this.isSticky) {
+                    this.hideStickyHeader();
+                }
+
+                // Aggiorna le dimensioni se è sticky
+                if (this.isSticky) {
+                    this.updateStickyHeaderWidth();
+                }
+            }
+
+            showStickyHeader() {
+                if (!this.stickyHeader) return;
+
+                this.isSticky = true;
+                this.stickyHeader.style.display = 'block';
+                this.updateStickyHeaderWidth();
+                
+                // Animazione di entrata
+                requestAnimationFrame(() => {
+                    this.stickyHeader.style.transform = 'translateY(0)';
+                });
+
+                console.log('Header sticky attivato');
+            }
+
+            hideStickyHeader() {
+                if (!this.stickyHeader) return;
+
+                this.isSticky = false;
+                this.stickyHeader.style.transform = 'translateY(-100%)';
+                
+                // Nascondi dopo l'animazione
+                setTimeout(() => {
+                    if (!this.isSticky) {
+                        this.stickyHeader.style.display = 'none';
+                    }
+                }, 200);
+
+                console.log('Header sticky disattivato');
+            }
+
+            // Metodo per aggiornare l'header quando cambia il contenuto della tabella
+            refresh() {
+                if (this.stickyHeader) {
+                    // Rimuovi l'header esistente
+                    this.stickyHeader.remove();
+                    
+                    // Ricrea l'header
+                    this.createStickyHeader();
+                    
+                    // Ricontrolla la posizione
+                    setTimeout(() => {
+                        this.checkStickyPosition();
+                    }, 100);
+                }
+            }
+
+            // Metodo per distruggere il sistema (utile per cleanup)
+            destroy() {
+                if (this.stickyHeader) {
+                    this.stickyHeader.remove();
+                    this.stickyHeader = null;
+                }
+                
+                // Rimuovi i listener (in una implementazione più completa)
+                this.isSticky = false;
+                console.log('Sistema sticky header distrutto');
+            }
+        }
+
+        // CSS aggiuntivo per supportare il sistema sticky
+        const stickyHeaderCSS = `
+            /* Stili per il sistema sticky header */
+            #sticky-table-header {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Assicura che il contenuto sotto l'header sticky sia accessibile */
+            #sticky-table-header .study-table th {
+                position: relative;
+                background: #F3AD48;
+                color: white;
+                border: none;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            /* Supporto per il tema scuro */
+            [data-theme="dark"] #sticky-table-header {
+                background: var(--surface);
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            /* Responsive per mobile */
+            @media (max-width: 768px) {
+                #sticky-table-header {
+                    font-size: 12px;
+                }
+                
+                #sticky-table-header .study-table th {
+                    padding: 8px 4px;
+                    font-size: 12px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                #sticky-table-header .study-table th {
+                    padding: 8px 2px;
+                    font-size: 11px;
+                }
+            }
+        `;
+
+        // Funzione per aggiungere gli stili CSS
+        function addStickyHeaderStyles() {
+            const styleElement = document.createElement('style');
+            styleElement.textContent = stickyHeaderCSS;
+            document.head.appendChild(styleElement);
+        }
+
+        // Inizializzazione del sistema
+        let stickyHeaderSystem = null;
+
+        function initializeStickyHeader() {
+            // Aggiungi gli stili CSS
+            addStickyHeaderStyles();
+            
+            // Crea e inizializza il sistema
+            stickyHeaderSystem = new StickyTableHeader();
+            
+            // Rendi disponibile globalmente per debug
+            window.stickyHeaderSystem = stickyHeaderSystem;
+        }
+
+        // Integrazione con il sistema di filtri esistente
+        function refreshStickyHeaderAfterFilter() {
+            if (stickyHeaderSystem) {
+                // Aspetta che il DOM si aggiorni dopo il filtro
+                setTimeout(() => {
+                    stickyHeaderSystem.refresh();
+                }, 100);
+            }
+        }
+
+        // Avvia l'inizializzazione
+        initializeStickyHeader();
+
+        // Export delle funzioni principali per l'uso esterno
+        window.initializeStickyHeader = initializeStickyHeader;
+        window.refreshStickyHeaderAfterFilter = refreshStickyHeaderAfterFilter;
+    </script>
 
 </body>
 </html>
