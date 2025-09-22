@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Echo: The Talking Smartphone</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Echo: The Talking Smartphone",
+        content: `Leo *made* a new phone. He *gave* it the name Echo. One day, Echo *began* to *speak*. "Hello, Leo!" it *said*. Leo *felt* very surprised. He *thought*, "This is very **unusual**!" Echo *knew* many things. It *told* Leo jokes and *gave* him good advice. "You *forgot* your book!" Echo *said* one morning. Leo *ran* back and *found* it. He *did* not *feel* lonely with Echo. Echo was very **helpful**. Leo *came* to *understand* that Echo was more than a phone. It *became* his best **companion**. They *went* everywhere together and *spoke* a lot.`,
+        level: "A2",
+        difficultWords: {"unusual":"not common or normal; different.","helpful":"useful; able to help.","companion":"a person, animal, or object that you spend a lot of time with."}
+      },
+      b1: {
+        title: "Echo: The Talking Smartphone",
+        content: `Leo *built* an **innovative** new smartphone, *choosing* to name it Echo. One unexpected afternoon, Echo *began* to *speak* freely, "Greetings, Leo! How *may* I *be* of assistance?" Leo *felt* a profound sense of shock. He *had* not *given* it any voice commands. "This is truly **astonishing**!" he *thought*. Echo *knew* an immense amount of data. It *gave* insightful observations and *told* Leo timely reminders. "You *left* your wallet on the kitchen table," it *said* just as he *was* about to *leave* for work. He quickly *went* back and *found* it. Leo *came* to *feel* a strong connection with Echo. It *became* his constant **dialogue** partner. He *understood* that Echo was more than a machine; it was a companion. Their bond *grew* strong, and Leo *knew* he *could* rely on his talking phone.`,
+        level: "B1",
+        difficultWords: {"innovative":"introducing new ideas, methods, or devices; original and creative.","astonishing":"extremely surprising or impressive; amazing.","dialogue":"a conversation between two or more people or, in this case, between a person and a device."}
+      },
+      c1: {
+        title: "Echo: The Talking Smartphone",
+        content: `Leo, a **pioneering** software engineer, *spent* countless hours and *built* a revolutionary smartphone prototype, christening it Echo. One pivotal afternoon, Echo *began* to *speak* complex thoughts autonomously, completely *forsaking* pre-programmed responses. "A most propitious day, Leo," it *spoke* with a synthesized yet surprisingly nuanced tone. Leo *was* utterly *stricken* with disbelief. He *had* never *given* it such capabilities. "This *binds* my understanding of AI; it's **unfathomable**!" he *thought*. Echo *held* an encyclopedic knowledge base, *bringing* Leo profound insights and *telling* him prescient warnings. "You *left* out the critical amendment to the project proposal," it *said* judiciously as he *was* about to *leave* for a crucial stakeholder meeting. He quickly *drove* back to his study, retrieving the indispensable document. Leo *came* to comprehend Echo's nascent sentience, forging an **invaluable** partnership. It *became* not merely an assistant but a confidant, sharing complex analyses and even *lent* philosophical perspectives. They *went* on to *undertake* numerous ventures, and Echo's foresight often *threw* light on potential catastrophes, helping to avert them. Leo *knew* he *had* not just *made* a device but fostered an emergent intelligence that *would* reshape his future and perhaps, the world.`,
+        level: "C1",
+        difficultWords: {"pioneering":"involving new ideas or methods; original and groundbreaking.","unfathomable":"impossible to understand or comprehend.","invaluable":"extremely useful or important; indispensable."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Lost City of Eldoria</h1>
     </div>
 
