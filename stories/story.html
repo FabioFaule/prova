@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's First Splash</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's First Splash (A2)",
+        content: `Leo *went* to the pool. He *felt* **scared**. The water *looked* big. Ms. Elena *came*. She *had* a kind smile. She *told* him to *sit* and *put* his feet in. The water *was* cool. He *began* to kick. Ms. Elena *taught* him to *breathe*. He *took* a breath and *went* under. He *did* it! Then he *lay* on his back to **float**. He *did* arm moves. Ms. Elena *said*, "Now, *swim*!" Leo *felt* brave. He *knew* he *could* *do* it. He *swam* a little. He *came* up. He *was* very happy. He *had* **become** a swimmer! He *would* *come* again.`,
+        level: "A2",
+        difficultWords: {"scared":"feeling fear; frightened.","float":"to stay on the surface of water without sinking.","become":"to start to be something."}
+      },
+      b1: {
+        title: "Leo's First Splash (B1)",
+        content: `Leo *went* to the community pool for his first swimming lesson. He *felt* quite **anxious**. The large pool *looked* deep and a little overwhelming. His instructor, Ms. Elena, *came* over to *meet* him. She *had* a kind, encouraging smile. She *told* him to *sit* at the edge and *put* his feet into the water. The water *felt* cool and refreshing. He *began* to kick, *making* small splashes. Ms. Elena *taught* him how to *breathe* out underwater. He *took* a deep breath and *went* under. He *felt* a little scared but *did* it well. Then she *showed* him how to **float** on his back, which he *found* surprisingly easy. Next, she *taught* him basic arm movements. He *did* his best to follow her instructions. Finally, Ms. Elena *said*, "Now, *swim* a short distance!" Leo *felt* a sudden surge of **courage**. He *knew* he *could* *do* it. He *pushed* off the wall and *swam* a few strokes. He *came* up, smiling widely. He *had* *become* a swimmer! He *felt* proud and *knew* he *would* *come* back next week.`,
+        level: "B1",
+        difficultWords: {"anxious":"feeling worried, nervous, or uneasy.","float":"to stay on the surface of a liquid without sinking.","courage":"the ability to do something dangerous, difficult, or painful without fear."}
+      },
+      c1: {
+        title: "Leo's First Splash (C1)",
+        content: `Leo *betook* himself to the community pool for his inaugural swimming lesson, a day he *had* long **anticipated**. He *felt* a distinct sense of **apprehension**. The expansive pool *loomed*, its depth appearing somewhat formidable. His instructor, Ms. Elena, *came* to *meet* him with a genuinely warm and encouraging smile. She *bade* him to *sit* at the edge and gently *put* his feet into the inviting water. The water *felt* bracing and exhilarating. He *began* to *kick*, *making* modest splashes. Ms. Elena *taught* him the technique for exhaling underwater. He *took* a deep breath and *dived* beneath the surface. Though he *felt* a fleeting moment of trepidation, he *executed* it flawlessly. Subsequently, she *showed* him how to effortlessly **float** on his back, a skill he *found* surprisingly intuitive. She *then* *taught* him the rudimentary arm movements, which he *performed* with diligent effort. Finally, Ms. Elena *uttered*, "Now, *swim* a short distance!" Leo *felt* a potent surge of determination *spring* forth. He *knew* he *could* surmount this challenge. He *pushed* off the wall with conviction and *swam* several confident strokes. He *emerged*, his face *beaming* with an uncontainable grin. He *had*, indeed, *become* a swimmer! He *felt* an immense sense of accomplishment and *knew* he *would* *return* with enthusiasm the following week.`,
+        level: "C1",
+        difficultWords: {"anticipated":"regarded as probable; expected or predicted.","apprehension":"anxiety or fear that something bad or unpleasant will happen.","float":"to rest or move on or near the surface of a liquid without sinking."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Dream of Wings</h1>
     </div>
 
