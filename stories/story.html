@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Lost City of Eldoria</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Lily and the Lost City",
+        content: `Lily *heard* an old **legend**. It *was* about a city made of sun. People *said* it *shone* brightly. One day, Lily *found* an old map. It *was* in an **ancient** book. She *took* her little dog and *went* to the big mountains. They *saw* tall trees and a fast river. They *came* to a dark cave. Inside, a soft light *began* to **glimmer**. Lily *felt* excited. She *saw* old stones on the ground. It *was* the city, but it *did not look* like in the story. It *was* hidden by nature. Lily *understood* the city *slept* now.`,
+        level: "A2",
+        difficultWords: {"legend":"an old story that people tell, often not completely true.","ancient":"very, very old.","glimmer":"a weak, unsteady light."}
+      },
+      b1: {
+        title: "Elara's Quest for Eldoria",
+        content: `Elara often *heard* the **cryptic** tales of Eldoria, a lost city *said* to *have been built* from sunstones that *shone* with internal light. She *felt* a deep urge to *find* this mythical place. One rainy afternoon, browsing in an old library, she *came* across a dusty **tome**. Inside, a faded map *lay* hidden, outlining a perilous journey. Elara *took* her gear and, with her brave dog, *began* her quest into the rugged mountains. They *drank* from clear streams and *ate* wild berries as they *went*. After many days, they *came* upon a deep **gorge**. A faint *glow* *led* them into a hidden cavern. There, Elara *saw* the ruins of Eldoria. Sunstone fragments *lay* scattered, but they *did not shine*. She *understood* the city *had not been* truly lost but *had become* one with nature, its brilliance *absorbed* by the earth. The legend *meant* something deeper than just a physical place.`,
+        level: "B1",
+        difficultWords: {"cryptic":"mysterious; having a hidden meaning.","tome":"a very large, heavy, and serious book.","gorge":"a narrow valley between hills or mountains, typically with steep rocky walls and a stream running through it."}
+      },
+      c1: {
+        title: "Professor Aris and the Revelation of Eldoria",
+        content: `Professor Aris *bore* the weight of academic skepticism whenever he *spoke* of Eldoria, a fabled metropolis *said* to *have been built* entirely from sunstone, where an eternal light *shone* forth. He *had read* countless esoteric texts, *driven* by an unshakeable compulsion to *seek* its profound truth. One tempestuous evening, a forgotten, leather-bound scroll *came* into his hands; it *held* an intricate, almost **cryptic** drawing of a treacherous mountain passage. Aris, accompanied by his astute protégé, *set off* into the formidable peaks. They *drank* from pristine glacial meltwaters, *ate* sparingly of dried provisions, and *slept* beneath a tapestry of stars. They *forsook* all modern comforts, *drew* strength from the raw wilderness. After an arduous trek, they *came* upon a colossal **chasm**, where a subtle, resonant *hum* *made* the very air *vibrate*. Deep within a **subterranean** chamber, Professor Aris *found* the heart of what *remained* of Eldoria. Polished fragments of sunstone *lay* embedded within the rock, their inherent **luminescence** barely *flickered*. He *understood* that the city *had not been* *lost* to some cataclysm, but *had slowly *been* *absorbed* by the earth, its vibrant energy *drained*. The legend, he *knew*, *was* an **allegory** for the cyclical nature of existence, a profound testament to decay and renewal.`,
+        level: "C1",
+        difficultWords: {"chasm":"a deep, gaping fissure in the earth or rock.","subterranean":"existing, situated, or operating below the surface of the earth.","luminescence":"the emission of light by a substance not caused by heat."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Leo's First Splash</h1>
     </div>
 
