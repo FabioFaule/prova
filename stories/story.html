@@ -60,6 +60,75 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Our Saturday Chores</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Our Saturday Chores",
+        content: `It was Saturday. Mia *woke* up early. Dad *came* into her room. He *said*, "Time for chores!" Mia *did not feel* happy.
+First, they *went* outside to the car. Dad *taught* Mia how to wash it. Mia *got* wet. They *made* the car **gleam**.
+Next, they *came* inside. They *did* the kitchen. Mia *swept* the floor. Dad *found* a lost toy. The kitchen *became* very **tidy**.
+Last, they *went* to the garden. They *pulled* out weeds. The sun *was* bright. They *felt* tired but happy.
+Dad *bought* pizza for dinner. They *ate* it and *had* fun. They *knew* they *did* good work together. It was a **pleasant** day.`,
+        level: "A2",
+        difficultWords: {"gleam":"to shine brightly.","tidy":"neat and organized.","pleasant":"enjoyable or agreeable."}
+      },
+      b1: {
+        title: "Our Saturday Chores",
+        content: `Saturday morning *came* with the promise of weekend chores. Mia *woke* up, *feeling* a slight sense of dread. Her dad *had come* to her room, reminding her that it *was* chore day. Mia *knew* she *had* to help, but she *wished* for more free time.
+They *began* with the car. Dad *showed* Mia how to properly wash and rinse it. Mia quickly *got* soaked, but they *made* the car **sparkle**.
+Afterwards, they *went* inside to the kitchen. Mia *swept* the floor, and Dad *did* the dishes. He *found* an old recipe book he *had lost* weeks ago. The kitchen *became* organized and **immaculate**.
+Finally, they *went* to the garden. They *pulled* out weeds and tidied the leaves. The sun *shone* brightly, and a gentle breeze *blew*. They *felt* a sense of accomplishment.
+Later, Dad *bought* their favorite pizza. They *ate* it while *telling* each other about their day. Mia *understood* that doing chores together *made* the work lighter and their bond stronger. It *was* a **fulfilling** day.`,
+        level: "B1",
+        difficultWords: {"sparkle":"to shine brightly with flashes of light.","immaculate":"perfectly clean and tidy.","fulfilling":"making one feel satisfied and happy because of developing one's abilities or character."}
+      },
+      c1: {
+        title: "Our Saturday Chores",
+        content: `The dawn of Saturday *brought* with it the inevitable prospect of weekend chores. Mia *awoke* with a familiar pang of reluctance. Her father *had come* to her room, his gentle but firm voice *bearing* the summons for chore day. Though Mia *knew* her contribution *was* essential, she silently *thought* of ways the tasks *could vanish*.
+They *began* their efforts with the family car. Dad *showed* Mia the meticulous technique for washing and buffing, and Mia, despite her initial **grudging** acceptance, quickly *threw* herself into the task. She inevitably *got* drenched, but together they *made* the vehicle gleam with a renewed **lustre**.
+Subsequently, they *went* indoors to the kitchen. Mia *swept* the floor with purposeful strokes, whilst her father *dealt* with the dishes. To their surprise, he *found* a cherished, long-*lost* family recipe book. The transformation *was* remarkable; the kitchen *became* an epitome of **pristine** order.
+Their final undertaking *took* them to the garden. They *tore* out stubborn weeds and *put* away the autumnal debris. The sun *shone* resplendently, and a soft breeze *swept* through the trees, a soothing accompaniment to their labor. A profound sense of shared accomplishment *grew* within their spirits.
+Later that evening, Dad *bought* home their favorite artisanal pizza. They *ate* with gusto, *telling* each other about the day's events, and Mia *came* to an important realization. The collective endeavor *had not only lightened* the burden of the chores but *had also strengthened* the unspoken bond between them. It *proved* to be an unexpectedly *enriching* day.`,
+        level: "C1",
+        difficultWords: {"grudging":"given or allowed unwillingly, reluctantly, or resentfully.","lustre":"a gentle sheen or soft glow, especially that of a partly reflective surface.","pristine":"in its original condition; unspoiled; clean and fresh as if new."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Maya's Big Win</h1>
     </div>
 
