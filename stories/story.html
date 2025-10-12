@@ -60,6 +60,64 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Case of the Missing Suitcase</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Clara's Missing Bag",
+        content: `Clara *took* a plane to a new city. She *was* excited for her trip. At the airport, she *went* to get her bag. She *stood* and *waited*. Many bags *came* out, but not hers. She *knew* something *was* wrong. Her suitcase *did not come*. Clara *felt* a little **sad**. She *went* to the lost luggage desk. A kind man *spoke* to her. He *wrote* a report. He *said* they *would find* it. Clara *gave* him her hotel number. She *left* the airport without her clothes. The next day, the airline *called* her. They *found* her bag! A driver *brought* it to her hotel. Clara *was* very **happy**. She *had* her things. Her trip *could begin* properly. It *was* a small **adventure**.`,
+        level: "A2",
+        difficultWords: {"sad":"feeling unhappy","happy":"feeling pleased or glad","adventure":"an exciting or unusual experience"}
+      },
+      b1: {
+        title: "The Case of the Missing Suitcase",
+        content: `Clara *flew* to a vibrant new city, *feeling* eager for her vacation. At the airport, she *went* to the baggage claim area. She *stood* patiently, *watching* as bags *came* *down* the carousel. Many suitcases *passed* by, but hers *did not appear*. She *knew* instantly that something *was* amiss. Her bright blue suitcase, which *held* all her clothes, *was* nowhere to be *seen*. Clara *began* to *feel* quite **anxious**. She *found* the lost luggage desk. A friendly agent *came* forward and *spoke* with her. He *took* down all the details and *wrote* a comprehensive report. He *told* her they *would do* their best to *find* it. Clara *gave* him her hotel information and *left* the airport with a heavy heart, *having bought* only a few essentials. The next morning, the airline *rang* her. They *had found* her bag! A driver *brought* it directly to her hotel, much to her **relief**. Clara *felt* complete joy. Her trip *could now proceed* as *planned*. It *had been* an unexpected **ordeal**.`,
+        level: "B1",
+        difficultWords: {"anxious":"feeling worried, nervous, or uneasy about something uncertain.","relief":"a feeling of reassurance and relaxation following release from anxiety or distress.","ordeal":"a very unpleasant and prolonged experience."}
+      },
+      c1: {
+        title: "The Case of the Missing Suitcase",
+        content: `Clara *flew* to a bustling new metropolis, her spirit *brimming* with anticipation for a much-anticipated sabbatical. Upon arrival at the **hectic** airport, she *made* her way to the baggage reclaim area. She *stood* amongst the throng of fellow passengers, *watching* the carousel *revolve* incessantly. As countless cases *passed* by, a growing sense of unease *began* to *creep* in; her distinct bright blue suitcase, which *held* all her carefully chosen travel essentials, *was* conspicuously absent. She *knew*, with a sinking feeling, that her luggage *had gone* astray. Clara *felt* a wave of **dismay** *wash* over her.
+She *sought* out the lost baggage counter, where a sympathetic agent *came* to her aid. He *took* a detailed account of her missing item, meticulously *writing* an incident report. He *told* her he *would do* his utmost to *find* it. Clara *gave* him her hotel details and *left* the terminal with a profound sense of *having been bereft* of her belongings. The following morning, the airline *rang* to impart the welcome news: her bag *had been found*! A courier *brought* it directly to her hotel, much to her immense **gratification**. Clara *felt* an overwhelming sense of vindication and relief. Her sabbatical *could finally unfold* as *envisioned*. It *had proven* to be an unanticipated, albeit temporary, *setback*.`,
+        level: "C1",
+        difficultWords: {"hectic":"full of incessant or frantic activity.","dismay":"consternation and distress, typically that caused by something unexpected.","gratification":"pleasure, especially when gained from the satisfaction of a desire."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 Our Saturday Chores</h1>
     </div>
 
