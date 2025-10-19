@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Crumbling Birthday Surprise</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Crumbling Birthday Surprise (A2)",
+        content: `It *was* Dad's birthday. Lily *made* a big cake. She *put* red candles on it. She *took* the cake outside. The sun *was* hot. The icing *began* to **melt**. Lily *did* not *see* a big rock. She *fell* down! The cake *flew* and *hit* the ground with a **crash**. It *broke* into many pieces. Lily *felt* very sad. Her friends *came* to help. They *knew* what to do. They *ran* to the shop and *bought* small cupcakes. They *put* candles on them. They *gave* them to Dad. He *saw* the small cakes and *began* to **cheer**. He *said*, "This *is* the best cake!" Lily *felt* happy. The party *was* fun.`,
+        level: "A2",
+        difficultWords: {"melt":"became liquid from heat.","crash":"a sudden loud noise, often of something breaking.","cheer":"to shout in a happy way."}
+      },
+      b1: {
+        title: "The Crumbling Birthday Surprise (B1)",
+        content: `It *was* Dad's special birthday. Lily *spent* hours *making* a **magnificent** chocolate cake. She *put* vibrant red candles on top. As she *brought* the cake outside to the car, the warm sun *made* the delicate icing *run*. Suddenly, she *did* not *see* an uneven paving stone. She *fell*. The cake *flew* from her hands and *hit* the ground with a sickening splat. It *broke* into countless **fragments**. Lily *felt* her heart *sink*. She *knew* the surprise *was* ruined. Her friends, who *had seen* the whole disaster, *came* running. They quickly *thought* of a solution. They *drove* to a nearby bakery and *bought* an **assortment** of mini-cupcakes, which they swiftly *set* up. They *gave* these to Dad. He *understood* immediately what *went* wrong, but he *said*, "These *are* even better!" Everyone *felt* relieved, and they *found* a way to keep the celebration going. The party *was* a success.`,
+        level: "B1",
+        difficultWords: {"magnificent":"very impressive and beautiful.","fragments":"small pieces broken off something.","assortment":"a collection of different things."}
+      },
+      c1: {
+        title: "The Crumbling Birthday Surprise (C1)",
+        content: `It *was* Dad's milestone birthday. Lily *had spent* countless hours *making* an elaborate chocolate **confection**. She *had put* meticulously chosen, vibrant red candles atop its **pristine** surface. As she *bore* the fragile masterpiece outdoors towards the waiting vehicle, the relentless sun *made* the intricate frosting *run*. Without warning, she *did* not *see* a dislodged paving slab. She *fell* violently. The cake *flew* from her grasp, *hit* the ground with an audible *thud*, and *broke* into innumerable fragments upon impact. Lily *felt* an acute pang of despair. She *knew* the meticulously planned surprise *had been* utterly *ruined*. Her friends, who *had seen* the unfortunate incident, *sprang* into action. They quickly *thought* of a clever stratagem. They *drove* to a local patisserie and *bought* an assortment of gourmet mini-cupcakes, which they deftly *set* up and adorned. They *gave* these to Dad. He *understood* instantly what *went* wrong, yet he *said*, "These *are* truly exceptional!" A collective sense of relief *swept* through the group, and they successfully salvaged the celebratory atmosphere, transforming a potential **catastrophe** into a cherished memory.`,
+        level: "C1",
+        difficultWords: {"confection":"an elaborate sweet dish or candy.","pristine":"in its original condition; unspoiled.","catastrophe":"an event causing great and usually sudden damage or suffering; a disaster."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Case of the Missing Suitcase</h1>
     </div>
 
