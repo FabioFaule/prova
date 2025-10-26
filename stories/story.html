@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Forest at Night</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Forest at Night",
+        content: `Leo *went* for a walk into the forest. The sun *began* to *fall*, and the sky *became* dark. Soon, it *was* night. Leo *saw* many small lights in the air. They *were* moving slowly. He *knew* they *were* fireflies. They *flew* between the tall trees and *made* a beautiful **glow**. He *stood* still to watch them. He *heard* a small bird *sing* a soft song. He *felt* very **calm** and happy in the quiet forest. This special moment *was* like **magic**. He *took* a deep breath. Then, he *came* home. He *thought* about the lovely lights all night.`,
+        level: "A2",
+        difficultWords: {"glow":"soft light","calm":"peaceful, not worried","magic":"a special, wonderful power"}
+      },
+      b1: {
+        title: "The Forest at Night",
+        content: `Leo *went* for an evening walk deep into the forest. As the sun *began* to *set*, the vibrant sky *became* a canvas of deep blues and purples. Soon, darkness *fell*. Leo *saw* countless small, twinkling lights moving through the air. He *knew* immediately they *were* fireflies. They *flew* gracefully between the ancient trees, their tiny bodies *making* a soft, intermittent **glow**. He *stood* still, completely captivated by the sight. He *heard* the gentle rustling of leaves and a night bird *sang* a melodious tune. A feeling of profound **serenity** *swept* over him as he *breathed* in the crisp, cool air. This encounter *felt* truly **enchanting**. He *took* a moment to remember every detail before he *left* the spot and *began* his walk home. He *thought* about the magical display long after he *reached* his door.`,
+        level: "B1",
+        difficultWords: {"glow":"a soft, steady light","serenity":"the state of being calm, peaceful, and untroubled","enchanting":"delightful, charming, captivating"}
+      },
+      c1: {
+        title: "The Forest at Night",
+        content: `Leo *undertook* an evening **excursion**, venturing deep into the ancient forest's embrace. As the sun *began* its final *descent*, the once vibrant sky *became* a tapestry of fading hues, yielding to an inky blackness that swiftly *fell*. Suddenly, he *beheld* countless minute, ethereal lights that *had spread* across the sylvan expanse. He *knew* instantly they *were* fireflies, their delicate forms *borne* on the gentle currents of the night air. They *flew* with an almost otherworldly grace amidst the towering sentinels of the woods, their tiny bioluminescent bodies *cast* an intermittent, captivating **luminous** display. He *stood* transfixed, utterly **spellbound** by the silent spectacle unfolding before him. He *heard* the subtle rustling of dry leaves, the distant hoot of an owl, and a solitary nightingale *sang* a hauntingly melodious tune that *clung* to the stillness. A profound sense of tranquility *swept* over him as he *drank* in the crisp, resinous scent of the nocturnal woods. This unexpected encounter *proved* to be truly transformative. He *took* a deep breath, *kept* every intricate detail in memory, and then *found* his way homeward, *beginning* his solitary journey. He *dwelt* on the sublime beauty of the sylvan theatre long after he *trod* through his own threshold.`,
+        level: "C1",
+        difficultWords: {"excursion":"a short journey or trip, especially one engaged in as a leisure activity.","luminous":"emitting or reflecting light; shining.","spellbound":"holding one's complete attention as if by magic; fascinated."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Crumbling Birthday Surprise</h1>
     </div>
 
