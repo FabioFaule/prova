@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Great Family Gathering</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Great Family Gathering - A2 Level",
+        content: `Sarah *drove* to Aunt Clara’s house. She *saw* many cars. Her heart *began* to **beat** fast. Her cousins, Leo and Mia, *ran* out. They *gave* her a big **hug**. Inside, Grandma *sat* by the window. Aunt Clara *had made* a lot of food. Everyone *ate* and *drank* juice. The children *came* and *went*. Grandpa *told* funny stories. Everyone *heard* them. Sarah *felt* so happy to *be* with everyone. She *knew* this day *would become* a good **memory**. She *took* many photos and *sent* some to her mom. She *thought* about next year’s fun.`,
+        level: "A2",
+        difficultWords: {"beat":"to make regular strong movements or sounds, especially your heart.","hug":"to put your arms around someone and hold them tightly to show love or friendship.","memory":"something you remember from the past."}
+      },
+      b1: {
+        title: "The Great Family Gathering - B1 Level",
+        content: `Sarah *drove* for hours to Aunt Clara’s home, feeling a **surge** of excitement. As she *drew* near, she *saw* a multitude of cars. Her heart *began* to *beat* with joyful anticipation. Her cousins, Leo and Mia, *came* running out, their faces bright. They *gave* her a warm *hug*. Inside, Grandma *sat* peacefully by the window, her presence a comforting anchor. Aunt Clara *had spent* the day preparing a lavish feast; the delicious aroma *filled* the air. Everyone *ate* and *drank*, sharing stories and *laughter*. The children *ran* freely, their games *bringing* **boisterous** energy to the garden. Grandpa *led* a circle, *telling* tales from their family's past. Everyone *found* joy in his words. Sarah *felt* a deep connection, and *knew* this gathering *would become* a cherished **memory**. She *took* many photos, and *kept* the best ones. She *thought* of future reunions, which *would bring* them together again soon.`,
+        level: "B1",
+        difficultWords: {"surge":"a sudden strong increase in a feeling.","boisterous":"noisy, energetic, and cheerful.","cherished":"valued highly and loved."}
+      },
+      c1: {
+        title: "The Great Family Gathering - C1 Level",
+        content: `Sarah *drove* a considerable distance to Aunt Clara’s **ancestral** home. A profound sense of anticipation *began* to *build* within her. As she *drew* nearer, she *beheld* a veritable *fleet* of vehicles, indicating the scale of the reunion. Her heart *beat* with an **ebullient** joy. Her cousins, Leo and Mia, *sprang* forth, their faces *lit* with unadulterated delight. They *flung* themselves into a warm embrace. Inside, Grandma *sat* serenely by the window, her quiet dignity a grounding presence. Aunt Clara *had spent* the preceding days meticulously preparing a sumptuous feast; its rich aroma *permeated* every corner. Everyone *ate* and *drank* heartily. They *found* new connections and *spoke* of old times. The younger generation *ran* freely, their exuberant games *brought* vibrant energy to the sprawling garden. Grandpa, the venerable patriarch, *led* an impromptu storytelling session. He *wove* captivating narratives from their shared lineage. Everyone *hung* on his every word and *found* solace and amusement in the recounted past. Sarah *felt* a profound sense of belonging. She *knew* this ephemeral gathering *would become* an enduring **legacy** of joyful memories. She *took* countless photographs, which *meant* a great deal to her. She *thought* about how these bonds *would grow* stronger. She *swore* she *would keep* this day in her heart, *dreaming* of when their paths *would meet* again.`,
+        level: "C1",
+        difficultWords: {"ancestral":"relating to or inherited from an ancestor or ancestors.","ebullient":"cheerful and full of energy.","legacy":"something transmitted by or received from an ancestor or predecessor or from the past."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Forest at Night</h1>
     </div>
 
