@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Whispering Stone of Willow Creek</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Whispering Stone of Willow Creek (A2)",
+        content: `In Willow Creek forest, Hoot the owl, Foxy the fox, and Squeaky the squirrel *went* for a walk. They *saw* a small stone that *began* to **shimmer**. When they *took* it, they *heard* the soft **chatter** of the forest. Suddenly, they *began* to *understand* animals! They *heard* Pip, a little otter, *feel* great **distress**. Her home *was* *broken* when a big tree *fell*. Hoot *said*, "We must *help*!" Foxy and Squeaky *came* up with a plan. They *spoke* to the beavers, who *knew* how to *build* quickly. Together, they *made* a new home for Pip. Pip *was* very happy. The friends *knew* their power *was* special.`,
+        level: "A2",
+        difficultWords: {"shimmer":"to shine with a soft, slightly wavering light.","chatter":"to make rapid, repeated sounds.","distress":"a state of great anxiety, sorrow, or pain."}
+      },
+      b1: {
+        title: "The Whispering Stone of Willow Creek (B1)",
+        content: `Deep in Willow Creek forest, Hoot the wise owl, Foxy the brave fox, and Squeaky the playful squirrel *went* on an adventure. They *found* a peculiar stone that *began* to **radiate** a soft light. When they *took* hold of it, they *heard* a chorus of **faint** voices, the unspoken thoughts of every creature. They *understood* animals! Soon, they *heard* Pip, a river otter, *feel* profound **sorrow**. Her dwelling *had been* *broken* and *swept* away when a mighty tree *fell*. Hoot *knew* they *had* to *act*. The friends *came* up with a brilliant plan. They *spoke* to the beavers, who *were* masters of construction. Together, they *built* a secure new home for Pip. She *was* overjoyed. The trio *understood* their newfound ability *meant* a great responsibility.`,
+        level: "B1",
+        difficultWords: {"radiate":"to send out light or heat from a central point.","faint":"not strong or clear; barely perceptible.","sorrow":"a feeling of deep distress or sadness."}
+      },
+      c1: {
+        title: "The Whispering Stone of Willow Creek (C1)",
+        content: `Within the **verdant** expanse of Willow Creek forest, Hoot, a sagacious owl, Foxy, an audacious fox, and Squeaky, a vivacious squirrel, *chose* to *go* upon a leisurely exploration. They *came* upon an enigmatic stone, which *began* to **emanate** an ethereal glow. As they *clung* to it, they *became* privy to a cacophony of whispers—the unspoken cognitions of every living entity. They *understood* animal communication! Shortly thereafter, they *heard* Pip, a river otter, *feel* *sunk* in profound **despair**. Her riparian habitat *had been* *broken* and *swept* downstream when a colossal oak tree *fell*, *leaving* her family adrift. Hoot immediately *knew* that swift intervention *was* paramount. The companions *thought* of an ingenious strategy, *knowing* they *did* not *want* to *bear* to *see* Pip's plight continue. They *spoke* with the beavers, creatures renowned for their unparalleled architectural prowess. Collaboratively, they *built* a robust new dwelling, *making* sure it *would* *withstand* future deluges, for Pip and her kin. Pip *was* profoundly gratified, her relief palpable. The trio *understood* that their serendipitous discovery *bore* the weight of immense stewardship, a sacred trust they *would* *keep*.`,
+        level: "C1",
+        difficultWords: {"verdant":"green with grass or other rich vegetation.","emanate":"to issue or spread out from (a source).","despair":"the complete loss or absence of hope."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Great Family Gathering</h1>
     </div>
 
