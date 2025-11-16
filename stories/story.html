@@ -60,6 +60,75 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Rainy Day Board Game Bash</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "The Rainy Day Board Game Bash",
+        content: `The rain *began* to *fall* on Saturday. Max, Lily, and Sam *knew* they *couldn't go* out. So, they *came* inside. Max *said*, "Let's *play* board games!" Lily *went* to *get* "Tower Challenge." Sam *brought* snacks.
+
+They *sat* on the **cozy** rug. Max *built* a tall **pile** of blocks. Lily *saw* it, and then it *fell* down! Sam *laughed*. He *won* the first game. Then they *ate* sandwiches and *drank* juice.
+
+Next, they *chose* "Mystery Island." Lily *found* a hidden clue. Max *thought* hard and *made* the right guess. He *won* that game! They *felt* great **glee**. The rain *kept* falling, but they *had* a wonderful time. It *was* a perfect day. They *knew* this day *would* always *feel* special.`,
+        level: "A2",
+        difficultWords: {"cozy":"warm and comfortable","pile":"a group of things put one on top of another","glee":"great joy and happiness"}
+      },
+      b1: {
+        title: "The Rainy Day Board Game Bash",
+        content: `A sudden **downpour** *began* to *fall* that Saturday morning. Max, Lily, and Sam *knew* outdoor plans *were* impossible. They *came* together at Max’s house. "We *could* have a board game marathon!" Max *said*. Lily *went* to *get* "Tower Challenge" from the shelf. Sam *brought* a **vibrant** assortment of snacks.
+
+They *made* themselves comfortable on the **cozy** rug. Max carefully *built* a precarious tower of blocks. Lily *saw* it *begin* to *shake* and then suddenly *fell* with a clatter! Sam *found* the situation amusing and *burst* into laughter. He *won* the first round using a clever **strategy**. Afterward, they *ate* homemade cookies and *drank* warm tea.
+
+For their next adventure, they *chose* "Mystery Island." Lily quickly *found* a crucial clue that *went* unnoticed by others. Max *thought* strategically and *led* them to the solution. He *was* the victor this time! They *felt* a deep sense of contentment and shared *glee*. The rain *kept* pouring outside, but their spirits *rose* high. They *had* created a perfect day, one they *knew* they *would* always *hold* dear.`,
+        level: "B1",
+        difficultWords: {"downpour":"heavy rain","vibrant":"bright and full of life","strategy":"a plan of action"}
+      },
+      c1: {
+        title: "The Rainy Day Board Game Bash",
+        content: `The **incessant** **downpour** *began* its relentless drumming against the windowpanes that Saturday morn. Max, Lily, and Sam *knew* instantly that any outdoor pursuits *were* utterly *forsaken*. They *met* at Max’s residence, where the proposition of a board game marathon *was* *met* with enthusiastic assent. "We *could* transform this dismal weather into an epic gaming day!" Max *said*. Lily *took* "Arcane Architecture" from its high shelf, while Sam *brought* forth a truly **vibrant** array of gourmet snacks.
+
+They *made* themselves comfortably ensconced on the plush rug. Max, with meticulous **ingenuity**, *built* a tower of intricate design, its structure appearing alarmingly precarious. Lily *watched*, a nervous thrill, as it *began* to *shake* and then suddenly *gave* way, its components *spread* across the floor. Sam, *finding* the collapse utterly captivating, *burst* into boisterous laughter. He *won* the initial round, his nuanced **strategy** proving superior. Subsequently, they *partook* of artisanal biscuits and *drank* freshly *brewed* herbal tea.
+
+Their next venture *was* "Shadow Mysteries." Lily, displaying remarkable perceptiveness, swiftly *found* a pivotal clue that *had* *slipped* past her companions' notice. Max, *bringing* his deductive prowess to bear, *led* them to the solution. He *rose* victorious, a quiet sense of triumph *shining* in his eyes. A profound sense of shared **camaraderie** and *glee* *spread* throughout the room. The rain *kept* on *lashing* down outside, but their collective spirits *rose* immeasurably. They *had*, without doubt, *made* a truly memorable day, one they *knew* they *would* forever *hold* dear.`,
+        level: "C1",
+        difficultWords: {"incessant":"never stopping, continuous","ingenuity":"the quality of being clever, original, and inventive","camaraderie":"mutual trust and friendship among people who spend a lot of time together"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Whispering Stone of Willow Creek</h1>
     </div>
 
