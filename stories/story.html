@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Shadow over Eldoria</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Sir Kaelen and the Shadow Beast",
+        content: `Sir Kaelen *was* a brave knight. His town *was* sad. A dark shadow *came* every night. People *did not sleep* well. Sir Kaelen *said*, "I *will find* it." He *took* his strong sword. He *went* into the **dark** forest. He *walked* for a long time. Then, he *saw* a big **cave**. Inside, a scary **beast** *slept*. Sir Kaelen *began* to fight. He *hit* the beast. The beast *fell*. Sir Kaelen *won*. The shadow *left*. The town *became* happy. People *could sleep* and *eat* again.`,
+        level: "A2",
+        difficultWords: {"dark":"with little or no light","cave":"a large hole in the side of a cliff, mountain, or under the ground","beast":"an animal, especially a large or dangerous one"}
+      },
+      b1: {
+        title: "The Knight's Quest for Eldoria",
+        content: `Sir Kaelen *was* a brave knight. His kingdom, Eldoria, *knew* sadness. A mysterious shadow *began* to *come* every evening, *bringing* fear. People *could not sleep* and *lost* their hope. Sir Kaelen *felt* a duty to his land. He *took* his shining sword and *rode* his horse into the **dense** forest, where the darkness *grew* strongest. He *came* to an ancient **cavern** entrance. Inside, a monstrous shadow-beast *lay* waiting. Sir Kaelen *drew* his blade and *fought* with all his might. He *struck* the beast, and it *fell*, *giving* a terrible cry. Sir Kaelen *won* the battle. The shadow *left* Eldoria, and peace *returned*. The people *knew* joy once more.`,
+        level: "B1",
+        difficultWords: {"dense":"containing a lot of things or people in a small area; difficult to see through","cavern":"a large cave, especially one that is mostly underground","monstrous":"very large, frightening, and ugly"}
+      },
+      c1: {
+        title: "Sir Kaelen and the Enigmatic Shadow of Eldoria",
+        content: `Sir Kaelen, a knight of unwavering courage, *bore* the burden of his kingdom, Eldoria, which *had fallen* under a pervasive malaise. Each twilight, an enigmatic shadow *crept* over the land, *bringing* an oppressive fear that *froze* the hearts of its inhabitants. Sleep *forsook* them, and despair *began* to *take* hold. *Driven* by an intrinsic sense of duty, Sir Kaelen *took* up his ancestral sword, its hilt *felt* cold in his grasp. He *rode* his **steadfast** destrier deep into the **ominous** Eldoria Forest, where the shadow’s influence *grew* most potent. There, he *found* the entrance to a primeval **abyss**. Within its gaping maw, a formidable shadow-entity *lay* in wait. Sir Kaelen *drew* his blade, its steel *shone* faintly, and *fought* with relentless valor. He *struck* a decisive blow, and the creature *shrank* into oblivion, *giving* a piercing, ethereal shriek. The malevolent shadow *fled* from Eldoria, and a profound tranquility *spread* across the realm. Joy *was woven* back into the fabric of daily life.`,
+        level: "C1",
+        difficultWords: {"steadfast":"not changing in your attitudes or aims; firm and unwavering","ominous":"suggesting that something bad is going to happen in the future","abyss":"a very deep hole in the ground or a deep, immeasurable space"}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Rainy Day Board Game Bash</h1>
     </div>
 
