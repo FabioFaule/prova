@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 The Sky Dreamer's Drone</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Flying Robot",
+        content: `Leo *had* a good idea. He *wanted* to *make* a flying robot, a drone. He *began* to *find* small **components** like wires and a motor. He *spent* many hours in his room. He *built* the drone piece by piece. Sometimes, it *didn't work*. He *felt* sad, but he *didn't give up*. He *knew* he *could do* it. Finally, the drone *was* ready. Leo *took* it outside. He *pressed* a button. The drone *went* up! It *flew* high in the blue sky. Leo *saw* it *go*. He *felt* a big **thrill**. He *did* it! He *felt* so much **joy**.`,
+        level: "A2",
+        difficultWords: {"components":"parts that make up a whole machine or system","thrill":"a sudden feeling of intense excitement and pleasure","joy":"a feeling of great pleasure and happiness"}
+      },
+      b1: {
+        title: "The Ascent of Leo's Drone",
+        content: `Leo *had had* a brilliant idea: an ambitious **endeavor** to build his own drone. He *began* gathering various parts – a motor, wires, and lightweight plastic. Leo *spent* countless evenings in his workshop, *thinking* and *planning*. He *drew* many designs before he *meticulously* *built* the frame. There were moments when things *didn't go* as planned; he *made* mistakes and *felt* frustrated. Yet, he *didn't give up*. He *knew* this dream *was* worth fighting for. Finally, the drone *stood* complete. He *took* it to an open field. With a deep breath, he *hit* the launch button. The drone *rose* smoothly, its propellers *made* a soft whirring sound. It *flew* higher and higher, a small point against the sky. Leo *saw* it *fly*. A powerful sense of **triumph** *swept* over him. He *had done* it. He *felt* immense pride.`,
+        level: "B1",
+        difficultWords: {"endeavor":"a serious attempt or effort to achieve something","meticulously":"in a way that shows great attention to detail; very carefully and precisely","triumph":"a great victory or achievement"}
+      },
+      c1: {
+        title: "The Genesis of the Sky Weaver",
+        content: `Leo *had* a vision, an audacious **undertaking**: to construct a bespoke drone from scratch. He *began* to *seek* an array of disparate components – a miniature brushless motor, complex wiring harnesses, and ultralight carbon fiber. Leo *spent* innumerable twilight hours sequestered in his makeshift workshop, *thought* diligently, and *drew* intricate schematics. He *made* countless blueprints before he *meticulously wove* the frame together. His progress *was* not without considerable impediments; he *made* frequent miscalculations and *felt* the sting of recurrent setbacks. Nonetheless, he *did not yield* to discouragement, for he *knew* the realization of his vision *was* paramount. At last, the drone *stood*, an elegant synthesis of ingenuity. He *bore* it to an expansive, unencumbered expanse. With a profound exhalation, he *thrust* the activation switch. The contraption *rose* with remarkable grace, its finely tuned rotors *made* a subtle, resonant hum. It *flew*, a nascent sentinel, charting an unwavering trajectory into the cerulean expanse. Leo *beheld* its flight, a testament to his perseverance. A profound sense of **elation** *swept* through his being. He *had wrought* a marvel; he *understood* the true essence of **innovation*.`,
+        level: "C1",
+        difficultWords: {"undertaking":"a formal pledge or promise to do something; a project or task","elation":"great happiness and exhilaration","innovation":"the action or process of innovating; a new method, idea, product, etc."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Shadow over Eldoria</h1>
     </div>
 
