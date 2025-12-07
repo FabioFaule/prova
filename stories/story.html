@@ -60,6 +60,63 @@
 <div class="lw-card">
   <div class="card">
     <div class="card-header">
+      <h1>📚 Leo's Big Climb</h1>
+    </div>
+
+    <div class="card-body">
+      <div class="level-buttons">
+        <button class="level-btn facile lw-level-btn" data-level="a2">
+          <div class="level-icon">🌱</div>
+          <div class="level-title">A2 - Facile</div>
+        </button>
+
+        <button class="level-btn medio lw-level-btn" data-level="b1">
+          <div class="level-icon">🌿</div>
+          <div class="level-title">B1 - Intermedio</div>
+        </button>
+
+        <button class="level-btn difficile lw-level-btn" data-level="c1">
+          <div class="level-icon">🌳</div>
+          <div class="level-title">C1 - Avanzato</div>
+        </button>
+      </div>
+
+      <div class="story-container lw-story-container">
+      </div>
+    </div>
+  </div>
+
+  <!-- Block where n8n injects JSON data -->
+  <script>
+    const storiesData = {
+      a2: {
+        title: "Leo's Big Climb (A2)",
+        content: `Leo *had* a big **fear**. He *did not like* high places. His friend, Maya, *knew* this. One day, Maya *said*, "Let's *go* to the Sky **Tower**!" Leo *felt* scared. The tower *was* very tall. They *went* up. Leo *stood* far from the window. He *did not want* to *look* down. Maya *came* to him. She *held* his hand. "Just *look* a little," she *said*. Leo looked. The city *was* **amazing**. He *began* to *feel* a little better. He *took* a deep breath. He *came* closer. He *saw* the tiny cars. Leo smiled. He *did* it! He *overcame* his fear. He *felt* proud.`,
+        level: "A2",
+        difficultWords: {"fear":"A strong, unpleasant feeling caused by danger.","tower":"A very tall building or structure.","amazing":"Causing great wonder or surprise; wonderful."}
+      },
+      b1: {
+        title: "Leo's Big Climb (B1)",
+        content: `Leo *had* a significant **dread** of heights. He *found* high places truly uncomfortable. His friend, Maya, *knew* about his struggles. One sunny afternoon, Maya *said* excitedly, "Let's *go* to the observation deck of the Sky Tower!" Leo's heart *began* to *beat* faster. The thought of the tall structure *made* him *feel* uneasy. Still, he *went* with her. Inside, as they *rose* in the elevator, Leo *felt* a chill. He *stood* away from the panoramic windows, *did not dare* to *look* down. Maya *came* over, sensing his **unease**. She *took* his hand gently. "Just *look* for a moment," she *told* him. Leo slowly *saw* the ground appear. The city *spread* out beneath them, an *astonishing* **vista**. He *began* to *feel* his tension *fall* away. He *took* a deep breath and *came* closer. He *saw* cars like little beetles, buildings like Lego bricks. A sense of triumph *came* over him. He *knew* he *had begun* to *overcome* his long-standing fear.`,
+        level: "B1",
+        difficultWords: {"dread":"Great fear or anxiety.","unease":"A feeling of anxiety or discomfort.","vista":"A pleasing view, especially one seen through a long, narrow opening."}
+      },
+      c1: {
+        title: "Leo's Big Climb (C1)",
+        content: `Leo *had* always *borne* a profound **aversion** to heights, a deep-seated acrophobia that *made* him *flee* any elevated vantage point. His perceptive friend, Maya, *knew* the extent of his struggles. One crisp autumn morning, Maya *chose* an outing: "Let's *go* to the observation deck of the newly opened Sky Spire!" Leo's gut *felt* like it *clung* to his ribs, his heart *began* to *beat* hard. Yet, compelled by Maya's unwavering optimism, he reluctantly *came* along. As the high-speed elevator *shot* upwards, Leo *felt* an almost suffocating sense of panic *creep* over him. He *stood* rigidly, his gaze *kept* on the floor, *did not dare* to *look* through the immense glass panes. Maya, sensing his acute **distress**, *came* to his side. She *took* his hand, her touch *brought* a grounding presence. "Just *see* a small bit," she *spoke* softly. Leo, with immense effort, *drew* his eyes upward. The sprawling urban landscape *spread* below, a breathtaking **panorama**. He *felt* a subtle shift, the grip of fear *began* to *fall* away. He *took* a shaky breath and *came* tentatively towards the glass, his initial terror slowly *gave* way to awe. He *saw* vehicles *creep* along like minuscule insects, skyscrapers *stood* like miniature sculptures. A profound sense of accomplishment *swept* over him. He *knew* he *had truly begun* to *overcome* a lifelong phobia.`,
+        level: "C1",
+        difficultWords: {"aversion":"A strong feeling of dislike, opposition, or disinclination.","distress":"Extreme anxiety, sorrow, or pain.","panorama":"An unbroken view of the whole region surrounding an observer."}
+      }
+    };
+  </script>
+
+</div>
+
+
+<!-- One self-contained, appendable card -->
+<div class="lw-card">
+  <div class="card">
+    <div class="card-header">
       <h1>📚 The Sky Dreamer's Drone</h1>
     </div>
 
